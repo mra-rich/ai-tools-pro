@@ -94,13 +94,6 @@ function switchTab(name, btn) {
   btn.classList.add('active');
 }
 
-function swCk(name, btn) {
-  document.querySelectorAll('.cpanel').forEach((p) => p.classList.remove('active'));
-  document.querySelectorAll('.ctab').forEach((b) => b.classList.remove('active'));
-  document.getElementById('cp-' + name).classList.add('active');
-  btn.classList.add('active');
-}
-
 function tv(id, btn) {
   const i = document.getElementById(id);
   i.type = i.type === 'password' ? 'text' : 'password';
@@ -124,6 +117,7 @@ async function loadContent() {
       renderDatabase(data);
       renderTutorial(data);
       renderOnboarding(data);
+      renderChecker(data);
       return;
     }
     if (status === 401) {
@@ -355,7 +349,137 @@ document.getElementById('ob-root').addEventListener('click', (e) => {
   }, 2000);
 });
 
-// ── API CHECKERS ──────────────────────────────────────────────────
+// ── API CHECKERS (render dinamis dari checkerPresets konten) ─────
+const DEFAULT_CK = [
+  { id: 'groq', nama: 'Groq', emoji: '⚡', apiType: 'openai', baseUrl: 'https://api.groq.com/openai/v1', model: 'openai/gpt-oss-120b', keyHint: 'Dapatkan di console.groq.com/keys', modelHint: 'openai/gpt-oss-120b, llama-3.1-8b-instant' },
+  { id: 'openrouter', nama: 'OpenRouter', emoji: '🛣️', apiType: 'openai', baseUrl: 'https://openrouter.ai/api/v1', model: 'nvidia/nemotron-3-ultra-550b-a55b:free', keyHint: 'Dapatkan di openrouter.ai/keys', modelHint: 'Pilih model suffix :free' },
+  { id: 'gemini', nama: 'Google Gemini', emoji: '🔵', apiType: 'google', baseUrl: 'https://generativelanguage.googleapis.com/v1beta', model: 'gemini-2.5-flash', keyHint: 'Dapatkan di aistudio.google.com/app/apikey', modelHint: 'gemini-2.5-flash, gemini-2.5-pro' },
+  { id: 'anthropic', nama: 'Anthropic / Claude', emoji: '🟠', apiType: 'anthropic', baseUrl: 'https://api.anthropic.com', model: 'claude-haiku-4-5', keyHint: 'Dapatkan di console.anthropic.com (berbayar)', modelHint: 'claude-haiku-4-5, claude-sonnet-4-5' },
+  { id: 'openai', nama: 'OpenAI', emoji: '🟢', apiType: 'openai', baseUrl: 'https://api.openai.com/v1', model: 'gpt-4o-mini', keyHint: 'Dapatkan di platform.openai.com (berbayar)', modelHint: 'gpt-4o-mini, gpt-4o' },
+  { id: 'mistral', nama: 'Mistral AI', emoji: '🟡', apiType: 'openai', baseUrl: 'https://api.mistral.ai/v1', model: 'mistral-small-latest', keyHint: 'Dapatkan di console.mistral.ai', modelHint: 'mistral-small-latest' },
+];
+
+let ckPresets = [];
+let ckActive = null;
+
+function renderChecker(d) {
+  ckPresets = d.checkerPresets && d.checkerPresets.length ? d.checkerPresets : DEFAULT_CK;
+  const tabs = document.getElementById('ck-tabs');
+  const panels = document.getElementById('ck-panels');
+  tabs.innerHTML = ckPresets
+    .map(
+      (p, i) =>
+        `<button class="ctab${i === (ckActive ?? 0) ? ' active' : ''}" data-ck="${i}"><span class="ctab-dot" style="background:var(--accent)"></span>${escapeHtml(p.emoji || '🔹')} ${escapeHtml(p.nama)}</button>`,
+    )
+    .join('');
+  panels.innerHTML = ckPresets
+    .map((p) => renderCkPanel(p))
+    .join('');
+  selectCk(ckActive ?? 0);
+}
+
+const CK_SUB_BY_TYPE = {
+  openai: 'OpenAI-compatible',
+  anthropic: 'Anthropic API',
+  google: 'Google AI Studio API',
+  custom: 'Endpoint bebas',
+};
+
+function renderCkPanel(p) {
+  const isCustom = p.apiType === 'custom';
+  return `
+    <div class="cpanel" id="ck-${escapeHtml(p.id)}">
+      <div class="ccard">
+        <div class="ccard-hd"><div class="cpbadge" data-p="custom">${escapeHtml(p.emoji || '🔹')}</div>
+          <div><div class="cpname">${escapeHtml(p.nama)}</div><div class="cpsub">${CK_SUB_BY_TYPE[p.apiType] || escapeHtml(p.apiType)}</div></div>
+        </div>
+        <div class="ccard-bd">
+          <label class="fl">API Key</label>
+          <div class="fw"><input type="password" id="k-${escapeHtml(p.id)}" placeholder="Paste API key kamu di sini..."/><button class="tvis" onclick="tv('k-${escapeHtml(p.id)}',this)">👁</button></div>
+          <div class="fh">${escapeHtml(p.keyHint || '')}</div>
+          <label class="fl">Base URL</label>
+          <div class="fw"><input type="text" id="u-${escapeHtml(p.id)}" value="${escapeHtml(p.baseUrl || '')}" class="npr"/></div>
+          <label class="fl">Model</label>
+          <div class="fw"><input type="text" id="m-${escapeHtml(p.id)}" value="${escapeHtml(p.model || '')}" class="npr"/></div>
+          <div class="fh">${escapeHtml(p.modelHint || '')}</div>
+          <button class="btn-ck" onclick="ckProvider('${escapeHtml(p.id)}')">🔍 Cek API Key</button>
+          <div class="cres" id="r-${escapeHtml(p.id)}"></div>
+          <div class="sec-note">🔒 Request langsung dari browser ke endpoint ini. Key tidak melalui server perantara.</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function selectCk(i) {
+  ckActive = i;
+  document.querySelectorAll('#ck-tabs .ctab').forEach((c, ci) => c.classList.toggle('active', ci === i));
+  document.querySelectorAll('#ck-panels .cpanel').forEach((p, pi) => p.classList.toggle('active', pi === i));
+}
+
+document.getElementById('ck-tabs').addEventListener('click', (e) => {
+  const t = e.target.closest('[data-ck]');
+  if (t) selectCk(Number(t.dataset.ck));
+});
+
+function showCkResult(id, st, title, detail) {
+  const el = document.getElementById('r-' + id);
+  el.className = 'cres vis ' + st;
+  const ic = st === 'ok' ? '✅' : st === 'err' ? '❌' : '⚠️';
+  el.innerHTML = `<span>${ic}</span><div><div class="cres-ttl">${escapeHtml(title)}</div><div class="cres-det">${escapeHtml(detail)}</div></div>`;
+}
+
+async function ckProvider(id) {
+  const p = ckPresets.find((x) => x.id === id) || {};
+  const key = document.getElementById('k-' + id).value.trim();
+  const baseUrl = document.getElementById('u-' + id).value.trim().replace(/\/+$/, '');
+  const model = document.getElementById('m-' + id).value.trim();
+  const resId = 'r-' + id;
+  if (!key) return showCkResult(resId, 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
+  if (!baseUrl) return showCkResult(resId, 'warn', 'Base URL kosong', 'Isi Base URL endpoint-nya.');
+  if (!model) return showCkResult(resId, 'warn', 'Model kosong', 'Isi nama model yang ingin diuji.');
+
+  const btn = document.querySelector(`#ck-${CSS.escape(id)} .btn-ck`);
+  setLd(btn, true);
+  try {
+    if (p.apiType === 'google') {
+      const r = await fetch(`${baseUrl}/models/${encodeURIComponent(model)}:generateContent`, {
+        method: 'POST',
+        headers: { 'x-goog-api-key': key, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] }),
+      });
+      const d = await r.json();
+      if (r.ok) {
+        const c = d.candidates?.[0];
+        showCkResult(resId, 'ok', 'API Key Valid ✓', `Model: ${model} | Finish: ${c?.finishReason || 'STOP'}`);
+      } else showCkResult(resId, 'err', `Error ${r.status}: ${d.error?.status || 'Unknown'}`, d.error?.message || JSON.stringify(d));
+    } else if (p.apiType === 'anthropic') {
+      const r = await fetch(`${baseUrl}/v1/messages`, {
+        method: 'POST',
+        headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true', 'content-type': 'application/json' },
+        body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }),
+      });
+      const d = await r.json();
+      if (r.ok) showCkResult(resId, 'ok', 'API Key Valid ✓', `Model: ${d.model} | Stop: ${d.stop_reason} | Tokens: ${d.usage?.input_tokens}`);
+      else showCkResult(resId, 'err', `Error ${r.status}: ${d.error?.type || 'Unknown'}`, d.error?.message || JSON.stringify(d));
+    } else {
+      const r = await fetch(`${baseUrl}/chat/completions`, {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }),
+      });
+      const d = await r.json();
+      if (r.ok) showCkResult(resId, 'ok', 'API Key Valid ✓', `Model: ${d.model || model} | Finish: ${d.choices?.[0]?.finish_reason} | Tokens: ${d.usage?.total_tokens ?? '—'}`);
+      else showCkResult(resId, 'err', `Error ${r.status}: ${d.error?.type || d.error?.code || 'Unknown'}`, d.error?.message || d.message || JSON.stringify(d));
+    }
+  } catch (e) {
+    showCkResult(resId, 'err', 'Gagal terhubung', e.message.includes('Failed to fetch')
+      ? 'Tidak bisa terhubung. Pastikan URL benar dan server aktif (untuk localhost, aktifkan CORS).'
+      : e.message);
+  } finally {
+    setLd(btn, false);
+  }
+}
+
 function showRes(id, st, title, detail) {
   const el = document.getElementById(id);
   el.className = 'cres vis ' + st;
@@ -368,122 +492,7 @@ function setLd(btn, on) {
   btn.innerHTML = on ? '<div class="spin16"></div> Memeriksa...' : '🔍 Cek API Key';
 }
 
-async function ckAnthropic() {
-  const key = document.getElementById('k-an').value.trim();
-  const model = document.getElementById('m-an').value.trim() || 'claude-haiku-4-5';
-  const btn = document.querySelector('#cp-anthropic .btn-ck');
-  if (!key) return showRes('r-an', 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
-  setLd(btn, true);
-  try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true', 'content-type': 'application/json' }, body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }) });
-    const d = await r.json();
-    if (r.ok) showRes('r-an', 'ok', 'API Key Valid ✓', `Model: ${d.model} | Stop: ${d.stop_reason} | Tokens: ${d.usage?.input_tokens}`);
-    else showRes('r-an', 'err', `Error ${r.status}: ${d.error?.type || 'Unknown'}`, d.error?.message || JSON.stringify(d));
-  } catch (e) { showRes('r-an', 'err', 'Gagal terhubung', e.message); }
-  finally { setLd(btn, false); }
-}
 
-async function ckOpenAI() {
-  const key = document.getElementById('k-oa').value.trim();
-  const model = document.getElementById('m-oa').value.trim() || 'gpt-4o-mini';
-  const btn = document.querySelector('#cp-openai .btn-ck');
-  if (!key) return showRes('r-oa', 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
-  setLd(btn, true);
-  try {
-    const r = await fetch('https://api.openai.com/v1/chat/completions', { method: 'POST', headers: { 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json' }, body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }) });
-    const d = await r.json();
-    if (r.ok) showRes('r-oa', 'ok', 'API Key Valid ✓', `Model: ${d.model} | Finish: ${d.choices?.[0]?.finish_reason} | Tokens: ${d.usage?.total_tokens}`);
-    else showRes('r-oa', 'err', `Error ${r.status}: ${d.error?.code || d.error?.type || 'Unknown'}`, d.error?.message || JSON.stringify(d));
-  } catch (e) { showRes('r-oa', 'err', 'Gagal terhubung', e.message); }
-  finally { setLd(btn, false); }
-}
-
-async function ckGoogle() {
-  const key = document.getElementById('k-gg').value.trim();
-  const model = document.getElementById('m-gg').value.trim() || 'gemini-2.0-flash';
-  const btn = document.querySelector('#cp-google .btn-ck');
-  if (!key) return showRes('r-gg', 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
-  setLd(btn, true);
-  try {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(key)}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: 'hi' }] }] }) });
-    const d = await r.json();
-    if (r.ok) {
-      const c = d.candidates?.[0];
-      const sf = c?.safetyRatings?.length ? c.safetyRatings.map((s) => s.category.split('_').pop()).join(', ') : 'OK';
-      showRes('r-gg', 'ok', 'API Key Valid ✓', `Model: ${model} | Finish: ${c?.finishReason || 'STOP'} | Safety: ${sf}`);
-    } else showRes('r-gg', 'err', `Error ${r.status}: ${d.error?.status || 'Unknown'}`, d.error?.message || JSON.stringify(d));
-  } catch (e) { showRes('r-gg', 'err', 'Gagal terhubung', e.message); }
-  finally { setLd(btn, false); }
-}
-
-async function ckMistral() {
-  const key = document.getElementById('k-ms').value.trim();
-  const model = document.getElementById('m-ms').value.trim() || 'mistral-small-latest';
-  const btn = document.querySelector('#cp-mistral .btn-ck');
-  if (!key) return showRes('r-ms', 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
-  setLd(btn, true);
-  try {
-    const r = await fetch('https://api.mistral.ai/v1/chat/completions', { method: 'POST', headers: { 'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json' }, body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }) });
-    const d = await r.json();
-    if (r.ok) showRes('r-ms', 'ok', 'API Key Valid ✓', `Model: ${d.model || model} | Finish: ${d.choices?.[0]?.finish_reason} | Tokens: ${d.usage?.total_tokens ?? '—'}`);
-    else showRes('r-ms', 'err', `Error ${r.status}: ${d.error?.type || d.message || 'Unknown'}`, d.error?.message || d.message || JSON.stringify(d));
-  } catch (e) { showRes('r-ms', 'err', 'Gagal terhubung', e.message); }
-  finally { setLd(btn, false); }
-}
-
-const PRESETS = {
-  groq:      { url: 'https://api.groq.com/openai/v1', model: 'llama-3.1-8b-instant', kh: 'Dapatkan di console.groq.com', mh: 'Contoh: llama-3.1-8b-instant, gemma2-9b-it' },
-  together:  { url: 'https://api.together.xyz/v1', model: 'meta-llama/Llama-3-8b-chat-hf', kh: 'Dapatkan di api.together.ai', mh: 'Format: org/model-name' },
-  openrouter:{ url: 'https://openrouter.ai/api/v1', model: 'openai/gpt-4o-mini', kh: 'Dapatkan di openrouter.ai/keys', mh: 'Contoh: openai/gpt-4o-mini' },
-  deepseek:  { url: 'https://api.deepseek.com/v1', model: 'deepseek-chat', kh: 'Dapatkan di platform.deepseek.com', mh: 'Model: deepseek-chat, deepseek-reasoner' },
-  fireworks: { url: 'https://api.fireworks.ai/inference/v1', model: 'accounts/fireworks/models/llama-v3p1-8b-instruct', kh: 'Dapatkan di fireworks.ai', mh: 'Format: accounts/fireworks/models/...' },
-  ollama:    { url: 'http://localhost:11434/v1', model: 'llama3.2', kh: 'Tidak perlu key — isi "ollama"', mh: 'Model yang sudah di-pull' },
-  lmstudio:  { url: 'http://localhost:1234/v1', model: 'local-model', kh: 'Tidak perlu key — isi "lmstudio"', mh: 'Identifier model dari LM Studio' },
-  '9router': { url: 'http://localhost:20128/v1', model: '', kh: 'API key 9Router kamu', mh: 'Nama model di 9Router' },
-  manual:    { url: '', model: '', kh: 'API key dari provider', mh: 'Nama model yang tersedia' },
-};
-
-function applyP(name, btn) {
-  const p = PRESETS[name];
-  if (!p) return;
-  document.getElementById('c-url').value = p.url;
-  document.getElementById('c-mdl').value = p.model;
-  document.getElementById('c-key-h').textContent = p.kh;
-  document.getElementById('c-mdl-h').textContent = p.mh;
-  document.querySelectorAll('.ppill').forEach((b) => b.classList.remove('sel'));
-  btn.classList.add('sel');
-  const r = document.getElementById('r-cu');
-  r.className = 'cres';
-  r.innerHTML = '';
-}
-
-async function ckCustom() {
-  const key = document.getElementById('c-key').value.trim();
-  const url = document.getElementById('c-url').value.trim().replace(/\/$/, '');
-  const model = document.getElementById('c-mdl').value.trim();
-  const btn = document.querySelector('#cp-custom .btn-ck');
-  if (!url) return showRes('r-cu', 'warn', 'Base URL kosong', 'Pilih preset atau isi Base URL terlebih dahulu.');
-  if (!model) return showRes('r-cu', 'warn', 'Model kosong', 'Isi nama model yang ingin diuji.');
-  setLd(btn, true);
-  try {
-    const headers = { 'Content-Type': 'application/json' };
-    if (key) headers['Authorization'] = 'Bearer ' + key;
-    const r = await fetch(`${url}/chat/completions`, { method: 'POST', headers, body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }) });
-    const d = await r.json();
-    if (r.ok) showRes('r-cu', 'ok', 'API Key Valid ✓', `Model: ${d.model || model} | Finish: ${d.choices?.[0]?.finish_reason} | Tokens: ${d.usage?.total_tokens ?? '—'}`);
-    else {
-      const msg = d.error?.message || d.message || JSON.stringify(d);
-      const isEmbed = msg.toLowerCase().includes('embedding');
-      showRes('r-cu', 'err', `Error ${r.status}: ${d.error?.code || d.error?.type || r.status}`,
-        isEmbed ? '⚠️ Ini adalah embedding model. Gunakan model chat/completions.' : msg);
-    }
-  } catch (e) {
-    showRes('r-cu', 'err', 'Gagal terhubung', e.message.includes('Failed to fetch')
-      ? 'Tidak bisa terhubung. Pastikan URL benar dan server aktif. Untuk localhost, pastikan CORS diaktifkan.'
-      : e.message);
-  }
-  finally { setLd(btn, false); }
-}
 
 // Enter = aksi utama halaman yang tampak
 document.addEventListener('keydown', (e) => {

@@ -138,100 +138,10 @@
   </div>
 
   <!-- Tab API Checker -->
+  <!-- Tab API Checker (dinamis dari checkerPresets di konten) -->
   <div class="tab-pane" id="tab-checker">
-    <div class="ck-tabs">
-      <button class="ctab active" data-p="anthropic" onclick="swCk('anthropic',this)"><span class="ctab-dot"></span>Anthropic</button>
-      <button class="ctab" data-p="openai"    onclick="swCk('openai',this)"><span class="ctab-dot"></span>OpenAI</button>
-      <button class="ctab" data-p="google"    onclick="swCk('google',this)"><span class="ctab-dot"></span>Google</button>
-      <button class="ctab" data-p="mistral"   onclick="swCk('mistral',this)"><span class="ctab-dot"></span>Mistral</button>
-      <button class="ctab" data-p="custom"    onclick="swCk('custom',this)"><span class="ctab-dot"></span>Custom</button>
-    </div>
-
-    <!-- Anthropic -->
-    <div class="cpanel active" id="cp-anthropic"><div class="ccard">
-      <div class="ccard-hd"><div class="cpbadge" data-p="anthropic">🟠</div><div><div class="cpname">Anthropic / Claude</div><div class="cpsub">api.anthropic.com</div></div></div>
-      <div class="ccard-bd">
-        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-an" placeholder="sk-ant-api03-..."/><button class="tvis" onclick="tv('k-an',this)">👁</button></div>
-        <div class="fh">Dapatkan di <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a></div>
-        <label class="fl">Model</label><div class="fw"><input type="text" id="m-an" value="claude-haiku-4-5" class="npr"/></div>
-        <div class="fh">Contoh: claude-opus-4-5, claude-sonnet-4-5, claude-haiku-4-5</div>
-        <button class="btn-ck" onclick="ckAnthropic()">🔍 Cek API Key</button>
-        <div class="cres" id="r-an"></div>
-        <div class="sec-note">🔒 Request langsung dari browser ke Anthropic. Key tidak melalui server perantara.</div>
-      </div>
-    </div></div>
-
-    <!-- OpenAI -->
-    <div class="cpanel" id="cp-openai"><div class="ccard">
-      <div class="ccard-hd"><div class="cpbadge" data-p="openai">🟢</div><div><div class="cpname">OpenAI / ChatGPT</div><div class="cpsub">api.openai.com</div></div></div>
-      <div class="ccard-bd">
-        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-oa" placeholder="sk-proj-..."/><button class="tvis" onclick="tv('k-oa',this)">👁</button></div>
-        <div class="fh">Dapatkan di <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a></div>
-        <label class="fl">Model</label><div class="fw"><input type="text" id="m-oa" value="gpt-4o-mini" class="npr"/></div>
-        <div class="fh">Contoh: gpt-4o, gpt-4o-mini, o1-mini</div>
-        <button class="btn-ck" onclick="ckOpenAI()">🔍 Cek API Key</button>
-        <div class="cres" id="r-oa"></div>
-        <div class="sec-note">🔒 Request langsung dari browser ke OpenAI.</div>
-      </div>
-    </div></div>
-
-    <!-- Google -->
-    <div class="cpanel" id="cp-google"><div class="ccard">
-      <div class="ccard-hd"><div class="cpbadge" data-p="google">🔵</div><div><div class="cpname">Google Gemini</div><div class="cpsub">generativelanguage.googleapis.com</div></div></div>
-      <div class="ccard-bd">
-        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-gg" placeholder="AIza..."/><button class="tvis" onclick="tv('k-gg',this)">👁</button></div>
-        <div class="fh">Dapatkan di <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></div>
-        <label class="fl">Model</label><div class="fw"><input type="text" id="m-gg" value="gemini-2.0-flash" class="npr"/></div>
-        <div class="fh">Contoh: gemini-2.5-flash, gemini-2.5-pro, gemini-2.0-flash</div>
-        <button class="btn-ck" onclick="ckGoogle()">🔍 Cek API Key</button>
-        <div class="cres" id="r-gg"></div>
-        <div class="sec-note">🔒 Request langsung dari browser ke Google Gemini.</div>
-      </div>
-    </div></div>
-
-    <!-- Mistral -->
-    <div class="cpanel" id="cp-mistral"><div class="ccard">
-      <div class="ccard-hd"><div class="cpbadge" data-p="mistral">🟡</div><div><div class="cpname">Mistral AI</div><div class="cpsub">api.mistral.ai</div></div></div>
-      <div class="ccard-bd">
-        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-ms" placeholder="..."/><button class="tvis" onclick="tv('k-ms',this)">👁</button></div>
-        <div class="fh">Dapatkan di <a href="https://console.mistral.ai/api-keys" target="_blank">console.mistral.ai</a></div>
-        <label class="fl">Model</label><div class="fw"><input type="text" id="m-ms" value="mistral-small-latest" class="npr"/></div>
-        <div class="fh">Contoh: mistral-small-latest, mistral-large-latest</div>
-        <button class="btn-ck" onclick="ckMistral()">🔍 Cek API Key</button>
-        <div class="cres" id="r-ms"></div>
-        <div class="sec-note">🔒 Request langsung dari browser ke Mistral.</div>
-      </div>
-    </div></div>
-
-    <!-- Custom -->
-    <div class="cpanel" id="cp-custom"><div class="ccard">
-      <div class="ccard-hd"><div class="cpbadge" data-p="custom">⚡</div><div><div class="cpname">Custom / OpenAI-Compatible</div><div class="cpsub">Groq, OpenRouter, DeepSeek, 9Router, Ollama, dll.</div></div></div>
-      <div class="ccard-bd">
-        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Preset Cepat</div>
-        <div class="presets-w">
-          <button class="ppill" onclick="applyP('groq',this)">⚡ Groq</button>
-          <button class="ppill" onclick="applyP('together',this)">🤝 Together</button>
-          <button class="ppill" onclick="applyP('openrouter',this)">🛣️ OpenRouter</button>
-          <button class="ppill" onclick="applyP('deepseek',this)">🐋 DeepSeek</button>
-          <button class="ppill" onclick="applyP('fireworks',this)">🎆 Fireworks</button>
-          <button class="ppill" onclick="applyP('ollama',this)">🦙 Ollama</button>
-          <button class="ppill" onclick="applyP('lmstudio',this)">🖥️ LM Studio</button>
-          <button class="ppill" onclick="applyP('9router',this)">🔀 9Router</button>
-          <button class="ppill" onclick="applyP('manual',this)">✏️ Manual</button>
-        </div>
-        <hr class="hdiv">
-        <label class="fl">Base URL</label><div class="fw"><input type="text" id="c-url" placeholder="https://api.groq.com/openai/v1" class="npr"/></div>
-        <div class="fh" id="c-url-h">Endpoint kompatibel format <code style="color:var(--accent)">/chat/completions</code></div>
-        <label class="fl">API Key</label><div class="fw"><input type="password" id="c-key" placeholder="sk-..."/><button class="tvis" onclick="tv('c-key',this)">👁</button></div>
-        <div class="fh" id="c-key-h">API key dari provider yang dipilih</div>
-        <label class="fl">Model</label><div class="fw"><input type="text" id="c-mdl" placeholder="nama-model" class="npr"/></div>
-        <div class="fh" id="c-mdl-h">Nama model yang tersedia</div>
-        <button class="btn-ck" onclick="ckCustom()">🔍 Cek API Key</button>
-        <div class="cres" id="r-cu"></div>
-        <div class="sec-note">🔒 Request langsung dari browser ke endpoint yang kamu tentukan.</div>
-      </div>
-    </div></div>
-
+    <div class="ck-tabs" id="ck-tabs"></div>
+    <div id="ck-panels"></div>
   </div><!-- /tab-checker -->
 </div><!-- /screen-dash -->
 

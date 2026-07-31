@@ -190,6 +190,7 @@ async function loadKonten() {
           .map((p, i) => `<option value="${i}">${escapeHtml(p.nama)}${p.affUrl ? ' 🔗' : ''}</option>`)
           .join('');
       if (cur && sel.options.length > Number(cur)) sel.value = cur;
+      fillCkpkOptions();
       return;
     }
     if (status === 404) return showKontenErr('Belum ada konten di server. Isi JSON baru lalu Simpan.');
@@ -229,6 +230,7 @@ async function setAffiliate() {
       document.getElementById('konten-json').value = JSON.stringify(kontenCache, null, 2);
       document.getElementById('aff-url').value = '';
       loadKonten(); // segarkan dropdown
+      fillCkpkOptions();
     } else if (status === 401) {
       showAffErr('Admin Token salah.');
     } else {
@@ -294,6 +296,106 @@ async function saveKonten() {
     btn.disabled = false;
     btn.innerHTML = '🚀 Simpan & Terbitkan';
   }
+}
+
+// ── PRESET CHECKER (Cek API Key) ──────────────────────────────────
+function fillCkpkOptions() {
+  const sel = document.getElementById('ckpk-select');
+  if (!sel || !kontenCache) return;
+  const cur = sel.value;
+  sel.innerHTML =
+    '<option value="-1">➕ Tambah preset baru</option>' +
+    (kontenCache.checkerPresets || [])
+      .map((p, i) => `<option value="${i}">${escapeHtml(p.emoji || '')} ${escapeHtml(p.nama)} — ${escapeHtml(p.model || '')}</option>`)
+      .join('');
+  if (Number(cur) >= 0 && sel.options.length > Number(cur)) sel.value = cur;
+}
+
+function fillCkpk() {
+  const idx = Number(document.getElementById('ckpk-select').value);
+  const fields = ['ckpk-nama', 'ckpk-emoji', 'ckpk-base', 'ckpk-model', 'ckpk-modelhint', 'ckpk-keyhint'];
+  if (idx < 0) {
+    fields.forEach((f) => (document.getElementById(f).value = ''));
+    document.getElementById('ckpk-type').value = 'openai';
+    return;
+  }
+  const p = (kontenCache?.checkerPresets || [])[idx];
+  if (!p) return;
+  document.getElementById('ckpk-nama').value = p.nama || '';
+  document.getElementById('ckpk-emoji').value = p.emoji || '';
+  document.getElementById('ckpk-base').value = p.baseUrl || '';
+  document.getElementById('ckpk-model').value = p.model || '';
+  document.getElementById('ckpk-modelhint').value = p.modelHint || '';
+  document.getElementById('ckpk-keyhint').value = p.keyHint || '';
+  document.getElementById('ckpk-type').value = p.apiType || 'openai';
+}
+
+function showCkpkErr(text) {
+  document.getElementById('res-ckpk').classList.remove('show');
+  document.getElementById('res-ckpk-err').classList.add('show');
+  document.getElementById('res-ckpk-err-msg').textContent = text;
+}
+
+async function publishPresets(list, doneMsg) {
+  const btn = document.getElementById('btn-ckpk');
+  btn.disabled = true;
+  const asli = btn.innerHTML;
+  btn.innerHTML = '<div class="spin16" style="display:inline-block;vertical-align:-2px"></div> Menerbitkan...';
+  try {
+    kontenCache.checkerPresets = list;
+    const { status, data } = await updateContent(kontenCache, getToken());
+    if (status === 200 && data.ok) {
+      document.getElementById('res-ckpk-err').classList.remove('show');
+      document.getElementById('res-ckpk-meta').textContent = `${doneMsg} · ${new Date().toLocaleTimeString('id-ID')}`;
+      document.getElementById('res-ckpk').classList.add('show');
+      document.getElementById('konten-json').value = JSON.stringify(kontenCache, null, 2);
+      fillCkpkOptions();
+    } else if (status === 401) {
+      showCkpkErr('Admin Token salah.');
+    } else {
+      showCkpkErr('Gagal terbit (HTTP ' + status + ').');
+    }
+  } catch {
+    showCkpkErr('Tidak bisa terhubung ke Worker.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = asli;
+  }
+}
+
+function saveCkpk() {
+  if (!kontenCache) return showCkpkErr('Klik "Muat Konten Saat Ini" dulu.');
+  const idx = Number(document.getElementById('ckpk-select').value);
+  const nama = document.getElementById('ckpk-nama').value.trim();
+  const baseUrl = document.getElementById('ckpk-base').value.trim();
+  const model = document.getElementById('ckpk-model').value.trim();
+  if (!nama) return showCkpkErr('Isi Nama presetnya.');
+  if (!baseUrl) return showCkpkErr('Isi Base URL-nya.');
+  if (!model) return showCkpkErr('Isi Model defaultnya.');
+
+  const preset = {
+    id: idx >= 0 ? kontenCache.checkerPresets[idx].id : nama.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    nama,
+    emoji: document.getElementById('ckpk-emoji').value.trim() || '🔹',
+    apiType: document.getElementById('ckpk-type').value,
+    baseUrl,
+    model,
+    keyHint: document.getElementById('ckpk-keyhint').value.trim(),
+    modelHint: document.getElementById('ckpk-modelhint').value.trim(),
+  };
+  const list = [...(kontenCache.checkerPresets || [])];
+  if (idx >= 0) list[idx] = preset;
+  else list.push(preset);
+  publishPresets(list, idx >= 0 ? `"${preset.nama}" diperbarui` : `"${preset.nama}" ditambahkan`);
+}
+
+function deleteCkpk() {
+  const idx = Number(document.getElementById('ckpk-select').value);
+  if (idx < 0 || !kontenCache?.checkerPresets?.[idx]) return showCkpkErr('Pilih preset yang mau dihapus dulu.');
+  const nama = kontenCache.checkerPresets[idx].nama;
+  if (!confirm(`Hapus preset "${nama}" dari tab Cek API Key pembeli?`)) return;
+  const list = kontenCache.checkerPresets.filter((_, i) => i !== idx);
+  publishPresets(list, `"${nama}" dihapus`);
 }
 
 // ── TABS ──────────────────────────────────────────────────────────
