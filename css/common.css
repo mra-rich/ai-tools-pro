@@ -8,14 +8,29 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:#0a0c10; --surface:#12161e; --surface2:#1a1f2b; --surface3:#222836;
-  --border:#252d3d; --border2:#2e3a50;
-  --text:#e8ecf4; --text2:#8a96aa; --text3:#4a5568;
+  /* Skin "NVIDIA build" — dark + hijau neon */
+  --bg:#0a0d07; --surface:#11150c; --surface2:#181e10; --surface3:#212a17;
+  --border:#232c19; --border2:#35451f;
+  --text:#eef4e3; --text2:#97a884; --text3:#5c6b4d;
   --ok:#22c55e; --ok-bg:rgba(34,197,94,.1);
   --err:#ef4444; --err-bg:rgba(239,68,68,.1);
   --warn:#f59e0b; --warn-bg:rgba(245,158,11,.1);
-  --accent:#4f8ef7; --grad:linear-gradient(135deg,#4f8ef7,#a06af8);
+  --accent:#8fd400; --grad:linear-gradient(135deg,#76b900,#b8e63a);
 }
+
+/* Latar konstelasi ala build.nvidia.com (CSS murni, tanpa aset) */
+body::before {
+  content:''; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 40% at 70% -10%, rgba(143,212,0,.09), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 15% 20%, rgba(143,212,0,.05), transparent 60%),
+    radial-gradient(rgba(143,212,0,.14) 1px, transparent 1.6px),
+    radial-gradient(rgba(143,212,0,.08) 1px, transparent 1.6px);
+  background-size:auto,auto,52px 52px,34px 34px;
+  background-position:0 0,0 0,0 0,17px 9px;
+}
+
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; font-size:clamp(13px,3.8vw,16px); overflow-x:hidden; width:100%; }
 
 html { overflow-x:hidden; }
 body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; font-size:clamp(13px,3.8vw,16px); overflow-x:hidden; width:100%; }
