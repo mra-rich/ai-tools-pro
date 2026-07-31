@@ -123,6 +123,7 @@ async function loadContent() {
     if (status === 200 && data) {
       renderDatabase(data);
       renderTutorial(data);
+      renderOnboarding(data);
       return;
     }
     if (status === 401) {
@@ -215,6 +216,85 @@ function renderTutorial(d) {
     })
     .join('');
 }
+
+// ── ONBOARDING wizard ─────────────────────────────────────────────
+let obPaths = [];
+let obActive = null;
+
+const OB_LVL = {
+  Pemula: 'lv-p',
+  Menengah: 'lv-m',
+};
+
+function renderOnboarding(d) {
+  obPaths = d.onboarding || [];
+  const chips = document.getElementById('ob-chips');
+  const root = document.getElementById('ob-root');
+  if (!obPaths.length) {
+    chips.innerHTML = '';
+    root.innerHTML = '';
+    return;
+  }
+  chips.innerHTML = obPaths
+    .map(
+      (p, i) =>
+        `<button class="ob-chip${i === (obActive ?? 0) ? ' sel' : ''}" data-ob="${i}">${escapeHtml(p.ikon)} ${escapeHtml(p.judul)}</button>`,
+    )
+    .join('');
+  selectObPath(obActive ?? 0);
+}
+
+function selectObPath(i) {
+  obActive = i;
+  const p = obPaths[i];
+  if (!p) return;
+  document.querySelectorAll('.ob-chip').forEach((c, ci) => c.classList.toggle('sel', ci === i));
+  const lv = OB_LVL[p.tingkat] || OB_LVL.Pemula;
+  document.getElementById('ob-root').innerHTML = `
+    <div class="ob-path">
+      <div class="ob-path-hd">
+        <div class="ob-path-ico">${escapeHtml(p.ikon)}</div>
+        <div>
+          <div class="ob-path-title">${escapeHtml(p.judul)}</div>
+          <div class="ob-path-sub">🎯 ${escapeHtml(p.untuk || '')}</div>
+        </div>
+        <span class="ob-level ${lv}">${p.tingkat === 'Menengah' ? '🟡' : '🟢'} ${escapeHtml(p.tingkat || 'Pemula')}</span>
+      </div>
+      <div class="ob-steps">
+        ${(p.langkah || [])
+          .map(
+            (s, si) => `
+          <div class="ob-step">
+            <div class="ob-num">${si + 1}</div>
+            <div class="ob-body">
+              <div class="ob-step-t">${escapeHtml(s.judul)}</div>
+              ${s.aksi ? `<div class="ob-step-a">${escapeHtml(s.aksi)}</div>` : ''}
+              ${s.kode ? `<div class="ob-code"><code class="ob-code-t">${escapeHtml(s.kode)}</code><button class="ob-copy" data-obcopy="${si}">Salin</button></div>` : ''}
+            </div>
+          </div>`,
+          )
+          .join('')}
+      </div>
+    </div>`;
+}
+
+// Klik chip jalur & tombol salin kode — event delegation
+document.getElementById('ob-chips').addEventListener('click', (e) => {
+  const chip = e.target.closest('[data-ob]');
+  if (chip) selectObPath(Number(chip.dataset.ob));
+});
+document.getElementById('ob-root').addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-obcopy]');
+  if (!btn) return;
+  const stepEl = btn.closest('.ob-code').querySelector('.ob-code-t');
+  navigator.clipboard.writeText(stepEl.textContent);
+  btn.textContent = 'Tersalin!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = 'Salin';
+    btn.classList.remove('copied');
+  }, 2000);
+});
 
 // ── API CHECKERS ──────────────────────────────────────────────────
 function showRes(id, st, title, detail) {
