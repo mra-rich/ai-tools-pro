@@ -18,6 +18,16 @@
       "status": "aktif"
     }
   ],
+  "topModels": [
+    {
+      "nama": "Nama Model",
+      "tier": "S",
+      "guna": ["chat", "coding"],
+      "bench": "🥇 catatan benchmark",
+      "via": ["Nama Provider"],
+      "note": "catatan akses gratis"
+    }
+  ],
   "tutorial": [
     {
       "judul": "Judul tutorial",

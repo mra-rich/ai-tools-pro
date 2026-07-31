@@ -99,9 +99,30 @@
 
   <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab('db',this)">🗄️ Database AI</button>
+    <button class="tab-btn" onclick="switchTab('ranking',this)">🏆 Ranking</button>
     <button class="tab-btn" onclick="switchTab('onboarding',this)">🧠 Onboarding</button>
     <button class="tab-btn" onclick="switchTab('tutorial',this)">📚 Tutorial</button>
     <button class="tab-btn" onclick="switchTab('checker',this)">🔑 Cek API Key</button>
+  </div>
+
+  <!-- Tab Ranking Model (tier S/A/B + filter use-case) -->
+  <div class="tab-pane" id="tab-ranking">
+    <div class="rk-hero">
+      <div class="rk-hero-t">🏆 Model AI Gratis Terbaik 2026</div>
+      <p class="rk-hero-s">Dikelompokkan berdasarkan <strong>tier benchmark publik</strong> (LMArena, SWE-bench, dsb — estimasi gabungan, bukan angka resmi). Pilih mau dipakai untuk apa, lalu klik provider tempat mendapatkannya gratis.</p>
+    </div>
+    <div class="db-toolbar">
+      <input type="search" class="db-search" id="rk-search" placeholder="🔍 Cari model (mis: kimi, glm, reasoning, gambar)..." />
+      <div class="db-filters" id="rk-filters"></div>
+      <div class="db-count" id="rk-count"></div>
+    </div>
+    <div class="rk-guide">
+      <div class="rk-tier-pill rk-tier-S"><b>S</b> Tier tertinggi — flagship, memimpin benchmark</div>
+      <div class="rk-tier-pill rk-tier-A"><b>A</b> Sangat kuat — gratis mudah didapat</div>
+      <div class="rk-tier-pill rk-tier-B"><b>B</b> Andalan harian — cepat / lokal / 100% gratis</div>
+    </div>
+    <div class="loading-st" id="rk-loading"><div class="spin20"></div>Menyusun ranking...</div>
+    <div id="rk-body" style="display:none"></div>
   </div>
 
   <!-- Tab Onboarding -->
@@ -149,6 +170,6 @@
 <script src="js/shared/crypto.js?v=3"></script>
 <script src="js/shared/ui.js?v=3"></script>
 <script src="js/shared/api.js?v=3"></script>
-<script src="js/index.js?v=6"></script>
+<script src="js/index.js?v=7"></script>
 </body>
 </html>

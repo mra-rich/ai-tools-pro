@@ -238,7 +238,134 @@ function renderDatabase(d) {
   document.getElementById('db-date').textContent = '📅 Update: ' + (d.tanggal || '');
   renderDbFilters(d);
   applyDbFilter();
+  renderRanking(d);
 }
+
+// ── RENDER: Ranking Model (tier S/A/B + filter use-case) ─────────
+const rkFilter = { q: '', guna: '' };
+const RKguna_LABEL = {
+  chat: '💬 Chat Umum',
+  coding: '💻 Coding',
+  reasoning: '🧠 Reasoning',
+  vision: '👁️ Vision',
+  dokumen: '📄 Dokumen Panjang',
+  gambar: '🎨 Gambar',
+};
+
+function applyRkFilter() {
+  if (!dbData) return;
+  const all = dbData.topModels || [];
+  const q = rkFilter.q.toLowerCase();
+  const filtered = all.filter((m) => {
+    if (rkFilter.guna && !(m.guna || []).includes(rkFilter.guna)) return false;
+    if (q) {
+      const hay = [m.nama, m.bench, m.note, ...(m.via || []), ...(m.guna || [])].join(' ').toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  document.getElementById('rk-count').textContent =
+    filtered.length + ' dari ' + all.length + ' model ter-rank';
+
+  const byTier = { S: [], A: [], B: [] };
+  filtered.forEach((m) => (byTier[m.tier] || byTier.B).push(m));
+
+  const tierHead = {
+    S: ['🥇 TIER S — Flagship benchmark tertinggi', 'Model terkuat yang bisa kamu akses GRATIS hari ini'],
+    A: ['🥈 TIER A — Sangat kuat & mudah didapat', 'Satu klik daftar, performa kelas atas'],
+    B: ['🥉 TIER B — Andalan harian & lokal', 'Cepat, ringan, banyak yang 100% gratis permanen'],
+  };
+
+  const body = document.getElementById('rk-body');
+  body.innerHTML = ['S', 'A', 'B']
+    .filter((t) => byTier[t].length)
+    .map(
+      (t) => `
+      <div class="db-sec">
+        <h3>${tierHead[t][0]}</h3>
+        <p class="db-sub">${tierHead[t][1]}</p>
+        <div class="rk-list">${byTier[t].map(renderRkItem).join('')}</div>
+      </div>`,
+    )
+    .join('') || `<div class="db-empty">🔍 Tidak ada model yang cocok. Coba kata kunci lain.</div>`;
+}
+
+function renderRkItem(m) {
+  const gunaChips = (m.guna || [])
+    .map((g) => `<span class="rk-gchip" data-guna="${escapeHtml(g)}">${escapeHtml(RKguna_LABEL[g] || g)}</span>`)
+    .join('');
+  // chip "via" → lompat ke tab Database + filter provider tsb
+  const viaChips = (m.via || [])
+    .map((v) => `<button class="rk-via" data-via="${escapeHtml(v)}">🔗 ${escapeHtml(v)}</button>`)
+    .join('');
+  return `
+    <div class="rk-item rk-tier-${escapeHtml(m.tier)}">
+      <div class="rk-main">
+        <div class="rk-name"><span class="rk-tb rk-tb-${escapeHtml(m.tier)}">${escapeHtml(m.tier)}</span> ${escapeHtml(m.nama)}</div>
+        <div class="rk-bench">${escapeHtml(m.bench || '')}</div>
+        ${m.note ? `<div class="rk-note">💡 ${escapeHtml(m.note)}</div>` : ''}
+        <div class="rk-guna">${gunaChips}</div>
+      </div>
+      <div class="rk-side">
+        <div class="rk-via-lbl">Akses gratis via:</div>
+        <div class="rk-via-row">${viaChips}</div>
+      </div>
+    </div>`;
+}
+
+function renderRkFilters(d) {
+  const gunas = [...new Set((d.topModels || []).flatMap((m) => m.guna || []))];
+  const chips = [{ value: '', label: 'Semua' },
+    ...gunas.map((g) => ({ value: g, label: RKguna_LABEL[g] || g }))];
+  document.getElementById('rk-filters').innerHTML = chips
+    .map((c) => `<button class="db-fchip${rkFilter.guna === c.value ? ' sel' : ''}" data-rguna="${escapeHtml(c.value)}">${escapeHtml(c.label)}</button>`)
+    .join('');
+}
+
+function renderRanking(d) {
+  document.getElementById('rk-loading').style.display = 'none';
+  document.getElementById('rk-body').style.display = 'block';
+  renderRkFilters(d);
+  applyRkFilter();
+}
+
+// Pencarian global di tab Ranking
+document.getElementById('rk-search').addEventListener('input', (e) => {
+  rkFilter.q = e.target.value.trim();
+  applyRkFilter();
+});
+document.getElementById('rk-filters').addEventListener('click', (e) => {
+  const chip = e.target.closest('[data-rguna]');
+  if (!chip) return;
+  rkFilter.guna = rkFilter.guna === chip.dataset.rguna && chip.dataset.rguna !== '' ? '' : chip.dataset.rguna;
+  renderRkFilters(dbData);
+  applyRkFilter();
+});
+// Klik chip use-case pada item → set filter use-case
+// Klik chip provider (via) → lompat ke Database + cari provider itu
+document.getElementById('tab-ranking').addEventListener('click', (e) => {
+  const g = e.target.closest('.rk-gchip');
+  if (g) {
+    rkFilter.guna = g.dataset.guna;
+    renderRkFilters(dbData);
+    applyRkFilter();
+    document.getElementById('tab-ranking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  const v = e.target.closest('.rk-via');
+  if (v) {
+    dbFilter.q = v.dataset.via;
+    dbFilter.kategori = '';
+    dbFilter.badge = '';
+    document.getElementById('db-search').value = v.dataset.via;
+    renderDbFilters(dbData);
+    applyDbFilter();
+    // pindah ke tab Database
+    const dbBtn = [...document.querySelectorAll('.tab-btn')].find((b) => b.textContent.includes('Database'));
+    if (dbBtn) switchTab('db', dbBtn);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
 
 const LVL_BY_LEVEL = {
   Pemula: { cls: 'lvl-p', icon: '🟢' },
