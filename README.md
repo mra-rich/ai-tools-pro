@@ -52,8 +52,11 @@ Pembeli ganti HP ──► penjual buka admin.html ──► POST /reset ──�
 | Aktivitas | Yang kamu lakukan |
 |---|---|
 | Pembeli membeli | **Tidak ada** — webhook + aktivasi otomatis |
-| Update token/tutorial | Edit `content.json` di GitHub → semua pembeli langsung dapat versi baru |
-| Pembeli ganti HP | admin.html → Reset Binding → pembeli aktivasi ulang |
+| Update token/tutorial | `admin.html` → tab 📝 Konten → paste JSON → Simpan & Terbitkan |
+| Pembeli ganti HP | `admin.html` → 🔄 Reset Binding → pembeli aktivasi ulang |
+
+Konten asli (token API) disimpan di **KV Cloudflare**, bukan di repo — jadi key tidak
+pernah terekspos di GitHub public. `content.json` di repo hanyalah template referensi.
 
 ## Catatan Keamanan (jujur)
 

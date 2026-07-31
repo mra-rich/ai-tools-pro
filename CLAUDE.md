@@ -24,7 +24,7 @@ lengkap.
 | `js/shared/crypto.js` | `sha256Hex`, `getDeviceFingerprint` (16 hex upper) |
 | `js/shared/ui.js` | `escapeHtml`, `setMsg`, `flashButton` |
 | `worker/src/index.js` | POST `/webhook`, `/activate`, `/reset` + KV `ORDERS` |
-| `content.json` | Konten dinamis (token/tutorial) — format JANGAN diubah |
+| `content.json` | TEMPLATE format (repo public). Konten asli di KV Worker — dikelola via admin.html tab Konten |
 
 ## Konvensi
 
