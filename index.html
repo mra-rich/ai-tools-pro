@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools Pro</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+<!-- ══ LOCK SCREEN ══════════════════════════════════════════ -->
+<div id="screen-lock">
+  <div class="lock-card">
+    <div class="lock-top">
+      <div class="lock-icon">🔑</div>
+      <div class="lock-title">AI Tools Pro</div>
+      <div class="lock-sub">Token gratis harian · Tutorial · Cek API Key</div>
+    </div>
+    <div class="lock-body">
+
+      <div class="email-hint">
+        <div class="email-hint-icon">📧</div>
+        <div>
+          <div class="email-hint-title">Cek email konfirmasi pembelian</div>
+          <div class="email-hint-sub">Setelah bayar di lynk.id, kamu akan dapat email berisi <strong>Order ID</strong>. Paste di bawah ini — verifikasi otomatis, langsung aktif.</div>
+        </div>
+      </div>
+
+      <label class="inp-label" for="order-input">Order ID dari lynk.id</label>
+      <input class="inp" type="text" id="order-input" placeholder="Paste Order ID kamu di sini..." />
+
+      <button class="btn-activate" id="btn-activate" onclick="activate()">⚡ Aktifkan Sekarang</button>
+      <div class="lock-msg" id="lock-msg"></div>
+    </div>
+    <div class="lock-footer">
+      <a href="#" id="lynk-link" target="_blank">🛒 Beli di lynk.id</a>
+      <span class="sep">·</span>
+      <span id="seller-contact">1 Order ID = 1 device</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ════════════════════════════════════════════ -->
+<div id="screen-dash">
+
+  <div class="topbar">
+    <div class="topbar-brand">🔑 AI Tools Pro</div>
+    <div class="topbar-right">
+      <div class="badge-ok" id="dash-order">✅ Aktif</div>
+      <button class="btn-sm" onclick="doLogout()">Reset</button>
+    </div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('tokens',this)">🎁 Token Gratis</button>
+    <button class="tab-btn" onclick="switchTab('tutorial',this)">📚 Tutorial</button>
+    <button class="tab-btn" onclick="switchTab('checker',this)">🔑 Cek API Key</button>
+  </div>
+
+  <!-- Tab Token -->
+  <div class="tab-pane active" id="tab-tokens">
+    <div class="loading-st" id="tok-loading"><div class="spin20"></div>Memuat data terbaru...</div>
+    <div class="fetch-err" id="tok-err">❌ Gagal memuat. Cek koneksi internet kamu.</div>
+    <div id="tok-content" style="display:none">
+      <div class="announce" id="tok-announce"></div>
+      <div class="date-lbl" id="tok-date"></div>
+      <div class="token-grid" id="tok-grid"></div>
+    </div>
+  </div>
+
+  <!-- Tab Tutorial -->
+  <div class="tab-pane" id="tab-tutorial">
+    <div class="loading-st" id="tut-loading"><div class="spin20"></div>Memuat tutorial...</div>
+    <div class="fetch-err" id="tut-err">❌ Gagal memuat. Cek koneksi internet kamu.</div>
+    <div class="tut-list" id="tut-list" style="display:none"></div>
+  </div>
+
+  <!-- Tab API Checker -->
+  <div class="tab-pane" id="tab-checker">
+    <div class="ck-tabs">
+      <button class="ctab active" data-p="anthropic" onclick="swCk('anthropic',this)"><span class="ctab-dot"></span>Anthropic</button>
+      <button class="ctab" data-p="openai"    onclick="swCk('openai',this)"><span class="ctab-dot"></span>OpenAI</button>
+      <button class="ctab" data-p="google"    onclick="swCk('google',this)"><span class="ctab-dot"></span>Google</button>
+      <button class="ctab" data-p="mistral"   onclick="swCk('mistral',this)"><span class="ctab-dot"></span>Mistral</button>
+      <button class="ctab" data-p="custom"    onclick="swCk('custom',this)"><span class="ctab-dot"></span>Custom</button>
+    </div>
+
+    <!-- Anthropic -->
+    <div class="cpanel active" id="cp-anthropic"><div class="ccard">
+      <div class="ccard-hd"><div class="cpbadge" data-p="anthropic">🟠</div><div><div class="cpname">Anthropic / Claude</div><div class="cpsub">api.anthropic.com</div></div></div>
+      <div class="ccard-bd">
+        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-an" placeholder="sk-ant-api03-..."/><button class="tvis" onclick="tv('k-an',this)">👁</button></div>
+        <div class="fh">Dapatkan di <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a></div>
+        <label class="fl">Model</label><div class="fw"><input type="text" id="m-an" value="claude-haiku-4-5" class="npr"/></div>
+        <div class="fh">Contoh: claude-opus-4-5, claude-sonnet-4-5, claude-haiku-4-5</div>
+        <button class="btn-ck" onclick="ckAnthropic()">🔍 Cek API Key</button>
+        <div class="cres" id="r-an"></div>
+        <div class="sec-note">🔒 Request langsung dari browser ke Anthropic. Key tidak melalui server perantara.</div>
+      </div>
+    </div></div>
+
+    <!-- OpenAI -->
+    <div class="cpanel" id="cp-openai"><div class="ccard">
+      <div class="ccard-hd"><div class="cpbadge" data-p="openai">🟢</div><div><div class="cpname">OpenAI / ChatGPT</div><div class="cpsub">api.openai.com</div></div></div>
+      <div class="ccard-bd">
+        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-oa" placeholder="sk-proj-..."/><button class="tvis" onclick="tv('k-oa',this)">👁</button></div>
+        <div class="fh">Dapatkan di <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a></div>
+        <label class="fl">Model</label><div class="fw"><input type="text" id="m-oa" value="gpt-4o-mini" class="npr"/></div>
+        <div class="fh">Contoh: gpt-4o, gpt-4o-mini, o1-mini</div>
+        <button class="btn-ck" onclick="ckOpenAI()">🔍 Cek API Key</button>
+        <div class="cres" id="r-oa"></div>
+        <div class="sec-note">🔒 Request langsung dari browser ke OpenAI.</div>
+      </div>
+    </div></div>
+
+    <!-- Google -->
+    <div class="cpanel" id="cp-google"><div class="ccard">
+      <div class="ccard-hd"><div class="cpbadge" data-p="google">🔵</div><div><div class="cpname">Google Gemini</div><div class="cpsub">generativelanguage.googleapis.com</div></div></div>
+      <div class="ccard-bd">
+        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-gg" placeholder="AIza..."/><button class="tvis" onclick="tv('k-gg',this)">👁</button></div>
+        <div class="fh">Dapatkan di <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></div>
+        <label class="fl">Model</label><div class="fw"><input type="text" id="m-gg" value="gemini-2.0-flash" class="npr"/></div>
+        <div class="fh">Contoh: gemini-2.5-flash, gemini-2.5-pro, gemini-2.0-flash</div>
+        <button class="btn-ck" onclick="ckGoogle()">🔍 Cek API Key</button>
+        <div class="cres" id="r-gg"></div>
+        <div class="sec-note">🔒 Request langsung dari browser ke Google Gemini.</div>
+      </div>
+    </div></div>
+
+    <!-- Mistral -->
+    <div class="cpanel" id="cp-mistral"><div class="ccard">
+      <div class="ccard-hd"><div class="cpbadge" data-p="mistral">🟡</div><div><div class="cpname">Mistral AI</div><div class="cpsub">api.mistral.ai</div></div></div>
+      <div class="ccard-bd">
+        <label class="fl">API Key</label><div class="fw"><input type="password" id="k-ms" placeholder="..."/><button class="tvis" onclick="tv('k-ms',this)">👁</button></div>
+        <div class="fh">Dapatkan di <a href="https://console.mistral.ai/api-keys" target="_blank">console.mistral.ai</a></div>
+        <label class="fl">Model</label><div class="fw"><input type="text" id="m-ms" value="mistral-small-latest" class="npr"/></div>
+        <div class="fh">Contoh: mistral-small-latest, mistral-large-latest</div>
+        <button class="btn-ck" onclick="ckMistral()">🔍 Cek API Key</button>
+        <div class="cres" id="r-ms"></div>
+        <div class="sec-note">🔒 Request langsung dari browser ke Mistral.</div>
+      </div>
+    </div></div>
+
+    <!-- Custom -->
+    <div class="cpanel" id="cp-custom"><div class="ccard">
+      <div class="ccard-hd"><div class="cpbadge" data-p="custom">⚡</div><div><div class="cpname">Custom / OpenAI-Compatible</div><div class="cpsub">Groq, OpenRouter, DeepSeek, 9Router, Ollama, dll.</div></div></div>
+      <div class="ccard-bd">
+        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Preset Cepat</div>
+        <div class="presets-w">
+          <button class="ppill" onclick="applyP('groq',this)">⚡ Groq</button>
+          <button class="ppill" onclick="applyP('together',this)">🤝 Together</button>
+          <button class="ppill" onclick="applyP('openrouter',this)">🛣️ OpenRouter</button>
+          <button class="ppill" onclick="applyP('deepseek',this)">🐋 DeepSeek</button>
+          <button class="ppill" onclick="applyP('fireworks',this)">🎆 Fireworks</button>
+          <button class="ppill" onclick="applyP('ollama',this)">🦙 Ollama</button>
+          <button class="ppill" onclick="applyP('lmstudio',this)">🖥️ LM Studio</button>
+          <button class="ppill" onclick="applyP('9router',this)">🔀 9Router</button>
+          <button class="ppill" onclick="applyP('manual',this)">✏️ Manual</button>
+        </div>
+        <hr class="hdiv">
+        <label class="fl">Base URL</label><div class="fw"><input type="text" id="c-url" placeholder="https://api.groq.com/openai/v1" class="npr"/></div>
+        <div class="fh" id="c-url-h">Endpoint kompatibel format <code style="color:var(--accent)">/chat/completions</code></div>
+        <label class="fl">API Key</label><div class="fw"><input type="password" id="c-key" placeholder="sk-..."/><button class="tvis" onclick="tv('c-key',this)">👁</button></div>
+        <div class="fh" id="c-key-h">API key dari provider yang dipilih</div>
+        <label class="fl">Model</label><div class="fw"><input type="text" id="c-mdl" placeholder="nama-model" class="npr"/></div>
+        <div class="fh" id="c-mdl-h">Nama model yang tersedia</div>
+        <button class="btn-ck" onclick="ckCustom()">🔍 Cek API Key</button>
+        <div class="cres" id="r-cu"></div>
+        <div class="sec-note">🔒 Request langsung dari browser ke endpoint yang kamu tentukan.</div>
+      </div>
+    </div></div>
+
+  </div><!-- /tab-checker -->
+</div><!-- /screen-dash -->
+
+<script src="js/shared/config.js"></script>
+<script src="js/shared/crypto.js"></script>
+<script src="js/shared/ui.js"></script>
+<script src="js/shared/api.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

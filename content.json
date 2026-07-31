@@ -1,0 +1,59 @@
+{
+  "tanggal": "30 Juli 2026",
+  "pengumuman": "🎉 Update hari ini: Tambah 3 key Groq baru + tutorial DeepSeek!",
+  "tokenGratis": [
+    {
+      "provider": "Groq",
+      "emoji": "⚡",
+      "model": "llama-3.1-8b-instant",
+      "key": "gsk_CONTOH_GANTI_DENGAN_KEY_ASLI",
+      "limit": "14.400 req/hari",
+      "status": "aktif",
+      "catatan": "Gratis selamanya, rate limit 30 req/menit"
+    },
+    {
+      "provider": "OpenRouter",
+      "emoji": "🛣️",
+      "model": "meta-llama/llama-3.1-8b-instruct:free",
+      "key": "sk-or-CONTOH_GANTI_KEY_ASLI",
+      "limit": "20 req/menit",
+      "status": "aktif",
+      "catatan": "Model gratis, tidak butuh saldo"
+    },
+    {
+      "provider": "Google Gemini",
+      "emoji": "🔵",
+      "model": "gemini-2.5-flash",
+      "key": "AIza-CONTOH_GANTI_KEY_ASLI",
+      "limit": "1.500 req/hari",
+      "status": "aktif",
+      "catatan": "Quota harian, reset tengah malam WIB"
+    }
+  ],
+  "tutorial": [
+    {
+      "judul": "Cara Dapat API Key Groq Gratis",
+      "deskripsi": "Daftar akun Groq dan dapatkan API key gratis dengan limit yang sangat besar. Cocok untuk project pribadi maupun komersial.",
+      "level": "Pemula",
+      "durasi": "5 menit",
+      "emoji": "⚡",
+      "url": "https://console.groq.com/keys"
+    },
+    {
+      "judul": "OpenRouter: Akses 200+ Model AI Sekaligus",
+      "deskripsi": "OpenRouter menyediakan akses ke ratusan model AI termasuk GPT-4, Claude, Gemini, dan banyak model gratis lainnya lewat satu API.",
+      "level": "Pemula",
+      "durasi": "10 menit",
+      "emoji": "🛣️",
+      "url": "https://openrouter.ai/keys"
+    },
+    {
+      "judul": "DeepSeek: Model China Terkuat Saat Ini",
+      "deskripsi": "DeepSeek-V3 dan R1 tersedia dengan harga sangat murah bahkan gratis. Performa setara GPT-4 untuk coding dan reasoning.",
+      "level": "Menengah",
+      "durasi": "8 menit",
+      "emoji": "🐋",
+      "url": "https://platform.deepseek.com/api_keys"
+    }
+  ]
+}

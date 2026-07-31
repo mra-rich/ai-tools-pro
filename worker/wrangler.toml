@@ -1,0 +1,8 @@
+name = "ai-tools-pro"
+main = "src/index.js"
+compatibility_date = "2026-07-31"
+
+# Isi `id` dengan output dari: npx wrangler kv namespace create ORDERS
+[[kv_namespaces]]
+binding = "ORDERS"
+id = "a35cd4f6d80a4798b23b173823a83c82"

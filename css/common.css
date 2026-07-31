@@ -1,0 +1,22 @@
+/* ═════════════════════════════════════════════════════════════════
+   common.css — design tokens & dasar yang dipakai semua halaman
+   Dipisahkan dari <style> index.html lama (tanpa perubahan visual).
+   ═════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:#0a0c10; --surface:#12161e; --surface2:#1a1f2b; --surface3:#222836;
+  --border:#252d3d; --border2:#2e3a50;
+  --text:#e8ecf4; --text2:#8a96aa; --text3:#4a5568;
+  --ok:#22c55e; --ok-bg:rgba(34,197,94,.1);
+  --err:#ef4444; --err-bg:rgba(239,68,68,.1);
+  --warn:#f59e0b; --warn-bg:rgba(245,158,11,.1);
+  --accent:#4f8ef7; --grad:linear-gradient(135deg,#4f8ef7,#a06af8);
+}
+
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+
+@keyframes spin { to { transform:rotate(360deg); } }
