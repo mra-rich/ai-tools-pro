@@ -165,6 +165,63 @@ function clearHistory() {
   renderHistory();
 }
 
+// ── KONTEN ────────────────────────────────────────────────────────
+function showKontenErr(text) {
+  document.getElementById('res-konten').classList.remove('show');
+  document.getElementById('res-konten-err').classList.add('show');
+  document.getElementById('res-konten-err-msg').textContent = text;
+}
+
+async function loadKonten() {
+  try {
+    const { status, data } = await readContent(getToken());
+    if (status === 200 && data) {
+      document.getElementById('konten-json').value = JSON.stringify(data, null, 2);
+      document.getElementById('res-konten-err').classList.remove('show');
+      return;
+    }
+    if (status === 404) return showKontenErr('Belum ada konten di server. Isi JSON baru lalu Simpan.');
+    if (status === 401) return showKontenErr('Admin Token salah.');
+    showKontenErr('Gagal membaca konten (HTTP ' + status + ').');
+  } catch {
+    showKontenErr('Tidak bisa terhubung ke Worker.');
+  }
+}
+
+async function saveKonten() {
+  const rawText = document.getElementById('konten-json').value.trim();
+  let parsed;
+  try {
+    parsed = JSON.parse(rawText);
+  } catch (e) {
+    return showKontenErr('JSON tidak valid: ' + e.message);
+  }
+  if (!parsed.tokenGratis && !parsed.tutorial) {
+    return showKontenErr('Konten minim harus punya "tokenGratis" atau "tutorial".');
+  }
+  const btn = document.getElementById('btn-konten');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spin16" style="display:inline-block;vertical-align:-2px"></div> Mengirim...';
+  try {
+    const { status, data } = await updateContent(parsed, getToken());
+    if (status === 200 && data.ok) {
+      document.getElementById('res-konten-err').classList.remove('show');
+      document.getElementById('res-konten-meta').textContent =
+        `Terbit ${new Date().toLocaleString('id-ID')} · semua pembeli langsung dapat versi ini`;
+      document.getElementById('res-konten').classList.add('show');
+    } else if (status === 401) {
+      showKontenErr('Admin Token salah.');
+    } else {
+      showKontenErr('Gagal simpan (HTTP ' + status + '): ' + (data.error || 'unknown'));
+    }
+  } catch {
+    showKontenErr('Tidak bisa terhubung ke Worker.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '🚀 Simpan & Terbitkan';
+  }
+}
+
 // ── TABS ──────────────────────────────────────────────────────────
 function swTab(name, btn) {
   document.querySelectorAll('.apanel').forEach((p) => p.classList.remove('active'));

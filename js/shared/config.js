@@ -7,8 +7,8 @@ const APP_CONFIG = {
   // URL Cloudflare Worker kamu (setelah deploy — lihat worker/README.md)
   WORKER_URL: 'https://ai-tools-pro.rodliarif.workers.dev',
 
-  // URL raw content.json di GitHub kamu
-  CONTENT_URL: 'https://raw.githubusercontent.com/mra-rich/ai-tools-pro/main/content.json',
+  // Konten dinamis (token/tutorial) diambil dari Worker, bukan dari repo —
+  // agar key API tidak pernah terekspos public. Lihat admin.html tab Konten.
 
   // Link produk kamu di lynk.id
   LYNK_URL: 'https://lynk.id/rodlirich',

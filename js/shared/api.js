@@ -21,6 +21,21 @@ function activateOrder(orderId, deviceId) {
   return apiPost('/activate', { orderId, deviceId });
 }
 
+/** Ambil konten dinamis (hanya untuk device yang sudah teraktivasi). */
+function fetchContent(orderId, deviceId) {
+  return apiPost('/content', { orderId, deviceId });
+}
+
+/** Baca konten saat ini dari server (admin, butuh admin token). */
+function readContent(adminToken) {
+  return apiPost('/content/read', {}, { 'X-Admin-Token': adminToken });
+}
+
+/** Simpan konten baru ke server (admin, butuh admin token). */
+function updateContent(contentObject, adminToken) {
+  return apiPost('/content/update', contentObject, { 'X-Admin-Token': adminToken });
+}
+
 /** Reset binding device (penjual, butuh admin token). */
 function resetOrderBinding(orderId, adminToken) {
   return apiPost('/reset', { orderId }, { 'X-Admin-Token': adminToken });

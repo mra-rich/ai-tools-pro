@@ -108,16 +108,32 @@ function tv(id, btn) {
 }
 
 // ── CONTENT ───────────────────────────────────────────────────────
+// Konten dilindungi Worker: hanya device yang sudah aktivasi yang
+// bisa membacanya. Tidak ada lagi key API di file public.
 async function loadContent() {
-  try {
-    const r = await fetch(APP_CONFIG.CONTENT_URL + '?t=' + Date.now());
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const d = await r.json();
-    renderTokens(d);
-    renderTutorial(d);
-  } catch {
+  const showErrState = () => {
     ['tok-loading', 'tut-loading'].forEach((i) => (document.getElementById(i).style.display = 'none'));
     ['tok-err', 'tut-err'].forEach((i) => (document.getElementById(i).style.display = 'block'));
+  };
+  try {
+    const sess = JSON.parse(localStorage.getItem(APP_CONFIG.SESSION_KEY) || 'null');
+    if (!sess) return showErrState();
+
+    const { status, data } = await fetchContent(sess.orderId, sess.deviceId);
+    if (status === 200 && data) {
+      renderTokens(data);
+      renderTutorial(data);
+      return;
+    }
+    if (status === 401) {
+      // Sesi tidak valid lagi (binding di-reset / dihapus) → kembali ke lock
+      localStorage.removeItem(APP_CONFIG.SESSION_KEY);
+      location.reload();
+      return;
+    }
+    showErrState();
+  } catch {
+    showErrState();
   }
 }
 

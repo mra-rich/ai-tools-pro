@@ -192,6 +192,43 @@ export default {
       return json({ ok: true, orderId }, 200, headers);
     }
 
+    // ── CONTENT: konten dinamis, hanya untuk device ter-aktivasi ──
+    if (url.pathname === '/content') {
+      const body = await request.json().catch(() => ({}));
+      const orderId = normalize(body.orderId);
+      const deviceId = normalize(body.deviceId);
+      if (!orderId || !/^[A-F0-9]{16}$/.test(deviceId)) {
+        return json({ ok: false, error: 'invalid_request' }, 400, headers);
+      }
+      const raw = await env.ORDERS.get('order:' + orderId);
+      if (!raw) return json({ ok: false, error: 'session_invalid' }, 401, headers);
+      const order = JSON.parse(raw);
+      if (!order.binding || order.binding.deviceId !== deviceId) {
+        return json({ ok: false, error: 'session_invalid' }, 401, headers);
+      }
+      const content = await env.ORDERS.get('content:latest');
+      if (!content) return json({ ok: false, error: 'content_not_set' }, 404, headers);
+      return new Response(content, { status: 200, headers });
+    }
+
+    // ── CONTENT/READ & CONTENT/UPDATE: manajemen konten (admin) ──
+    if (url.pathname === '/content/read' || url.pathname === '/content/update') {
+      if (!env.ADMIN_TOKEN || request.headers.get('X-Admin-Token') !== env.ADMIN_TOKEN) {
+        return json({ error: 'unauthorized' }, 401, headers);
+      }
+      if (url.pathname === '/content/read') {
+        const content = await env.ORDERS.get('content:latest');
+        if (!content) return json({ ok: false, error: 'content_not_set' }, 404, headers);
+        return new Response(content, { status: 200, headers });
+      }
+      const body = await request.json().catch(() => null);
+      if (!body || typeof body !== 'object') {
+        return json({ ok: false, error: 'invalid_json' }, 400, headers);
+      }
+      await env.ORDERS.put('content:latest', JSON.stringify(body));
+      return json({ ok: true }, 200, headers);
+    }
+
     return json({ error: 'not_found' }, 404, headers);
   },
 };
