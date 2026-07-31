@@ -3,7 +3,8 @@
    Dipisahkan dari <style> adminpanel.html lama (tanpa perubahan visual).
    ═════════════════════════════════════════════════════════════════ */
 
-body { padding:32px 16px; }
+/* mobile: padding lebih kecil */
+body { padding:16px 12px; }
 .wrap { max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:16px; }
 
 /* Header */
@@ -40,7 +41,8 @@ body { padding:32px 16px; }
 .res-label { font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px; }
 .ok .res-label { color:var(--ok); }
 .err .res-label { color:var(--err); }
-.res-key-row { display:flex;align-items:center;gap:10px; }
+/* mobile: key bisa wrap ke bawah */
+.res-key-row { display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap; }
 .res-key { font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;letter-spacing:1px;flex:1;word-break:break-all; }
 .ok .res-key { color:var(--ok); }
 .res-meta { font-size:11px;color:var(--text3);margin-top:8px;line-height:1.6; }
@@ -64,9 +66,10 @@ body { padding:32px 16px; }
 .hist-actions { display:flex;gap:4px;flex-shrink:0; }
 .empty-hist { text-align:center;padding:20px;color:var(--text3);font-size:13px; }
 
-/* Tabs */
-.admin-tabs { display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:4px; }
-.atab { flex:1;padding:8px;background:none;border:none;color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;border-radius:7px;transition:all .2s; }
+/* Tabs — mobile: wrap agar tidak overflow */
+.admin-tabs { display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:4px;flex-wrap:wrap; }
+/* mobile: font lebih kecil, min-width agar tidak terlalu sempit */
+.atab { flex:1;padding:7px 6px;background:none;border:none;color:var(--text2);font-size:11px;font-weight:500;cursor:pointer;border-radius:7px;transition:all .2s;min-width:fit-content; }
 .atab:hover { color:var(--text);background:var(--surface3); }
 .atab.active { background:var(--surface3);color:var(--text);border:1px solid var(--border2); }
 .apanel { display:none; }
@@ -81,3 +84,14 @@ body { padding:32px 16px; }
 .guide-body code { color:var(--accent);font-family:'JetBrains Mono',monospace; }
 .guide-ok { color:var(--ok);font-weight:600; }
 .spin16 { width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE — mobile-first
+   Base: ≤599px  |  600px+: desktop normal
+   ═══════════════════════════════════════════════════════════════════ */
+@media (min-width:600px) {
+  body           { padding:32px 16px; }
+  .admin-tabs    { flex-wrap:nowrap; }
+  .atab          { padding:8px; font-size:12px; }
+  .res-key-row   { align-items:center; flex-wrap:nowrap; gap:10px; }
+}

@@ -17,6 +17,6 @@
   --accent:#4f8ef7; --grad:linear-gradient(135deg,#4f8ef7,#a06af8);
 }
 
-body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; font-size:clamp(13px,3.8vw,16px); }
 
 @keyframes spin { to { transform:rotate(360deg); } }
