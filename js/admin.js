@@ -165,19 +165,31 @@ function clearHistory() {
   renderHistory();
 }
 
-// ── KONTEN ────────────────────────────────────────────────────────
-function showKontenErr(text) {
-  document.getElementById('res-konten').classList.remove('show');
-  document.getElementById('res-konten-err').classList.add('show');
-  document.getElementById('res-konten-err-msg').textContent = text;
+// ── AFFILIATE ─────────────────────────────────────────────────────
+let kontenCache = null; // konten terakhir yang dibaca dari server
+
+function showAffErr(text) {
+  document.getElementById('res-aff').classList.remove('show');
+  document.getElementById('res-aff-err').classList.add('show');
+  document.getElementById('res-aff-err-msg').textContent = text;
 }
 
 async function loadKonten() {
   try {
     const { status, data } = await readContent(getToken());
     if (status === 200 && data) {
+      kontenCache = data;
       document.getElementById('konten-json').value = JSON.stringify(data, null, 2);
       document.getElementById('res-konten-err').classList.remove('show');
+      // isi dropdown provider untuk affiliate
+      const sel = document.getElementById('aff-provider');
+      const cur = sel.value;
+      sel.innerHTML =
+        '<option value="">— pilih provider —</option>' +
+        (data.providers || [])
+          .map((p, i) => `<option value="${i}">${escapeHtml(p.nama)}${p.affUrl ? ' 🔗' : ''}</option>`)
+          .join('');
+      if (cur && sel.options.length > Number(cur)) sel.value = cur;
       return;
     }
     if (status === 404) return showKontenErr('Belum ada konten di server. Isi JSON baru lalu Simpan.');
@@ -186,6 +198,68 @@ async function loadKonten() {
   } catch {
     showKontenErr('Tidak bisa terhubung ke Worker.');
   }
+}
+
+async function setAffiliate() {
+  const idx = Number(document.getElementById('aff-provider').value);
+  const affUrl = document.getElementById('aff-url').value.trim();
+  if (document.getElementById('aff-provider').value === '') return showAffErr('Muat konten lalu pilih providernya.');
+  if (!kontenCache || !kontenCache.providers?.[idx]) {
+    showAffErr('Data belum lengkap — klik "Muat Konten Saat Ini" dulu.');
+    return;
+  }
+  if (affUrl && !/^https?:\/\//.test(affUrl)) {
+    return showAffErr('URL harus diawali http:// atau https://');
+  }
+  const p = kontenCache.providers[idx];
+  if (affUrl) p.affUrl = affUrl;
+  else delete p.affUrl;
+
+  const btn = document.getElementById('btn-aff');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spin16" style="display:inline-block;vertical-align:-2px"></div> Menerbitkan...';
+  try {
+    const { status, data } = await updateContent(kontenCache, getToken());
+    if (status === 200 && data.ok) {
+      document.getElementById('res-aff-err').classList.remove('show');
+      document.getElementById('res-aff-meta').textContent = affUrl
+        ? `${p.nama} → link affiliate dipasang · ${new Date().toLocaleTimeString('id-ID')}`
+        : `Affiliate ${p.nama} dilepas, kembali ke URL normal`;
+      document.getElementById('res-aff').classList.add('show');
+      document.getElementById('konten-json').value = JSON.stringify(kontenCache, null, 2);
+      document.getElementById('aff-url').value = '';
+      loadKonten(); // segarkan dropdown
+    } else if (status === 401) {
+      showAffErr('Admin Token salah.');
+    } else {
+      showAffErr('Gagal terbit (HTTP ' + status + ').');
+    }
+  } catch {
+    showAffErr('Tidak bisa terhubung ke Worker.');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '🔗 Set Affiliate & Terbitkan';
+  }
+}
+
+function listAffiliates() {
+  if (!kontenCache) {
+    showAffErr('Klik "Muat Konten Saat Ini" dulu.');
+    return;
+  }
+  const aktif = (kontenCache.providers || []).filter((p) => p.affUrl);
+  document.getElementById('res-aff-err').classList.remove('show');
+  document.getElementById('res-aff-meta').textContent = aktif.length
+    ? aktif.map((p) => `${p.nama}: ${p.affUrl}`).join(' · ')
+    : 'Belum ada affiliate aktif.';
+  document.getElementById('res-aff').classList.add('show');
+}
+
+// ── KONTEN ────────────────────────────────────────────────────────
+function showKontenErr(text) {
+  document.getElementById('res-konten').classList.remove('show');
+  document.getElementById('res-konten-err').classList.add('show');
+  document.getElementById('res-konten-err-msg').textContent = text;
 }
 
 async function saveKonten() {

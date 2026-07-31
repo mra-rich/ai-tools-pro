@@ -145,6 +145,8 @@ function renderProviderCard(p) {
   const badge = p.badge
     ? `<span class="prov-badge">${escapeHtml(p.badge)}</span>`
     : '';
+  // Link affiliate (affUrl) diprioritaskan bila diset di konten
+  const link = p.affUrl || p.url;
   return `
     <div class="prov-card">
       <div class="prov-head">
@@ -156,7 +158,7 @@ function renderProviderCard(p) {
       ${p.cara ? `<div class="prov-cara">📌 ${escapeHtml(p.cara)}</div>` : ''}
       <div class="prov-meta">
         <span>⏳ ${escapeHtml(p.limit || '')}</span>
-        <a class="prov-link" href="${escapeHtml(p.url)}" target="_blank" rel="noopener">Buka situs ↗</a>
+        <a class="prov-link" href="${escapeHtml(link)}" target="_blank" rel="noopener">Buka situs ↗</a>
       </div>
     </div>`;
 }
