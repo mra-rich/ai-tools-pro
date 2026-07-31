@@ -196,8 +196,8 @@ async function saveKonten() {
   } catch (e) {
     return showKontenErr('JSON tidak valid: ' + e.message);
   }
-  if (!parsed.tokenGratis && !parsed.tutorial) {
-    return showKontenErr('Konten minim harus punya "tokenGratis" atau "tutorial".');
+  if (!parsed.providers && !parsed.tutorial && !parsed.tokenGratis) {
+    return showKontenErr('Konten minim harus punya "providers" atau "tutorial".');
   }
   const btn = document.getElementById('btn-konten');
   btn.disabled = true;

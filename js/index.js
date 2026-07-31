@@ -9,6 +9,7 @@
 async function init() {
   // Isi link & teks dari config terpusat
   document.getElementById('lynk-link').href = APP_CONFIG.LYNK_URL;
+  document.getElementById('lynk-link-2').href = APP_CONFIG.LYNK_URL;
   document.getElementById('seller-contact').textContent = APP_CONFIG.SELLER_CONTACT;
 
   const sess = localStorage.getItem(APP_CONFIG.SESSION_KEY);
@@ -21,11 +22,10 @@ async function init() {
         return;
       }
     } catch {
-      // sesi korup — hapus dan kembali ke lock screen
+      // sesi korup — hapus dan kembali ke landing
     }
     localStorage.removeItem(APP_CONFIG.SESSION_KEY);
   }
-  document.getElementById('screen-lock').style.display = 'flex';
 }
 
 // ── ACTIVATION ────────────────────────────────────────────────────
@@ -80,7 +80,7 @@ function doLogout() {
 
 // ── UI HELPERS ────────────────────────────────────────────────────
 function showDash(orderId) {
-  document.getElementById('screen-lock').style.display = 'none';
+  document.getElementById('screen-landing').style.display = 'none';
   document.getElementById('screen-dash').style.display = 'flex';
   document.getElementById('dash-order').textContent =
     '✅ ' + orderId.substring(0, 14) + (orderId.length > 14 ? '…' : '');
@@ -109,11 +109,11 @@ function tv(id, btn) {
 
 // ── CONTENT ───────────────────────────────────────────────────────
 // Konten dilindungi Worker: hanya device yang sudah aktivasi yang
-// bisa membacanya. Tidak ada lagi key API di file public.
+// bisa membacanya. Tidak ada lagi data produk di file public.
 async function loadContent() {
   const showErrState = () => {
-    ['tok-loading', 'tut-loading'].forEach((i) => (document.getElementById(i).style.display = 'none'));
-    ['tok-err', 'tut-err'].forEach((i) => (document.getElementById(i).style.display = 'block'));
+    ['db-loading', 'tut-loading'].forEach((i) => (document.getElementById(i).style.display = 'none'));
+    ['db-err', 'tut-err'].forEach((i) => (document.getElementById(i).style.display = 'block'));
   };
   try {
     const sess = JSON.parse(localStorage.getItem(APP_CONFIG.SESSION_KEY) || 'null');
@@ -121,12 +121,12 @@ async function loadContent() {
 
     const { status, data } = await fetchContent(sess.orderId, sess.deviceId);
     if (status === 200 && data) {
-      renderTokens(data);
+      renderDatabase(data);
       renderTutorial(data);
       return;
     }
     if (status === 401) {
-      // Sesi tidak valid lagi (binding di-reset / dihapus) → kembali ke lock
+      // Sesi tidak valid lagi (binding di-reset / dihapus) → kembali ke landing
       localStorage.removeItem(APP_CONFIG.SESSION_KEY);
       location.reload();
       return;
@@ -137,35 +137,50 @@ async function loadContent() {
   }
 }
 
-const PILL_BY_STATUS = {
-  aktif: { cls: 'pill-ok', label: '🟢 Aktif' },
-  habis: { cls: 'pill-err', label: '🔴 Habis' },
-};
-const DEFAULT_PILL = { cls: 'pill-warn', label: '🟡 Terbatas' };
-
-function renderTokens(d) {
-  document.getElementById('tok-loading').style.display = 'none';
-  document.getElementById('tok-content').style.display = 'block';
-  document.getElementById('tok-announce').textContent = '📢 ' + (d.pengumuman || '');
-  document.getElementById('tok-date').textContent = '📅 Update: ' + (d.tanggal || '');
-  document.getElementById('tok-grid').innerHTML = (d.tokenGratis || [])
-    .map((t) => {
-      const pill = PILL_BY_STATUS[t.status] || DEFAULT_PILL;
-      return `
-    <div class="token-card">
-      <div class="tok-head">
-        <div class="tok-prov">${escapeHtml(t.emoji || '🔑')} ${escapeHtml(t.provider)}</div>
-        <span class="pill ${pill.cls}">${pill.label}</span>
+// ── RENDER: Database Provider (per kategori) ─────────────────────
+function renderProviderCard(p) {
+  const models = (p.model || [])
+    .map((m) => `<span class="prov-model">${escapeHtml(m)}</span>`)
+    .join('');
+  const badge = p.badge
+    ? `<span class="prov-badge">${escapeHtml(p.badge)}</span>`
+    : '';
+  return `
+    <div class="prov-card">
+      <div class="prov-head">
+        <div class="prov-name">${escapeHtml(p.emoji || '🔹')} ${escapeHtml(p.nama)}</div>
+        ${badge}
       </div>
-      <div class="tok-model">Model: ${escapeHtml(t.model)}</div>
-      <div class="tok-key-row">
-        <div class="tok-key">${escapeHtml(t.key)}</div>
-        <button class="copy-btn" data-copy="${escapeHtml(t.key)}">Salin</button>
+      <div class="prov-desc">${escapeHtml(p.deskripsi)}</div>
+      ${models ? `<div class="prov-models">${models}</div>` : ''}
+      ${p.cara ? `<div class="prov-cara">📌 ${escapeHtml(p.cara)}</div>` : ''}
+      <div class="prov-meta">
+        <span>⏳ ${escapeHtml(p.limit || '')}</span>
+        <a class="prov-link" href="${escapeHtml(p.url)}" target="_blank" rel="noopener">Buka situs ↗</a>
       </div>
-      <div class="tok-meta">⚡ ${escapeHtml(t.limit)}</div>
-      ${t.catatan ? `<div class="tok-note">ℹ️ ${escapeHtml(t.catatan)}</div>` : ''}
     </div>`;
-    })
+}
+
+function renderDatabase(d) {
+  document.getElementById('db-loading').style.display = 'none';
+  document.getElementById('db-content').style.display = 'block';
+  document.getElementById('db-announce').textContent = '📢 ' + (d.pengumuman || '');
+  document.getElementById('db-date').textContent = '📅 Update: ' + (d.tanggal || '');
+
+  const byKat = {};
+  (d.providers || []).forEach((p) => {
+    (byKat[p.kategori] = byKat[p.kategori] || []).push(p);
+  });
+
+  document.getElementById('db-body').innerHTML = (d.kategori || [])
+    .map(
+      (k) => `
+      <div class="db-sec">
+        <h3>${escapeHtml(k.nama)}</h3>
+        <p class="db-sub">${escapeHtml(k.sub)}</p>
+        <div class="prov-grid">${(byKat[k.id] || []).map(renderProviderCard).join('')}</div>
+      </div>`,
+    )
     .join('');
 }
 
@@ -198,14 +213,6 @@ function renderTutorial(d) {
     })
     .join('');
 }
-
-// Tombol "Salin" pada token card — event delegation
-document.getElementById('tok-grid').addEventListener('click', (e) => {
-  const btn = e.target.closest('[data-copy]');
-  if (!btn) return;
-  navigator.clipboard.writeText(btn.dataset.copy);
-  flashButton(btn, 'Tersalin!', 'Salin');
-});
 
 // ── API CHECKERS ──────────────────────────────────────────────────
 function showRes(id, st, title, detail) {
@@ -340,7 +347,7 @@ async function ckCustom() {
 // Enter = aksi utama halaman yang tampak
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
-  if (document.getElementById('screen-lock').style.display !== 'none') {
+  if (document.getElementById('screen-landing').style.display !== 'none') {
     activate();
     return;
   }

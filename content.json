@@ -1,15 +1,21 @@
 {
-  "tanggal": "TEMPLATE — jangan upload yang berisi key asli!",
-  "pengumuman": "File ini hanya TEMPLATE untuk referensi format di repo public.",
-  "tokenGratis": [
+  "tanggal": "TEMPLATE — bukan konten nyata",
+  "pengumuman": "Ini hanya referensi format di repo public. Konten asli disimpan di server (KV) dan dikelola lewat admin.html.",
+  "kategori": [
+    { "id": "api", "nama": "🔑 API Key Gratis", "sub": "Deskripsi kategori" }
+  ],
+  "providers": [
     {
-      "provider": "Nama Provider",
+      "kategori": "api",
+      "nama": "Nama Provider",
       "emoji": "⚡",
-      "model": "nama-model",
-      "key": "GANTI_KEY_LEWAT_ADMIN_HTML_TAB_KONTEN",
+      "badge": "NO KARTU",
+      "deskripsi": "Deskripsi singkat.",
+      "model": ["nama-model-1", "nama-model-2"],
       "limit": "batas gratis",
-      "status": "aktif",
-      "catatan": "catatan opsional"
+      "url": "https://contoh.com",
+      "cara": "Cara daftar singkat.",
+      "status": "aktif"
     }
   ],
   "tutorial": [
@@ -22,5 +28,5 @@
       "url": "https://contoh.com"
     }
   ],
-  "_catatan_admin": "Konten ASLI (dengan key) disimpan di Cloudflare KV, bukan di sini. Edit lewat admin.html → tab Konten. Lihat README bagian Workflow Harian."
+  "_catatan_admin": "Master konten asli: admin-content.json (gitignored, lokal) + KV Worker. Edit lewat admin.html → tab Konten."
 }

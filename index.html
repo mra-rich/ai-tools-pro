@@ -10,34 +10,78 @@
 </head>
 <body>
 
-<!-- ══ LOCK SCREEN ══════════════════════════════════════════ -->
-<div id="screen-lock">
-  <div class="lock-card">
-    <div class="lock-top">
-      <div class="lock-icon">🔑</div>
-      <div class="lock-title">AI Tools Pro</div>
-      <div class="lock-sub">Token gratis harian · Tutorial · Cek API Key</div>
-    </div>
-    <div class="lock-body">
+<!-- ══ LANDING (publik — sebelum beli) ══════════════════════ -->
+<div id="screen-landing">
+  <div class="lp-wrap">
 
-      <div class="email-hint">
-        <div class="email-hint-icon">📧</div>
-        <div>
-          <div class="email-hint-title">Cek email konfirmasi pembelian</div>
-          <div class="email-hint-sub">Setelah bayar di lynk.id, kamu akan dapat email berisi <strong>Order ID</strong>. Paste di bawah ini — verifikasi otomatis, langsung aktif.</div>
+    <!-- HERO -->
+    <div class="lp-hero">
+      <div class="lp-badge"><span class="dot"></span> Database AI Gratis · Update Rutin 2026</div>
+      <h1 class="lp-h1">Kuasai <span class="grad">ratusan AI gratis</span><br>tanpa bayar langganan</h1>
+      <p class="lp-sub">Peta lengkap provider &amp; model AI gratis masa kini — Groq, Gemini, OpenRouter, Kimi, DeepSeek, dan puluhan lainnya. Lengkap dengan <strong>tutorial cara mendapatkannya sendiri</strong>, tool cek API key langsung, dan panduan pakai di Claude Code, ZCode, Trae, VS Code.</p>
+      <div class="lp-stats">
+        <div class="lp-stat"><b>30+</b><span>Provider &amp; Situs</span></div>
+        <div class="lp-stat"><b>100+</b><span>Model Gratis</span></div>
+        <div class="lp-stat"><b>3</b><span>Kategori Lengkap</span></div>
+        <div class="lp-stat"><b>∞</b><span>Update Rutin</span></div>
+      </div>
+      <a class="btn-buy" id="lynk-link" href="#" target="_blank" rel="noopener">🛒 Beli &amp; Akses Instan</a>
+      <div class="lp-offer-note">Bayar sekali di lynk.id → Order ID di email → akses seumur hidup</div>
+    </div>
+
+    <!-- FITUR -->
+    <div class="lp-features">
+      <div class="lp-feat"><div class="ico">🗄️</div><div class="t">Database Provider Terkurasi</div><div class="d">Daftar lengkap API gratis, chat gratis &amp; coding tool — nama model nyata, limit, status aktif, dan link langsung.</div></div>
+      <div class="lp-feat"><div class="ico">📚</div><div class="t">Tutorial Ambil Sendiri</div><div class="d">Panduan langkah demi langkah bikin API key &amp; akunmu sendiri — legal, gratis, dan tahan lama.</div></div>
+      <div class="lp-feat"><div class="ico">🔑</div><div class="t">Cek API Key Langsung</div><div class="d">Validasi key gratisan langsung dari browser ke Anthropic, OpenAI, Google, Mistral &amp; OpenAI-compatible.</div></div>
+      <div class="lp-feat"><div class="ico">💻</div><div class="t">Panduan Coding Tool</div><div class="d">Cara pakai AI gratis di Claude Code, ZCode, Trae, Cline, VS Code &amp; IDE lainnya — coding dibantu AI tanpa biaya.</div></div>
+    </div>
+
+    <!-- TEASER TERKUNCI -->
+    <div class="lp-teaser">
+      <div class="lp-teaser-title">🔒 Sekilas Isi Database (terkunci untuk member)</div>
+      <div class="prov-grid">
+        <div class="prov-card"><div class="prov-lock">🔒</div>
+          <div class="prov-head"><div class="prov-name">⚡ <span class="blur">Groq — inferensi</span></div><span class="prov-badge blur">NO KARTU</span></div>
+          <div class="prov-desc blur">Provider inferensi AI tercepat dengan model 120B gratis</div>
+          <div class="prov-models"><span class="prov-model blur">gpt-oss-120b</span><span class="prov-model blur">llama-3.3-70b</span></div>
+        </div>
+        <div class="prov-card"><div class="prov-lock">🔒</div>
+          <div class="prov-head"><div class="prov-name">🛣️ <span class="blur">Router AI besar</span></div><span class="prov-badge blur">NO KARTU</span></div>
+          <div class="prov-desc blur">Satu API untuk 200+ model termasuk yang gratis total</div>
+          <div class="prov-models"><span class="prov-model blur">nemotron-550b:free</span><span class="prov-model blur">gemma-4-31b:free</span></div>
+        </div>
+        <div class="prov-card"><div class="prov-lock">🔒</div>
+          <div class="prov-head"><div class="prov-name">💎 <span class="blur">Coding agent CLI</span></div><span class="prov-badge blur">NO KARTU</span></div>
+          <div class="prov-desc blur">Agent coding resmi Google 1.000 request/hari gratis</div>
+          <div class="prov-models"><span class="prov-model blur">gemini-2.5-pro</span><span class="prov-model blur">gemini-cli</span></div>
         </div>
       </div>
-
-      <label class="inp-label" for="order-input">Order ID dari lynk.id</label>
-      <input class="inp" type="text" id="order-input" placeholder="Paste Order ID kamu di sini..." />
-
-      <button class="btn-activate" id="btn-activate" onclick="activate()">⚡ Aktifkan Sekarang</button>
-      <div class="lock-msg" id="lock-msg"></div>
     </div>
-    <div class="lock-footer">
-      <a href="#" id="lynk-link" target="_blank">🛒 Beli di lynk.id</a>
-      <span class="sep">·</span>
-      <span id="seller-contact">1 Order ID = 1 device</span>
+  </div>
+
+  <!-- FORM AKTIVASI -->
+  <div class="lp-wrap">
+    <div class="lp-activate-label">Sudah beli? Masukkan Order ID kamu di sini</div>
+    <div class="lock-card" style="margin:0 auto">
+      <div class="lock-body">
+        <div class="email-hint">
+          <div class="email-hint-icon">📧</div>
+          <div>
+            <div class="email-hint-title">Cek email konfirmasi pembelian</div>
+            <div class="email-hint-sub">Setelah bayar di lynk.id, kamu akan dapat email berisi <strong>Order ID</strong>. Paste di bawah ini — verifikasi otomatis, langsung aktif.</div>
+          </div>
+        </div>
+        <label class="inp-label" for="order-input">Order ID dari lynk.id</label>
+        <input class="inp" type="text" id="order-input" placeholder="Paste Order ID kamu di sini..." />
+        <button class="btn-activate" id="btn-activate" onclick="activate()">⚡ Aktifkan Sekarang</button>
+        <div class="lock-msg" id="lock-msg"></div>
+      </div>
+      <div class="lock-footer">
+        <a href="#" id="lynk-link-2" class="lp-offer-note" target="_blank">🛒 Beli di lynk.id</a>
+        <span class="sep">·</span>
+        <span id="seller-contact">1 Order ID = 1 device</span>
+      </div>
     </div>
   </div>
 </div>
@@ -46,7 +90,7 @@
 <div id="screen-dash">
 
   <div class="topbar">
-    <div class="topbar-brand">🔑 AI Tools Pro</div>
+    <div class="topbar-brand">🗄️ AI Gratis Pro</div>
     <div class="topbar-right">
       <div class="badge-ok" id="dash-order">✅ Aktif</div>
       <button class="btn-sm" onclick="doLogout()">Reset</button>
@@ -54,19 +98,19 @@
   </div>
 
   <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('tokens',this)">🎁 Token Gratis</button>
+    <button class="tab-btn active" onclick="switchTab('db',this)">🗄️ Database AI</button>
     <button class="tab-btn" onclick="switchTab('tutorial',this)">📚 Tutorial</button>
     <button class="tab-btn" onclick="switchTab('checker',this)">🔑 Cek API Key</button>
   </div>
 
-  <!-- Tab Token -->
-  <div class="tab-pane active" id="tab-tokens">
-    <div class="loading-st" id="tok-loading"><div class="spin20"></div>Memuat data terbaru...</div>
-    <div class="fetch-err" id="tok-err">❌ Gagal memuat. Cek koneksi internet kamu.</div>
-    <div id="tok-content" style="display:none">
-      <div class="announce" id="tok-announce"></div>
-      <div class="date-lbl" id="tok-date"></div>
-      <div class="token-grid" id="tok-grid"></div>
+  <!-- Tab Database -->
+  <div class="tab-pane active" id="tab-db">
+    <div class="loading-st" id="db-loading"><div class="spin20"></div>Memuat database terbaru...</div>
+    <div class="fetch-err" id="db-err">❌ Gagal memuat. Cek koneksi internet kamu.</div>
+    <div id="db-content" style="display:none">
+      <div class="announce" id="db-announce"></div>
+      <div class="date-lbl" id="db-date"></div>
+      <div id="db-body"></div>
     </div>
   </div>
 

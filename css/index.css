@@ -152,3 +152,70 @@
 .cres-det { color:var(--text2);font-family:'JetBrains Mono',monospace;line-height:1.5;word-break:break-all; }
 .sec-note { margin-top:10px;padding:9px 12px;background:rgba(79,142,247,.06);border:1px solid rgba(79,142,247,.15);border-radius:8px;font-size:11px;color:var(--text3);display:flex;gap:5px;line-height:1.5; }
 .hdiv { border:none;border-top:1px solid var(--border);margin:14px 0; }
+
+/* ── LANDING PAGE (publik, sebelum aktivasi) ── */
+#screen-landing { min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 0 60px;
+  background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(79,142,247,.14) 0%,transparent 60%),var(--bg); }
+.lp-wrap { width:100%;max-width:860px;padding:0 22px; }
+
+.lp-hero { text-align:center;padding:74px 22px 34px; }
+.lp-badge { display:inline-flex;align-items:center;gap:7px;padding:5px 13px;background:rgba(79,142,247,.1);border:1px solid rgba(79,142,247,.25);
+  border-radius:20px;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.8px;text-transform:uppercase;margin-bottom:20px; }
+.lp-badge .dot { width:7px;height:7px;border-radius:50%;background:var(--ok);animation:blink 1.6s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.lp-h1 { font-size:clamp(28px,5.5vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:14px; }
+.lp-h1 .grad { background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.lp-sub { color:var(--text2);font-size:15px;line-height:1.7;max-width:620px;margin:0 auto 26px; }
+.lp-stats { display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:30px; }
+.lp-stat { text-align:center; }
+.lp-stat b { display:block;font-size:22px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.lp-stat span { font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px; }
+
+.lp-features { display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:38px; }
+.lp-feat { background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;transition:border-color .2s,transform .15s; }
+.lp-feat:hover { border-color:var(--border2);transform:translateY(-2px); }
+.lp-feat .ico { font-size:24px;margin-bottom:10px; }
+.lp-feat .t { font-size:14px;font-weight:700;margin-bottom:5px; }
+.lp-feat .d { font-size:12px;color:var(--text2);line-height:1.6; }
+
+/* Teaser providers terkunci */
+.lp-teaser { margin-bottom:38px; }
+.lp-teaser-title { text-align:center;font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px; }
+.prov-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px; }
+.prov-card { background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px;display:flex;flex-direction:column;gap:9px; }
+.prov-head { display:flex;align-items:center;justify-content:space-between;gap:8px; }
+.prov-name { font-size:14px;font-weight:700;display:flex;align-items:center;gap:7px; }
+.prov-badge { font-size:9px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.6px;white-space:nowrap;
+  background:var(--ok-bg);color:var(--ok);border:1px solid rgba(34,197,94,.25); }
+.prov-desc { font-size:12px;color:var(--text2);line-height:1.5;flex:1; }
+.prov-models { display:flex;flex-wrap:wrap;gap:4px; }
+.prov-model { font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;background:var(--surface2);border:1px solid var(--border);border-radius:5px;color:var(--accent); }
+.prov-meta { display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--text3); }
+.prov-link { color:var(--accent);text-decoration:none;font-size:11px;font-weight:600;white-space:nowrap; }
+.prov-link:hover { text-decoration:underline; }
+.prov-cara { font-size:11px;color:var(--text3);line-height:1.55;padding:9px 11px;background:var(--surface2);border:1px solid var(--border);border-radius:8px; }
+
+.lp-teaser .prov-card { position:relative; }
+.lp-teaser .prov-card .blur { filter:blur(4px);user-select:none;pointer-events:none; }
+.lp-teaser .prov-lock { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:22px;border-radius:13px;background:rgba(10,12,16,.35); }
+
+/* Pricing / CTA */
+.lp-offer { background:linear-gradient(135deg,rgba(79,142,247,.1),rgba(160,106,248,.1));border:1px solid rgba(79,142,247,.3);border-radius:18px;
+  padding:32px 26px;text-align:center;margin-bottom:40px; }
+.lp-offer h2 { font-size:22px;font-weight:800;margin-bottom:8px; }
+.lp-offer p { color:var(--text2);font-size:13px;line-height:1.7;max-width:520px;margin:0 auto 20px; }
+.lp-offer-list { display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:12px;color:var(--text2);margin-bottom:22px; }
+.btn-buy { display:inline-flex;align-items:center;gap:9px;padding:14px 34px;background:var(--grad);border:none;border-radius:11px;color:#fff;
+  font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .1s;box-shadow:0 8px 28px rgba(79,142,247,.35); }
+.btn-buy:hover { opacity:.92; }
+.btn-buy:active { transform:scale(.98); }
+.lp-offer-note { font-size:11px;color:var(--text3);margin-top:14px; }
+
+/* Bagian aktivasi di landing */
+.lp-activate-wrap { display:flex;justify-content:center; }
+.lp-activate-label { text-align:center;font-size:12px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px; }
+
+/* Database section di dashboard */
+.db-sec { margin-bottom:26px; }
+.db-sec h3 { font-size:15px;font-weight:700;margin-bottom:3px; }
+.db-sub { font-size:12px;color:var(--text3);margin-bottom:12px; }
