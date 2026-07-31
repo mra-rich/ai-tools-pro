@@ -264,3 +264,7 @@
 .db-count { font-size:11px;color:var(--text3); }
 .db-empty { text-align:center;padding:36px 16px;color:var(--text3);font-size:13px; }
 .hm { background:rgba(79,142,247,.25);border-radius:2px;color:var(--accent);padding:0 1px; }
+
+/* Model dropdown di checker */
+.ck-msel { width:100%;padding:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:12px;font-family:'JetBrains Mono',monospace;outline:none;cursor:pointer;transition:border-color .2s; }
+.ck-msel:focus { border-color:var(--accent); }
