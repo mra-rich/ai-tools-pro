@@ -386,7 +386,12 @@ const CK_SUB_BY_TYPE = {
 };
 
 function renderCkPanel(p) {
-  const isCustom = p.apiType === 'custom';
+  const models = p.models && p.models.length ? p.models : null;
+  const modelField = models
+    ? `<div class="fw"><select id="m-${escapeHtml(p.id)}" class="npr ck-msel">${models
+        .map((m) => `<option value="${escapeHtml(m)}"${m === p.model ? ' selected' : ''}>${escapeHtml(m)}</option>`)
+        .join('')}<option value="__manual__">✏️ Ketik model sendiri...</option></select></div>`
+    : `<div class="fw"><input type="text" id="m-${escapeHtml(p.id)}" value="${escapeHtml(p.model || '')}" class="npr"/></div>`;
   return `
     <div class="cpanel" id="ck-${escapeHtml(p.id)}">
       <div class="ccard">
@@ -400,7 +405,7 @@ function renderCkPanel(p) {
           <label class="fl">Base URL</label>
           <div class="fw"><input type="text" id="u-${escapeHtml(p.id)}" value="${escapeHtml(p.baseUrl || '')}" class="npr"/></div>
           <label class="fl">Model</label>
-          <div class="fw"><input type="text" id="m-${escapeHtml(p.id)}" value="${escapeHtml(p.model || '')}" class="npr"/></div>
+          ${modelField}
           <div class="fh">${escapeHtml(p.modelHint || '')}</div>
           <button class="btn-ck" onclick="ckProvider('${escapeHtml(p.id)}')">🔍 Cek API Key</button>
           <div class="cres" id="r-${escapeHtml(p.id)}"></div>
@@ -409,6 +414,18 @@ function renderCkPanel(p) {
       </div>
     </div>`;
 }
+
+// Dropdown "ketik sendiri" → ganti jadi input teks (id tetap agar ckProvider stabil)
+document.getElementById('ck-panels').addEventListener('change', (e) => {
+  if (e.target.tagName !== 'SELECT' || !e.target.id.startsWith('m-') || e.target.value !== '__manual__') return;
+  const sel = e.target;
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.id = sel.id;
+  input.placeholder = 'Ketik nama model manual...';
+  sel.replaceWith(input);
+  input.focus();
+});
 
 function selectCk(i) {
   ckActive = i;
