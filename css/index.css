@@ -162,7 +162,7 @@
 .hdiv { border:none;border-top:1px solid var(--border);margin:14px 0; }
 
 /* ── LANDING PAGE (publik, sebelum aktivasi) ── */
-#screen-landing { min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 0 60px;
+#screen-landing { width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 0 60px;overflow-x:hidden;
   background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(79,142,247,.14) 0%,transparent 60%),var(--bg); }
 .lp-wrap { width:100%;max-width:860px;padding:0 16px; }
 
