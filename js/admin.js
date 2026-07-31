@@ -313,7 +313,7 @@ function fillCkpkOptions() {
 
 function fillCkpk() {
   const idx = Number(document.getElementById('ckpk-select').value);
-  const fields = ['ckpk-nama', 'ckpk-emoji', 'ckpk-base', 'ckpk-model', 'ckpk-modelhint', 'ckpk-keyhint'];
+  const fields = ['ckpk-nama', 'ckpk-emoji', 'ckpk-base', 'ckpk-model', 'ckpk-modelhint', 'ckpk-keyhint', 'ckpk-models'];
   if (idx < 0) {
     fields.forEach((f) => (document.getElementById(f).value = ''));
     document.getElementById('ckpk-type').value = 'openai';
@@ -328,6 +328,7 @@ function fillCkpk() {
   document.getElementById('ckpk-modelhint').value = p.modelHint || '';
   document.getElementById('ckpk-keyhint').value = p.keyHint || '';
   document.getElementById('ckpk-type').value = p.apiType || 'openai';
+  document.getElementById('ckpk-models').value = (p.models || []).join('\n');
 }
 
 function showCkpkErr(text) {
@@ -382,6 +383,7 @@ function saveCkpk() {
     model,
     keyHint: document.getElementById('ckpk-keyhint').value.trim(),
     modelHint: document.getElementById('ckpk-modelhint').value.trim(),
+    models: document.getElementById('ckpk-models').value.split('\n').map((s) => s.trim()).filter(Boolean),
   };
   const list = [...(kontenCache.checkerPresets || [])];
   if (idx >= 0) list[idx] = preset;
