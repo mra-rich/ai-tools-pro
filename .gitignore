@@ -1,5 +1,6 @@
 admin.html
 scret.txt
+js/admin-token.js
 worker/node_modules/
 worker/.wrangler/
 .playwright-mcp/

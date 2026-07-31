@@ -24,7 +24,11 @@ function initAdmin() {
 
 // ── ADMIN TOKEN ───────────────────────────────────────────────────
 function getToken() {
-  return localStorage.getItem(APP_CONFIG.ADMIN_TOKEN_KEY) || '';
+  // Prioritas: token tersimpan manual → default dari js/admin-token.js
+  return (
+    localStorage.getItem(APP_CONFIG.ADMIN_TOKEN_KEY) ||
+    (typeof ADMIN_TOKEN_DEFAULT !== 'undefined' ? ADMIN_TOKEN_DEFAULT : '')
+  );
 }
 
 function saveToken() {
