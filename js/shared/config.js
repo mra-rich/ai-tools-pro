@@ -8,7 +8,7 @@ const APP_CONFIG = {
   WORKER_URL: 'https://ai-tools-pro.rodliarif.workers.dev',
 
   // URL raw content.json di GitHub kamu
-  CONTENT_URL: 'https://raw.githubusercontent.com/GANTI_USER/GANTI_REPO/main/content.json',
+  CONTENT_URL: 'https://raw.githubusercontent.com/mra-rich/ai-tools-pro/main/content.json',
 
   // Link produk kamu di lynk.id
   LYNK_URL: 'https://lynk.id/rodlirich',
