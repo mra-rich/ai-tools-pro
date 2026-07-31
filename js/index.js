@@ -139,6 +139,10 @@ async function loadContent() {
 }
 
 // ── RENDER: Database Provider (per kategori) ─────────────────────
+// ── RENDER: Database Provider (per kategori) + search/filter ─────
+let dbData = null; // konten mentah terakhir
+const dbFilter = { q: '', kategori: '', badge: '' };
+
 function renderProviderCard(p) {
   const models = (p.model || [])
     .map((m) => `<span class="prov-model">${escapeHtml(m)}</span>`)
@@ -164,27 +168,82 @@ function renderProviderCard(p) {
     </div>`;
 }
 
+function providerMatches(p) {
+  if (dbFilter.kategori && p.kategori !== dbFilter.kategori) return false;
+  if (dbFilter.badge && !(p.badge || '').toUpperCase().includes(dbFilter.badge.toUpperCase())) return false;
+  if (dbFilter.q) {
+    const hay = [p.nama, p.deskripsi, p.cara, p.limit, p.badge, ...(p.model || [])].join(' ').toLowerCase();
+    if (!hay.includes(dbFilter.q.toLowerCase())) return false;
+  }
+  return true;
+}
+
+function applyDbFilter() {
+  if (!dbData) return;
+  const filtered = (dbData.providers || []).filter(providerMatches);
+  const byKat = {};
+  filtered.forEach((p) => {
+    (byKat[p.kategori] = byKat[p.kategori] || []).push(p);
+  });
+  const count = document.getElementById('db-count');
+  count.textContent = filtered.length + ' dari ' + (dbData.providers || []).length + ' provider';
+
+  const sections = (dbData.kategori || [])
+    .map((k) => ({ k, items: byKat[k.id] || [] }))
+    .filter(({ items }) => items.length > 0);
+
+  document.getElementById('db-body').innerHTML = sections.length
+    ? sections
+        .map(
+          ({ k, items }) => `
+          <div class="db-sec">
+            <h3>${escapeHtml(k.nama)}</h3>
+            <p class="db-sub">${escapeHtml(k.sub)}</p>
+            <div class="prov-grid">${items.map(renderProviderCard).join('')}</div>
+          </div>`,
+        )
+        .join('')
+    : `<div class="db-empty">🔍 Tidak ada provider yang cocok dengan filter ini.<br>Coba kata kunci lain atau reset filter.</div>`;
+}
+
+function renderDbFilters(d) {
+  const el = document.getElementById('db-filters');
+  const badges = [...new Set((d.providers || []).map((p) => p.badge).filter(Boolean))];
+  const chips = [
+    { type: 'kategori', value: '', label: 'Semua' },
+    ...(d.kategori || []).map((k) => ({ type: 'kategori', value: k.id, label: k.nama })),
+    ...badges.map((b) => ({ type: 'badge', value: b, label: b })),
+  ];
+  el.innerHTML = chips
+    .map(
+      (c) =>
+        `<button class="db-fchip${dbFilter[c.type] === c.value ? ' sel' : ''}" data-ftype="${c.type}" data-fval="${escapeHtml(c.value)}">${escapeHtml(c.label)}</button>`,
+    )
+    .join('');
+}
+
+document.getElementById('db-search').addEventListener('input', (e) => {
+  dbFilter.q = e.target.value.trim();
+  applyDbFilter();
+});
+document.getElementById('db-filters').addEventListener('click', (e) => {
+  const chip = e.target.closest('[data-ftype]');
+  if (!chip) return;
+  const t = chip.dataset.ftype;
+  // klik ulang = lepas filter (toggle)
+  dbFilter[t] = dbFilter[t] === chip.dataset.fval && chip.dataset.fval !== '' ? '' : chip.dataset.fval;
+  renderDbFilters(dbData);
+  applyDbFilter();
+});
+
 function renderDatabase(d) {
+  dbData = d;
   document.getElementById('db-loading').style.display = 'none';
   document.getElementById('db-content').style.display = 'block';
   document.getElementById('db-announce').textContent = '📢 ' + (d.pengumuman || '');
   document.getElementById('db-date').textContent = '📅 Update: ' + (d.tanggal || '');
-
-  const byKat = {};
-  (d.providers || []).forEach((p) => {
-    (byKat[p.kategori] = byKat[p.kategori] || []).push(p);
-  });
-
-  document.getElementById('db-body').innerHTML = (d.kategori || [])
-    .map(
-      (k) => `
-      <div class="db-sec">
-        <h3>${escapeHtml(k.nama)}</h3>
-        <p class="db-sub">${escapeHtml(k.sub)}</p>
-        <div class="prov-grid">${(byKat[k.id] || []).map(renderProviderCard).join('')}</div>
-      </div>`,
-    )
-    .join('');
+  renderDbFilters(d);
+  applyDbFilter();
 }
 
 const LVL_BY_LEVEL = {
