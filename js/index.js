@@ -433,10 +433,10 @@ async function ckProvider(id) {
   const key = document.getElementById('k-' + id).value.trim();
   const baseUrl = document.getElementById('u-' + id).value.trim().replace(/\/+$/, '');
   const model = document.getElementById('m-' + id).value.trim();
-  const resId = 'r-' + id;
-  if (!key) return showCkResult(resId, 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
-  if (!baseUrl) return showCkResult(resId, 'warn', 'Base URL kosong', 'Isi Base URL endpoint-nya.');
-  if (!model) return showCkResult(resId, 'warn', 'Model kosong', 'Isi nama model yang ingin diuji.');
+  // id langsung dipakai untuk locating elemen
+  if (!key) return showCkResult(id, 'warn', 'API Key kosong', 'Masukkan API key terlebih dahulu.');
+  if (!baseUrl) return showCkResult(id, 'warn', 'Base URL kosong', 'Isi Base URL endpoint-nya.');
+  if (!model) return showCkResult(id, 'warn', 'Model kosong', 'Isi nama model yang ingin diuji.');
 
   const btn = document.querySelector(`#ck-${CSS.escape(id)} .btn-ck`);
   setLd(btn, true);
@@ -450,8 +450,8 @@ async function ckProvider(id) {
       const d = await r.json();
       if (r.ok) {
         const c = d.candidates?.[0];
-        showCkResult(resId, 'ok', 'API Key Valid ✓', `Model: ${model} | Finish: ${c?.finishReason || 'STOP'}`);
-      } else showCkResult(resId, 'err', `Error ${r.status}: ${d.error?.status || 'Unknown'}`, d.error?.message || JSON.stringify(d));
+        showCkResult(id, 'ok', 'API Key Valid ✓', `Model: ${model} | Finish: ${c?.finishReason || 'STOP'}`);
+      } else showCkResult(id, 'err', `Error ${r.status}: ${d.error?.status || 'Unknown'}`, d.error?.message || JSON.stringify(d));
     } else if (p.apiType === 'anthropic') {
       const r = await fetch(`${baseUrl}/v1/messages`, {
         method: 'POST',
@@ -459,8 +459,8 @@ async function ckProvider(id) {
         body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }),
       });
       const d = await r.json();
-      if (r.ok) showCkResult(resId, 'ok', 'API Key Valid ✓', `Model: ${d.model} | Stop: ${d.stop_reason} | Tokens: ${d.usage?.input_tokens}`);
-      else showCkResult(resId, 'err', `Error ${r.status}: ${d.error?.type || 'Unknown'}`, d.error?.message || JSON.stringify(d));
+      if (r.ok) showCkResult(id, 'ok', 'API Key Valid ✓', `Model: ${d.model} | Stop: ${d.stop_reason} | Tokens: ${d.usage?.input_tokens}`);
+      else showCkResult(id, 'err', `Error ${r.status}: ${d.error?.type || 'Unknown'}`, d.error?.message || JSON.stringify(d));
     } else {
       const r = await fetch(`${baseUrl}/chat/completions`, {
         method: 'POST',
@@ -468,11 +468,11 @@ async function ckProvider(id) {
         body: JSON.stringify({ model, max_tokens: 16, messages: [{ role: 'user', content: 'hi' }] }),
       });
       const d = await r.json();
-      if (r.ok) showCkResult(resId, 'ok', 'API Key Valid ✓', `Model: ${d.model || model} | Finish: ${d.choices?.[0]?.finish_reason} | Tokens: ${d.usage?.total_tokens ?? '—'}`);
-      else showCkResult(resId, 'err', `Error ${r.status}: ${d.error?.type || d.error?.code || 'Unknown'}`, d.error?.message || d.message || JSON.stringify(d));
+      if (r.ok) showCkResult(id, 'ok', 'API Key Valid ✓', `Model: ${d.model || model} | Finish: ${d.choices?.[0]?.finish_reason} | Tokens: ${d.usage?.total_tokens ?? '—'}`);
+      else showCkResult(id, 'err', `Error ${r.status}: ${d.error?.type || d.error?.code || 'Unknown'}`, d.error?.message || d.message || JSON.stringify(d));
     }
   } catch (e) {
-    showCkResult(resId, 'err', 'Gagal terhubung', e.message.includes('Failed to fetch')
+    showCkResult(id, 'err', 'Gagal terhubung', e.message.includes('Failed to fetch')
       ? 'Tidak bisa terhubung. Pastikan URL benar dan server aktif (untuk localhost, aktifkan CORS).'
       : e.message);
   } finally {
