@@ -10,7 +10,7 @@ async function init() {
   // Isi link & teks dari config terpusat
   document.getElementById('lynk-link').href = APP_CONFIG.LYNK_URL;
   document.getElementById('lynk-link-2').href = APP_CONFIG.LYNK_URL;
-  document.getElementById('wa-link').href = APP_CONFIG.WA_GROUP_URL;
+  // Banner grup WA hanya di dashboard (grup eksklusif member)
   document.getElementById('wa-link-2').href = APP_CONFIG.WA_GROUP_URL;
   document.getElementById('seller-contact').textContent = APP_CONFIG.SELLER_CONTACT;
 
