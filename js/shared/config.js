@@ -13,6 +13,9 @@ const APP_CONFIG = {
   // Link produk kamu di lynk.id
   LYNK_URL: 'https://lynk.id/rodlirich',
 
+  // Link grup WhatsApp support pembeli (banner di landing & dashboard)
+  WA_GROUP_URL: 'https://chat.whatsapp.com/LvHUenBEmmN32MxVT4wmLP',
+
   // Pesan kontak untuk pembeli yang ganti device / error aktivasi
   SELLER_CONTACT: 'Kirim Order ID kamu ke penjual untuk minta reset device.',
 
