@@ -13,9 +13,10 @@
 // ═════════════════════════════════════════════════════════════════
 
 // Origin yang boleh memanggil API dari browser:
-// - GitHub Pages (app pembeli)
+// - Domain produksi tokengartis.web.id (app pembeli)
+// - GitHub Pages (fallback saat transisi domain)
 // - "null" (admin.html dibuka langsung dari file:// di laptop penjual)
-const CORS_ORIGINS = ['https://mra-rich.github.io', 'null'];
+const CORS_ORIGINS = ['https://tokengartis.web.id', 'https://mra-rich.github.io', 'null'];
 
 function corsHeaders(request) {
   const origin = request.headers.get('Origin') || '';
