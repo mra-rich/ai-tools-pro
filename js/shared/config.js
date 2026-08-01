@@ -11,7 +11,7 @@ const APP_CONFIG = {
   // agar key API tidak pernah terekspos public. Lihat admin.html tab Konten.
 
   // Link produk kamu di lynk.id
-  LYNK_URL: 'https://lynk.id/rodlirich',
+  LYNK_URL: 'https://lynk.id/rodlirich/dzwkzqn29r1l',
 
   // Link grup WhatsApp support pembeli (banner di landing & dashboard)
   WA_GROUP_URL: 'https://chat.whatsapp.com/LvHUenBEmmN32MxVT4wmLP',
