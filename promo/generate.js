@@ -64,23 +64,14 @@ function badgeLabel(b) {
 // / API gagal / output tidak lolos validasi → null → caller pakai template.
 const GEMINI_MODEL = 'gemini-2.5-flash';
 
-// Gaya tulisan diputar per hari supaya feed tidak monoton
-const STYLES = [
-  'listicle singkat (bullet poin provider terbaik hari ini)',
-  'cerita mini/anekdot pembuka yang relate lalu kasih daftar provider',
-  'myth-busting: bantah anggapan "AI gratis = jelek" pakai contoh nyata',
-  'perbandingan 2-3 provider langsung (kelebihan/limit gratis masing-masing)',
-  'satu fakta mengejutkan tentang satu provider, lalu sebut alternatif lain',
-  'mini tutorial: cara ambil API key gratis di satu provider tertentu',
-  'pertanyaan polling pembuka lalu tunjukkan jawaban + provider terkait',
-];
-
 function buildGeminiPrompt(d, dayOfYear) {
   const providers = d.providers || [];
   const snapshot = shuf(providers).slice(0, 30)
     .map((p) => `- ${p.nama} [${p.kategori}${p.badge ? ' | ' + p.badge : ''}]: ${cap(p.deskripsi || '', 80)}`)
     .join('\n');
-  const style = STYLES[dayOfYear % STYLES.length];
+
+  // Angle hari ini: topik viral terpilih (model AI yang lagi panas)
+  const t = VIRAL_TOPICS[dayOfYear % VIRAL_TOPICS.length];
 
   // Anti-repeat: kirim isi post terakhir supaya LLM tidak menulis ulang
   let prev = '';
@@ -92,22 +83,37 @@ function buildGeminiPrompt(d, dayOfYear) {
     }
   } catch (_) { /* abaikan */ }
 
-  return `Kamu penulis konten Threads untuk akun promosi situs direktori provider AI GRATIS bernama tokengratis.web.id.
+  return `Kamu penulis Threads gaya manusia, BUKAN copywriter AI. Akun ini berbicara seperti teman yang update banget soal AI — santai, pietra, konkret, dan tidak preachy. Target pembaca: orang Indo yang pengen pakai AI tapi nggak mau langganan mahal.
 
-DATA ASLI dari database hari ini (HANYA boleh sebut nama/angka dari sini, dilarang mengarang provider baru):
-Jumlah provider total: ${providers.length}
-Daftar (sampel):
+ANGLE KONTEN (ANGKA & TOPIK DISIPI di prompt ini, jangan dikarang sendiri):
+Topik hari ini: "${t.topic}"
+Fakta nyata (pakai maksimal 2–3, jangan semua): ${(t.facts || []).join(' | ')}
+Cara GRATIS-nya (angan tutorial style, maksimal 2 item, konkret): ${(t.freePath || []).join(' | ')}
+Pertanyaan CTA penutup (variasikan redaksi): "${t.ctaQ || ''}"
+
+LARANGAN (kalau langgar = posting ditolak):
+1. DILARANG frasa cliché AI: "Tau gak sih?", "Yuk coba!", "Udah coba yang mana?", "Gimana pendapatmu?", "Guys!", "Keren banget", emoji 🤯🚀🔥 (pakai emoji yang tidak mainstream, maksimal 3, atau none)
+2. DILARANG opening pertanyaan besar yang retoris — mulai dengan FAKTA atau STATEMENT mengejutkan
+3. DILARANG markdown (**, ##, kode blok), hashtag, bahasa campuran berlebihan (bahasa Inggris teknis boleh kalau memang istilah)
+4. JANGAN sebut semua provider di daftar — pilih 1–2 saja yang paling relate dengan angle
+
+Pola HOOK yang pasti laris di Threads (contoh, JANGAN dicopy mentah):
+- "Kimi K3 sampai 'sold out' karena demand. Tapi weight-nya open source. Artinya…"
+- "Harga langganan AI: $20/bulan. Biaya task yang sama via API: $0.31."
+- "Belum rilis aja teaser 3 kata dari Alibaba udah jadi meme. Komunitas beneran nunggu Qwen3.8."
+
+DATA REFERENSI (provider yang BENAR-BENAR ada, tidak boleh dikarang):
 ${snapshot}
 
-TUGAS — tulis 1 posting Threads dalam Bahasa Indonesia santai (gaul tapi sopan, pakai "kamu", emoji maksimal 3):
-- Gaya: ${style}
-- Panjang MAKSIMAL 480 karakter total (Threads limit 500, wajib)
-- Wajib menyebut minimal 2 provider dari data di atas dengan nama persis
-- Wajib diakhiri link ini persis di baris sendiri: ${SITE}
-- Wajib mengandung 1 kalimat ajakan komen (pertanyaan) sebagai penutup
-- DILARANG: klaim palsu/angka karangan, hashtag, markdown (**, ##, kode blok), bahasa campuran
-${prev ? '\nPosting kemarin (JANGAN mirip/ulang angle ini):\n' + prev + '\n' : ''}
-Balas HANYA dengan teks posting siap terbit, tanpa pembuka/penjelasan.`;
+TUGAS:
+- Tulis 1 posting Threads MAKSIMAL 480 karakter total
+- Bahasa Indonesia santai (pakai "kamu", campur istilah teknis Inggris kalau natural)
+- Hook di baris pertama yang bikin berhenti scroll
+- Isi: fakta spesifik dari angle (pakai angka) + cara gratisnya (langkah/tutorial singkat)
+- Akhiri dengan link ini tepat di baris sendiri: ${SITE}
+- Akhiri dengan 1 kalimat CTA komen yang spesifik (bukan "komen ya") — misalnya "Kamu tim yang mana?"
+${prev ? '\nPosting kemarin (jangan repeat angle/gaya ini):\n' + prev + '\n' : ''}
+Balas HANYA teks posting siap terbit, tanpa pembuka/penjelasan/format apa pun sebelum/after teks.`;
 }
 
 async function generateWithGemini(d, dayOfYear) {

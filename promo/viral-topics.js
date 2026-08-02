@@ -3,183 +3,182 @@
 // Tiap topik = konten yang terbukti laris di platform Threads/X.
 // Pola hook: curiosity gap | kontroversi | FOMO | "gratis tapi..." paradox
 // Kamu bisa EDIT/TAMBAH topik di sini — sumber: stochastic + X + Reddit.
+// Catatan: teks di sini ikut dikirim ke Gemini sebagai BAHAN angle,
+// jadi semua harus bahasa Indonesia bersih (tanpa bahasa campuran).
 // ═════════════════════════════════════════════════════════════════
 
 const VIRAL_TOPICS = [
   // ── 1. Kimi K3 — sold out tapi gratis (paradox) ─────────────────
   {
     id: 'kimi-k3-sold-out',
-    topic: 'Kimi K3: open weights 2.8T, servernya sampai "sold out" karena demand',
+    topic: 'Kimi K3: open weights 2.8T, servernya sampai "sold out" karena demand membludak',
     hook: (cur) => pickHook([
-      `Kimi K3 rilis weights 5 hari lalu → server Moonshot "sold out" 🥵\n\nTapi tahu gak? Ada 2 cara pakai GRATIS-nya walau web resminya penuh.`,
+      `Kimi K3 rilis weights 5 hari lalu → server Moonshot "sold out" 🥵\n\nTapi tahu nggak? Ada 2 cara pakai GRATIS-nya walau web resminya penuh.`,
       `Moonshot AI sampai pause langganan baru karena Kimi K3 too hot 🔥\n\nTapi weight-nya open source. Itu artinya…`,
-      `Model AI paling viral minggu ini = Kimi K3, 2.8T open weights.\nKenapa bikin down? Ini alasan utamanya…`,
+      `Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down servernya sendiri? Alasannya…`,
     ]),
     facts: [
-      '• Rilis weights → 837k downloads di Hugging Face dalam seminggu',
-      '• Biaya inference: 2-3x lebih murah daripada Claude Opus 5 di task yang sama',
-      '• GGUF sudah ada di Unsloth — bisa di-run lokal',
+      '• Rilis weights → 837k download di Hugging Face dalam seminggu',
+      '• Biaya inference: 2–3x lebih murah dari Claude Opus 5 di task yang sama',
+      '• Versi GGUF sudah ada di Unsloth — bisa jalan lokal',
     ],
     freePath: [
-      '• arena.ai → gratis tanpa limit (just chat)',
-      '• Unsloth GGUF → kalau punya GPU 16GB+, tes lokal hundred ribuan token',
-      '• API-nya PAID tapi bisa dicoba via provider router gratis (GitHub Models / OpenRouter trial)',
+      '• arena.ai → chat gratis tanpa limit',
+      '• Unsloth GGUF → jalan lokal kalau punya GPU 16GB+',
+      '• API resminya berbayar, tapi bisa dicoba lewat router gratis (GitHub Models / OpenRouter trial)',
     ],
-    ctaQ: 'Kamu lebih pengen yang mana: web resmi-nya kalau udah re-stabil, atau langsung run lokal 16GB?',
-    killerHook: `Demand Kimi K3 > supply server sendiri. Moonshot AI nggak siap. Dan ini salah satu momen jail dalam sejarah open-weight China yang mengangkat model yang membalap kompetitor`,
+    ctaQ: 'Kamu nunggu server resminya stabil, atau langsung jalanin lokal aja? Komen 👇',
     category: 'trending-open-weights',
   },
 
-  // ── 2. Claude Opus 5 — new release + benchmaxxing controversy ───
+  // ── 2. Claude Opus 5 — rilis baru + kontroversi benchmark ─────
   {
     id: 'claude-opus5-controversy',
     topic: 'Claude Opus 5: rilis 8 hari lalu, skor ARC-AGI 30.2% tapi dituduh "benchmaxxed"',
     hook: (cur) => pickHook([
-      `Claude Opus 5 rilis akhir bulan lalu → sekalian 1800% drama:\n\nSkor benchmark dirilis berlebihan? Mari kita review…`,
-      `30.2% di ARC-AGI 3 tapi rekan-rekan r/singularity bilang "itu benchmaxxed" ⚡\n\nTapi demo-nya bikin Pokémon 3D dalam 12 jam. Controversy atau fakta?`,
-      `Satu model rilis seminggu langsung bikin 2.000+ upvotes debat di r/singularity ragamnya: implement = coding yang gila, benchmark = silver-bullet lab`,
+      `Claude Opus 5 baru rilis langsung kena drama: skor benchmark dipoles?\n\nTapi demo codingnya bikin Pokémon 3D dalam 12 jam. Jadi… controversy atau fakta?`,
+      `30.2% di ARC-AGI, tapi r/singularity ramai bilang "itu benchmaxxed" ⚡\n\nPadahal demo nyatanya jauh lebih gila dari angkanya.`,
+      `Satu model rilis seminggu, langsung 2.000+ upvote debat di reddit.\nKlaimnya: coding terkuat. Bantahannya: benchmarknya "diet".`,
     ]),
     facts: [
       '• Demo coding: Pokémon Pallet Town 3D full dalam 12 jam multi-agent',
-      '• Demo 3D assets via Blender MCP dalam satu world',
-      '• Komentar dari biaya: Opus 5 $1.40 vs Kimi K3 $0.55 vs GPT 5.6 $0.31 (benchmark sama)',
+      '• Demo generate asset 3D via Blender MCP dalam satu world',
+      '• Harga per task benchmark: Opus 5 $1.40 vs Kimi K3 $0.55 vs GPT 5.6 $0.31',
     ],
     freePath: [
-      '• Claude Code — bisa di-routing via providers tertentu (AgentRouter) buat free trial',
-      '• weight tidak open; cuma API. Gratis-nya cuma levy channel + AgentRouter kredit',
+      '• Tidak open weight — cuma via API resmi (berbayar)',
+      '• Alternatif gratis: bisa dicoba lewat router yang ngasih kredit trial (cek database tokengratis)',
+      '• Untuk coding gratis total: Cline/Qwen lokal tetap solusi tanpa biaya',
     ],
-    ctaQ: 'Buatmu benchmark itu jujur kalau hanya dirilis demo wow? Komentar dibawah ya…',
-    killerHook: 'Makin viral karena kontras: demo coding no-BS tetapi benchmark dituduh dighetto-fit. This is genius PR or scale failure?',
+    ctaQ: 'Menurutmu benchmark itu valid kalau demonya yang "wow"? Komen 👇',
     category: 'tech-drama',
   },
 
   // ── 3. Qwen3.8 yang belum rilis tapi sudah jadi meme ───────────
   {
     id: 'qwen38-anticipation',
-    topic: 'Qwen3.8: belum rilis tapi sudah jadi meme terbesar AI minggu ini',
+    topic: 'Qwen3.8: belum rilis, tapi teaser 3 kata dari Alibaba jadi meme terbesar AI minggu ini',
     hook: (cur) => pickHook([
-      `"Prepare your (v)ram" — ini cuma teaser 3 kata dari Alibaba, tapi jadi meme terbesar AI minggu ini (5.000+)`,
-      `Qwen belum rilis mobile mereka months, tapi X & Reddit sudah on-fire ditunggu.` + '<br>',
-      `Model-word: Qwen3.8. Rilisnya: masih teaser. Reaksinya: mem introduced world-wide ~ you know you're famous when fans inventurkan future-ready demand`,
+      `"Prepare your (v)ram" — cuma 3 kata teaser dari Alibaba.\n\nTapi jadi meme AI terbesar minggu ini (5.000+ share). Komunitas beneran nunggu.`,
+      `Qwen belum rilis model barunya.\n\nTapi X & Reddit sudah riuh. Kenapa seserius itu? Kalau kamu tahu sejarah Qwen, kamu ngerti.`,
+      `Yang ditunggu: belum tentu modelnya.\nYang jelas: komunitas minta versi 27B/35B yang bisa jalan di RAM laptop biasa.`,
     ]),
     facts: [
-      '• Komunitas banharge sekarang tidak mau 2T — minta versi 27B/35B/122B/397B yang bisa di-run lokal',
-      '• Saat ini: Qwen3.6 27B masih raja coding lokal (85.76 t/s decode)',
-      '• Hubungan ekonomi: GPU 4x RTX 5060 Ti = sekitar $0.67/hari biaya listrik saja',
+      '• Komunitas tidak minta model 2T — minta versi 27B/35B/122B yang bisa di-run lokal',
+      '• Rilis sebelumnya (Qwen3.6 27B) masih jadi raja coding lokal: 85.76 token/decodet',
+      '• Hitung-hitungan komunitas: 4x RTX 5060 Ti ≈ $0.67/hari biaya listrik saja',
     ],
     freePath: [
-      '• Qwen3.6 27B open weights → jalankan lokal gratis (Intel Ollama atau LM Studio)',
-      '• Qwen Chat web gratis (mobile + desktop, fitur Tentgle)',
+      '• Qwen3.6 27B open weights → jalankan lokal gratis via Ollama / LM Studio',
+      '• Qwen Chat web & aplikasi gratis (mobile + desktop)',
+      '• Provider gratis lain di tokengratis yang sekelas: GLM, Kimi, DeepSeek',
     ],
-    ctaQ: 'Agar ada opsi 27B/35B karena RAM keuangan… atau boleh kalau sürekli cloud aja? Komentar dibawah.',
-    killerHook: 'Ketika mayoritas orang belum bisa pakai model paling dua tahun lalu, komunitas minta proyecto kompatible rekan-rekan yang bisa jalan di PC lokal dulu',
+    ctaQ: 'Kamu tim "tunggu versi lokal" atau tim "pakai yang cloud aja"? Komen 👇',
     category: 'anticipation',
   },
 
-  // ── 4. Google lenyap dari top-15 benchmarks (kaget + angka) ────
+  // ── 4. Google lenyap dari top-15 benchmarks ───────────────────
   {
     id: 'google-out-of-top15',
-    topic: 'Google "hilang total" dari top-15 benchmark AI sehing Januari 2026 — Claude, Kimi, Qwen, GLM membanjiri',
+    topic: 'Top-15 benchmark AI Januari 2026 didominasi model China (Kimi, Qwen, GLM, DeepSeek) — Google absen dari list',
     hook: (cur) => pickHook([
-      `Model-China dominasi top-15. Google keluar total dari list sejak Gemini November 2025.\n\nDunia hireg AI lagi nggak adil gini? Atau justru bagus?`,
-      `Google di AI sekarang ibarat tim sepakbola yang untuk beberapa match lalu tidak update rating — bukan diturunkan, memang tidak ada langkah.`,
-      `Dari 2026 top-ranked NON-AI-AS: Qwen, Kimi, GLM, DeepSeek. Google satu-satunya raksasa AS yang keluar.`,
+      `Top-15 AI benchmark bulan ini: Kimi, Qwen, GLM, DeepSeek, MiniMax…\n\nSemua China. Google? Hilang dari list sejak Gemini November lalu.`,
+      `Google di AI sekarang kayak tim sepakbola yang absen rangking bukan karena turun — memang tidak ada update game-nya.`,
+      `Dari top-15 frontier bulan ini, yang non-China tinggal sedikit.\nYang rame: mayoritas open weights, artinya bisa kamu pakai gratis.`,
     ]),
     facts: [
-      '• GLM-5.2 (Sem IQ): 2.05M downloads — membanjiri leaderboard',
+      '• GLM-5.2: 2.05 juta download — membanjiri leaderboard komunitas',
       '• DeepSeek-V4-Flash: lebih cepat dari Claude Sonnet & Opus untuk coding',
-      '• Gemini 3 Pro November 2025 = frontier terakhir Google',
+      '• Gemini 3 Pro (Nov 2025) = update frontier terakhir dari Google',
     ],
     freePath: [
-      '• GLM-5.2 open weight (bisa dijalankan lokal, KD2 checkpoint ada di HF)',
-      '• Kimi via arena.chat gratis',
+      '• GLM-5.2 open weight → jalan lokal gratis',
+      '• Kimi via arena chat gratis',
       '• Qwen Chat (web/app) gratis',
+      '• DeepSeek Chat gratis di web & app',
     ],
-    ctaQ: 'Ini advantage sungguhan OPEN WEIGHTS China — kebetulan-atau-tidak?',
-    killerHook: 'Owning maxang. Filter viral top-15 model-frontier sekarang: semua China. Google, OpenAI, Anthropic ada dalam pembayaran vs open weights cloud.',
+    ctaQ: 'Menurutmu ini keunggulan strategi open weights China, atau Google/OpenAI lagi nyiapin kejutan? Komen 👇',
     category: 'market-drama-free',
   },
 
-  // ── 5. Angka uang yang membingungkan: seberapa mahal token AI ───
+  // ── 5. Berapa sih biaya token AI yang sebenarnya? ─────────────
   {
     id: 'ai-cost-per-token-shock',
-    topic: 'Seberapa banyak biaya AI tiap任务的同等: Opus 5 $1.40, Kimi K3 $0.55, GPT 5.6 $0.31 — murah tapi tetap untuk dibandingkan',
+    topic: 'Biaya asli panggil API AI ternyata murah: K3 $0.55/task vs Opus $1.40/task vs GPT 5.6 $0.31/task — beda dengan harga langganan bulanan',
     hook: (cur) => pickHook([
-      `Sebenarnya seberapa mahal AI cukup digunakan untuk belajar coding? Ini breakdown biayanya shock`,
-      `The truth mereka tidak mau kamu tahu: 1 input—makan cuaca pada cocok naik server cloud dibanding yang ada di antibes重新 di lokal, kan?`,
-      `Ridículas/manis: bagian kursus AI online "301.000/Token" yang bénéfic à consommateur versus modell yang自我调节 di angka 0.003$`,
+      `Harga langganan AI: $20/bulan.\nBiaya asli task yang sama via API: $0.31.\n\nYang bikin kaget bukan angkanya — yang bikin kaget banyak yang belum tahu.`,
+      `Rata-rata orang mikir "AI = mahal langganan".\nPadahal per-task via API: Opus 5 $1.40, Kimi K3 $0.55, GPT 5.6 $0.31.`,
+      `Satu rahasia yang jarang diomongin kursus AI online:\n\nTask yang sama, beda harga 4–5x cuma lewat bedanya provider.`,
     ]),
     facts: [
-      '• Benchmark: Kimi K3 ($0.55) menang throughput lag lebih cepat daripada Opus 5 ($1.40)',
-      '• Even versus time-training scheduled ready: 0.3 penuh hourly sesuai Microsoft Azure',
-      '• Ollama/Qwen lokal = pure gratis; model bisa dolphin-weekend run pelajar',
+      '• Benchmark yang sama: Kimi K3 ($0.55) kadang lebih cepat daripada Opus 5 ($1.40)',
+      '• Groq & Gemini free tier ngasih limit gratis yang cukup buat eksperimen tiap hari',
+      '• Ollama lokal = benar-benar Rp0 (listrik doang)',
     ],
     freePath: [
-      '• Ollama: run model lokal gratis 24/7, zero API',
-      '• Providers yang sudah di dalam kubus的说: Groq/Gemini gratis limit*pastinya datang for iterasi',
-      '• Belajar ChatGPT at Tiger code editor line beberapa open source gratis',
+      '• Ollama: jalan model lokal 24/7 gratis, tanpa API',
+      '• Groq: free tier pakai cepat untuk eksperimen',
+      '• Google AI Studio: key Gemini gratis lewat satu klik',
+      '• Lihat daftar lengkap 110+ provider gratis di tokengratis',
     ],
-    ctaQ: 'Berapa banyak limit gratis yang kamu avail从 luar yang kamu在 tunggu? Comment yesterday!',
-    killerHook: 'Satu claim biasa：AI harus bayar. Kevin data ini menunjukkan tidak! Free tier reguler, perencanaan for curiosity, digunakan umum出货 businessman savvy',
+    ctaQ: 'Kamu lebih sering pakai langganan atau free tier? Komen 👇',
     category: 'cost-awareness-free',
   },
 
-  // ── 6. Coding Agent: FOMO tapi bisa run lokal ─────────────────
+  // ── 6. AI coding assistant paling diincar — alternatif gratisnya ──
   {
     id: 'coding-agent-local-fomo',
-    topic: 'Claude Code / Cursor / ZCode — yang viral tapi bisa diganti lokal (Claude Router / Ollama / One API)',
+    topic: 'AI coding assistant (Claude Code, Cursor, ZCode dll.) yang lagi viral — dan alternatif gratisnya yang setara',
     hook: (cur) => pickHook([
-      `Claude Code = tool coding paling diincar ASAN tahun ini.\nTapi tahu gak: 70% fitur sama bisa GRATIS lewat alternatif lokal?`,
-      `ToolCoding Yang Paling Diminati 2026 (Free!) This is not hype, this voice actually comes from developers in gratitude thread`,
-      `User $agency/member, coffee:VISUAL, says Vian you can't find local free AI faster than Asian offload sparking Claude Install Figma To maintain 'not today'`,
+      `Tool coding dengan AI paling dicari 2026: mahal.\n\nTapi 70% fiturnya bisa kamu ganti gratis lewat routing API lokal. Ini daftarnya.`,
+      `Dengar-dengar "harus langganan buat AI coding"? Mitos.\n\nAda 3 alternatif gratis yang di komunitas developer sudah bukan rahasia.`,
+      `Coding assistant premium itu memang bagus.\nTapi kalau kamu mahasiswa/freelancer baru, ini cara dapat 90%-nya tanpa bayar:`,
     ]),
     facts: [
-      '• Claude Code = north star. Tapi similar jalan free* via Agents&Others',
-      '• Comparison tangible: Trae (free = IDE), Cline (VS Code extension), OpenCode (CLI)',
+      '• Trae = IDE AI gratis; Cline = extension VS Code; OpenCode = CLI gratis',
+      '• ZCode ngasih routing API yang fleksibel ke banyak provider',
+      '• Claude Code bisa dirouting via provider lain buat kredit trial',
     ],
     freePath: [
-      '• Cline + Ollama lokal: zero cost, coding agent di VS Code',
-      '• 9Router: colokin semua API free satu promocode bundled',
-      '• ZCode: yang no Kudokoe regurgitate claude完全相同 (free API routing)',
+      '• Cline + Ollama di VS Code = coding agent lokal Rp0',
+      '• Trae IDE = gratis, no kartu',
+      '• Kilo Code untuk VS Code/JetBrains: gratis',
+      '• Daftar lengkap di tokengratis.web.id',
     ],
-    ctaQ: 'Long running working nightly siang. Which of these 3 are you *using to code today*?',
-    killerHook: 'Dari Asia, founder Devs beralih ke free lokal selama suspen问题. And weighed tradition follows VOC emergence — not propriettamental doubt, only inalt天然 ignoring core domain_cost',
+    ctaQ: 'Tool mana yang kamu pakai buat coding sekarang? Komen 👇',
     category: 'dev-tools-fomo',
   },
 
-  // ── 7. Flux 3 Kundus: image+video+audio dalam satu model ──────
+  // ── 7. Flux 3 omnimodal: image + video + audio satu model ──────
   {
     id: 'flux3-omni-creative',
-    topic: 'Flux 3 (Black Forest Labs): satu model untuk image+video+audio+action prediction — "Omnimodal" just declared',
+    topic: 'Flux 3 (Black Forest Labs): satu model untuk image + video + audio + action prediction — era "omnimodal" dimulai',
     hook: (cur) => pickHook([
-      `Satu model 3 tugas: image, video, audio, action prediction.\nKetemu "omnimodal". Bye-bye pipeline that was 3 steps!`,
-      `AI Generative mandate: no longer 1-step. Flux 3 punch instantaneous brands into the bl Confirm-owned&model发现 MATCH omni`,
-      `This publishing is new: Flux 3 → 4 channels outline what self-contained omni wrangler.`,
+      `Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.\n\nNamanya Flux 3. Era pipeline 3-langkah tinggal kenangan.`,
+      `Generasi AI baru ini tidak menulis teks aja — dia jadi satu model untuk semua media sekaligus. Dan yang keren: ada jalannya gratis.`,
+      `Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya. Ini yang disebut "omnimodal".`,
     ]),
     facts: [
-      '• AlayaWorld (open source video world) streaming 720p/24FPS',
-      '• Seedance 2 depth-video-to-video contoh arah baru kreatif',
-      '• Fitur 4 v2 emergency error robe Analyst benthology & furnace+Bartitsu CE spells võimallik',
+      '• Proyek video world open source (AlayaWorld) sudah streaming 720p/24FPS',
+      '• Mode depth-video-to-video = kontrol kamera sinematik tanpa manual staging',
+      '• Checkpoint lokal sudah di-share komunitas di Hugging Face',
     ],
     freePath: [
-      '• Flux di Hugging Face Spaces gratis',
-      '• Coba style Ghibli untuk gratis dari 2.067 upvote-among-users',
-      '• Unsloth checkpoint Open inolvidable for lokal imágenes',
+      '• Coba langsung di Hugging Face Spaces — gratis',
+      '• Style Ghibli tren: ada versi demo gratisnya',
+      '• Checkpoint lokal via Unsloth untuk kreator yang pegang GPU sendiri',
     ],
-    ctaQ: 'Manfaatnya kalimat utama kawan-kawan: 🖼️ 🎥 🎵 punctuation. Mana yang paling intriguing?',
-    killerHook: 'One step afforded earlier disparities. Flux 3 gets medialess ofmathbb-needed advancements, but make a distinction addressingथpura biaya worthy humbling',
+    ctaQ: 'Paling kepikiran mau bikin apa: 🖼️ gambar, 🎥 video, atau 🎵 musik? Komen 👇',
     category: 'creative-new-model',
   },
 ];
 
-// Ambil 1 yang paling "viral-friendly" berdasarkan kriteria
+// Ambil 1 topik (untuk referensi manual/CLI)
 function getViralTopic() {
-  // rotasi bisa via hari → presising berikutnya berdasarkan selisih waktu
   return VIRAL_TOPICS[Math.floor(Math.random() * VIRAL_TOPICS.length)];
 }
 
 function pickHook(hooks) {
-  const favourite = hooks.reduce((a, b) => a + b, '');
   return hooks[Math.floor(Math.random() * hooks.length)];
 }
 
