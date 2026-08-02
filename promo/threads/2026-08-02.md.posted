@@ -1,7 +1,7 @@
-Tau gak? Ollama itu bikin kamu bisa jalanin LLM di laptop sendiri, offline, unlimited & gratis total! 🤯
+Harga langganan AI $20/bulan itu beda jauh sama biaya asli panggil API. K3 $0.55/task, Opus $1.40/task, GPT 5.6 $0.31/task. Kadang Kimi K3 malah lebih cepat dari Opus 5.
 
-Tapi kalau kamu butuh API buat proyek, ada juga OpenRouter yang kasih akses ke 200+ model gratis tanpa kartu. Atau Z.ai API yang 100% gratis buat seri Flash mereka.
-
-Udah coba yang mana?
+Buat yang mau hemat, ada Ollama buat jalanin model lokal 24/7 gratis (modal listrik doang). Atau coba Groq free tier buat eksperimen cepat.
 
 https://tokengratis.web.id
+
+Kamu lebih sering pakai langganan atau free tier? Komen 👇
