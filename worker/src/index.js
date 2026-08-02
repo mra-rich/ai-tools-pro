@@ -20,7 +20,7 @@
 // - Domain produksi tokengratis.web.id (app pembeli)
 // - GitHub Pages (fallback saat transisi domain)
 // - "null" (admin.html dibuka langsung dari file:// di laptop penjual)
-const CORS_ORIGINS = ['https://tokengratis.web.id', 'https://mra-rich.github.io', 'null'];
+const CORS_ORIGINS = ['https://tokengratis.web.id', 'https://mra-rich.github.io', 'null', 'http://localhost:8901', 'http://127.0.0.1:8901'];
 
 function corsHeaders(request) {
   const origin = request.headers.get('Origin') || '';
