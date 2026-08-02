@@ -21,11 +21,22 @@ const CFG_PATH = path.join(__dirname, 'threads-api.config.json');
 const THREADS_DIR = path.join(__dirname, 'threads');
 const GRAPH = 'https://graph.threads.net/v1.0';
 
-// Config dari env THREADS_API_CONFIG (JSON string — dipakai di GitHub Actions
-// via secret) ATAU dari file promo/threads-api.config.json (mode lokal).
+// Config dari env THREADS_API_CONFIG (dipakai di GitHub Actions via secret)
+// ATAU dari file promo/threads-api.config.json (mode lokal).
+// Menerima: JSON utuh {"app_id":…,"access_token":"THAA…",…} ATAU token polos
+// "THAA…" langsung (user_id diambil otomatis dari GET /me).
 function cfg() {
-  if (process.env.THREADS_API_CONFIG) {
-    return JSON.parse(process.env.THREADS_API_CONFIG);
+  const env = process.env.THREADS_API_CONFIG;
+  if (env) {
+    const raw = env.trim();
+    if (raw.startsWith('{')) {
+      try { return JSON.parse(raw); } catch (_) {
+        throw new Error('Secret THREADS_API_CONFIG bukan JSON valid (jangan paste token di dalam tanda kutip).');
+      }
+    }
+    // Token polos — cukup untuk posting; user_id diringkas otomatis
+    if (/^THAA[\w-]+$/.test(raw)) return { access_token: raw, user_id: '' };
+    throw new Error('Secret THREADS_API_CONFIG tidak dikenali. Isi dengan JSON config utuh atau token THAA… polos.');
   }
   if (!fs.existsSync(CFG_PATH)) {
     throw new Error('Buat dulu promo/threads-api.config.json — lihat contoh di README');

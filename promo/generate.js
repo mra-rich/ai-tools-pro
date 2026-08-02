@@ -32,6 +32,7 @@ async function readContent() {
   const res = await fetch(WORKER + '/content/read', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-Admin-Token': getAdminToken() },
+    signal: AbortSignal.timeout(60000), // batas 60 detik — jangan ngaco menggantung di CI
   });
   const text = await res.text();
   if (res.status !== 200) throw new Error('read content gagal: HTTP ' + res.status + ' ' + text.slice(0, 120));
@@ -113,17 +114,24 @@ async function generateWithGemini(d, dayOfYear) {
   const key = process.env.GEMINI_API_KEY;
   if (!key) { console.log('ℹ️  GEMINI_API_KEY kosong — pakai template.'); return null; }
 
-  const res = await fetch(
-    'https://generativelanguage.googleapis.com/v1beta/models/' + GEMINI_MODEL + ':generateContent?key=' + key,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: buildGeminiPrompt(d, dayOfYear) }] }],
-        generationConfig: { temperature: 0.9 },
-      }),
-    }
-  );
+  let res;
+  try {
+    res = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + GEMINI_MODEL + ':generateContent?key=' + key,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: buildGeminiPrompt(d, dayOfYear) }] }],
+          generationConfig: { temperature: 0.9 },
+        }),
+        signal: AbortSignal.timeout(120000), // batas 2 menit — lewat itu fallback template
+      }
+    );
+  } catch (e) {
+    console.log('⚠️  Gemini error/timeout (' + e.message + ') — fallback template.');
+    return null;
+  }
   const body = await res.json().catch(() => ({}));
   if (res.status !== 200) {
     console.log('⚠️  Gemini gagal (HTTP ' + res.status + '): ' + JSON.stringify(body).slice(0, 200));
