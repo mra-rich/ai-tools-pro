@@ -96,8 +96,10 @@ function buildThread(d, dayOfYear) {
   }
 
   const line1 = '🔑 AI Gratis — legal & langsung pakai.\n' + body;
-  const cta = `\n\n📦 Database 110+ provider + tutorial: ${SITE}`;
-  return cap(line1 + cta, 490);
+  const cta = `\n\n📦 Database 110+ provider + tutorial di:\n${SITE}\n\n💬 Follow untuk tips AI gratis tiap hari!`;
+  // Threads API support reply-chain → output boleh panjang, dipotong per-post
+  // walau sementara ini, potong total 800 char supaya thread maksimal 2-3 post saja
+  return cap(line1 + cta, 800);
 }
 
 // ── Format penyimpanan ─────────────────────────────────────────

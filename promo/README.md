@@ -15,25 +15,23 @@ bukan teks template statis.
 
 ## Setup (sekali saja)
 
-1. **Install Playwright browser** (unduh Chromium):
+### Mode API (DEFAULT — recommended)
+1. Buat Meta App "Threads" → ambil App ID + App Secret → arahkan OAuth → dapat
+   **long-lived token** (60 hari).
+2. Buat `promo/threads-api.config.json` (gitignored — jangan commit):
+   ```json
+   {
+     "app_id": "…", "app_secret": "…",
+     "access_token": "…", "user_id": ""
+   }
    ```
-   cd promo
-   npm install playwright-core
-   npx playwright-core install chromium
-   ```
-2. **Login** (buka browser, login manual Threads, tutup setelah login):
-   ```
-   node promo/post.js --login
-   ```
-3. **Tes aman** (cek draft + sesi, TANPA posting):
-   ```
-   node promo/post.js --dry-run
-   ```
-4. **Daftarkan jadwal** — klik-kanan `setup-scheduler.bat` → Run as administrator
-5. **Posting pertama manual** (pastikan lancar sebelum diserahkan ke jadwal):
-   ```
-   node promo/post.js
-   ```
+   user_id bisa dikosongkan — post-api.js akan autocurate dari `GET /me`.
+3. `node promo/post-api.js --dry-run` → cek draft + token valid
+4. `node promo/post-api.js` → posting pertama manual
+5. `setup-scheduler.bat` (admin) → jadwal harian 09:00 otomatis
+
+### Mode Browser (fallback kalau API bermasalah)
+`post.js --login` sekali lalu pakai `post.js` (headless-mode tersedia).
 
 Setelah itu berjalan otomatis tiap **09:00** (Task Scheduler → AI Tools Pro\PromoThreads Harian).
 Hasil tiap siklus terekam di `promo/post.log`.

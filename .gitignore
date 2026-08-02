@@ -10,6 +10,7 @@ worker/.wrangler/
 # promo — sesi login & artifacts lokal (JANGAN pernah di-commit)
 promo/node_modules/
 promo/profile.json
+promo/threads-api.config.json
 promo/threads/
 promo/preview.png
 promo/post.log
