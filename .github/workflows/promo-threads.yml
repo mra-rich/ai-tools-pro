@@ -12,7 +12,7 @@ name: Promo Threads Harian
 
 on:
   schedule:
-    - cron: '28 16 * * *' # 23:28 WIB tiap hari (23:28 WIB = 16:28 UTC)
+    - cron: '30 16 * * *' # 23:30 WIB tiap hari (23:30 WIB = 16:30 UTC)
   workflow_dispatch:    # tombol "Run workflow" manual di tab Actions
 
 permissions:
