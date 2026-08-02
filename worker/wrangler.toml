@@ -2,6 +2,11 @@ name = "ai-tools-pro"
 main = "src/index.js"
 compatibility_date = "2026-07-31"
 
+# VAPID public key untuk Web Push — nilai ini MEMANG publik, jadi aman di sini
+# (harus sama dengan APP_CONFIG.VAPID_PUBLIC di js/shared/config.js)
+[vars]
+VAPID_PUBLIC = "BEHvDoefydU_ShIV1AbP1WkM4Fg3TOpsR1RrW9w6akRi5zOjTpAvfxAnqERBj4Jdjzxztu9r8kacm9FdKqDIiqI"
+
 # Isi `id` dengan output dari: npx wrangler kv namespace create ORDERS
 [[kv_namespaces]]
 binding = "ORDERS"

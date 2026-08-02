@@ -16,6 +16,9 @@ const APP_CONFIG = {
   // Link grup WhatsApp support pembeli (banner di landing & dashboard)
   WA_GROUP_URL: 'https://chat.whatsapp.com/LvHUenBEmmN32MxVT4wmLP',
 
+  // Kunci PUBLIK VAPID untuk Web Push (aman di client — ini memang publik)
+  VAPID_PUBLIC: 'BEHvDoefydU_ShIV1AbP1WkM4Fg3TOpsR1RrW9w6akRi5zOjTpAvfxAnqERBj4Jdjzxztu9r8kacm9FdKqDIiqI',
+
   // Pesan kontak untuk pembeli yang ganti device / error aktivasi
   SELLER_CONTACT: 'Kirim Order ID kamu ke penjual untuk minta reset device.',
 

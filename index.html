@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0e0c" />
+  <meta name="description" content="Database 110+ provider AI gratis: API key, chat, coding tool & app builder — tutorial lengkap, ranking model, dan tool cek key." />
   <title>AI Tools Pro</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="css/common.css?v=7" />
   <link rel="stylesheet" href="css/index.css?v=8" />
 </head>
@@ -178,10 +181,19 @@
   </div><!-- /tab-checker -->
 </div><!-- /screen-dash -->
 
+<!-- BANNER INSTALL PWA — pill melayang di atas bottom area, hilang kalau sudah di-install/di-skip -->
+<div class="install-pill" id="install-pill" style="display:none">
+  <span class="inst-ico">📲</span>
+  <span class="inst-txt"><b>Install TokenGratis</b><small>1 ketuk dari home screen</small></span>
+  <button class="inst-btn" onclick="doInstall()">Install</button>
+  <button class="inst-x" onclick="dismissInstall()" aria-label="Tutup">✕</button>
+</div>
+
 <script src="js/shared/config.js?v=5"></script>
 <script src="js/shared/crypto.js?v=3"></script>
 <script src="js/shared/ui.js?v=3"></script>
-<script src="js/shared/api.js?v=3"></script>
-<script src="js/index.js?v=9"></script>
+<script src="js/shared/api.js?v=4"></script>
+<script src="js/shared/push.js?v=1"></script>
+<script src="js/index.js?v=10"></script>
 </body>
 </html>

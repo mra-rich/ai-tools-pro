@@ -2,11 +2,56 @@
 // index.js — logika app pembeli (AI Tools Pro)
 // Aktivasi divalidasi oleh Cloudflare Worker (lihat worker/src/index.js).
 // Dependensi global: APP_CONFIG, sha256Hex, getDeviceFingerprint (crypto.js),
-// escapeHtml, setMsg, flashButton (ui.js), activateOrder (api.js).
+// escapeHtml, setMsg, flashButton (ui.js), activateOrder (api.js),
+// initPush/unsubscribePush (push.js).
 // ═════════════════════════════════════════════════════════════════
+
+// ── PWA: service worker + install prompt ─────────────────────────
+let deferredInstallPrompt = null;
+
+function registerSW() {
+  if (!('serviceWorker' in navigator) || !window.isSecureContext) return;
+  navigator.serviceWorker.register('/sw.js').catch((err) =>
+    console.warn('SW register gagal:', err)
+  );
+}
+
+function showInstallPill() {
+  // Sembunyikan kalau sudah standalone (terinstall) atau pernah di-skip
+  if (window.matchMedia('(display-mode: standalone)').matches) return;
+  if (localStorage.getItem('aitp_install') === 'dismissed') return;
+  document.getElementById('install-pill').style.display = 'flex';
+}
+
+// Chrome/Edge Android & desktop memicu event ini saat app layak di-install
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // tahan popup default — kita pakai pill sendiri
+  deferredInstallPrompt = e;
+  showInstallPill();
+});
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('install-pill').style.display = 'none';
+  localStorage.setItem('aitp_install', 'installed');
+});
+
+async function doInstall() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice.catch(() => null);
+  deferredInstallPrompt = null;
+  document.getElementById('install-pill').style.display = 'none';
+  // Kalau user menolak prompt native kecil → tidak ditampilkan lagi sesi ini
+}
+
+function dismissInstall() {
+  document.getElementById('install-pill').style.display = 'none';
+  localStorage.setItem('aitp_install', 'dismissed');
+}
 
 // ── INIT ──────────────────────────────────────────────────────────
 async function init() {
+  registerSW();
   // Isi link & teks dari config terpusat
   document.getElementById('lynk-link').href = APP_CONFIG.LYNK_URL;
   document.getElementById('lynk-link-2').href = APP_CONFIG.LYNK_URL;
@@ -21,6 +66,7 @@ async function init() {
       const fp = await getDeviceFingerprint();
       if (fp === deviceId) {
         showDash(orderId);
+        initPush(orderId, deviceId);
         return;
       }
     } catch {
@@ -52,6 +98,7 @@ async function activate() {
       );
       setMsg(msg, '✅ Berhasil! Memuat dashboard...', 'ok');
       setTimeout(() => showDash(data.orderId), 700);
+      initPush(data.orderId, deviceId);
       requestAnimationFrame(() => setBtnLoading(btn, false));
       return;
     }

@@ -400,6 +400,63 @@ function deleteCkpk() {
   publishPresets(list, `"${nama}" dihapus`);
 }
 
+// ── NOTIFIKASI PUSH ─────────────────────────────────────────
+// Blast notifikasi native ke semua subscriber via Worker /push/notify.
+
+function fillNotifTemplate() {
+  document.getElementById('notif-title').value = '🎉 Update Database AI Gratis!';
+  document.getElementById('notif-body').value = 'Konten baru sudah live — provider & tutorial terbaru menunggumu. Buka app sekarang!';
+  document.getElementById('notif-url').value = '/';
+}
+
+async function loadPushStats() {
+  const el = document.getElementById('notif-count');
+  try {
+    const { status, data } = await apiPost('/push/stats', {}, { 'X-Admin-Token': getToken() });
+    el.textContent = status === 200 && data.ok ? data.subscribers : '?';
+  } catch {
+    el.textContent = '?';
+  }
+}
+
+async function sendNotif() {
+  const title = document.getElementById('notif-title').value.trim();
+  const body = document.getElementById('notif-body').value.trim();
+  const url = document.getElementById('notif-url').value.trim() || '/';
+  const okBox = document.getElementById('res-notif');
+  const errBox = document.getElementById('res-notif-err');
+  okBox.style.display = 'none'; errBox.style.display = 'none';
+
+  if (!title || !body) {
+    errBox.style.display = 'flex';
+    document.getElementById('res-notif-err-msg').textContent = 'Judul dan isi pesan wajib diisi.';
+    return;
+  }
+  if (!confirm(`Kirim notifikasi ke SEMUA subscriber?\n\n"${title}"\n${body}`)) return;
+
+  const btn = document.getElementById('btn-notif');
+  btn.disabled = true;
+  btn.textContent = '⏳ Mengirim...';
+  try {
+    const { status, data } = await apiPost('/push/notify', { title, body, url }, { 'X-Admin-Token': getToken() });
+    if (status === 200 && data.ok) {
+      okBox.style.display = 'flex';
+      document.getElementById('res-notif-meta').textContent =
+        `Terkirim: ${data.sent} · Gagal: ${data.failed} · Hangus (dihapus): ${data.pruned} · Total: ${data.total}`;
+    } else {
+      errBox.style.display = 'flex';
+      document.getElementById('res-notif-err-msg').textContent =
+        (data && data.error) ? 'Error: ' + data.error : 'HTTP ' + status + ' — cek ADMIN_TOKEN & VAPID secret di Worker.';
+    }
+  } catch (e) {
+    errBox.style.display = 'flex';
+    document.getElementById('res-notif-err-msg').textContent = 'Koneksi gagal: ' + e.message;
+  }
+  btn.disabled = false;
+  btn.textContent = '🚀 Kirim ke Semua Subscriber';
+  loadPushStats();
+}
+
 // ── TABS ──────────────────────────────────────────────────────────
 function swTab(name, btn) {
   document.querySelectorAll('.apanel').forEach((p) => p.classList.remove('active'));
@@ -407,6 +464,7 @@ function swTab(name, btn) {
   document.getElementById('panel-' + name).classList.add('active');
   btn.classList.add('active');
   if (name === 'history') renderHistory();
+  if (name === 'notif') loadPushStats();
 }
 
 // Enter = reset binding

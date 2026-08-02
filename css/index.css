@@ -42,7 +42,24 @@
 .lock-footer a:hover { text-decoration:underline; }
 .lock-footer .sep { color:var(--border2); }
 
+/* ── INSTALL PILL PWA ── */
+.install-pill { position:fixed;left:16px;bottom:16px;z-index:400;display:flex;align-items:center;gap:10px;
+  padding:10px 12px 10px 14px;background:rgba(17,21,17,.92);backdrop-filter:blur(14px);
+  border:1px solid var(--border2);border-radius:16px;
+  box-shadow:0 10px 32px rgba(0,0,0,.55),0 0 0 1px rgba(52,211,153,.1);
+  max-width:calc(100vw - 32px);animation:inst-in .3s ease; }
+@keyframes inst-in { from { opacity:0;transform:translateY(12px) } to { opacity:1;transform:none } }
+.inst-ico { font-size:22px; }
+.inst-txt { display:flex;flex-direction:column;line-height:1.25;min-width:0; }
+.inst-txt b { font-size:12.5px;color:var(--text);white-space:nowrap; }
+.inst-txt small { font-size:10.5px;color:var(--text3);white-space:nowrap; }
+.inst-btn { background:var(--grad);border:none;color:#06301f;font-weight:700;font-size:12px;
+  padding:8px 14px;border-radius:10px;cursor:pointer;white-space:nowrap; }
+.inst-x { background:none;border:none;color:var(--text3);font-size:13px;cursor:pointer;padding:4px 6px; }
+.inst-x:hover { color:var(--text); }
+
 /* ── BANNER GRUP WHATSAPP — aksen hijau WA, tetap selaras tema emerald ── */
+
 .wa-banner { display:flex;align-items:center;gap:14px;max-width:560px;margin:22px auto 10px;padding:14px 18px;
   background:linear-gradient(135deg,rgba(37,211,102,.12),rgba(52,211,153,.08));
   border:1px solid rgba(37,211,102,.35);border-radius:14px;text-decoration:none;

@@ -5,3 +5,4 @@ admin-content.json
 worker/node_modules/
 worker/.wrangler/
 .playwright-mcp/
+.zcode/
