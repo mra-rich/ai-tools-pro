@@ -1,0 +1,10 @@
+# robots.txt — tokengratis.web.id
+# Situs ini hanya 1 halaman publik (landing). File internal tetap dilindungi
+# .gitignore (tak ter-deploy), jadi robots ini hanya penanda tambahan.
+
+User-agent: *
+Allow: /
+Disallow: /archive/
+Disallow: /docs/
+
+Sitemap: https://tokengratis.web.id/sitemap.xml
