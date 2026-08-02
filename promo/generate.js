@@ -123,7 +123,7 @@ async function generateWithGemini(d, dayOfYear) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ parts: [{ text: buildGeminiPrompt(d, dayOfYear) }] }],
-          generationConfig: { temperature: 0.9 },
+          generationConfig: { temperature: 0.9, maxOutputTokens: 400, thinkingConfig: { thinkingBudget: 0 } },
         }),
         signal: AbortSignal.timeout(120000), // batas 2 menit — lewat itu fallback template
       }
@@ -142,6 +142,17 @@ async function generateWithGemini(d, dayOfYear) {
 
   // Sanitize: buang markdown yang lolos (**, ##, `, kode blok)
   text = text.replace(/```[\s\S]*?```/g, '').replace(/[*#`]/g, '').trim();
+
+  // Pemotongan pintar: kalau kepanjangan, potong di batas baris terakhir ≤495 char
+  // (bukan langsung fallback — posting masih layak tayang)
+  if (text.length > 500) {
+    const cut = text.lastIndexOf('\n', 495);
+    if (cut > 150) text = text.slice(0, cut).trim();
+  }
+  // Link situs kepotong? Selipkan ulang kalau muat
+  if (!text.includes(SITE) && text.length + SITE.length + 2 <= 500) {
+    text = text + '\n\n' + SITE;
+  }
 
   // Validasi: batas char, link wajib, dan minimal menyebut 1 nama provider asli
   const names = (d.providers || []).map((p) => p.nama);
