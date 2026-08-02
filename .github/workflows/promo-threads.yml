@@ -5,6 +5,8 @@
 # Secrets yang WAJIB diset di Settings → Secrets and variables → Actions:
 #   AITP_ADMIN_TOKEN   : ADMIN_TOKEN dari scret.txt (untuk /content/read)
 #   THREADS_API_CONFIG : seluruh isi promo/threads-api.config.json
+#   GEMINI_API_KEY     : API key Gemini gratis (aistudio.google.com) — opsional
+#                        tapi direkomendasikan (konten ditulis AI segar tiap hari)
 # ═══════════════════════════════════════════════════════════════════════
 name: Promo Threads Harian
 
@@ -29,6 +31,7 @@ jobs:
       - name: Generate konten dari data live Worker
         env:
           AITP_ADMIN_TOKEN: ${{ secrets.AITP_ADMIN_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node promo/generate.js
 
       - name: Post ke Threads via API resmi

@@ -25,6 +25,10 @@ Windows tetap ada sebagai fallback.
    - `AITP_ADMIN_TOKEN` = token ADMIN mu
    - `THREADS_API_CONFIG` = **seluruh isi** `promo/threads-api.config.json`
      (JSON utuh: app_id + app_secret + access_token + user_id)
+   - `GEMINI_API_KEY` = API key Gemini GRATIS dari
+     [aistudio.google.com](https://aistudio.google.com) (klik *Get API key*).
+     **Opsional** — kalau kosong, konten pakai template cadangan. Kalau diisi,
+     konten ditulis AI segar tiap hari dari data database asli.
 2. Push repo → workflow aktif tiap 09:00 WIB, atau klik **Actions →
    Promo Threads Harian → Run workflow** untuk tes manual.
 3. Marker `promo/threads/*.posted` di-commit balik otomatis → anti dobel post.
