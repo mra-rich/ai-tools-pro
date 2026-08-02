@@ -1,0 +1,46 @@
+# ═══════════════════════════════════════════════════════════════════════
+# promo-threads.yml — Posting Threads harian dari cloud (tanpa PC nyala)
+# Jadwal: 02:00 UTC = 09:00 WIB. generate.js → post-api.js → commit state.
+#
+# Secrets yang WAJIB diset di Settings → Secrets and variables → Actions:
+#   AITP_ADMIN_TOKEN   : ADMIN_TOKEN dari scret.txt (untuk /content/read)
+#   THREADS_API_CONFIG : seluruh isi promo/threads-api.config.json
+# ═══════════════════════════════════════════════════════════════════════
+name: Promo Threads Harian
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # 09:00 WIB tiap hari
+  workflow_dispatch:    # tombol "Run workflow" manual di tab Actions
+
+permissions:
+  contents: write # untuk commit kembali marker *.posted
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20' # fetch bawaan Node 18+
+
+      - name: Generate konten dari data live Worker
+        env:
+          AITP_ADMIN_TOKEN: ${{ secrets.AITP_ADMIN_TOKEN }}
+        run: node promo/generate.js
+
+      - name: Post ke Threads via API resmi
+        env:
+          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
+        run: node promo/post-api.js
+
+      - name: Commit state .posted (anti dobel post)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 'promo/threads/*.posted'
+          git commit -m "chore(promo): thread $(date +%F) diposting [skip ci]" \
+            || echo "tidak ada perubahan state"
+          git push

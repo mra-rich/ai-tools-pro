@@ -11,6 +11,9 @@ worker/.wrangler/
 promo/node_modules/
 promo/profile.json
 promo/threads-api.config.json
-promo/threads/
+promo/threads/*
+# …tapi marker *.posted KECUALIKAN — state "sudah diposting" di-commit
+# oleh GitHub Actions supaya tidak ada dobel post antar run CI.
+!promo/threads/*.posted
 promo/preview.png
 promo/post.log

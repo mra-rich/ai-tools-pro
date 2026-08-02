@@ -21,7 +21,12 @@ const CFG_PATH = path.join(__dirname, 'threads-api.config.json');
 const THREADS_DIR = path.join(__dirname, 'threads');
 const GRAPH = 'https://graph.threads.net/v1.0';
 
+// Config dari env THREADS_API_CONFIG (JSON string — dipakai di GitHub Actions
+// via secret) ATAU dari file promo/threads-api.config.json (mode lokal).
 function cfg() {
+  if (process.env.THREADS_API_CONFIG) {
+    return JSON.parse(process.env.THREADS_API_CONFIG);
+  }
   if (!fs.existsSync(CFG_PATH)) {
     throw new Error('Buat dulu promo/threads-api.config.json — lihat contoh di README');
   }
@@ -29,6 +34,12 @@ function cfg() {
 }
 
 function saveCfg(c) {
+  if (process.env.THREADS_API_CONFIG) {
+    // Mode CI: tidak bisa menyimpan kembali ke secret — token hasil refresh
+    // bawa dari lokal (lihat README bagian GitHub Actions).
+    console.log('ℹ️  Mode env (CI) — perubahan config/token tidak disimpan.');
+    return;
+  }
   fs.writeFileSync(CFG_PATH, JSON.stringify(c, null, 2));
 }
 
@@ -143,7 +154,7 @@ async function main() {
   }
   fs.renameSync(
     path.join(THREADS_DIR, draft.file),
-    draft.file + '.posted'
+    path.join(THREADS_DIR, draft.file + '.posted')
   );
   console.log('🎉 Selesai diposting!');
 }

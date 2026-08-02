@@ -9,6 +9,7 @@
 // ═════════════════════════════════════════════════════════════════
 const fs = require('fs');
 const path = require('path');
+const { VIRAL_TOPICS, getViralTopic } = require('./viral-topics.js');
 
 const WORKER = 'https://ai-tools-pro.rodliarif.workers.dev';
 const SITE = 'https://tokengratis.web.id';
@@ -57,49 +58,51 @@ function badgeLabel(b) {
   return m[b] || b;
 }
 
-// ── Bangun thread dari data nyata ──────────────────────────────
-// Strategi anti-bosan: rotasi 7 topik berbeda, item dipilih acak per hari,
-// sehingga 2 hari berturut-turut isinya tidak sama.
-// Catatan Threads: 500 char max per post → output 1 post padat (bukan multi-reply;
-// posting berantai via UI rapuh & rawan trigger spam).
+// ── Bangun thread (versi VIRAL) ────────────────────────────────
+// Strategi: 80% topik viral dari viral-topics.js, 20% klasik dari database
+// (menghindari akun kelihatan "template"). Hook tinggi, selalu CTA pertanyaan.
 function buildThread(d, dayOfYear) {
   const providers = d.providers || [];
-  const byCat = (id) => providers.filter((p) => p.kategori === id);
-  const api = byCat('api'), chat = byCat('chat'), coding = byCat('coding'), builder = byCat('builder');
-  const models = d.topModels || [];
-  const t = d.tutorial || [];
 
-  const topic = [
-    'api-free', 'chat-free', 'coding-free', 'app-builder', 'ranking', 'tutorial', 'fakta'
-  ][((dayOfYear % 7) + 7) % 7];
+  // 4 dari 5 hari pakai topik viral (bukan 100% supaya feed tidak monoton)
+  const useViral = (dayOfYear % 5) < 4;
 
-  // potong baris panjang 1 item, supaya 3-4 item muat dalam 500 char
-  let body = '';
-  if (topic === 'api-free') {
-    body = shuf(api).slice(0, 4).map((p) => `• ${p.nama}${p.badge ? ' (' + badgeLabel(p.badge) + ')' : ''}: ${cap(p.deskripsi || '', 60)}`).join('\n');
-  } else if (topic === 'chat-free') {
-    body = (chat.length ? chat : providers).slice(0, 4).map((p) => `• 💬 ${p.nama}: ${cap(p.deskripsi || '', 70)}`).join('\n');
-  } else if (topic === 'coding-free') {
-    body = (coding.length ? coding : providers).slice(0, 4).map((p) => `• 💻 ${p.nama}: ${cap(p.deskripsi || '', 70)}`).join('\n');
-  } else if (topic === 'app-builder') {
-    body = (builder.length ? builder : providers).slice(0, 4).map((p) => `• 🏗️ ${p.nama}: ${cap(p.deskripsi || '', 70)}`).join('\n');
-  } else if (topic === 'ranking') {
-    body = shuf(models).slice(0, 5).map((m) => `• [${m.tier}] ${m.nama}${m.benchmark ? ' — ' + m.benchmark : ''}`).join('\n');
-  } else if (topic === 'tutorial') {
-    body = shuf(t).slice(0, 3).map((tt) => `• ${tt.judul}: ${cap(tt.desc || '', 60)}`).join('\n');
-  } else {
-    body = [
-      `Ada ${api.length} provider API gratis di database.`,
-      `${models.length} model top diranking S/A/B.`,
-      `${chat.length} situs chat tanpa kartu kredit.`,
-    ].join('\n');
+  if (useViral) {
+    const t = VIRAL_TOPICS[dayOfYear % VIRAL_TOPICS.length];
+    const hook = t.hook();
+    const facts = (t.facts || []).slice(0, 4).join('\n');
+    const freePaths = (t.freePath || []).slice(0, 4).join('\n');
+
+    return `${hook}
+
+${facts}
+
+Cara dapat GRATIS-nya:
+${freePaths}
+
+Database 110+ provider gratis & tutorialnya:
+${SITE}
+
+${t.ctaQ}`;
   }
 
-  const line1 = '🔑 AI Gratis — legal & langsung pakai.\n' + body;
-  const cta = `\n\n📦 Database 110+ provider + tutorial di:\n${SITE}\n\n💬 Follow untuk tips AI gratis tiap hari!`;
-  // Threads API support reply-chain → output boleh panjang, dipotong per-post
-  // walau sementara ini, potong total 800 char supaya thread maksimal 2-3 post saja
-  return cap(line1 + cta, 800);
+  // fallback klasik (hari ke-4)
+  const byCat = (id) => providers.filter((p) => p.kategori === id);
+  const api = byCat('api');
+  const list = (api.length ? api : providers).slice(0, 4)
+    .map((p) => `• ${p.nama}${p.badge ? ' (' + badgeLabel(p.badge) + ')' : ''}: ${cap(p.deskripsi || '', 70)}`)
+    .join('\n');
+
+  return `🔑 "Nggak usah langganan banyak-banyak..." — kata temanku yang ternyata benar.
+
+4 provider AI gratis yang saya cek hari ini:
+
+${list}
+
+Database 110+ provider & tutorial ambil key sendiri:
+${SITE}
+
+Yang mana yang baru pertama kamu dengar? Komen!`;
 }
 
 // ── Format penyimpanan ─────────────────────────────────────────
