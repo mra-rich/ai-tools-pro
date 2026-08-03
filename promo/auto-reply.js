@@ -8,7 +8,19 @@ const GRAPH = 'https://graph.threads.net/v1.0';
 const CFG_PATH = path.join(__dirname, 'threads-api.config.json');
 const DONE_DIR = path.join(__dirname, 'autoreply');
 const STATE_PATH = path.join(DONE_DIR, 'done.json');
-const MAX_REPLIES = 1; // sangat conservatif: maks 1 per run biar tidak kena pola spam
+const MAX_REPLIES = 3; // 3 per run tiap 2 jam = ~18/hari, kencang tapi masih aman anti-spam
+
+// Thread perkenalan Jarvis (root) — prioritas tertinggi supaya "yang diperkenalan" selalu keburu dibalas.
+const TARGET_INTRO = '18161638075462931';
+
+// Skor prioritas: komentar yang berminat/cara/tutor/info > pujian-generik > sisa.
+function prio(text) {
+  const t = (text || '').toLowerCase();
+  if (/cara|caranya|gimana|bagaimana|tutor|tutorial|info|infokan|jelasin|jelas|bisa|berapa|launch|gabung|daftar|link|bantu|guide/.test(t)) return 3;
+  if (/mantap|keren|nice|gila|serius|halu|wkwk|nyimak|sundul|kek|sip|oke|gas/i.test(t)) return 2;
+  if (/(bokep|$$|slot|pinjol|gratis menang|pasti kaya|rahasia)/.test(t)) return 0;
+  return 1;
+}
 
 function cfg() {
   const env = process.env.THREADS_API_CONFIG;
@@ -113,7 +125,13 @@ async function main() {
       candidates.push({ ...r, thread_id: t.id });
     }
   }
-  candidates.sort((a, b) => new Date(a.timestamp || 0) - new Date(b.timestamp || 0)); // paling lama dulu
+  candidates.sort((a, b) => {
+    const pa = prio(a.text), pb = prio(b.text);
+    if (pa !== pb) return pb - pa;          // pertanyaan-cara duluan
+    if (a.thread_id === TARGET_INTRO) return -1; // thread perkenalan didahulukan
+    if (b.thread_id === TARGET_INTRO) return 1;
+    return new Date(a.timestamp || 0) - new Date(b.timestamp || 0); // lalu yg paling lama
+  });
   console.log('Kandidat komentar layak: ' + candidates.length);
 
   let replied = 0;
