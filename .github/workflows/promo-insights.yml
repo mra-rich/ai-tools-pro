@@ -5,7 +5,9 @@ name: Promo Threads Insights
 
 on:
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 1 * * *'    # 08:00 WIB - setelah post pagi
+    - cron: '0 6 * * *'    # 13:00 WIB - setelah post siang
+    - cron: '0 14 * * *'   # 21:00 WIB - setelah post malam
   workflow_dispatch:
 
 permissions:

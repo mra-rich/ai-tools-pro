@@ -12,7 +12,9 @@ name: Promo Threads Harian
 
 on:
   schedule:
-    - cron: '30 16 * * *' # 23:30 WIB tiap hari (23:30 WIB = 16:30 UTC)
+    - cron: '0 0 * * *'   # 07:00 WIB - pagi scroll
+    - cron: '30 5 * * *'  # 12:30 WIB - istirahat siang
+    - cron: '0 13 * * *'  # 20:00 WIB - prime time malam
   workflow_dispatch:    # tombol "Run workflow" manual di tab Actions
 
 permissions:
