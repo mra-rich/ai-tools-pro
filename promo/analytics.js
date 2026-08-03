@@ -64,7 +64,14 @@ async function main() {
   for (const t of threads) {
     let s = {};
     try {
-      s = await api('/' + t.id, { fields: 'like_count,reply_count,quote_count,views_count' });
+      const ins = await api('/' + t.id + '/insights', { metric: 'likes,replies,quotes,reposts,views' });
+      if (Array.isArray(ins.data)) {
+        const val = (name) => {
+          const f = ins.data.find((x) => x.name === name);
+          return f && f.values && f.values[0] ? f.values[0].value : 0;
+        };
+        s = { like_count: val('likes'), reply_count: val('replies'), quote_count: val('quotes'), views_count: val('views') };
+      }
     } catch (_) { /* gapapa */ }
     rows.push({
       id: t.id,
