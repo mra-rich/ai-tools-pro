@@ -1,0 +1,32 @@
+# analytics.yml - Analisis performa konten harian & tulis laporan ke repo.
+# Menulis promo/analytics/report.json supaya bisa dibaca agent (GITHUB_TOKEN).
+# Jadwal: 22:00 WIB (setelah insight malam) = 15:00 UTC.
+name: Threads Analytics
+
+on:
+  schedule:
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analytics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Analisis konten
+        env:
+          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
+        run: node promo/analytics.js
+      - name: Commit laporan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 'promo/analytics/*.json'
+          git commit -m "chore(analytics): update $(date +%F) [skip ci]" || echo tidak-ada-perubahan
+          git push
