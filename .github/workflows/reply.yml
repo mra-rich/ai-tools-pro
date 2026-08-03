@@ -1,0 +1,31 @@
+# reply.yml - Balas komentar Threads manual (AMAN: tidak auto-scan).
+# Dipicu via API/UI dengan input REPLY_TO_ID + REPLY_TEXT.
+name: Reply Threads
+
+on:
+  workflow_dispatch:
+    inputs:
+      reply_to_id:
+        description: 'ID komentar yang mau dibalas'
+        required: true
+      reply_text:
+        description: 'Teks balasan (manusiawi)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Balas komentar
+        env:
+          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
+          REPLY_TO_ID: ${{ github.event.inputs.reply_to_id }}
+          REPLY_TEXT: ${{ github.event.inputs.reply_text }}
+        run: node promo/reply.js
