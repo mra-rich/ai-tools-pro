@@ -109,6 +109,16 @@ async function main() {
   }));
   const bottom = rows.slice(-3).map((r) => ({ id: r.id, preview: r.text, stats: r.stats, cat: r.cat }));
 
+  // SEMUA post, detail per-post, urut views menurun (biar angka Jarvis tidak tertimbun)
+  const all_posts = rows
+    .slice()
+    .sort((a, b) => b.stats.views - a.stats.views)
+    .map((r) => ({
+      id: r.id, cat: r.cat, ts: r.ts,
+      preview: r.text.slice(0, 80),
+      views: r.stats.views, likes: r.stats.like, replies: r.stats.reply, quotes: r.stats.quote,
+    }));
+
   const report = {
     generated_at: new Date().toISOString(),
     total_posts: rows.length,
@@ -116,7 +126,8 @@ async function main() {
     category_performance: cats,
     top_posts: top,
     weak_posts: bottom,
-    note: 'skor = engagement tertimbang per 100k views. Kategori paling tinggi = rahasia viral kamu.',
+    all_posts: all_posts,
+    note: 'all_posts = detail per-post (urut by views). Agregat kategori tetap disediakan terpisah.',
   };
 
   fs.mkdirSync(path.join(__dirname, 'analytics'), { recursive: true });
