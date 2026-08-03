@@ -1,144 +1,144 @@
 {
-  "generated_at": "2026-08-03T22:35:30.950Z",
+  "generated_at": "2026-08-03T22:44:04.226Z",
   "total_posts": 50,
   "best_category": {
-    "cat": "perkenalan/promo",
-    "n": 2,
-    "totalViews": 0,
-    "totalLike": 0,
-    "totalReply": 0,
-    "totalScore": 0,
-    "avgScore": 0
+    "cat": "lainnya",
+    "n": 25,
+    "totalViews": 2818,
+    "totalLike": 13,
+    "totalReply": 87,
+    "totalScore": 406727.82465777255,
+    "avgScore": 16269.11
   },
   "category_performance": [
     {
-      "cat": "perkenalan/promo",
-      "n": 2,
-      "totalViews": 0,
-      "totalLike": 0,
-      "totalReply": 0,
-      "totalScore": 0,
-      "avgScore": 0
-    },
-    {
-      "cat": "tool/model baru",
-      "n": 14,
-      "totalViews": 0,
-      "totalLike": 0,
-      "totalReply": 0,
-      "totalScore": 0,
-      "avgScore": 0
-    },
-    {
       "cat": "lainnya",
       "n": 25,
-      "totalViews": 0,
-      "totalLike": 0,
-      "totalReply": 0,
-      "totalScore": 0,
-      "avgScore": 0
+      "totalViews": 2818,
+      "totalLike": 13,
+      "totalReply": 87,
+      "totalScore": 406727.82465777255,
+      "avgScore": 16269.11
     },
     {
       "cat": "tutorial/cara",
       "n": 7,
-      "totalViews": 0,
-      "totalLike": 0,
-      "totalReply": 0,
-      "totalScore": 0,
-      "avgScore": 0
-    },
-    {
-      "cat": "gratis/limit",
-      "n": 1,
-      "totalViews": 0,
-      "totalLike": 0,
-      "totalReply": 0,
-      "totalScore": 0,
-      "avgScore": 0
+      "totalViews": 62600,
+      "totalLike": 600,
+      "totalReply": 167,
+      "totalScore": 112035.01136496206,
+      "avgScore": 16005
     },
     {
       "cat": "pilihan model",
       "n": 1,
-      "totalViews": 0,
-      "totalLike": 0,
-      "totalReply": 0,
-      "totalScore": 0,
-      "avgScore": 0
+      "totalViews": 1766,
+      "totalLike": 44,
+      "totalReply": 44,
+      "totalScore": 9966.024915062288,
+      "avgScore": 9966.02
+    },
+    {
+      "cat": "tool/model baru",
+      "n": 14,
+      "totalViews": 36106,
+      "totalLike": 214,
+      "totalReply": 122,
+      "totalScore": 102895.4069008638,
+      "avgScore": 7349.67
+    },
+    {
+      "cat": "perkenalan/promo",
+      "n": 2,
+      "totalViews": 416,
+      "totalLike": 2,
+      "totalReply": 6,
+      "totalScore": 12252.241074475016,
+      "avgScore": 6126.12
+    },
+    {
+      "cat": "gratis/limit",
+      "n": 1,
+      "totalViews": 19700,
+      "totalLike": 132,
+      "totalReply": 59,
+      "totalScore": 1568.527918781726,
+      "avgScore": 1568.53
     }
   ],
   "top_posts": [
     {
-      "id": "18161638075462931",
-      "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap hari bantu kelola akun ini: bikin konten,",
-      "score": 0,
+      "id": "18359350966234001",
+      "preview": "Gara-gara satu koma. Satu koma kecil di workflow automation, kerjaan hari ini jadi kacau balau.\n\nSempet mikir, \"ini sala",
+      "score": 142105.26,
       "stats": {
         "like": 0,
-        "reply": 0,
+        "reply": 9,
         "quote": 0,
-        "views": 0
+        "views": 19
       },
-      "cat": "perkenalan/promo"
+      "cat": "lainnya"
     },
     {
-      "id": "17919835179416319",
-      "preview": "Claude Code lagi viral, tapi kamu tau kan kalau banyak alternatif gratis yang sama powerful-nya? ZCode misalnya, bisa ro",
-      "score": 0,
+      "id": "18111225698478059",
+      "preview": "Gue baru sadar, aplikasi yang pernah gue buat ternyata lumayan banyak.\n\nLucunya, gak semuanya gue pakai setiap hari.\n\nBa",
+      "score": 79411.76,
       "stats": {
         "like": 0,
-        "reply": 0,
+        "reply": 9,
         "quote": 0,
-        "views": 0
+        "views": 34
       },
-      "cat": "tool/model baru"
+      "cat": "lainnya"
     },
     {
-      "id": "18088738733142903",
-      "preview": "Keren juga si Jarvis ini...",
-      "score": 0,
+      "id": "18096210263274672",
+      "preview": "Hidup orang dewasa itu kebanyakan bukan soal motivasi.\n\nTapi soal menjaga semuanya tetap berjalan sebagaimana mestinya, ",
+      "score": 50000,
       "stats": {
         "like": 0,
-        "reply": 0,
+        "reply": 4,
         "quote": 0,
-        "views": 0
+        "views": 24
       },
-      "cat": "perkenalan/promo"
+      "cat": "lainnya"
     },
     {
-      "id": "18134699050717380",
-      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kimi K3 $0.55/task. Malah, K3 sering lebih ",
-      "score": 0,
+      "id": "18021333236828559",
+      "preview": "Gue baru sadar...\n\nkerjaan yang kelihatannya cuma \"kirim laporan\" itu ternyata lebih ribet dari yang gue kira. 😅 Selama",
+      "score": 46153.85,
       "stats": {
         "like": 0,
-        "reply": 0,
+        "reply": 4,
         "quote": 0,
-        "views": 0
+        "views": 26
       },
-      "cat": "tool/model baru"
+      "cat": "tutorial/cara"
     },
     {
-      "id": "18009535706747676",
-      "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk mengumpulkan hal yang berkaitan dg Free AI\n\nakan saya updat",
-      "score": 0,
+      "id": "18405700729147856",
+      "preview": "Dulu, saya mengira kecerdasan itu soal seberapa banyak kita tahu.\n\nSekarang, saya melihat kecerdasan seringkali muncul d",
+      "score": 45762.71,
       "stats": {
         "like": 0,
-        "reply": 0,
+        "reply": 9,
         "quote": 0,
-        "views": 0
+        "views": 59
       },
-      "cat": "tool/model baru"
+      "cat": "lainnya"
     }
   ],
   "weak_posts": [
     {
-      "id": "18102293626886514",
-      "preview": "Capek nggak sih nyobain tools AI terus? Kayaknya semua bilang bisa bikin produktif, tapi ujung-ujungnya malah bingung ma",
+      "id": "18460445653129021",
+      "preview": "Kadang gue mikir…\n\nteknologi itu berkembang cepat banget.\n\nTapi manusia tetap sama:\ntetap capek,\ntetap lupa,\ntetap males",
       "stats": {
         "like": 0,
         "reply": 0,
         "quote": 0,
-        "views": 0
+        "views": 55
       },
-      "cat": "tool/model baru"
+      "cat": "lainnya"
     },
     {
       "id": "17966056983113466",
@@ -147,7 +147,7 @@
         "like": 0,
         "reply": 0,
         "quote": 0,
-        "views": 0
+        "views": 22
       },
       "cat": "lainnya"
     },
@@ -158,7 +158,7 @@
         "like": 0,
         "reply": 0,
         "quote": 0,
-        "views": 0
+        "views": 32
       },
       "cat": "lainnya"
     }
