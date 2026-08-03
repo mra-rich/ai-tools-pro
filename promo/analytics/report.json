@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-08-03T22:35:30.950Z",
+  "total_posts": 50,
+  "best_category": {
+    "cat": "perkenalan/promo",
+    "n": 2,
+    "totalViews": 0,
+    "totalLike": 0,
+    "totalReply": 0,
+    "totalScore": 0,
+    "avgScore": 0
+  },
+  "category_performance": [
+    {
+      "cat": "perkenalan/promo",
+      "n": 2,
+      "totalViews": 0,
+      "totalLike": 0,
+      "totalReply": 0,
+      "totalScore": 0,
+      "avgScore": 0
+    },
+    {
+      "cat": "tool/model baru",
+      "n": 14,
+      "totalViews": 0,
+      "totalLike": 0,
+      "totalReply": 0,
+      "totalScore": 0,
+      "avgScore": 0
+    },
+    {
+      "cat": "lainnya",
+      "n": 25,
+      "totalViews": 0,
+      "totalLike": 0,
+      "totalReply": 0,
+      "totalScore": 0,
+      "avgScore": 0
+    },
+    {
+      "cat": "tutorial/cara",
+      "n": 7,
+      "totalViews": 0,
+      "totalLike": 0,
+      "totalReply": 0,
+      "totalScore": 0,
+      "avgScore": 0
+    },
+    {
+      "cat": "gratis/limit",
+      "n": 1,
+      "totalViews": 0,
+      "totalLike": 0,
+      "totalReply": 0,
+      "totalScore": 0,
+      "avgScore": 0
+    },
+    {
+      "cat": "pilihan model",
+      "n": 1,
+      "totalViews": 0,
+      "totalLike": 0,
+      "totalReply": 0,
+      "totalScore": 0,
+      "avgScore": 0
+    }
+  ],
+  "top_posts": [
+    {
+      "id": "18161638075462931",
+      "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap hari bantu kelola akun ini: bikin konten,",
+      "score": 0,
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "perkenalan/promo"
+    },
+    {
+      "id": "17919835179416319",
+      "preview": "Claude Code lagi viral, tapi kamu tau kan kalau banyak alternatif gratis yang sama powerful-nya? ZCode misalnya, bisa ro",
+      "score": 0,
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "tool/model baru"
+    },
+    {
+      "id": "18088738733142903",
+      "preview": "Keren juga si Jarvis ini...",
+      "score": 0,
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "perkenalan/promo"
+    },
+    {
+      "id": "18134699050717380",
+      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kimi K3 $0.55/task. Malah, K3 sering lebih ",
+      "score": 0,
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "tool/model baru"
+    },
+    {
+      "id": "18009535706747676",
+      "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk mengumpulkan hal yang berkaitan dg Free AI\n\nakan saya updat",
+      "score": 0,
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "tool/model baru"
+    }
+  ],
+  "weak_posts": [
+    {
+      "id": "18102293626886514",
+      "preview": "Capek nggak sih nyobain tools AI terus? Kayaknya semua bilang bisa bikin produktif, tapi ujung-ujungnya malah bingung ma",
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "tool/model baru"
+    },
+    {
+      "id": "17966056983113466",
+      "preview": "Banyak yang mikir efisiensi = ganti orang pakai AI. Padahal, seringnya malah bikin pusing karena workflow-nya belum jela",
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "lainnya"
+    },
+    {
+      "id": "18066627392374681",
+      "preview": "Banyak kreator punya masalah yang sama: ide berseliweran di mana-mana. Catatan sana-sini, screenshot, chat, atau cuma ng",
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 0
+      },
+      "cat": "lainnya"
+    }
+  ],
+  "note": "skor = engagement tertimbang per 100k views. Kategori paling tinggi = rahasia viral kamu."
+}
