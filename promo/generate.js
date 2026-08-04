@@ -9,7 +9,7 @@
 // ═════════════════════════════════════════════════════════════════
 const fs = require('fs');
 const path = require('path');
-const { VIRAL_TOPICS, getViralTopic } = require('./viral-topics.js');
+const { VIRAL_TOPICS, getViralTopic, pickHook } = require('./viral-topics.js');
 const AUTO_TOPICS = require('./auto-topics.js');
 
 // Gabungan topik: statis (manual) + otomatis (hasil riset mingguan).
