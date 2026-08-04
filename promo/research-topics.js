@@ -158,8 +158,11 @@ ATURAN:
   );
   if (!res.ok) { console.log('research-topics: Gemini HTTP ' + res.status + ' — ' + (await res.text().catch(() => '')).slice(0, 120)); return null; }
   const body = await res.json().catch(() => ({}));
-  let text = (((body.candidates || [])[0] || {}).content || {}).parts?.map((p) => p.text || '').join('');
-  if (!text) { console.log('research-topics: Gemini output kosong'); return null; }
+  const cand0 = ((body.candidates || [])[0] || {});
+  const finish = cand0.finishReason || 'none';
+  let text = (cand0.content || {}).parts?.map((p) => p.text || '').join('');
+  console.log('research-topics: Gemini finishReason=' + finish + ' textLen=' + (text || '').length);
+  if (!text) return null;
   // buang markdown fence (```json ... ```) lalu ekstrak JSON
   text = text.replace(/```(?:json)?/gi, '').replace(/```/g, '');
   const m = text.match(/\{[\s\S]*\}/);
@@ -180,6 +183,26 @@ ATURAN:
   } catch (e) { console.log('research-topics: JSON parse gagal: ' + e.message + ' Raw: ' + text.slice(0, 200)); return null; }
 }
 
+// Fallback DETERMINISTIK (tanpa LLM): ambil kandidat teratas yang judulnya
+// bernada "rilis/tool baru" dan bangun topik langsung dari judul + URL asli.
+// Tidak mengarang fakta — hook/prompt diambil dari judul kandidat.
+function fallbackTopic(candidates) {
+  const c = candidates[0];
+  if (!c || !c.url) return null;
+  let title = (c.title || '').replace(/\s*[|-][\s\S]*$/, '').trim(); // buang bagian stastik
+  const slug = 'trend-' + title.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40).replace(/^-|-$/g, '');
+  return {
+    id: slug,
+    topic: 'Tren AI yang lagi ngangkat: ' + title,
+    hook: ['Ada model/tool AI baru yang lagi heboh', 'Lagi ramai di kalangan developer AI'],
+    facts: ['Ini trending topik baru di Hacker News/Reddit AI hari ini.', 'Para pengguna AI lagi banyak ngebahas tool ini.', 'Nggak semua tahu cara akses gratisnya.'],
+    freePath: ['Cek langsung link sumber di bawah untuk cara akses gratis.', 'Mampir tokengratis.web.id untuk lihat koleksi tool AI gratis.'],
+    ctaQ: 'Kamu udah coba tool AI versi baru ini belum?',
+    category: 'trend',
+    sources: [c.url],
+  };
+}
+
 async function main() {
   const cands = await gatherCandidates();
   if (cands.length === 0) {
@@ -188,10 +211,14 @@ async function main() {
   }
   console.log('research-topics: ' + cands.length + ' kandidat dari HN/Reddit.');
 
-  const topic = await draftTopic(cands);
+  let topic = await draftTopic(cands);
   if (!topic) {
-    console.log('research-topics: Gemini tidak menghasilkan topik valid — biarkan file.');
-    return;
+    console.log('research-topics: Gemini gagal — pakai fallback deterministik dari kandidat teratas.');
+    topic = fallbackTopic(cands);
+    if (!topic) {
+      console.log('research-topics: tidak ada kandidat layak — biarkan file.');
+      return;
+    }
   }
 
   // Verifikasi semua URL sumber benar-benar hidup
@@ -220,5 +247,5 @@ async function main() {
   console.log('   Sumber: ' + topic.sources.join(', '));
 }
 
-module.exports = { main, fetchHN, fetchReddit, fetchRSS, gatherCandidates, draftTopic, checkSources };
+module.exports = { main, fetchHN, fetchReddit, fetchRSS, gatherCandidates, draftTopic, fallbackTopic, checkSources };
 if (require.main === module) main().catch((e) => { console.error('ERROR research-topics:', e.message); process.exit(1); });
