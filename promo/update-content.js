@@ -134,16 +134,19 @@ ATURAN:
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.7, maxOutputTokens: 900 } }),
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.7, maxOutputTokens: 900, thinkingConfig: { thinkingBudget: 0 } } }),
       signal: AbortSignal.timeout(90000),
     }
   );
-  if (!res.ok) return [];
+  if (!res.ok) { console.log('update-content: Gemini HTTP ' + res.status + ' — ' + (await res.text().catch(() => '')).slice(0, 120)); return []; }
   const body = await res.json().catch(() => ({}));
-  const text = (((body.candidates || [])[0] || {}).content || {}).parts?.map((p) => p.text || '').join('');
+  const cand0 = ((body.candidates || [])[0] || {});
+  const finish = cand0.finishReason || 'none';
+  const text = (cand0.content || {}).parts?.map((p) => p.text || '').join('');
+  console.log('update-content: Gemini finishReason=' + finish + ' textLen=' + (text || '').length);
   if (!text) return [];
   const m = text.match(/\{[\s\S]*\}/);
-  if (!m) return [];
+  if (!m) { console.log('update-content: tidak ada JSON di output. Raw: ' + text.slice(0, 200)); return []; }
   try {
     const parsed = JSON.parse(m[0]);
     if (!Array.isArray(parsed.providers)) return [];

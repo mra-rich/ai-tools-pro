@@ -152,7 +152,7 @@ ATURAN:
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.8, maxOutputTokens: 800 } }),
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0.8, maxOutputTokens: 800, thinkingConfig: { thinkingBudget: 0 } } }),
       signal: AbortSignal.timeout(90000),
     }
   );
