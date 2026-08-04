@@ -1,6 +1,4 @@
-Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.
-
-Namanya Flux 3. Era pipeline 3-langkah tinggal kenangan.
+Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya. Ini yang disebut "omnimodal".
 
 • Proyek video world open source (AlayaWorld) sudah streaming 720p/24FPS
 • Mode depth-video-to-video = kontrol kamera sinematik tanpa manual staging
