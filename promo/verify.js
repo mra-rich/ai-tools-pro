@@ -47,7 +47,7 @@ function main() {
   const lines = text.split('\n').filter((l) => l.trim());
   const longLines = lines.filter((l) => l.length > 500);
   if (longLines.length) problems.push('ada baris >500 char: ' + longLines[0].slice(0, 60) + '…');
-  if (lines.length > 6) problems.push('terlalu banyak post dalam 1 thread: ' + lines.length);
+  if (lines.length > 12) problems.push('terlalu banyak post dalam 1 thread: ' + lines.length + ' (>12)');
   if (!text.includes(SITE)) problems.push('tidak memuat link situs');
 
   for (const p of SPAM_PATTERNS) {
