@@ -1,15 +1,16 @@
-Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya. Ini yang disebut "omnimodal".
+Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.
+Kenapa bikin down servernya sendiri? Alasannya…
 
-• Proyek video world open source (AlayaWorld) sudah streaming 720p/24FPS
-• Mode depth-video-to-video = kontrol kamera sinematik tanpa manual staging
-• Checkpoint lokal sudah di-share komunitas di Hugging Face
+• Rilis weights → 837k download di Hugging Face dalam seminggu
+• Biaya inference: 2–3x lebih murah dari Claude Opus 5 di task yang sama
+• Versi GGUF sudah ada di Unsloth — bisa jalan lokal
 
 Cara dapat GRATIS-nya:
-• Coba langsung di Hugging Face Spaces — gratis
-• Style Ghibli tren: ada versi demo gratisnya
-• Checkpoint lokal via Unsloth untuk kreator yang pegang GPU sendiri
+• arena.ai → chat gratis tanpa limit
+• Unsloth GGUF → jalan lokal kalau punya GPU 16GB+
+• API resminya berbayar, tapi bisa dicoba lewat router gratis (GitHub Models / OpenRouter trial)
 
 Database 110+ provider gratis & tutorialnya:
 https://tokengratis.web.id
 
-Paling kepikiran mau bikin apa: 🖼️ gambar, 🎥 video, atau 🎵 musik? Komen 👇
+Kamu nunggu server resminya stabil, atau langsung jalanin lokal aja? Komen 👇
