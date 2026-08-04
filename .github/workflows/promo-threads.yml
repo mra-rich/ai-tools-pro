@@ -34,6 +34,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node promo/generate.js
 
+      - name: Verifikasi konten sebelum posting (anti-hoax/anti-spam)
+        run: node promo/verify.js
+
       - name: Post ke Threads via API resmi
         env:
           THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
