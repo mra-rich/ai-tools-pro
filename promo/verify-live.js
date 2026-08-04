@@ -15,7 +15,7 @@ async function main() {
   const me = await call('/me', { fields: 'id,username,name', access_token: c.access_token });
   console.log('👤', me.name, '@' + me.username, '(id ' + me.id + ')');
   const uid = cfg.user_id || me.id;
-  const posts = await call('/' + uid + '/threads', { fields: 'id,text;like_count,view_count,replies_count,reposted_count', access_token: c.access_token });
+  const posts = await call('/' + uid + '/threads', { fields: 'id,text,like_count,view_count,replies_count,reposted_count', access_token: c.access_token });
   const arr = posts.data || [];
   console.log('\n=== LATEST POSTS LIVE DI AKUN (@' + me.username + ') — ' + arr.length + ' item ===');
   for (const p of arr.slice(0, 12)) {
