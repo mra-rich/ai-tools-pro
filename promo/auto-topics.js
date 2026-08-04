@@ -17,7 +17,7 @@ module.exports = [
     staleAfterDays: 10,
     sources: [
       'https://news.google.com/rss/search?q=Alibaba+Qwen3.8-Max',
-      'https://www.theindianexpress.com/',
+      'https://news.google.com/rss/search?q=Qwen3.8-Max+Alibaba+rilis',
     ],
     hook: [
       'Alibaba baru aja rilis model terbesarnya: Qwen3.8-Max, 2.4 triliun parameter. Dan yang bikin heboh — weight-nya OPEN.',
