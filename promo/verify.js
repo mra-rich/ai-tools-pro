@@ -20,9 +20,11 @@ const KNOWN_NAMES = [
 ];
 
 const SPAM_PATTERNS = [
-  /pinjol/i, /slot/i, /$$$/i, /\bmenang\b.*\bgratis\b/i, /pasti kaya/i,
+  /pinjol/i, /slot online/i, /slot gacor/i, /slot88/i, /slot123/i, /slot777/i,
+  /judi slot/i, /\bmenang\b.*\bgratis\b/i, /pasti kaya/i,
   /investasi.*[0-9]x/i, /rahasia.*uang/i, /judi/i, /\bokeb/i,
-  /\bpasti untung\b/i, /\bwithdraw\b/i, /\bdaftar sekarang\b/i,
+  /\bpasti untung\b/i, /\bwithdraw\b/i, /\bdaftar sekarang\b/i, /idn slot/i,
+  /\bslot\b.*\bdeposit\b/i, /\bjudol\b/i,
 ];
 
 function findDraft() {
