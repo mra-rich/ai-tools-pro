@@ -201,6 +201,22 @@ async function main() {
   content.providers.push(...toAdd);
   content.tanggal = new Date().toISOString().slice(0, 10);
   const result = await writeContent(content);
+  if (result && result.ok) {
+    // VERIFIKASI E2E: baca ulang content:latest dan pastikan provider baru
+    // benar-benar tersimpan di Worker KV (bukan sekadar respons sukses).
+    try {
+      const after = await readContent();
+      const namesAfter = (after.providers || []).map((p) => p.nama.toLowerCase());
+      const missing = toAdd.filter((p) => !namesAfter.includes(p.nama.toLowerCase()));
+      if (missing.length === 0) {
+        console.log('✅ VERIFIED: ' + toAdd.length + ' provider terkonfirmasi tersimpan di content:latest (total ' + (after.providers || []).length + ').');
+      } else {
+        console.log('⚠️  VERIFY_WARN: provider berikut tidak ditemukan setelah tulis: ' + missing.map((m) => m.nama).join(', '));
+      }
+    } catch (e) {
+      console.log('⚠️  VERIFY_WARN: gagal baca ulang untuk verifikasi: ' + e.message);
+    }
+  }
   console.log('✅ update-content: ' + toAdd.length + ' provider ditambahkan → content:latest diperbarui.');
   for (const p of toAdd) console.log('  +', p.nama, '(' + p.kategori + ')', p.url || 'no-url');
   return result;
