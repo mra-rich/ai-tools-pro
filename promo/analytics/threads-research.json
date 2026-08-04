@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-08-04T11:23:46.367Z",
+  "queries": [
+    {
+      "q": "AI gratis",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "AI free",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "model AI",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "ChatGPT",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "Claude",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "Qwen",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "AI tools",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "kimi ai",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    },
+    {
+      "q": "AI AUTOMATION AI indonesia",
+      "error": "{\"error\":{\"message\":\"Unsupported get request. Object with ID 'threads_discovery' does not exist, cannot be loaded due to"
+    }
+  ],
+  "viral": [],
+  "non_viral": [],
+  "pairs": [],
+  "summary": {
+    "total_found": 0,
+    "viral_count": 0,
+    "non_viral_count": 0,
+    "viral_top_3": [],
+    "non_viral_top_3": [],
+    "hypothesis": {
+      "viral_mean_likes": 0,
+      "nonviral_mean_likes": 0,
+      "viral_pct_hook_question": null,
+      "nonviral_pct_hook_question": null,
+      "viral_pct_number": null,
+      "nonviral_pct_number": null,
+      "viral_pct_exclaim": null,
+      "nonviral_pct_exclaim": null,
+      "viral_pct_free": null,
+      "nonviral_pct_free": null
+    }
+  }
+}
