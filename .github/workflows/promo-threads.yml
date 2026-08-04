@@ -34,6 +34,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node promo/generate.js
 
+      - name: Generate ilustrasi realistis (Pollinations → tmpfiles)
+        run: node promo/generate-image.js
+
       - name: Verifikasi konten sebelum posting (anti-hoax/anti-spam)
         run: node promo/verify.js
 

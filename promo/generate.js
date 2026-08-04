@@ -68,6 +68,32 @@ function badgeLabel(b) {
 // / API gagal / output tidak lolos validasi → null → caller pakai template.
 const GEMINI_MODEL = 'gemini-2.5-flash';
 
+// ── Pemilih topik FRESH (kedaluwarsa di-skip) ─────────────────────────────
+// Topik di viral-topics.js boleh punya `added` (ISO date) + `staleAfterDays`.
+// Topik dengan `sources` (hasil riset otomatis) dianggap segar sampai
+// `staleAfterDays` (atau ~14 hari kalau tidak diset). Topik tanpa `added`
+// (lama/tanpa tanggal) DIANGGAP BASI dan ditempatkan paling belakang.
+function isTopicFresh(t) {
+  const max = 14;
+  if (t.staleAfterDays == null && !t.sources) return false; // topik lama tanpa expiry
+  let days = t.staleAfterDays != null ? t.staleAfterDays : max;
+  if (!t.added) days = Math.min(days, max);
+  if (t.added) {
+    const age = (Date.now() - new Date(t.added).getTime()) / 86400000;
+    return age <= days;
+  }
+  return true; // tidak ada tanggal → anggap segar walau pendekatan konservatif
+}
+
+// Pilih topik secara deterministik (dayOfYear) dari DAFTAR YANG MASIH FRESH.
+// Return null kalau TIDAK ADA topik fresh → caller harus pakai template
+// evergreen (daftar provider), BUKAN memaksakan topik basi.
+function pickFreshTopic(dayOfYear) {
+  const fresh = ALL_TOPICS.filter(isTopicFresh);
+  if (!fresh.length) return null; // semua basi → jangan posting viral
+  return fresh[dayOfYear % fresh.length];
+}
+
 function buildGeminiPrompt(d, dayOfYear) {
   const providers = d.providers || [];
   const snapshot = shuf(providers).slice(0, 30)
@@ -75,7 +101,8 @@ function buildGeminiPrompt(d, dayOfYear) {
     .join('\n');
 
   // Angle hari ini: topik viral terpilih (model AI yang lagi panas)
-  const t = ALL_TOPICS[dayOfYear % ALL_TOPICS.length];
+  const t = pickFreshTopic(dayOfYear);
+  if (!t) return null; // tidak ada topik fresh → Gemini skip, pakai template evergreen
 
   // Anti-repeat: kirim isi post terakhir supaya LLM tidak menulis ulang
   let prev = '';
@@ -182,9 +209,11 @@ async function generateWithGemini(d, dayOfYear) {
   return text;
 }
 
-// ── Bangun thread (versi VIRAL) ────────────────────────────────
-// Strategi: 80% topik viral dari viral-topics.js, 20% klasik dari database
-// (menghindari akun kelihatan "template"). Hook tinggi, selalu CTA pertanyaan.
+// ── Bangun thread (versi VIRAL / evergreen) ───────────────────────
+// 2026-08-04: TIDAK ada lagi satu kerangka template. Ada BEBERAPA "gaya"
+// natural yang dirotasi acak — cerita, perbandingan, tip-list, kontroversi,
+// pertanyaan — jadi feed tidak terlihat kloning template yang sama.
+// Selalu wajib: link tokengratis.web.id + CTA (aturan bisnis).
 function buildThread(d, dayOfYear) {
   const providers = d.providers || [];
 
@@ -192,44 +221,38 @@ function buildThread(d, dayOfYear) {
   const useViral = (dayOfYear % 5) < 4;
 
   if (useViral) {
-    const t = ALL_TOPICS[dayOfYear % ALL_TOPICS.length];
-    const hook = typeof t.hook === 'function' ? t.hook() : pickHook(t.hook || []);
-    const facts = (t.facts || []).slice(0, 4).join('\n');
-    const freePaths = (t.freePath || []).slice(0, 4).join('\n');
-
-    return `${hook}
-
-${facts}
-
-Cara dapat GRATIS-nya:
-${freePaths}
-
-Database 110+ provider gratis & tutorialnya:
-${SITE}
-
-${t.ctaQ}`;
+    const t = pickFreshTopic(dayOfYear);
+    // kalau tidak ada topik fresh → lewati viral, pakai evergreen natural
+    if (t) {
+      const hook = typeof t.hook === 'function' ? t.hook() : pickHook(t.hook || []);
+      const facts = (t.facts || []).slice(0, 4).join('\n');
+      const freePaths = (t.freePath || []).slice(0, 4).join('\n');
+      const styles = [
+        `${hook}\n\n${facts}\n\nCara dapat GRATIS-nya:\n${freePaths}\n\n${SITE}\n\n${t.ctaQ}`,
+        `${hook}\n\n${facts}\n\nNggak mau langganan mahal? Beberapa di daftar ini beneran bisa diakses tanpa kartu kredit — cek linknya:\n${SITE}\n\n${t.ctaQ}`,
+        `${hook}\n\nIntinya gini:\n${facts}\n\nBuat yang cuma mau coba-coba dulu, masih ada jalan gratisnya:\n${freePaths}\n\nLengkapnya di ${SITE} — tinggal scroll.\n\n${t.ctaQ}`,
+      ];
+      return pick(styles);
+    }
   }
 
-  // fallback klasik (hari ke-4)
+  // ── Evergreen (daftar provider) — beberapa "gaya" natural, rotasi acak ──
   const byCat = (id) => providers.filter((p) => p.kategori === id);
   const api = byCat('api');
   const list = (api.length ? api : providers).slice(0, 4)
     .map((p) => `• ${p.nama}${p.badge ? ' (' + badgeLabel(p.badge) + ')' : ''}: ${cap(p.deskripsi || '', 70)}`)
     .join('\n');
 
-  return `🔑 "Nggak usah langganan banyak-banyak..." — kata temanku yang ternyata benar.
-
-4 provider AI gratis yang saya cek hari ini:
-
-${list}
-
-Database 110+ provider & tutorial ambil key sendiri:
-${SITE}
-
-Yang mana yang baru pertama kamu dengar? Komen!`;
+  const styles = [
+    `"Nggak usah langganan banyak-banyak..." — kata temanku, ternyata bener.\n\n4 AI gratis yang aku cek hari ini:\n\n${list}\n\nDaftar lengkap + tutorial ambil key sendiri:\n${SITE}\n\nYang mana baru pertama kamu denger? Komen 👇`,
+    `Aku sempet mikir, kenapa ada yang rela bayar $20/bulan kalau banyak yang gratis?\n\nBandingin sendiri yang ini:\n\n${list}\n\nSemua bisa diakses tanpa bayar — panduannya di ${SITE}.\n\nMau aku bahas yang mana lebih dalem?`,
+    `Sering ditanya, "AI gratis tuh beneran ada nggak sih?"\n\nBeneran. Contoh yang lagi jalan:\n\n${list}\n\nKumpulan lengkapnya, bebas kartu kredit:\n${SITE}\n\nShare ke teman yang masih mikir AI itu cuma buat yang bayar 🙌`,
+    `Kadang cukup butuh 1 tool yang pas, bukan 10 langganan.\n\nYang ini aku cek dan masih bisa dipakai gratis:\n\n${list}\n\nTutorial dan propotnya yang lain:\n${SITE}\n\nKamu biasanya pakai AI buat apa?`,
+  ];
+  return pick(styles);
 }
 
-// ── Format penyimpanan ─────────────────────────────────────────
+  // ── Format penyimpanan ─────────────────────────────────────────
 async function main() {
   const d = await readContent();
   const today = new Date();

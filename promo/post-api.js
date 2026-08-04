@@ -118,6 +118,35 @@ async function postText(userId, text, parentId) {
   return pub.id;
 }
 
+// ── Posting 1 post GAMBAR + teks (ilustrasi realistis) ─────────────
+// Meta mengharuskan image_url publik yang bisa di-fetch server mereka.
+async function postImage(userId, text, imageUrl, parentId) {
+  const params = { media_type: 'IMAGE', image_url: imageUrl };
+  if (text) params.text = text.slice(0, 500);
+  if (parentId) params.reply_to_id = parentId;
+
+  // langkah 1: create image container (proses lebih lama — tunggu ~30s)
+  const create = await api('/' + userId + '/threads', params, 'POST');
+  if (!create.id) throw new Error('create image gagal: ' + JSON.stringify(create));
+  await new Promise((r) => setTimeout(r, 30000));
+
+  // langkah 2: publish
+  const pub = await api('/' + userId + '/threads_publish', { creation_id: create.id }, 'POST');
+  if (!pub.id) throw new Error('publish image gagal: ' + JSON.stringify(pub));
+  return pub.id;
+}
+
+// ── Cari .image.json hari ini (kalau ada, posting pakai gambar) ───
+function latestImage() {
+  const files = (fs.existsSync(THREADS_DIR) ? fs.readdirSync(THREADS_DIR) : [])
+    .filter((f) => f.endsWith('.image.json')).sort();
+  if (!files.length) return null;
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join(THREADS_DIR, files[files.length - 1]), 'utf8'));
+    return (d && d.url) ? d : null; // url null = gambar gagal → posting teks saja
+  } catch (_) { return null; }
+}
+
 // ── Ambil draft hari ini → potong ≤500 char per post → post berantai ──
 function latestDraft() {
   if (!fs.existsSync(THREADS_DIR)) return null;
@@ -160,9 +189,17 @@ async function main() {
   if (args.includes('--dry-run')) { console.log('(dry-run — tidak diposting)'); return; }
 
   // Posting berantai: root → reply → reply ... (jadi thread sungguhan)
+  // Post PERTAMA pakai gambar kalau ada (media_type IMAGE), sisanya teks.
+  const img = latestImage();
   let parentId = null;
   for (let i = 0; i < posts.length; i++) {
-    const id = await postText(userId, posts[i], parentId);
+    let id;
+    if (i === 0 && img && img.date === draft.file.replace(/\.md$/, '')) {
+      console.log('🖼️  Post #1 pakai gambar: ' + img.url);
+      id = await postImage(userId, posts[i], img.url, parentId);
+    } else {
+      id = await postText(userId, posts[i], parentId);
+    }
     console.log('✅ Posted #' + (i + 1) + ' id=' + id);
     parentId = id;
   }
