@@ -319,13 +319,15 @@ function slotInfo(now) {
   // di luar slot resmi (mis. manual dispatch siang): tetap boleh, label acak
   return { label: ('0' + h).slice(-2) + ('0' + Math.floor(m/10)).slice(-2), idx: 0 };
 }
+// Hitung slot SEKALI di module scope supaya buildGeminiPrompt/buildThread/main
+// memakai nilai yang sama (tidak ada 'slot is not defined').
+const slot = slotInfo(new Date());
 
 async function main() {
   const d = await readContent();
   const today = new Date();
   const iso = today.toISOString().slice(0, 10);
   const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-  const slot = slotInfo(today);
   const slotKey = iso + '-' + slot.label;
 
   // Prioritas: konten ditulis Gemini (AI) → fallback template bila gagal
