@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-04T01:03:59.897Z",
+  "fetched_at": "2026-08-04T04:16:03.097Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 13,
-  "sum_replies": 31,
-  "sum_views": 1427,
+  "sum_likes": 8,
+  "sum_replies": 15,
+  "sum_views": 1089,
   "threads": [
+    {
+      "id": "18104188460127575",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DbmcOTuknw1",
+      "timestamp": "2026-08-04T02:00:13+0000",
+      "preview": "Generasi AI baru ini tidak menulis teks aja — dia jadi satu ",
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0,
+      "views": 59
+    },
     {
       "id": "18110542825953783",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbmUBJ-iYoo",
@@ -14,7 +24,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 0
+      "views": 38
     },
     {
       "id": "17964500403138810",
@@ -24,7 +34,7 @@
       "likes": 1,
       "replies": 1,
       "quotes": 0,
-      "views": 0
+      "views": 70
     },
     {
       "id": "17880597102619396",
@@ -34,17 +44,17 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 0
+      "views": 60
     },
     {
       "id": "18141727255483736",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbmPuE5CS4m",
       "timestamp": "2026-08-04T00:10:57+0000",
       "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi predi",
-      "likes": 1,
+      "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 0
+      "views": 86
     },
     {
       "id": "18161638075462931",
@@ -54,7 +64,7 @@
       "likes": 0,
       "replies": 4,
       "quotes": 0,
-      "views": 119
+      "views": 166
     },
     {
       "id": "17919835179416319",
@@ -64,7 +74,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 142
+      "views": 156
     },
     {
       "id": "18088738733142903",
@@ -74,7 +84,7 @@
       "likes": 2,
       "replies": 3,
       "quotes": 0,
-      "views": 313
+      "views": 321
     },
     {
       "id": "18134699050717380",
@@ -84,7 +94,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 31
+      "views": 32
     },
     {
       "id": "18009535706747676",
@@ -94,17 +104,7 @@
       "likes": 3,
       "replies": 1,
       "quotes": 0,
-      "views": 100
-    },
-    {
-      "id": "18032691734827931",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbdHfCwEwU2",
-      "timestamp": "2026-07-31T11:05:43+0000",
-      "preview": "This is REAL FREE AI Model !!! REAL Kimi k-3 no ABAL-ABAL !!",
-      "likes": 6,
-      "replies": 17,
-      "quotes": 0,
-      "views": 722
+      "views": 101
     }
   ]
 }
