@@ -47,14 +47,18 @@ async function main() {
   // 2) PROBE ulang endpoint discovery/search dengan token fresh
   const q = 'AI';
   const tests = [
-    ['/threads_discovery/search', { q, fields: 'id,text,like_count' }],
+    // Pola Instagram Graph API: *_search / *_discovery
+    ['/threads_user_search', { q }],
+    ['/ig_user_search', { q }],
+    ['/threads_hashtag_search', { q, user_id: cfg.user_id || '' }],
+    ['/ig_hashtag_search', { q, user_id: cfg.user_id || '' }],
     ['/threads_discovery', { q }],
-    ['/me/profile_discovery', { q }],
-    ['/discovery/search', { q }],
-    // endpoint berbasis user id (khas discovery akses profil publik)
+    ['/threads_discovery/search', { q }],
+    // discovery berbasis user id (akses profil publik)
     ...(cfg.user_id ? [
       ['/' + cfg.user_id + '/discovery', { q }],
       ['/' + cfg.user_id + '/profile_discovery', { q }],
+      ['/' + cfg.user_id + '/search', { q }],
     ] : []),
     ['/me', { fields: 'id,username,name' }], // kontrol: token masih valid?
   ];
