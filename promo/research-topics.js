@@ -134,27 +134,19 @@ async function checkSources(urls) {
 // Minta Gemini menyusun 1 topik dari daftar kandidat — WAJIB URL sumber
 async function draftTopic(candidates) {
   const list = candidates.map((c, i) => `${i + 1}. (${c.src}) ${c.title} — ${c.url}`).join('\n');
-  const prompt = `Kamu analis tren AI. Dari kandidat trending berikut (dari HN & Reddit), pilih 1 yang paling layak jadi posting Threads viral akun AI Indonesia:
+  const prompt = `Kamu analis tren AI. Dari kandidat trending berikut (dari HN & RSS AI), pilih 1 yang paling layak jadi posting Threads viral akun AI Indonesia:
 
 ${list}
 
-Buat DRAF TOPIK dengan format JSON EXACT berikut (tidak ada teks lain):
-{
-  "id": "slug-pendek",
-  "topic": "one-liner topik dalam Bahasa Indonesia, angkat fakta menarik",
-  "hook": ["hook1", "hook2", "hook3"],
-  "facts": ["• fakta dengan angka bila mungkin", "• fakta ke-2", "• fakta ke-3"],
-  "freePath": ["• cara gratis 1", "• cara gratis 2", "• cara gratis 3"],
-  "ctaQ": "pertanyaan CTA penutup ke pembaca",
-  "category": "kategori-pendek",
-  "sources": ["https://url-sumber-1", "https://url-sumber-2"]
-}
+Buat DRAF TOPIK dengan format JSON EXACT berikut (tidak ada teks lain, hanya JSON):
+{"id":"slug-pendek","topic":"one-liner topik dalam Bahasa Indonesia","hook":["hook1","hook2","hook3"],"facts":["fakta dengan angka bila mungkin","fakta ke-2"],"freePath":["cara gratis 1","cara gratis 2"],"ctaQ":"pertanyaan CTA penutup","category":"kategori-pendek","sources":["https://url-sumber-dari-kandidat"]}
 
-ATURANPENTING:
-- topic, hook, facts, freePath, ctaQ, category: Bahasa Indonesia santai (pakai "kamu")
-- WAJIB: field "sources" berisi minimum 1 URL dari daftar kandidat di atas (yang dipakai sebagai dasar fakta). Boleh tambah 1 sumber tambahan yang kamu tahu valid (URL resmi/artikel), TAPI kalau tidak terverifikasi jangan dimasukkan.
-- hook pakai pola: fakta/statement mengejutkan, bukan retoris.
-- jangan pakai emoji 🤯🚀🔥, maksimal 1 emoji non-mainstream.`;
+ATURAN:
+- topic/hook/facts/freePath/ctaQ/category dalam Bahasa Indonesia santai (pakai "kamu")
+- "sources" WAJIB berisi minimal 1 URL dari daftar kandidat di atas (dasar fakta)
+- hook pakai fakta/statement mengejutkan, bukan retoris
+- jangan pakai emoji 🤯🚀🔥, maksimal 1 emoji non-mainstream
+- Fakta jangan dikarang: kalau tidak ada angka di sumber, tulis pernyataan umum`;
   const res = await fetch(
     'https://generativelanguage.googleapis.com/v1beta/models/' + GEMINI_MODEL + ':generateContent?key=' + (process.env.GEMINI_API_KEY || ''),
     {
@@ -164,19 +156,28 @@ ATURANPENTING:
       signal: AbortSignal.timeout(90000),
     }
   );
-  if (!res.ok) return null;
+  if (!res.ok) { console.log('research-topics: Gemini HTTP ' + res.status + ' — ' + (await res.text().catch(() => '')).slice(0, 120)); return null; }
   const body = await res.json().catch(() => ({}));
   let text = (((body.candidates || [])[0] || {}).content || {}).parts?.map((p) => p.text || '').join('');
-  if (!text) return null;
-  // ekstrak JSON (bisa dibungkus ```json ... ```)
+  if (!text) { console.log('research-topics: Gemini output kosong'); return null; }
+  // buang markdown fence (```json ... ```) lalu ekstrak JSON
+  text = text.replace(/```(?:json)?/gi, '').replace(/```/g, '');
   const m = text.match(/\{[\s\S]*\}/);
-  if (!m) return null;
+  if (!m) { console.log('research-topics: tidak ada JSON di output. Raw: ' + text.slice(0, 200)); return null; }
   try {
     const t = JSON.parse(m[0]);
-    if (!t.id || !t.topic || !Array.isArray(t.hook) || !Array.isArray(t.facts)) return null;
-    if (!Array.isArray(t.sources) || t.sources.length === 0) return null;
+    if (!t.id || !t.topic || !Array.isArray(t.hook) || !Array.isArray(t.facts)) {
+      console.log('research-topics: JSON tidak lengkap: ' + JSON.stringify(t).slice(0, 200));
+      return null;
+    }
+    if (!Array.isArray(t.sources) || t.sources.length === 0) {
+      console.log('research-topics: JSON tanpa sources — coba isi dari kandidat: ' + JSON.stringify(t).slice(0, 150));
+      // fallback: pakai URL kandidat pertama sebagai sumber (masih aman)
+      if (candidates[0] && candidates[0].url) t.sources = [candidates[0].url];
+      else return null;
+    }
     return t;
-  } catch { return null; }
+  } catch (e) { console.log('research-topics: JSON parse gagal: ' + e.message + ' Raw: ' + text.slice(0, 200)); return null; }
 }
 
 async function main() {
