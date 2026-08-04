@@ -9,6 +9,10 @@ const fs = require('fs');
 const path = require('path');
 const THREADS_DIR = path.join(__dirname, 'threads');
 const SITE = 'https://tokengratis.web.id';
+// auto-topics berisi hasil riset mingguan; kalau topik hari ini dari sana,
+// verifikasi sumbernya masih hidup sebelum diizinkan posting.
+let AUTO_TOPICS = [];
+try { AUTO_TOPICS = require('./auto-topics.js'); } catch (_) { /* file bisa kosong */ }
 
 const KNOWN_NAMES = [
   'flux', 'black forest', 'alayaworld', 'alaya', 'gemini', 'gpt', 'openai', 'claude',
@@ -34,11 +38,35 @@ function findDraft() {
   return files.length ? path.join(THREADS_DIR, files[files.length - 1]) : null;
 }
 
-function main() {
+async function main() {
   const draft = findDraft();
   if (!draft) { console.log('VERIFY_SKIP (tidak ada draft)'); process.exit(0); }
   const text = fs.readFileSync(draft, 'utf8').trim();
   const problems = [];
+
+  // Cek topik otomatis: kalau salah satu topik auto muncul di draft,
+  // pastikan punya sumber URL yang masih hidup (bukan klaim tanpa bukti).
+  const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  if (AUTO_TOPICS.length) {
+    const todayTopic = AUTO_TOPICS[dayOfYear % AUTO_TOPICS.length];
+    if (todayTopic && todayTopic.topic && text.includes(todayTopic.topic.split(/[.!?]/)[0].slice(0, 30))) {
+      const sources = todayTopic.sources || [];
+      if (!sources.length) {
+        problems.push('topik otomatis tanpa sumber URL (anti-hoax)');
+      } else {
+        // HEAD cek — sumber mati = jangan post (klaim tidak tertelusuri)
+        for (const u of sources.slice(0, 2)) {
+          try {
+            const ctrl = new AbortController();
+            const timer = setTimeout(() => ctrl.abort(), 8000);
+            const res = await fetch(u, { method: 'HEAD', signal: ctrl.signal, redirect: 'follow' });
+            clearTimeout(timer);
+            if (!res.ok) { problems.push('sumber topik mati: ' + u); break; }
+          } catch { problems.push('sumber topik tidak bisa dicek: ' + u); break; }
+        }
+      }
+    }
+  }
 
   if (!text) problems.push('draft kosong');
 
@@ -71,4 +99,4 @@ function main() {
   console.log('VERIFY_OK (' + text.length + ' char, draft: ' + path.basename(draft) + ')');
 }
 
-main();
+main().catch((e) => { console.error('VERIFY_ERROR: ' + e.message); process.exit(0); });

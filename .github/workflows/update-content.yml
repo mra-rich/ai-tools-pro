@@ -1,0 +1,38 @@
+# ═══════════════════════════════════════════════════════════════════
+# update-content.yml — Update OTOMATIS database tokengratis.web.id
+# (harian, dipicu Hermes cron on-time).
+# update-content.js: baca content:latest → HN+RSS → Gemini saran provider
+# → dedup + cek URL → POST /content/update ke Worker.
+# Token admin hidup di secret (AITP_ADMIN_TOKEN), tidak pernah ke disk VM.
+# ═══════════════════════════════════════════════════════════════════
+name: Update Konten Tokengratis
+
+on:
+  workflow_dispatch:    # dipicu Hermes cron (1x/hari)
+
+permissions:
+  contents: write       # untuk commit log update
+
+jobs:
+  update-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Update konten database (riset + tulis Worker)
+        env:
+          AITP_ADMIN_TOKEN: ${{ secrets.AITP_ADMIN_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node promo/update-content.js
+
+      - name: Commit log update konten
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add promo/update-log.json 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore(promo): content update $(date +%F) [skip ci]"
+          git push

@@ -10,6 +10,10 @@
 const fs = require('fs');
 const path = require('path');
 const { VIRAL_TOPICS, getViralTopic } = require('./viral-topics.js');
+const AUTO_TOPICS = require('./auto-topics.js');
+
+// Gabungan topik: statis (manual) + otomatis (hasil riset mingguan).
+const ALL_TOPICS = [...VIRAL_TOPICS, ...AUTO_TOPICS];
 
 const WORKER = 'https://ai-tools-pro.rodliarif.workers.dev';
 const SITE = 'https://tokengratis.web.id';
@@ -71,7 +75,7 @@ function buildGeminiPrompt(d, dayOfYear) {
     .join('\n');
 
   // Angle hari ini: topik viral terpilih (model AI yang lagi panas)
-  const t = VIRAL_TOPICS[dayOfYear % VIRAL_TOPICS.length];
+  const t = ALL_TOPICS[dayOfYear % ALL_TOPICS.length];
 
   // Anti-repeat: kirim isi post terakhir supaya LLM tidak menulis ulang
   let prev = '';
@@ -188,8 +192,8 @@ function buildThread(d, dayOfYear) {
   const useViral = (dayOfYear % 5) < 4;
 
   if (useViral) {
-    const t = VIRAL_TOPICS[dayOfYear % VIRAL_TOPICS.length];
-    const hook = t.hook();
+    const t = ALL_TOPICS[dayOfYear % ALL_TOPICS.length];
+    const hook = typeof t.hook === 'function' ? t.hook() : pickHook(t.hook || []);
     const facts = (t.facts || []).slice(0, 4).join('\n');
     const freePaths = (t.freePath || []).slice(0, 4).join('\n');
 
