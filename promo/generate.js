@@ -105,6 +105,14 @@ Pola HOOK yang pasti laris di Threads (contoh, JANGAN dicopy mentah):
 DATA REFERENSI (provider yang BENAR-BENAR ada, tidak boleh dikarang):
 ${snapshot}
 
+ATURAN FAKTA WAJIB (dipatuhi):
+- JANGAN gabungkan dua perusahaan/model berbeda jadi satu produk. Sebut model
+  MILIK perusahaan dengan jelas; benda terpisah TIDAK di-satukan.
+- Jangan tulis angka/klaim yang tidak ada di DATA REFERENSI. Tidak yakin = tulis
+  pernyataan umum (mis. "sekarang bisa coba langsung") tanpa klaim spesifik.
+- Jangan campur proyek satu perusahaan ke model perusahaan lain.
+- Semua nama model/perusahaan harus dari snapshot, tidak boleh dikarang.
+
 TUGAS:
 - Tulis 1 posting Threads MAKSIMAL 480 karakter total
 - Bahasa Indonesia santai (pakai "kamu", campur istilah teknis Inggris kalau natural)
