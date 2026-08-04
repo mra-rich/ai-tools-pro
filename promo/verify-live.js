@@ -20,7 +20,7 @@ async function main() {
   console.log('\n=== LATEST POSTS LIVE DI AKUN (@' + me.username + ') — ' + arr.length + ' item ===');
   for (const p of arr.slice(0, 12)) {
     const t = (p.text || '').replace(/\n+/g, ' ').slice(0, 70);
-    console.log(`- id=${p.id}  ♥${p.like_count} ▶${p.view_count} 💬${p.replies_count}`);
+    console.log(`- id=${p.id}  text=${(p.text||'').replace(/\n+/g,' ').slice(0,60)||'(foto)'}`);
     console.log(`    ${t}`);
   }
   if (posts.error) console.log('ERR:', posts.error.message);
