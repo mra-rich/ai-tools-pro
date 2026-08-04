@@ -148,7 +148,10 @@ async function main() {
 
   const userId = await ensureUserId();
   const draft = latestDraft();
-  if (!draft) throw new Error('Tidak ada draft. Jalankan: node promo/generate.js');
+  if (!draft) {
+    console.log('SKIP: tidak ada draft (mungkin dihapus verifikasi) — tidak ada yang diposting.');
+    return;
+  }
 
   const posts = splitThread(draft.text);
   console.log('📄 ' + draft.file + ' → ' + posts.length + ' post:');
