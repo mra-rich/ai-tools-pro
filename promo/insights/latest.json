@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-04T04:16:03.097Z",
+  "fetched_at": "2026-08-04T08:14:01.571Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 8,
+  "sum_likes": 7,
   "sum_replies": 15,
-  "sum_views": 1089,
+  "sum_views": 1126,
   "threads": [
+    {
+      "id": "18064609331495659",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Dbm0UsMEYBt",
+      "timestamp": "2026-08-04T05:30:47+0000",
+      "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights",
+      "likes": 2,
+      "replies": 1,
+      "quotes": 0,
+      "views": 117
+    },
     {
       "id": "18104188460127575",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbmcOTuknw1",
@@ -14,7 +24,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 59
+      "views": 67
     },
     {
       "id": "18110542825953783",
@@ -24,7 +34,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 38
+      "views": 40
     },
     {
       "id": "17964500403138810",
@@ -34,7 +44,7 @@
       "likes": 1,
       "replies": 1,
       "quotes": 0,
-      "views": 70
+      "views": 73
     },
     {
       "id": "17880597102619396",
@@ -44,7 +54,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 60
+      "views": 62
     },
     {
       "id": "18141727255483736",
@@ -54,7 +64,7 @@
       "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 86
+      "views": 87
     },
     {
       "id": "18161638075462931",
@@ -64,7 +74,7 @@
       "likes": 0,
       "replies": 4,
       "quotes": 0,
-      "views": 166
+      "views": 170
     },
     {
       "id": "17919835179416319",
@@ -94,17 +104,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 32
-    },
-    {
-      "id": "18009535706747676",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Dbh3a6UCbsz",
-      "timestamp": "2026-08-02T07:21:33+0000",
-      "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk",
-      "likes": 3,
-      "replies": 1,
-      "quotes": 0,
-      "views": 101
+      "views": 33
     }
   ]
 }
