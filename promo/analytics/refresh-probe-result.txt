@@ -1,0 +1,8 @@
+✅ REFRESH OK — token baru (expires 60 hari)
+
+=== PROBE ULANG (token fresh) ===
+  [/threads_discovery/search] → ERR: Unsupported get request. Object with ID 'threads_discovery' does not e
+  [/threads_discovery] → ERR: Unsupported get request. Object with ID 'threads_discovery' does not e
+  [/me/profile_discovery] → ERR: Tried accessing nonexisting field (profile_discovery)
+  [/discovery/search] → ERR: Unsupported get request. Object with ID 'discovery' does not exist, ca
+  [/me] → ✅ OK id=36012892761658350 name=M Rodli Arif
