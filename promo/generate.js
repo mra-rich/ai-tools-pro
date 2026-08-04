@@ -139,7 +139,7 @@ function buildGeminiPrompt(d, dayOfYear, learnings) {
     .join('\n');
 
   // Angle hari ini: topik viral terpilih (model AI yang lagi panas)
-  const t = pickFreshTopic(dayOfYear);
+  const t = pickFreshTopic(dayOfYear + slot.idx);
   if (!t) return null; // tidak ada topik fresh → Gemini skip, pakai template evergreen
 
   // Loop belajar: insight terbukti dari data akun (kalau ada)
@@ -270,7 +270,7 @@ function buildThread(d, dayOfYear, learnings) {
   const wantModel = learnings && learnings.strong.some((c) => c.param === 'has_model' && c.rho > 0.25);
 
   if (useViral) {
-    const t = pickFreshTopic(dayOfYear);
+    const t = pickFreshTopic(dayOfYear + slot.idx);
     // kalau tidak ada topik fresh → lewati viral, pakai evergreen natural
     if (t) {
       const hook = typeof t.hook === 'function' ? t.hook() : pickHook(t.hook || []);
@@ -308,11 +308,25 @@ function buildThread(d, dayOfYear, learnings) {
 }
 
   // ── Format penyimpanan ─────────────────────────────────────────
+// Slot posting: 3×/hari (WIB 07:00, 12:30, 20:00 = UTC 00:00, 05:30, 13:00)
+// Tiap slot dapat file draft & topik BERBEDA (dayOfYear + slotIndex) biar
+// tidak ada konten sama/ulang dalam sehari.
+function slotInfo(now) {
+  const h = now.getUTCHours(), m = now.getUTCMinutes();
+  if (h === 0) return { label: '0700', idx: 0 };
+  if (h === 5 && m >= 30) return { label: '1230', idx: 1 };
+  if (h === 13) return { label: '2000', idx: 2 };
+  // di luar slot resmi (mis. manual dispatch siang): tetap boleh, label acak
+  return { label: ('0' + h).slice(-2) + ('0' + Math.floor(m/10)).slice(-2), idx: 0 };
+}
+
 async function main() {
   const d = await readContent();
   const today = new Date();
   const iso = today.toISOString().slice(0, 10);
   const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+  const slot = slotInfo(today);
+  const slotKey = iso + '-' + slot.label;
 
   // Prioritas: konten ditulis Gemini (AI) → fallback template bila gagal
   // Loop belajar: insight dari data akun (kalau ada) ikut membentuk konten.
@@ -323,12 +337,12 @@ async function main() {
   console.log(aiText ? '🤖 Ditulis Gemini (' + GEMINI_MODEL + ')' : '📋 Dari template cadangan');
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(OUT_DIR, iso + '.json'), JSON.stringify({ date: iso, thread }, null, 2));
-  fs.writeFileSync(path.join(OUT_DIR, iso + '.md'), thread);
-  console.log('✅ Thread ' + iso + ' siap:');
+  fs.writeFileSync(path.join(OUT_DIR, slotKey + '.json'), JSON.stringify({ date: slotKey, slot: slot.label, thread }, null, 2));
+  fs.writeFileSync(path.join(OUT_DIR, slotKey + '.md'), thread);
+  console.log('✅ Thread ' + slotKey + ' (slot ' + slot.label + ') siap:');
   console.log(thread);
   console.log('\n---');
-  console.log('Simpan di promo/threads/' + iso + '.md');
+  console.log('Simpan di promo/threads/' + slotKey + '.md');
 }
 
 main().catch((e) => { console.error('❌ ' + e.message); process.exit(1); });

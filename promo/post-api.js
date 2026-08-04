@@ -182,18 +182,25 @@ async function main() {
     return;
   }
 
-  // ── GUARD ANTI-DOBEL: kalau tanggal hari ini SUDAH ter-post, JANGAN posting ──
-  // Mencegah spam volume: workflow boleh ke-trigger berkali-kali (retry, cron
-  // dobel, test), tapi Threads hanya boleh dapat 1 thread per tanggal.
-  const today = new Date().toISOString().slice(0, 10);
-  const postedToday = path.join(THREADS_DIR, today + '.md.posted');
+  // ── GUARD ANTI-DOBEL PER SLOT: 3×/hari (WIB 07:00, 12:30, 20:00 = UTC 00:00, 05:30, 13:00)
+  // Tiap slot punya file draft sendiri (YYYY-MM-DD-<slot>.md) dan guard-nya
+  // sendiri (YYYY-MM-DD-<slot>.md.posted). Jadi 1 slot hanya 1 post — tapi
+  // 3 slot berbeda di hari yang sama tetap bisa posting (konten fresh beda).
+  const now = new Date();
+  const today = now.toISOString().slice(0, 10);
+  const h = now.getUTCHours(), m = now.getUTCMinutes();
+  const slotLabel = (h === 0) ? '0700' : (h === 5 && m >= 30) ? '1230' : (h === 13) ? '2000' : null;
+  const guardName = slotLabel ? today + '-' + slotLabel + '.md.posted' : null;
+  // Kalau di luar slot resmi: fallback ke guard tanggal (perilaku lama, aman)
+  const postedKey = guardName || (today + '.md.posted');
+  const postedToday = path.join(THREADS_DIR, postedKey);
   if (fs.existsSync(postedToday)) {
-    console.log('⛔ SKIP: thread ' + today + ' SUDAH diposting (' + postedToday + '). Anti-dobel aktif — tidak posting lagi hari ini.');
+    console.log('⛔ SKIP: ' + postedKey + ' SUDAH diposting. Slot ' + (slotLabel || 'off-slot') + ' sudah terisi — tidak posting dobel di slot yang sama.');
     return;
   }
   // Draft yang akan diposting bukan untuk hari ini? Hati-hati: kalau draft lama
   // belum ter-post dan tanggalnya bukan hari ini, tetap biarkan (posting backlog)
-  // TAPI guard di atas sudah menangani kasus tanggal sama.
+  // TAPI guard di atas sudah menangani kasus tanggal/slot sama.
 
   const posts = splitThread(draft.text);
   console.log('📄 ' + draft.file + ' → ' + posts.length + ' post:');
