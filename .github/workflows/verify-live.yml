@@ -1,0 +1,13 @@
+name: Verify Live Posts [temp]
+on:
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: '20' }
+      - run: node promo/verify-live.js
+        env:
+          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
