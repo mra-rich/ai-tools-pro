@@ -1,0 +1,17 @@
+Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.
+
+Namanya Flux 3. Era pipeline 3-langkah tinggal kenangan.
+
+• Proyek video world open source (AlayaWorld) sudah streaming 720p/24FPS
+• Mode depth-video-to-video = kontrol kamera sinematik tanpa manual staging
+• Checkpoint lokal sudah di-share komunitas di Hugging Face
+
+Cara dapat GRATIS-nya:
+• Coba langsung di Hugging Face Spaces — gratis
+• Style Ghibli tren: ada versi demo gratisnya
+• Checkpoint lokal via Unsloth untuk kreator yang pegang GPU sendiri
+
+Database 110+ provider gratis & tutorialnya:
+https://tokengratis.web.id
+
+Paling kepikiran mau bikin apa: 🖼️ gambar, 🎥 video, atau 🎵 musik? Komen 👇
