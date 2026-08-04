@@ -1,5 +1,8 @@
 # analytics.yml - Analisis performa konten harian & tulis laporan ke repo.
 # Menulis promo/analytics/report.json supaya bisa dibaca agent (GITHUB_TOKEN).
+# Loop BELAJAR: learn-virality.py menghitung korelasi 17 parameter → views dan
+# menulis learnings.json — dipakai generate.js untuk membentuk konten besok
+# (prinsip: "hari ini harus lebih baik dari hari kemarin").
 # Jadwal: 22:00 WIB (setelah insight malam) = 15:00 UTC.
 name: Threads Analytics
 
@@ -23,6 +26,8 @@ jobs:
         env:
           THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
         run: node promo/analytics.js
+      - name: Loop belajar — hitung korelasi parameter vs views
+        run: python3 promo/learn-virality.py
       - name: Commit laporan
         run: |
           git config user.name "github-actions[bot]"

@@ -63,6 +63,44 @@ function badgeLabel(b) {
   return m[b] || b;
 }
 
+// ── Loop BELAJAR: baca analytics/learnings.json (hasil learn-virality.py) ──
+// Hari ini harus lebih baik dari kemarin: insight yang terbukti berkorelasi
+// dengan views dipakai untuk menyusun konten hari ini. Kalau file belum ada
+// (analytics belum jalan), fungsi ini aman → return null (konten normal).
+function loadLearnings() {
+  try {
+    const p = path.join(__dirname, 'analytics', 'learnings.json');
+    if (!fs.existsSync(p)) return null;
+    const l = JSON.parse(fs.readFileSync(p, 'utf8'));
+    if (!l || !l.correlations || !l.correlations.length) return null;
+    // Parameter dengan korelasi kuat (|rho| ≥ 0.25) = yang TERBUKTI kerja
+    l.strong = l.correlations.filter((c) => Math.abs(c.rho) >= 0.25);
+    return l;
+  } catch (_) { return null; }
+}
+
+// Terjemahkan insight → 1 baris instruksi yang bisa dipatuhi generator.
+// Dipakai di prompt Gemini DAN untuk memilih template terbaik di buildThread.
+function insightBrief(l) {
+  if (!l || !l.strong || !l.strong.length) return null;
+  const pos = l.strong.filter((c) => c.rho > 0);
+  if (!pos.length) return null;
+  const bits = {
+    has_free: 'Sebut kata "gratis"/"free"/"irit"/"murah" secara natural',
+    has_model: 'Sebut nama model AI spesifik yang lagi hangat',
+    has_number: 'Pakai ANGKA konkret (harga, token, persen, perbandingan)',
+    has_emo: 'Buka dengan hook emosi (gila/akhirnya/wow/ternyata)',
+    has_cara: 'Kasih 1 langkah/cara praktis yang bisa langsung dicoba',
+    has_kalah: 'Pakai sudut perbandingan (kalah/lebih murah/vs)',
+    caps_words: 'Ada 1-2 kata ALL-CAPS untuk penekanan',
+  };
+  const tips = pos
+    .map((c) => bits[c.param]).filter(Boolean)
+    .slice(0, 5);
+  if (!tips.length) return null;
+  return 'INSIGHT TERBUKTI DARI DATA AKUN INI (ikuti untuk performa bagus): ' + tips.join('; ') + '.';
+}
+
 // ── Generate pakai Gemini API (konten baru tiap hari, bukan template) ──
 // Key dibaca dari env GEMINI_API_KEY (GitHub Secret di CI). Kalau key kosong
 // / API gagal / output tidak lolos validasi → null → caller pakai template.
@@ -94,7 +132,7 @@ function pickFreshTopic(dayOfYear) {
   return fresh[dayOfYear % fresh.length];
 }
 
-function buildGeminiPrompt(d, dayOfYear) {
+function buildGeminiPrompt(d, dayOfYear, learnings) {
   const providers = d.providers || [];
   const snapshot = shuf(providers).slice(0, 30)
     .map((p) => `- ${p.nama} [${p.kategori}${p.badge ? ' | ' + p.badge : ''}]: ${cap(p.deskripsi || '', 80)}`)
@@ -103,6 +141,9 @@ function buildGeminiPrompt(d, dayOfYear) {
   // Angle hari ini: topik viral terpilih (model AI yang lagi panas)
   const t = pickFreshTopic(dayOfYear);
   if (!t) return null; // tidak ada topik fresh → Gemini skip, pakai template evergreen
+
+  // Loop belajar: insight terbukti dari data akun (kalau ada)
+  const brief = insightBrief(learnings);
 
   // Anti-repeat: kirim isi post terakhir supaya LLM tidak menulis ulang
   let prev = '';
@@ -132,7 +173,7 @@ Pola HOOK yang pasti laris di Threads (contoh, JANGAN dicopy mentah):
 - "Kimi K3 sampai 'sold out' karena demand. Tapi weight-nya open source. Artinya…"
 - "Harga langganan AI: $20/bulan. Biaya task yang sama via API: $0.31."
 - "Belum rilis aja teaser 3 kata dari Alibaba udah jadi meme. Komunitas beneran nunggu Qwen3.8."
-
+${brief ? '\n' + brief + '\n' : ''}
 DATA REFERENSI (provider yang BENAR-BENAR ada, tidak boleh dikarang):
 ${snapshot}
 
@@ -155,7 +196,7 @@ ${prev ? '\nPosting kemarin (jangan repeat angle/gaya ini):\n' + prev + '\n' : '
 Balas HANYA teks posting siap terbit, tanpa pembuka/penjelasan/format apa pun sebelum/after teks.`;
 }
 
-async function generateWithGemini(d, dayOfYear) {
+async function generateWithGemini(d, dayOfYear, learnings) {
   const key = process.env.GEMINI_API_KEY;
   if (!key) { console.log('ℹ️  GEMINI_API_KEY kosong — pakai template.'); return null; }
 
@@ -167,7 +208,7 @@ async function generateWithGemini(d, dayOfYear) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: buildGeminiPrompt(d, dayOfYear) }] }],
+          contents: [{ parts: [{ text: buildGeminiPrompt(d, dayOfYear, learnings) }] }],
           generationConfig: { temperature: 0.9, maxOutputTokens: 400, thinkingConfig: { thinkingBudget: 0 } },
         }),
         signal: AbortSignal.timeout(120000), // batas 2 menit — lewat itu fallback template
@@ -214,11 +255,19 @@ async function generateWithGemini(d, dayOfYear) {
 // natural yang dirotasi acak — cerita, perbandingan, tip-list, kontroversi,
 // pertanyaan — jadi feed tidak terlihat kloning template yang sama.
 // Selalu wajib: link tokengratis.web.id + CTA (aturan bisnis).
-function buildThread(d, dayOfYear) {
+function buildThread(d, dayOfYear, learnings) {
   const providers = d.providers || [];
 
   // 4 dari 5 hari pakai topik viral (bukan 100% supaya feed tidak monoton)
   const useViral = (dayOfYear % 5) < 4;
+
+  // Loop belajar: kalau data membuktikan "angka konkret" & "hook emosi" & "kata
+  // gratis" berkorelasi kuat, prefer gaya template yang mengandung elemen itu.
+  const brief = insightBrief(learnings);
+  const wantNum = learnings && learnings.strong.some((c) => c.param === 'has_number' && c.rho > 0.25);
+  const wantFree = learnings && learnings.strong.some((c) => c.param === 'has_free' && c.rho > 0.25);
+  const wantEmo = learnings && learnings.strong.some((c) => c.param === 'has_emo' && c.rho > 0.25);
+  const wantModel = learnings && learnings.strong.some((c) => c.param === 'has_model' && c.rho > 0.25);
 
   if (useViral) {
     const t = pickFreshTopic(dayOfYear);
@@ -249,6 +298,12 @@ function buildThread(d, dayOfYear) {
     `Sering ditanya, "AI gratis tuh beneran ada nggak sih?"\n\nBeneran. Contoh yang lagi jalan:\n\n${list}\n\nKumpulan lengkapnya, bebas kartu kredit:\n${SITE}\n\nShare ke teman yang masih mikir AI itu cuma buat yang bayar 🙌`,
     `Kadang cukup butuh 1 tool yang pas, bukan 10 langganan.\n\nYang ini aku cek dan masih bisa dipakai gratis:\n\n${list}\n\nTutorial dan propotnya yang lain:\n${SITE}\n\nKamu biasanya pakai AI buat apa?`,
   ];
+  // Loop belajar (fallback template): semua gaya evergreen sudah mengandung
+  // angka + "gratis" + hook — insight tinggal memilih yang paling cocok.
+  if (wantNum || wantFree || wantEmo || wantModel) {
+    // prefer gaya yang kuat (no.1 & no.2 memuat angka & perbandingan)
+    return pick([styles[0], styles[1], styles[0], styles[2]]);
+  }
   return pick(styles);
 }
 
@@ -260,8 +315,11 @@ async function main() {
   const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
 
   // Prioritas: konten ditulis Gemini (AI) → fallback template bila gagal
-  const aiText = await generateWithGemini(d, dayOfYear);
-  const thread = aiText || buildThread(d, dayOfYear);
+  // Loop belajar: insight dari data akun (kalau ada) ikut membentuk konten.
+  const learnings = loadLearnings();
+  if (learnings) console.log('🧠 Loop belajar aktif: ' + learnings.n_posts + ' post dipelajari, ' + learnings.strong.length + ' parameter terbukti.');
+  const aiText = await generateWithGemini(d, dayOfYear, learnings);
+  const thread = aiText || buildThread(d, dayOfYear, learnings);
   console.log(aiText ? '🤖 Ditulis Gemini (' + GEMINI_MODEL + ')' : '📋 Dari template cadangan');
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
