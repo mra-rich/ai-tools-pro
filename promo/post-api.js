@@ -182,6 +182,19 @@ async function main() {
     return;
   }
 
+  // ── GUARD ANTI-DOBEL: kalau tanggal hari ini SUDAH ter-post, JANGAN posting ──
+  // Mencegah spam volume: workflow boleh ke-trigger berkali-kali (retry, cron
+  // dobel, test), tapi Threads hanya boleh dapat 1 thread per tanggal.
+  const today = new Date().toISOString().slice(0, 10);
+  const postedToday = path.join(THREADS_DIR, today + '.md.posted');
+  if (fs.existsSync(postedToday)) {
+    console.log('⛔ SKIP: thread ' + today + ' SUDAH diposting (' + postedToday + '). Anti-dobel aktif — tidak posting lagi hari ini.');
+    return;
+  }
+  // Draft yang akan diposting bukan untuk hari ini? Hati-hati: kalau draft lama
+  // belum ter-post dan tanggalnya bukan hari ini, tetap biarkan (posting backlog)
+  // TAPI guard di atas sudah menangani kasus tanggal sama.
+
   const posts = splitThread(draft.text);
   console.log('📄 ' + draft.file + ' → ' + posts.length + ' post:');
   posts.forEach((p, i) => console.log('[Post ' + (i + 1) + '] ' + p.slice(0, 80) + '…'));
