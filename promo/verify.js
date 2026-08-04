@@ -41,7 +41,13 @@ function main() {
   const problems = [];
 
   if (!text) problems.push('draft kosong');
-  if (text.length > 500) problems.push('panjang ' + text.length + ' char (>500)');
+
+  // Threads = thread berantai (beberapa post). Cek PER-BARIS ≤ 500 char,
+  // bukan keseluruhan draft (draft valid bisa 2-3 post dalam satu thread).
+  const lines = text.split('\n').filter((l) => l.trim());
+  const longLines = lines.filter((l) => l.length > 500);
+  if (longLines.length) problems.push('ada baris >500 char: ' + longLines[0].slice(0, 60) + '…');
+  if (lines.length > 6) problems.push('terlalu banyak post dalam 1 thread: ' + lines.length);
   if (!text.includes(SITE)) problems.push('tidak memuat link situs');
 
   for (const p of SPAM_PATTERNS) {
