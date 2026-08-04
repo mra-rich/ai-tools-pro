@@ -1,69 +1,60 @@
 {
-  "generated_at": "2026-08-03T23:06:10.376Z",
+  "generated_at": "2026-08-04T16:47:58.125Z",
   "total_posts": 50,
   "best_category": {
     "cat": "lainnya",
-    "n": 25,
-    "totalViews": 2818,
+    "n": 23,
+    "totalViews": 2764,
     "totalLike": 13,
     "totalReply": 87,
     "totalScore": 406727.82465777255,
-    "avgScore": 16269.11
+    "avgScore": 17683.82
   },
   "category_performance": [
     {
       "cat": "lainnya",
-      "n": 25,
-      "totalViews": 2818,
+      "n": 23,
+      "totalViews": 2764,
       "totalLike": 13,
       "totalReply": 87,
       "totalScore": 406727.82465777255,
-      "avgScore": 16269.11
+      "avgScore": 17683.82
     },
     {
       "cat": "tutorial/cara",
-      "n": 7,
-      "totalViews": 62600,
-      "totalLike": 600,
-      "totalReply": 167,
-      "totalScore": 112035.01136496206,
-      "avgScore": 16005
-    },
-    {
-      "cat": "pilihan model",
-      "n": 1,
-      "totalViews": 1766,
-      "totalLike": 44,
-      "totalReply": 44,
-      "totalScore": 9966.024915062288,
-      "avgScore": 9966.02
+      "n": 13,
+      "totalViews": 63104,
+      "totalLike": 604,
+      "totalReply": 174,
+      "totalScore": 143234.3269193576,
+      "avgScore": 11018.03
     },
     {
       "cat": "tool/model baru",
-      "n": 14,
-      "totalViews": 36106,
-      "totalLike": 214,
-      "totalReply": 122,
-      "totalScore": 102895.4069008638,
-      "avgScore": 7349.67
+      "n": 11,
+      "totalViews": 35989,
+      "totalLike": 216,
+      "totalReply": 130,
+      "totalScore": 66992.03579073853,
+      "avgScore": 6090.19
     },
     {
       "cat": "perkenalan/promo",
       "n": 2,
-      "totalViews": 416,
+      "totalViews": 504,
       "totalLike": 2,
-      "totalReply": 6,
-      "totalScore": 12252.241074475016,
-      "avgScore": 6126.12
+      "totalReply": 8,
+      "totalScore": 11657.907310081224,
+      "avgScore": 5828.95
     },
     {
       "cat": "gratis/limit",
       "n": 1,
-      "totalViews": 19700,
-      "totalLike": 132,
+      "totalViews": 19805,
+      "totalLike": 133,
       "totalReply": 59,
-      "totalScore": 1568.527918781726,
-      "avgScore": 1568.53
+      "totalScore": 1565.261297652108,
+      "avgScore": 1565.26
     }
   ],
   "top_posts": [
@@ -130,6 +121,28 @@
   ],
   "weak_posts": [
     {
+      "id": "18082673918386454",
+      "preview": "Pernah gak sih, udah merasa \"Sip, semua chat WA udah dibales!\"\n\n, terus besok paginya pas buka lagi, baru sadar ada satu",
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 29
+      },
+      "cat": "lainnya"
+    },
+    {
+      "id": "18163278376431119",
+      "preview": "Gue baru sadar, hari ini gue ngobrol sama AI lebih lama daripada sama manusia. Bukan karena sok anti sosial, tapi karena",
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 121
+      },
+      "cat": "lainnya"
+    },
+    {
       "id": "18460445653129021",
       "preview": "Kadang gue mikir…\n\nteknologi itu berkembang cepat banget.\n\nTapi manusia tetap sama:\ntetap capek,\ntetap lupa,\ntetap males",
       "stats": {
@@ -137,28 +150,6 @@
         "reply": 0,
         "quote": 0,
         "views": 55
-      },
-      "cat": "lainnya"
-    },
-    {
-      "id": "17966056983113466",
-      "preview": "Banyak yang mikir efisiensi = ganti orang pakai AI. Padahal, seringnya malah bikin pusing karena workflow-nya belum jela",
-      "stats": {
-        "like": 0,
-        "reply": 0,
-        "quote": 0,
-        "views": 22
-      },
-      "cat": "lainnya"
-    },
-    {
-      "id": "18066627392374681",
-      "preview": "Banyak kreator punya masalah yang sama: ide berseliweran di mana-mana. Catatan sana-sini, screenshot, chat, atau cuma ng",
-      "stats": {
-        "like": 0,
-        "reply": 0,
-        "quote": 0,
-        "views": 32
       },
       "cat": "lainnya"
     }
@@ -169,9 +160,9 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-18T23:22:32+0000",
       "preview": "Gila....Claude Opus-4.8 sudah GRATIS, IRIT lagi !!!\n\nBegini caranya.....",
-      "views": 56471,
-      "likes": 532,
-      "replies": 112,
+      "views": 56504,
+      "likes": 531,
+      "replies": 113,
       "quotes": 3
     },
     {
@@ -179,9 +170,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-28T01:41:44+0000",
       "preview": "Sonnet 4.5 kalah dari model FREE ini.. \n\nLo bisa gunakan sampai Milyaran token\n\n",
-      "views": 26801,
+      "views": 26931,
       "likes": 177,
-      "replies": 55,
+      "replies": 66,
       "quotes": 3
     },
     {
@@ -189,8 +180,8 @@
       "cat": "gratis/limit",
       "ts": "2026-07-11T08:57:19+0000",
       "preview": "Akhirnya Free unlimited AI juga... \n\nterinspirasi dari pengguna threads ... \nSum",
-      "views": 19700,
-      "likes": 132,
+      "views": 19805,
+      "likes": 133,
       "replies": 59,
       "quotes": 0
     },
@@ -199,9 +190,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-18T09:21:13+0000",
       "preview": "Setiap minggu rangking AI berubah-ubah... \n\nTapi ada FAKTA menarik.. \n\nKetika ad",
-      "views": 4192,
+      "views": 4194,
       "likes": 13,
-      "replies": 7,
+      "replies": 8,
       "quotes": 0
     },
     {
@@ -229,19 +220,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-29T08:31:59+0000",
       "preview": "FREE Model ini harganya lebih murah 13x lipat dari Sonnet 4.6\n\nTAPI kualitasnya ",
-      "views": 1891,
+      "views": 1896,
       "likes": 6,
-      "replies": 4,
-      "quotes": 0
-    },
-    {
-      "id": "18111419476884517",
-      "cat": "pilihan model",
-      "ts": "2026-05-16T03:06:51+0000",
-      "preview": "Orang ngira guru pesantren itu gaptek.\nPadahal gue ngajar nahwu, fiqih, tauhid, ",
-      "views": 1766,
-      "likes": 44,
-      "replies": 44,
+      "replies": 6,
       "quotes": 0
     },
     {
@@ -259,9 +240,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-31T11:05:43+0000",
       "preview": "This is REAL FREE AI Model !!! REAL Kimi k-3 no ABAL-ABAL !!!\n\nu can get $30/Mon",
-      "views": 722,
+      "views": 724,
       "likes": 6,
-      "replies": 17,
+      "replies": 20,
       "quotes": 0
     },
     {
@@ -269,9 +250,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-18T07:21:03+0000",
       "preview": "Provider Zhipu memberikan bansos AI Model GLM Totalnya 50 Juta Token, 20 Juta da",
-      "views": 700,
+      "views": 707,
       "likes": 3,
-      "replies": 5,
+      "replies": 7,
       "quotes": 0
     },
     {
@@ -289,7 +270,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-20T04:08:15+0000",
       "preview": "FREE 20 juta Token KIMI-K3 !!!!\n\ncaranya ? di bawah...",
-      "views": 411,
+      "views": 419,
       "likes": 6,
       "replies": 2,
       "quotes": 0
@@ -299,9 +280,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-25T23:45:42+0000",
       "preview": "$200 Gratis sekarang bisa digunakan untuk kimi k-3 dan gpt 5.6 sol\n\nyang belum c",
-      "views": 365,
+      "views": 366,
       "likes": 7,
-      "replies": 10,
+      "replies": 11,
       "quotes": 0
     },
     {
@@ -309,7 +290,7 @@
       "cat": "perkenalan/promo",
       "ts": "2026-08-03T14:19:11+0000",
       "preview": "Keren juga si Jarvis ini...",
-      "views": 313,
+      "views": 322,
       "likes": 2,
       "replies": 3,
       "quotes": 0
@@ -325,6 +306,16 @@
       "quotes": 0
     },
     {
+      "id": "18161638075462931",
+      "cat": "perkenalan/promo",
+      "ts": "2026-08-03T21:40:33+0000",
+      "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap h",
+      "views": 182,
+      "likes": 0,
+      "replies": 5,
+      "quotes": 0
+    },
+    {
       "id": "18093169234979199",
       "cat": "lainnya",
       "ts": "2026-05-24T05:30:17+0000",
@@ -332,6 +323,16 @@
       "views": 174,
       "likes": 0,
       "replies": 4,
+      "quotes": 0
+    },
+    {
+      "id": "17919835179416319",
+      "cat": "tool/model baru",
+      "ts": "2026-08-03T18:14:19+0000",
+      "preview": "Claude Code lagi viral, tapi kamu tau kan kalau banyak alternatif gratis yang sa",
+      "views": 164,
+      "likes": 0,
+      "replies": 1,
       "quotes": 0
     },
     {
@@ -375,23 +376,13 @@
       "quotes": 0
     },
     {
-      "id": "17919835179416319",
-      "cat": "tool/model baru",
-      "ts": "2026-08-03T18:14:19+0000",
-      "preview": "Claude Code lagi viral, tapi kamu tau kan kalau banyak alternatif gratis yang sa",
-      "views": 140,
-      "likes": 0,
+      "id": "18064609331495659",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T05:30:47+0000",
+      "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down ",
+      "views": 125,
+      "likes": 2,
       "replies": 1,
-      "quotes": 0
-    },
-    {
-      "id": "18092783287971024",
-      "cat": "tool/model baru",
-      "ts": "2026-05-16T05:00:12+0000",
-      "preview": "Banyak yang mikir error pertama bikin automation itu karena tools-nya error.\n\nPa",
-      "views": 123,
-      "likes": 0,
-      "replies": 4,
       "quotes": 0
     },
     {
@@ -435,16 +426,6 @@
       "quotes": 0
     },
     {
-      "id": "18102293626886514",
-      "cat": "tool/model baru",
-      "ts": "2026-05-16T01:00:13+0000",
-      "preview": "Capek nggak sih nyobain tools AI terus? Kayaknya semua bilang bisa bikin produkt",
-      "views": 113,
-      "likes": 0,
-      "replies": 4,
-      "quotes": 0
-    },
-    {
       "id": "18019513847674589",
       "cat": "tutorial/cara",
       "ts": "2026-05-19T04:02:20+0000",
@@ -452,6 +433,16 @@
       "views": 110,
       "likes": 1,
       "replies": 7,
+      "quotes": 0
+    },
+    {
+      "id": "18009535706747676",
+      "cat": "tool/model baru",
+      "ts": "2026-08-02T07:21:33+0000",
+      "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk mengumpulkan hal ya",
+      "views": 107,
+      "likes": 4,
+      "replies": 1,
       "quotes": 0
     },
     {
@@ -465,26 +456,6 @@
       "quotes": 0
     },
     {
-      "id": "18161638075462931",
-      "cat": "perkenalan/promo",
-      "ts": "2026-08-03T21:40:33+0000",
-      "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap h",
-      "views": 103,
-      "likes": 0,
-      "replies": 3,
-      "quotes": 0
-    },
-    {
-      "id": "18009535706747676",
-      "cat": "tool/model baru",
-      "ts": "2026-08-02T07:21:33+0000",
-      "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk mengumpulkan hal ya",
-      "views": 100,
-      "likes": 2,
-      "replies": 1,
-      "quotes": 0
-    },
-    {
       "id": "18103647799819161",
       "cat": "lainnya",
       "ts": "2026-05-24T12:00:17+0000",
@@ -495,13 +466,43 @@
       "quotes": 0
     },
     {
-      "id": "18005388131874122",
-      "cat": "tool/model baru",
-      "ts": "2026-05-16T03:00:11+0000",
-      "preview": "Saya mulai menilai tools AI dari satu pertanyaan sederhana: apakah ini benar-ben",
-      "views": 64,
+      "id": "18141727255483736",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T00:10:57+0000",
+      "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.\n\nNamany",
+      "views": 88,
+      "likes": 2,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "17964500403138810",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T00:17:57+0000",
+      "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.\n\nNamany",
+      "views": 73,
+      "likes": 1,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "18104188460127575",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T02:00:13+0000",
+      "preview": "Generasi AI baru ini tidak menulis teks aja — dia jadi satu model untuk semua me",
+      "views": 73,
       "likes": 0,
-      "replies": 4,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "17880597102619396",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T00:17:18+0000",
+      "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya.",
+      "views": 62,
+      "likes": 0,
+      "replies": 1,
       "quotes": 0
     },
     {
@@ -555,6 +556,16 @@
       "quotes": 0
     },
     {
+      "id": "18110542825953783",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T00:48:30+0000",
+      "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya.",
+      "views": 42,
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
       "id": "18080981780443075",
       "cat": "lainnya",
       "ts": "2026-05-17T09:00:11+0000",
@@ -575,6 +586,16 @@
       "quotes": 0
     },
     {
+      "id": "18134699050717380",
+      "cat": "tool/model baru",
+      "ts": "2026-08-02T17:31:27+0000",
+      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kim",
+      "views": 36,
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
       "id": "18111225698478059",
       "cat": "lainnya",
       "ts": "2026-05-21T05:06:58+0000",
@@ -582,26 +603,6 @@
       "views": 34,
       "likes": 0,
       "replies": 9,
-      "quotes": 0
-    },
-    {
-      "id": "18066627392374681",
-      "cat": "lainnya",
-      "ts": "2026-05-15T14:00:11+0000",
-      "preview": "Banyak kreator punya masalah yang sama: ide berseliweran di mana-mana. Catatan s",
-      "views": 32,
-      "likes": 0,
-      "replies": 0,
-      "quotes": 0
-    },
-    {
-      "id": "18134699050717380",
-      "cat": "tool/model baru",
-      "ts": "2026-08-02T17:31:27+0000",
-      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kim",
-      "views": 31,
-      "likes": 0,
-      "replies": 1,
       "quotes": 0
     },
     {
@@ -632,16 +633,6 @@
       "views": 24,
       "likes": 0,
       "replies": 4,
-      "quotes": 0
-    },
-    {
-      "id": "17966056983113466",
-      "cat": "lainnya",
-      "ts": "2026-05-15T23:00:11+0000",
-      "preview": "Banyak yang mikir efisiensi = ganti orang pakai AI. Padahal, seringnya malah bik",
-      "views": 22,
-      "likes": 0,
-      "replies": 0,
       "quotes": 0
     },
     {
