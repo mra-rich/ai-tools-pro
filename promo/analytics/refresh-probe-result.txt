@@ -1,8 +1,10 @@
 ✅ REFRESH OK — token baru (expires 60 hari)
 
 === PROBE ULANG (token fresh) ===
-  [/threads_discovery/search] → ERR: Unsupported get request. Object with ID 'threads_discovery' does not e
+  [/threads_user_search] → ERR: Unsupported get request. Object with ID 'threads_user_search' does not
+  [/ig_user_search] → ERR: Unsupported get request. Object with ID 'ig_user_search' does not exis
+  [/threads_hashtag_search] → ERR: Unsupported get request. Object with ID 'threads_hashtag_search' does 
+  [/ig_hashtag_search] → ERR: Unsupported get request. Object with ID 'ig_hashtag_search' does not e
   [/threads_discovery] → ERR: Unsupported get request. Object with ID 'threads_discovery' does not e
-  [/me/profile_discovery] → ERR: Tried accessing nonexisting field (profile_discovery)
-  [/discovery/search] → ERR: Unsupported get request. Object with ID 'discovery' does not exist, ca
+  [/threads_discovery/search] → ERR: Unsupported get request. Object with ID 'threads_discovery' does not e
   [/me] → ✅ OK id=36012892761658350 name=M Rodli Arif
