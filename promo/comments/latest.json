@@ -1,6 +1,14 @@
 {
-  "fetched_at": "2026-08-04T22:15:32.481Z",
+  "fetched_at": "2026-08-05T05:48:53.731Z",
   "threads": [
+    {
+      "id": "18082221728690566",
+      "preview": "OpenAI kasih akses ChatGPT GRATIS buat 100.000 peneliti mulai 30 Juli.\n\nGILA, in",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DbozaUlGLqP",
+      "timestamp": "2026-08-05T00:01:18+0000",
+      "replies_count": 0,
+      "replies": []
+    },
     {
       "id": "18064609331495659",
       "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down ",
@@ -237,7 +245,7 @@
       "preview": "Sonnet 4.5 kalah dari model FREE ini.. \n\nLo bisa gunakan sampai Milyaran token\n\n",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbUYjrNiZHe",
       "timestamp": "2026-07-28T01:41:44+0000",
-      "replies_count": 19,
+      "replies_count": 18,
       "replies": [
         {
           "id": "18172010983437798",
@@ -318,12 +326,6 @@
           "timestamp": "2026-07-28T05:20:33+0000"
         },
         {
-          "id": "17951864850080433",
-          "text": "Biasanya saya minta gpt 5.6 sol/terra  buat bikin implementation plan di markdown, terus suruh ni model buat eksekusi, habis itu gpt review lagi 😂",
-          "username": "an_rohim",
-          "timestamp": "2026-07-28T04:45:28+0000"
-        },
-        {
           "id": "18113096612296603",
           "text": "limitnya sehari brp kak?",
           "username": "tutorgakbang",
@@ -352,39 +354,6 @@
           "text": "Ya... Deepseek v4 Flash Max",
           "username": "mrodliarif",
           "timestamp": "2026-07-28T01:47:07+0000"
-        }
-      ]
-    },
-    {
-      "id": "18109464664990527",
-      "preview": "$200 Gratis sekarang bisa digunakan untuk kimi k-3 dan gpt 5.6 sol\n\nyang belum c",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbPBsCHE8-K",
-      "timestamp": "2026-07-25T23:45:42+0000",
-      "replies_count": 4,
-      "replies": [
-        {
-          "id": "17904088947468110",
-          "text": "kenapa saya selalu gagal kk",
-          "username": "usmansaswandi",
-          "timestamp": "2026-07-29T12:07:01+0000"
-        },
-        {
-          "id": "18099481493591761",
-          "text": "",
-          "username": "mrodliarif",
-          "timestamp": "2026-07-26T00:03:47+0000"
-        },
-        {
-          "id": "17951508618015772",
-          "text": "gila serius?",
-          "username": "ajudanmudapaijo",
-          "timestamp": "2026-07-25T23:56:44+0000"
-        },
-        {
-          "id": "17901182331497215",
-          "text": "daftar dulu (WAJIB menggunakan akun github) mra-rich.github.io/join setelah daftar kamu langsung dapat kredit $200",
-          "username": "mrodliarif",
-          "timestamp": "2026-07-25T23:45:48+0000"
         }
       ]
     }
