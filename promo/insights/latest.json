@@ -1,20 +1,20 @@
 {
-  "fetched_at": "2026-08-05T08:12:39.624Z",
+  "fetched_at": "2026-08-05T15:53:02.854Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 5,
-  "sum_replies": 12,
-  "sum_views": 1056,
+  "sum_likes": 7,
+  "sum_replies": 19,
+  "sum_views": 1683,
   "threads": [
     {
       "id": "18073516532433694",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbphydLiYdU",
       "timestamp": "2026-08-05T06:46:27+0000",
       "preview": "Gila... Si Jarvis ngisi BOS dari jalur belakang...",
-      "likes": 0,
-      "replies": 0,
+      "likes": 2,
+      "replies": 7,
       "quotes": 0,
-      "views": 203
+      "views": 789
     },
     {
       "id": "18082221728690566",
@@ -24,7 +24,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 20
+      "views": 30
     },
     {
       "id": "18064609331495659",
@@ -34,7 +34,7 @@
       "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 128
+      "views": 134
     },
     {
       "id": "18104188460127575",
@@ -44,7 +44,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 74
+      "views": 76
     },
     {
       "id": "18110542825953783",
@@ -54,7 +54,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 44
+      "views": 47
     },
     {
       "id": "17964500403138810",
@@ -74,7 +74,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 62
+      "views": 63
     },
     {
       "id": "18141727255483736",
@@ -84,7 +84,7 @@
       "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 88
+      "views": 90
     },
     {
       "id": "18161638075462931",
@@ -94,7 +94,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 198
+      "views": 213
     },
     {
       "id": "17919835179416319",
@@ -104,7 +104,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 166
+      "views": 168
     }
   ]
 }
