@@ -1,75 +1,63 @@
 {
-  "generated_at": "2026-08-04T16:47:58.125Z",
+  "generated_at": "2026-08-05T16:27:50.694Z",
   "total_posts": 50,
   "best_category": {
     "cat": "lainnya",
-    "n": 23,
-    "totalViews": 2764,
+    "n": 21,
+    "totalViews": 2690,
     "totalLike": 13,
-    "totalReply": 87,
-    "totalScore": 406727.82465777255,
-    "avgScore": 17683.82
+    "totalReply": 78,
+    "totalScore": 264622.56149987766,
+    "avgScore": 12601.07
   },
   "category_performance": [
     {
       "cat": "lainnya",
-      "n": 23,
-      "totalViews": 2764,
+      "n": 21,
+      "totalViews": 2690,
       "totalLike": 13,
-      "totalReply": 87,
-      "totalScore": 406727.82465777255,
-      "avgScore": 17683.82
+      "totalReply": 78,
+      "totalScore": 264622.56149987766,
+      "avgScore": 12601.07
     },
     {
       "cat": "tutorial/cara",
       "n": 13,
-      "totalViews": 63104,
+      "totalViews": 63187,
       "totalLike": 604,
       "totalReply": 174,
-      "totalScore": 143234.3269193576,
-      "avgScore": 11018.03
+      "totalScore": 141770.94345609302,
+      "avgScore": 10905.46
     },
     {
       "cat": "tool/model baru",
       "n": 11,
-      "totalViews": 35989,
+      "totalViews": 36109,
       "totalLike": 216,
-      "totalReply": 130,
-      "totalScore": 66992.03579073853,
-      "avgScore": 6090.19
+      "totalReply": 140,
+      "totalScore": 67806.96482539938,
+      "avgScore": 6164.27
     },
     {
       "cat": "perkenalan/promo",
-      "n": 2,
-      "totalViews": 504,
-      "totalLike": 2,
-      "totalReply": 8,
-      "totalScore": 11657.907310081224,
-      "avgScore": 5828.95
+      "n": 3,
+      "totalViews": 1340,
+      "totalLike": 4,
+      "totalReply": 16,
+      "totalScore": 14207.970148112512,
+      "avgScore": 4735.99
     },
     {
       "cat": "gratis/limit",
-      "n": 1,
-      "totalViews": 19805,
+      "n": 2,
+      "totalViews": 19978,
       "totalLike": 133,
       "totalReply": 59,
-      "totalScore": 1565.261297652108,
-      "avgScore": 1565.26
+      "totalScore": 1554.0405053138159,
+      "avgScore": 777.02
     }
   ],
   "top_posts": [
-    {
-      "id": "18359350966234001",
-      "preview": "Gara-gara satu koma. Satu koma kecil di workflow automation, kerjaan hari ini jadi kacau balau.\n\nSempet mikir, \"ini sala",
-      "score": 142105.26,
-      "stats": {
-        "like": 0,
-        "reply": 9,
-        "quote": 0,
-        "views": 19
-      },
-      "cat": "lainnya"
-    },
     {
       "id": "18111225698478059",
       "preview": "Gue baru sadar, aplikasi yang pernah gue buat ternyata lumayan banyak.\n\nLucunya, gak semuanya gue pakai setiap hari.\n\nBa",
@@ -117,9 +105,32 @@
         "views": 59
       },
       "cat": "lainnya"
+    },
+    {
+      "id": "18095797300937015",
+      "preview": "Banyak produk teknologi terasa ribet.\n\nBukan karena teknologinya terlalu canggih.\n\nTapi karena cara bikin produknya seri",
+      "score": 35294.12,
+      "stats": {
+        "like": 0,
+        "reply": 6,
+        "quote": 0,
+        "views": 51
+      },
+      "cat": "tutorial/cara"
     }
   ],
   "weak_posts": [
+    {
+      "id": "17870029809673943",
+      "preview": "Jam segini masih ngadepin n8n. Node error lagi.\n\nPadahal udah capek banget hari ini. Rasanya pengen nge-restart otak aja",
+      "stats": {
+        "like": 0,
+        "reply": 0,
+        "quote": 0,
+        "views": 123
+      },
+      "cat": "lainnya"
+    },
     {
       "id": "18082673918386454",
       "preview": "Pernah gak sih, udah merasa \"Sip, semua chat WA udah dibales!\"\n\n, terus besok paginya pas buka lagi, baru sadar ada satu",
@@ -141,17 +152,6 @@
         "views": 121
       },
       "cat": "lainnya"
-    },
-    {
-      "id": "18460445653129021",
-      "preview": "Kadang gue mikir…\n\nteknologi itu berkembang cepat banget.\n\nTapi manusia tetap sama:\ntetap capek,\ntetap lupa,\ntetap males",
-      "stats": {
-        "like": 0,
-        "reply": 0,
-        "quote": 0,
-        "views": 55
-      },
-      "cat": "lainnya"
     }
   ],
   "all_posts": [
@@ -160,7 +160,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-18T23:22:32+0000",
       "preview": "Gila....Claude Opus-4.8 sudah GRATIS, IRIT lagi !!!\n\nBegini caranya.....",
-      "views": 56504,
+      "views": 56556,
       "likes": 531,
       "replies": 113,
       "quotes": 3
@@ -170,9 +170,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-28T01:41:44+0000",
       "preview": "Sonnet 4.5 kalah dari model FREE ini.. \n\nLo bisa gunakan sampai Milyaran token\n\n",
-      "views": 26931,
+      "views": 27035,
       "likes": 177,
-      "replies": 66,
+      "replies": 74,
       "quotes": 3
     },
     {
@@ -180,7 +180,7 @@
       "cat": "gratis/limit",
       "ts": "2026-07-11T08:57:19+0000",
       "preview": "Akhirnya Free unlimited AI juga... \n\nterinspirasi dari pengguna threads ... \nSum",
-      "views": 19805,
+      "views": 19948,
       "likes": 133,
       "replies": 59,
       "quotes": 0
@@ -210,7 +210,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-13T08:37:04+0000",
       "preview": "Ada nggak yang mau dikasih claude gratis ????\n\nkalo mau....\n\nikuti step by step ",
-      "views": 2749,
+      "views": 2750,
       "likes": 41,
       "replies": 21,
       "quotes": 0
@@ -220,7 +220,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-29T08:31:59+0000",
       "preview": "FREE Model ini harganya lebih murah 13x lipat dari Sonnet 4.6\n\nTAPI kualitasnya ",
-      "views": 1896,
+      "views": 1900,
       "likes": 6,
       "replies": 6,
       "quotes": 0
@@ -230,9 +230,19 @@
       "cat": "tool/model baru",
       "ts": "2026-06-29T10:04:42+0000",
       "preview": "Ada nggak di sini yang punya kemampuan menyulap Gemini 3.1 Pro berasa kayak mini",
-      "views": 808,
+      "views": 809,
       "likes": 0,
       "replies": 5,
+      "quotes": 0
+    },
+    {
+      "id": "18073516532433694",
+      "cat": "perkenalan/promo",
+      "ts": "2026-08-05T06:46:27+0000",
+      "preview": "Gila... Si Jarvis ngisi BOS dari jalur belakang...",
+      "views": 803,
+      "likes": 2,
+      "replies": 7,
       "quotes": 0
     },
     {
@@ -240,9 +250,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-31T11:05:43+0000",
       "preview": "This is REAL FREE AI Model !!! REAL Kimi k-3 no ABAL-ABAL !!!\n\nu can get $30/Mon",
-      "views": 724,
+      "views": 725,
       "likes": 6,
-      "replies": 20,
+      "replies": 21,
       "quotes": 0
     },
     {
@@ -270,7 +280,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-20T04:08:15+0000",
       "preview": "FREE 20 juta Token KIMI-K3 !!!!\n\ncaranya ? di bawah...",
-      "views": 419,
+      "views": 429,
       "likes": 6,
       "replies": 2,
       "quotes": 0
@@ -280,9 +290,9 @@
       "cat": "tool/model baru",
       "ts": "2026-07-25T23:45:42+0000",
       "preview": "$200 Gratis sekarang bisa digunakan untuk kimi k-3 dan gpt 5.6 sol\n\nyang belum c",
-      "views": 366,
+      "views": 369,
       "likes": 7,
-      "replies": 11,
+      "replies": 12,
       "quotes": 0
     },
     {
@@ -290,9 +300,9 @@
       "cat": "perkenalan/promo",
       "ts": "2026-08-03T14:19:11+0000",
       "preview": "Keren juga si Jarvis ini...",
-      "views": 322,
+      "views": 323,
       "likes": 2,
-      "replies": 3,
+      "replies": 4,
       "quotes": 0
     },
     {
@@ -310,7 +320,7 @@
       "cat": "perkenalan/promo",
       "ts": "2026-08-03T21:40:33+0000",
       "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap h",
-      "views": 182,
+      "views": 214,
       "likes": 0,
       "replies": 5,
       "quotes": 0
@@ -330,7 +340,7 @@
       "cat": "tool/model baru",
       "ts": "2026-08-03T18:14:19+0000",
       "preview": "Claude Code lagi viral, tapi kamu tau kan kalau banyak alternatif gratis yang sa",
-      "views": 164,
+      "views": 168,
       "likes": 0,
       "replies": 1,
       "quotes": 0
@@ -380,7 +390,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-08-04T05:30:47+0000",
       "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down ",
-      "views": 125,
+      "views": 134,
       "likes": 2,
       "replies": 1,
       "quotes": 0
@@ -440,7 +450,7 @@
       "cat": "tool/model baru",
       "ts": "2026-08-02T07:21:33+0000",
       "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk mengumpulkan hal ya",
-      "views": 107,
+      "views": 109,
       "likes": 4,
       "replies": 1,
       "quotes": 0
@@ -470,8 +480,18 @@
       "cat": "tutorial/cara",
       "ts": "2026-08-04T00:10:57+0000",
       "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.\n\nNamany",
-      "views": 88,
+      "views": 90,
       "likes": 2,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "18104188460127575",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-04T02:00:13+0000",
+      "preview": "Generasi AI baru ini tidak menulis teks aja — dia jadi satu model untuk semua me",
+      "views": 76,
+      "likes": 0,
       "replies": 1,
       "quotes": 0
     },
@@ -486,21 +506,11 @@
       "quotes": 0
     },
     {
-      "id": "18104188460127575",
-      "cat": "tutorial/cara",
-      "ts": "2026-08-04T02:00:13+0000",
-      "preview": "Generasi AI baru ini tidak menulis teks aja — dia jadi satu model untuk semua me",
-      "views": 73,
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0
-    },
-    {
       "id": "17880597102619396",
       "cat": "tutorial/cara",
       "ts": "2026-08-04T00:17:18+0000",
       "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya.",
-      "views": 62,
+      "views": 63,
       "likes": 0,
       "replies": 1,
       "quotes": 0
@@ -536,16 +546,6 @@
       "quotes": 0
     },
     {
-      "id": "18460445653129021",
-      "cat": "lainnya",
-      "ts": "2026-05-16T12:53:13+0000",
-      "preview": "Kadang gue mikir…\n\nteknologi itu berkembang cepat banget.\n\nTapi manusia tetap sa",
-      "views": 55,
-      "likes": 0,
-      "replies": 0,
-      "quotes": 0
-    },
-    {
       "id": "18095797300937015",
       "cat": "tutorial/cara",
       "ts": "2026-05-22T13:25:08+0000",
@@ -560,7 +560,17 @@
       "cat": "tutorial/cara",
       "ts": "2026-08-04T00:48:30+0000",
       "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya.",
-      "views": 42,
+      "views": 47,
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "18134699050717380",
+      "cat": "tool/model baru",
+      "ts": "2026-08-02T17:31:27+0000",
+      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kim",
+      "views": 37,
       "likes": 0,
       "replies": 1,
       "quotes": 0
@@ -586,16 +596,6 @@
       "quotes": 0
     },
     {
-      "id": "18134699050717380",
-      "cat": "tool/model baru",
-      "ts": "2026-08-02T17:31:27+0000",
-      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kim",
-      "views": 36,
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0
-    },
-    {
       "id": "18111225698478059",
       "cat": "lainnya",
       "ts": "2026-05-21T05:06:58+0000",
@@ -603,6 +603,16 @@
       "views": 34,
       "likes": 0,
       "replies": 9,
+      "quotes": 0
+    },
+    {
+      "id": "18082221728690566",
+      "cat": "gratis/limit",
+      "ts": "2026-08-05T00:01:18+0000",
+      "preview": "OpenAI kasih akses ChatGPT GRATIS buat 100.000 peneliti mulai 30 Juli.\n\nGILA, in",
+      "views": 30,
+      "likes": 0,
+      "replies": 0,
       "quotes": 0
     },
     {
@@ -633,16 +643,6 @@
       "views": 24,
       "likes": 0,
       "replies": 4,
-      "quotes": 0
-    },
-    {
-      "id": "18359350966234001",
-      "cat": "lainnya",
-      "ts": "2026-05-16T12:03:08+0000",
-      "preview": "Gara-gara satu koma. Satu koma kecil di workflow automation, kerjaan hari ini ja",
-      "views": 19,
-      "likes": 0,
-      "replies": 9,
       "quotes": 0
     },
     {
