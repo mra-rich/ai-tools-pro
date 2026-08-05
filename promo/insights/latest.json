@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-05T04:11:48.206Z",
+  "fetched_at": "2026-08-05T08:12:39.624Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 7,
-  "sum_replies": 16,
-  "sum_views": 1166,
+  "sum_likes": 5,
+  "sum_replies": 12,
+  "sum_views": 1056,
   "threads": [
+    {
+      "id": "18073516532433694",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DbphydLiYdU",
+      "timestamp": "2026-08-05T06:46:27+0000",
+      "preview": "Gila... Si Jarvis ngisi BOS dari jalur belakang...",
+      "likes": 0,
+      "replies": 0,
+      "quotes": 0,
+      "views": 203
+    },
     {
       "id": "18082221728690566",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbozaUlGLqP",
@@ -14,7 +24,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 17
+      "views": 20
     },
     {
       "id": "18064609331495659",
@@ -84,7 +94,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 193
+      "views": 198
     },
     {
       "id": "17919835179416319",
@@ -94,17 +104,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 164
-    },
-    {
-      "id": "18088738733142903",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DblMAsciS0R",
-      "timestamp": "2026-08-03T14:19:11+0000",
-      "preview": "Keren juga si Jarvis ini...",
-      "likes": 2,
-      "replies": 4,
-      "quotes": 0,
-      "views": 323
+      "views": 166
     }
   ]
 }
