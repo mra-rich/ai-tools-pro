@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-04T16:05:23.597Z",
+  "fetched_at": "2026-08-05T04:11:48.206Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
   "sum_likes": 7,
   "sum_replies": 16,
-  "sum_views": 1162,
+  "sum_views": 1166,
   "threads": [
+    {
+      "id": "18082221728690566",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DbozaUlGLqP",
+      "timestamp": "2026-08-05T00:01:18+0000",
+      "preview": "OpenAI kasih akses ChatGPT GRATIS buat 100.000 peneliti mula",
+      "likes": 0,
+      "replies": 0,
+      "quotes": 0,
+      "views": 17
+    },
     {
       "id": "18064609331495659",
       "permalink": "https://www.threads.com/@mrodliarif/post/Dbm0UsMEYBt",
@@ -14,7 +24,7 @@
       "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 122
+      "views": 128
     },
     {
       "id": "18104188460127575",
@@ -24,7 +34,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 73
+      "views": 74
     },
     {
       "id": "18110542825953783",
@@ -34,7 +44,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 42
+      "views": 44
     },
     {
       "id": "17964500403138810",
@@ -74,7 +84,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 181
+      "views": 193
     },
     {
       "id": "17919835179416319",
@@ -84,7 +94,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 163
+      "views": 164
     },
     {
       "id": "18088738733142903",
@@ -92,19 +102,9 @@
       "timestamp": "2026-08-03T14:19:11+0000",
       "preview": "Keren juga si Jarvis ini...",
       "likes": 2,
-      "replies": 3,
+      "replies": 4,
       "quotes": 0,
-      "views": 322
-    },
-    {
-      "id": "18134699050717380",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Dbi9NKRIOJY",
-      "timestamp": "2026-08-02T17:31:27+0000",
-      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31!",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 36
+      "views": 323
     }
   ]
 }
