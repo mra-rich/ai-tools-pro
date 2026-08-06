@@ -1,6 +1,14 @@
 {
-  "fetched_at": "2026-08-05T22:14:40.574Z",
+  "fetched_at": "2026-08-06T05:52:32.286Z",
   "threads": [
+    {
+      "id": "17899445616353379",
+      "preview": "Claude Opus 5 rilis 8 hari lalu, skor ARC-AGI 30.2%. Tapi dituduh \"benchmaxxed\".",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Dbry3ZmmH7N",
+      "timestamp": "2026-08-06T03:54:16+0000",
+      "replies_count": 0,
+      "replies": []
+    },
     {
       "id": "18073516532433694",
       "preview": "Gila... Si Jarvis ngisi BOS dari jalur belakang...",
@@ -237,27 +245,6 @@
           "text": "gila serius?",
           "username": "ajudanmudapaijo",
           "timestamp": "2026-07-31T11:14:15+0000"
-        }
-      ]
-    },
-    {
-      "id": "17883949815456559",
-      "preview": "FREE Model ini harganya lebih murah 13x lipat dari Sonnet 4.6\n\nTAPI kualitasnya ",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbXsTQriUxt",
-      "timestamp": "2026-07-29T08:31:59+0000",
-      "replies_count": 2,
-      "replies": [
-        {
-          "id": "18184443487401755",
-          "text": "infokan",
-          "username": "ajiprie",
-          "timestamp": "2026-07-29T08:51:34+0000"
-        },
-        {
-          "id": "18184079791392832",
-          "text": "gila serius? gratisan?",
-          "username": "ajudanmudapaijo",
-          "timestamp": "2026-07-29T08:41:53+0000"
         }
       ]
     }
