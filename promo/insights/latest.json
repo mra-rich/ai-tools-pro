@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-05T15:53:02.854Z",
+  "fetched_at": "2026-08-06T04:14:43.897Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
   "sum_likes": 7,
-  "sum_replies": 19,
-  "sum_views": 1683,
+  "sum_replies": 18,
+  "sum_views": 1744,
   "threads": [
+    {
+      "id": "17899445616353379",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Dbry3ZmmH7N",
+      "timestamp": "2026-08-06T03:54:16+0000",
+      "preview": "Claude Opus 5 rilis 8 hari lalu, skor ARC-AGI 30.2%. Tapi di",
+      "likes": 0,
+      "replies": 0,
+      "quotes": 0,
+      "views": 0
+    },
     {
       "id": "18073516532433694",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbphydLiYdU",
@@ -14,7 +24,7 @@
       "likes": 2,
       "replies": 7,
       "quotes": 0,
-      "views": 789
+      "views": 1002
     },
     {
       "id": "18082221728690566",
@@ -24,7 +34,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 30
+      "views": 33
     },
     {
       "id": "18064609331495659",
@@ -34,7 +44,7 @@
       "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 134
+      "views": 136
     },
     {
       "id": "18104188460127575",
@@ -44,7 +54,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 76
+      "views": 78
     },
     {
       "id": "18110542825953783",
@@ -54,7 +64,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 47
+      "views": 49
     },
     {
       "id": "17964500403138810",
@@ -64,7 +74,7 @@
       "likes": 1,
       "replies": 1,
       "quotes": 0,
-      "views": 73
+      "views": 74
     },
     {
       "id": "17880597102619396",
@@ -74,7 +84,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 63
+      "views": 64
     },
     {
       "id": "18141727255483736",
@@ -94,17 +104,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 213
-    },
-    {
-      "id": "17919835179416319",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Dblm6A8IEo0",
-      "timestamp": "2026-08-03T18:14:19+0000",
-      "preview": "Claude Code lagi viral, tapi kamu tau kan kalau banyak alter",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 168
+      "views": 218
     }
   ]
 }
