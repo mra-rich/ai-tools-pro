@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-08-06T04:14:43.897Z",
+  "fetched_at": "2026-08-06T08:11:21.783Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
   "sum_likes": 7,
   "sum_replies": 18,
-  "sum_views": 1744,
+  "sum_views": 1840,
   "threads": [
     {
       "id": "17899445616353379",
@@ -14,7 +14,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 0
+      "views": 69
     },
     {
       "id": "18073516532433694",
@@ -24,7 +24,7 @@
       "likes": 2,
       "replies": 7,
       "quotes": 0,
-      "views": 1002
+      "views": 1025
     },
     {
       "id": "18082221728690566",
@@ -34,7 +34,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 33
+      "views": 35
     },
     {
       "id": "18064609331495659",
@@ -104,7 +104,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 218
+      "views": 220
     }
   ]
 }
