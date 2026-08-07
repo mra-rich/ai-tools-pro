@@ -25,10 +25,12 @@ const OUT_DIR = path.join(__dirname, 'threads');
 function getAdminToken() {
   if (process.env.AITP_ADMIN_TOKEN) return process.env.AITP_ADMIN_TOKEN;
   const p = path.join(__dirname, '..', 'scret.txt');
-  if (fs.existsSync(p)) {
-    const m = fs.readFileSync(p, 'utf8').match(/ADMIN_TOKEN\s*=\s*([A-Fa-f0-9]{32,})/);
-    if (m) return m[1];
-  }
+  try {
+    if (fs.existsSync(p) && fs.statSync(p).isFile()) {
+      const m = fs.readFileSync(p, 'utf8').match(/ADMIN_TOKEN\s*=\s*([A-Fa-f0-9]{32,})/);
+      if (m) return m[1];
+    }
+  } catch (_) { /* token tidak tersedia */ }
   return '';
 }
 
@@ -347,4 +349,4 @@ async function main() {
   console.log('Simpan di promo/threads/' + slotKey + '.md');
 }
 
-main().catch((e) => { console.error('❌ ' + e.message); process.exit(1); });
+main().catch((e) => { console.error('❌ ' + (e && e.stack || e.message)); process.exit(1); });
