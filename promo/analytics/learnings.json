@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-08-05T16:27:50.746318+00:00",
+  "generated_at": "2026-08-07T15:48:21.873731+00:00",
   "n_posts": 50,
   "method": "Spearman rank correlation vs log10(views) \u2014 korelasi, BUKAN kausal",
   "correlations": [
     {
       "param": "like_rate",
       "label": "like/views",
-      "rho": 0.4566
+      "rho": 0.4434
     },
     {
       "param": "has_free",
       "label": "kata gratis/free/irit/murah",
-      "rho": 0.4333
+      "rho": 0.435
     },
     {
       "param": "has_model",
       "label": "sebut model AI",
-      "rho": 0.3956
+      "rho": 0.3527
     },
     {
       "param": "caps_words",
       "label": "kata ALL-CAPS",
-      "rho": 0.3006
+      "rho": 0.3127
     },
     {
       "param": "has_cara",
@@ -29,34 +29,39 @@
       "rho": 0.2617
     },
     {
-      "param": "has_emo",
-      "label": "kata emosi (gila/akhirnya/wow)",
-      "rho": 0.2417
-    },
-    {
       "param": "hour_wib",
       "label": "jam posting (WIB)",
-      "rho": 0.1926
+      "rho": 0.251
     },
     {
-      "param": "len",
-      "label": "panjang teks (chars)",
-      "rho": -0.1906
-    },
-    {
-      "param": "has_number",
-      "label": "memuat angka",
-      "rho": 0.1753
+      "param": "has_emo",
+      "label": "kata emosi (gila/akhirnya/wow)",
+      "rho": 0.2477
     },
     {
       "param": "reply_rate",
       "label": "reply/views",
-      "rho": -0.1642
+      "rho": -0.2011
     },
     {
-      "param": "weekday",
-      "label": "hari (0=Senin..6=Minggu)",
-      "rho": -0.1092
+      "param": "len",
+      "label": "panjang teks (chars)",
+      "rho": -0.1911
+    },
+    {
+      "param": "exclam",
+      "label": "jumlah tanda seru (!)",
+      "rho": 0.1556
+    },
+    {
+      "param": "has_number",
+      "label": "memuat angka",
+      "rho": 0.1487
+    },
+    {
+      "param": "has_kalah",
+      "label": "perbandingan (kalah/lebih/vs)",
+      "rho": 0.1019
     },
     {
       "param": "question",
@@ -66,29 +71,24 @@
     {
       "param": "emojis",
       "label": "jumlah emoji",
-      "rho": 0.0849
+      "rho": 0.0778
     },
     {
-      "param": "has_kalah",
-      "label": "perbandingan (kalah/lebih/vs)",
-      "rho": 0.0799
-    },
-    {
-      "param": "exclam",
-      "label": "jumlah tanda seru (!)",
-      "rho": 0.0614
+      "param": "weekday",
+      "label": "hari (0=Senin..6=Minggu)",
+      "rho": -0.0758
     },
     {
       "param": "words",
       "label": "jumlah kata",
-      "rho": 0.0275
+      "rho": 0.0409
     }
   ],
   "cat_avg_views": {
-    "gratis/limit": 9989,
-    "tutorial/cara": 4860.5,
-    "tool/model baru": 3282.6,
-    "perkenalan/promo": 446.7,
-    "lainnya": 128.1
+    "gratis/limit": 10104,
+    "tutorial/cara": 4870.5,
+    "tool/model baru": 3034.2,
+    "perkenalan/promo": 529,
+    "lainnya": 135.7
   }
 }
