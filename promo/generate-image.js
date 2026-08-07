@@ -81,7 +81,7 @@ async function uploadTmpfiles(buf, filename) {
   try { j = JSON.parse(txt); } catch (_) { throw new Error('tmpfiles respon bukan JSON: ' + txt.slice(0, 120)); }
   if (!j.data || !j.data.url) throw new Error('tmpfiles gagal: ' + txt.slice(0, 120));
   // URL langsung tanpa /dl (redirect menuju file asli)
-  return j.data.url;
+  return j.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
 }
 
 // ── Main ────────────────────────────────────────────────────────
