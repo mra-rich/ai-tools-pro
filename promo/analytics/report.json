@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-07T15:48:21.831Z",
+  "generated_at": "2026-08-08T15:22:02.486Z",
   "total_posts": 50,
   "best_category": {
     "cat": "lainnya",
     "n": 20,
-    "totalViews": 2714,
+    "totalViews": 2716,
     "totalLike": 13,
     "totalReply": 78,
     "totalScore": 264622.56149987766,
@@ -14,7 +14,7 @@
     {
       "cat": "lainnya",
       "n": 20,
-      "totalViews": 2714,
+      "totalViews": 2716,
       "totalLike": 13,
       "totalReply": 78,
       "totalScore": 264622.56149987766,
@@ -23,38 +23,38 @@
     {
       "cat": "tutorial/cara",
       "n": 13,
-      "totalViews": 63316,
+      "totalViews": 63328,
       "totalLike": 604,
       "totalReply": 175,
-      "totalScore": 141090.08151842176,
-      "avgScore": 10853.08
+      "totalScore": 141088.40746099383,
+      "avgScore": 10852.95
     },
     {
       "cat": "tool/model baru",
       "n": 12,
-      "totalViews": 36410,
+      "totalViews": 36498,
       "totalLike": 216,
       "totalReply": 140,
-      "totalScore": 67028.44943365295,
-      "avgScore": 5585.7
+      "totalScore": 66989.60207488482,
+      "avgScore": 5582.47
     },
     {
       "cat": "perkenalan/promo",
       "n": 3,
-      "totalViews": 1587,
+      "totalViews": 1595,
       "totalLike": 4,
       "totalReply": 16,
-      "totalScore": 12966.423850777592,
-      "avgScore": 4322.14
+      "totalScore": 12766.938483933996,
+      "avgScore": 4255.65
     },
     {
       "cat": "gratis/limit",
       "n": 2,
-      "totalViews": 20208,
+      "totalViews": 20293,
       "totalLike": 133,
       "totalReply": 59,
-      "totalScore": 1536.8598482970601,
-      "avgScore": 768.43
+      "totalScore": 1530.4107424960505,
+      "avgScore": 765.21
     }
   ],
   "top_posts": [
@@ -160,7 +160,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-18T23:22:32+0000",
       "preview": "Gila....Claude Opus-4.8 sudah GRATIS, IRIT lagi !!!\n\nBegini caranya.....",
-      "views": 56636,
+      "views": 56647,
       "likes": 531,
       "replies": 113,
       "quotes": 3
@@ -170,7 +170,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-28T01:41:44+0000",
       "preview": "Sonnet 4.5 kalah dari model FREE ini.. \n\nLo bisa gunakan sampai Milyaran token\n\n",
-      "views": 27237,
+      "views": 27308,
       "likes": 177,
       "replies": 74,
       "quotes": 3
@@ -180,7 +180,7 @@
       "cat": "gratis/limit",
       "ts": "2026-07-11T08:57:19+0000",
       "preview": "Akhirnya Free unlimited AI juga... \n\nterinspirasi dari pengguna threads ... \nSum",
-      "views": 20171,
+      "views": 20256,
       "likes": 133,
       "replies": 59,
       "quotes": 0
@@ -190,7 +190,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-18T09:21:13+0000",
       "preview": "Setiap minggu rangking AI berubah-ubah... \n\nTapi ada FAKTA menarik.. \n\nKetika ad",
-      "views": 4195,
+      "views": 4196,
       "likes": 13,
       "replies": 8,
       "quotes": 0
@@ -210,7 +210,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-13T08:37:04+0000",
       "preview": "Ada nggak yang mau dikasih claude gratis ????\n\nkalo mau....\n\nikuti step by step ",
-      "views": 2751,
+      "views": 2752,
       "likes": 41,
       "replies": 21,
       "quotes": 0
@@ -220,7 +220,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-29T08:31:59+0000",
       "preview": "FREE Model ini harganya lebih murah 13x lipat dari Sonnet 4.6\n\nTAPI kualitasnya ",
-      "views": 1913,
+      "views": 1923,
       "likes": 6,
       "replies": 6,
       "quotes": 0
@@ -260,7 +260,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-18T07:21:03+0000",
       "preview": "Provider Zhipu memberikan bansos AI Model GLM Totalnya 50 Juta Token, 20 Juta da",
-      "views": 711,
+      "views": 717,
       "likes": 3,
       "replies": 7,
       "quotes": 0
@@ -300,7 +300,7 @@
       "cat": "perkenalan/promo",
       "ts": "2026-08-03T14:19:11+0000",
       "preview": "Keren juga si Jarvis ini...",
-      "views": 324,
+      "views": 325,
       "likes": 2,
       "replies": 4,
       "quotes": 0
@@ -320,9 +320,19 @@
       "cat": "perkenalan/promo",
       "ts": "2026-08-03T21:40:33+0000",
       "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap h",
-      "views": 234,
+      "views": 241,
       "likes": 0,
       "replies": 5,
+      "quotes": 0
+    },
+    {
+      "id": "18139555486583815",
+      "cat": "lainnya",
+      "ts": "2026-08-07T01:19:17+0000",
+      "preview": "Dulu Saya langganan VPS untuk jalanin n8n + repliz\n\nTernyata buat auto-posting d",
+      "views": 176,
+      "likes": 0,
+      "replies": 0,
       "quotes": 0
     },
     {
@@ -333,16 +343,6 @@
       "views": 174,
       "likes": 0,
       "replies": 4,
-      "quotes": 0
-    },
-    {
-      "id": "18139555486583815",
-      "cat": "lainnya",
-      "ts": "2026-08-07T01:19:17+0000",
-      "preview": "Dulu Saya langganan VPS untuk jalanin n8n + repliz\n\nTernyata buat auto-posting d",
-      "views": 174,
-      "likes": 0,
-      "replies": 0,
       "quotes": 0
     },
     {
