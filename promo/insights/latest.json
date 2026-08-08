@@ -1,11 +1,31 @@
 {
-  "fetched_at": "2026-08-07T14:44:25.309Z",
+  "fetched_at": "2026-08-08T02:55:08.212Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 7,
-  "sum_replies": 13,
-  "sum_views": 1803,
+  "sum_likes": 5,
+  "sum_replies": 11,
+  "sum_views": 1662,
   "threads": [
+    {
+      "id": "18139499866605916",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DbwvZ51CXTr",
+      "timestamp": "2026-08-08T02:00:13+0000",
+      "preview": "Top-15 benchmark AI Januari 2026 didominasi model China, Goo",
+      "likes": 0,
+      "replies": 0,
+      "quotes": 0,
+      "views": 3
+    },
+    {
+      "id": "17928657378376231",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Dbwr7CDHZ7z",
+      "timestamp": "2026-08-08T01:29:48+0000",
+      "preview": "Top-15 benchmark AI Januari 2026 didominasi model China, Goo",
+      "likes": 0,
+      "replies": 0,
+      "quotes": 0,
+      "views": 8
+    },
     {
       "id": "18139555486583815",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbuF8DzE1zT",
@@ -14,7 +34,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 174
+      "views": 176
     },
     {
       "id": "17899445616353379",
@@ -85,26 +105,6 @@
       "replies": 1,
       "quotes": 0,
       "views": 74
-    },
-    {
-      "id": "17880597102619396",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbmQcpaFL_d",
-      "timestamp": "2026-08-04T00:17:18+0000",
-      "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu m",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 64
-    },
-    {
-      "id": "18141727255483736",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbmPuE5CS4m",
-      "timestamp": "2026-08-04T00:10:57+0000",
-      "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi predi",
-      "likes": 2,
-      "replies": 1,
-      "quotes": 0,
-      "views": 90
     }
   ]
 }
