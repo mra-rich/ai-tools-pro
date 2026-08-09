@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-09T06:34:54.600Z",
+  "fetched_at": "2026-08-09T14:23:23.647Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 7,
-  "sum_replies": 13,
-  "sum_views": 1814,
+  "sum_likes": 5,
+  "sum_replies": 17,
+  "sum_views": 1853,
   "threads": [
+    {
+      "id": "18130261369631491",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Db0SFKCm3Qt",
+      "timestamp": "2026-08-09T11:00:56+0000",
+      "preview": "AI chat yang dipakai ngobrol sering \"lupa\" sama obrolan kita",
+      "likes": 0,
+      "replies": 5,
+      "quotes": 0,
+      "views": 123
+    },
     {
       "id": "18139555486583815",
       "permalink": "https://www.threads.com/@mrodliarif/post/DbuF8DzE1zT",
@@ -14,7 +24,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 177
+      "views": 178
     },
     {
       "id": "17899445616353379",
@@ -24,7 +34,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 73
+      "views": 74
     },
     {
       "id": "18073516532433694",
@@ -34,7 +44,7 @@
       "likes": 2,
       "replies": 7,
       "quotes": 0,
-      "views": 1030
+      "views": 1031
     },
     {
       "id": "18082221728690566",
@@ -44,7 +54,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 38
+      "views": 39
     },
     {
       "id": "18064609331495659",
@@ -54,7 +64,7 @@
       "likes": 2,
       "replies": 1,
       "quotes": 0,
-      "views": 137
+      "views": 138
     },
     {
       "id": "18104188460127575",
@@ -64,7 +74,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 80
+      "views": 81
     },
     {
       "id": "18110542825953783",
@@ -95,16 +105,6 @@
       "replies": 1,
       "quotes": 0,
       "views": 64
-    },
-    {
-      "id": "18141727255483736",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbmPuE5CS4m",
-      "timestamp": "2026-08-04T00:10:57+0000",
-      "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi predi",
-      "likes": 2,
-      "replies": 1,
-      "quotes": 0,
-      "views": 90
     }
   ]
 }
