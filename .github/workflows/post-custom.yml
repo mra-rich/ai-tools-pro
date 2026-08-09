@@ -9,6 +9,10 @@ on:
         description: 'Teks posting (baris baru = post lanjutan/thread)'
         required: true
         default: 'Halo dari Jarvis'
+      expected_hash:
+        description: 'SHA-256 konten yang disetujui (harus cocok, kalau tidak post dibatalkan)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -25,4 +29,5 @@ jobs:
         env:
           THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
           MSG_TEXT: ${{ github.event.inputs.msg }}
+          EXPECTED_HASH: ${{ github.event.inputs.expected_hash }}
         run: node promo/post-custom.js

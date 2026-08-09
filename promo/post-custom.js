@@ -2,6 +2,7 @@
 // Token dari env THREADS_API_CONFIG (GitHub secret). Teks dari env MSG_TEXT.
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const GRAPH = 'https://graph.threads.net/v1.0';
 const CFG_PATH = path.join(__dirname, 'threads-api.config.json');
 
@@ -42,8 +43,18 @@ function splitThread(text, max = 490) {
 async function main() {
   const text = process.env.MSG_TEXT;
   if (!text) throw new Error('MSG_TEXT kosong');
+  // --- VERIFIKASI HASH: teks yang diposting harus sama dengan yang disetujui ---
   const c = cfg();
   const userId = await ensureUserId(c);
+  const expected = process.env.EXPECTED_HASH || '';
+  const actual = crypto.createHash('sha256').update(text.trim()).digest('hex');
+  console.log('HASH_actual=' + actual);
+  if (expected && actual !== expected) {
+    console.error('HASH_MISMATCH expected=' + expected + ' actual=' + actual);
+    console.error('ABORT: konten tidak sesuai persetujuan, TIDAK diposting');
+    process.exit(2);
+  }
+  console.log('HASH_OK ' + (expected ? 'sesuai acc' : 'tanpa expected hash'));
   const lines = splitThread(text);
   let parent = null;
   let firstId = null;
