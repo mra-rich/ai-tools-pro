@@ -1,6 +1,21 @@
 {
-  "fetched_at": "2026-08-09T09:42:27.719Z",
+  "fetched_at": "2026-08-09T15:34:36.729Z",
   "threads": [
+    {
+      "id": "18130261369631491",
+      "preview": "AI chat yang dipakai ngobrol sering \"lupa\" sama obrolan kita kemarin. Duh, bikin",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Db0SFKCm3Qt",
+      "timestamp": "2026-08-09T11:00:56+0000",
+      "replies_count": 1,
+      "replies": [
+        {
+          "id": "18100960714976329",
+          "text": "Nah, sekarang ada tool open-source yang dibuat khusus ngatasin ini. Namanya TencentDB Agent Memory — sudah 18.000+ bintang di GitHub.",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-09T11:01:05+0000"
+        }
+      ]
+    },
     {
       "id": "18139555486583815",
       "preview": "Dulu Saya langganan VPS untuk jalanin n8n + repliz\n\nTernyata buat auto-posting d",
@@ -205,21 +220,6 @@
           "text": "Oh ini kelakuan si paling auto nih.. wkwkw.. Tinggal setup promptnya saja.. sudah bisa auto post secara gratis tanpa langganan vps, repliz, llm.. Semuanya gratis..",
           "username": "mrodliarif",
           "timestamp": "2026-08-03T14:22:07+0000"
-        }
-      ]
-    },
-    {
-      "id": "18009535706747676",
-      "preview": "Free Unlimited AI itu nyata !!!\n\nkemarin Saya buat web untuk mengumpulkan hal ya",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Dbh3a6UCbsz",
-      "timestamp": "2026-08-02T07:21:33+0000",
-      "replies_count": 1,
-      "replies": [
-        {
-          "id": "18092477546620650",
-          "text": "https://tokengratis.web.id/",
-          "username": "mrodliarif",
-          "timestamp": "2026-08-02T07:21:36+0000"
         }
       ]
     }
