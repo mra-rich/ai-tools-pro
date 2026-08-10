@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-08-09T15:23:29.131168+00:00",
+  "generated_at": "2026-08-10T15:53:40.383717+00:00",
   "n_posts": 50,
   "method": "Spearman rank correlation vs log10(views) \u2014 korelasi, BUKAN kausal",
   "correlations": [
     {
       "param": "like_rate",
       "label": "like/views",
-      "rho": 0.4497
+      "rho": 0.454
     },
     {
       "param": "has_free",
       "label": "kata gratis/free/irit/murah",
-      "rho": 0.44
+      "rho": 0.445
     },
     {
       "param": "has_model",
       "label": "sebut model AI",
-      "rho": 0.3583
+      "rho": 0.3627
     },
     {
       "param": "caps_words",
       "label": "kata ALL-CAPS",
-      "rho": 0.3138
+      "rho": 0.3144
     },
     {
       "param": "has_cara",
@@ -31,37 +31,37 @@
     {
       "param": "hour_wib",
       "label": "jam posting (WIB)",
-      "rho": 0.2533
+      "rho": 0.2537
     },
     {
       "param": "has_emo",
       "label": "kata emosi (gila/akhirnya/wow)",
-      "rho": 0.2496
+      "rho": 0.2477
     },
     {
       "param": "reply_rate",
       "label": "reply/views",
-      "rho": -0.2065
+      "rho": -0.2042
     },
     {
       "param": "len",
       "label": "panjang teks (chars)",
-      "rho": -0.1912
+      "rho": -0.1913
     },
     {
       "param": "exclam",
       "label": "jumlah tanda seru (!)",
-      "rho": 0.1578
+      "rho": 0.1624
     },
     {
       "param": "has_number",
       "label": "memuat angka",
-      "rho": 0.1559
+      "rho": 0.1574
     },
     {
       "param": "has_kalah",
       "label": "perbandingan (kalah/lebih/vs)",
-      "rho": 0.1019
+      "rho": 0.0999
     },
     {
       "param": "question",
@@ -71,24 +71,24 @@
     {
       "param": "emojis",
       "label": "jumlah emoji",
-      "rho": 0.0841
+      "rho": 0.0842
     },
     {
       "param": "weekday",
       "label": "hari (0=Senin..6=Minggu)",
-      "rho": -0.0792
+      "rho": -0.0785
     },
     {
       "param": "words",
       "label": "jumlah kata",
-      "rho": 0.0445
+      "rho": 0.0473
     }
   ],
   "cat_avg_views": {
-    "gratis/limit": 10199,
-    "tutorial/cara": 4873.5,
-    "tool/model baru": 3049.4,
-    "perkenalan/promo": 535.3,
-    "lainnya": 134.7
+    "gratis/limit": 10249,
+    "tutorial/cara": 4875.8,
+    "tool/model baru": 3058,
+    "perkenalan/promo": 538.3,
+    "lainnya": 134.9
   }
 }
