@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-11T10:02:42.326Z",
+  "fetched_at": "2026-08-11T16:02:39.154Z",
   "threads": [
     {
       "id": "18130261369631491",
@@ -213,8 +213,14 @@
       "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kim",
       "permalink": "https://www.threads.com/@mrodliarif/post/Dbi9NKRIOJY",
       "timestamp": "2026-08-02T17:31:27+0000",
-      "replies_count": 1,
+      "replies_count": 2,
       "replies": [
+        {
+          "id": "17949109509035811",
+          "text": "free tier enak buat coba2, tapi buat kerja beneran kadang rate limitnya bikin pengen lempar laptop. aku biasanya ambil kimi k3 500 request di yapayzekalab.org 139 TL, hari berat habis dalam 1 hari, no",
+          "username": "tengriince",
+          "timestamp": "2026-08-11T14:50:26+0000"
+        },
         {
           "id": "18020711651887618",
           "text": "Oh ini kelakuan si paling auto nih.. wkwkw.. Tinggal setup promptnya saja.. sudah bisa auto post secara gratis tanpa langganan vps, repliz, llm.. Semuanya gratis..",
