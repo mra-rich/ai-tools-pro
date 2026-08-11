@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T15:53:40.383717+00:00",
+  "generated_at": "2026-08-11T15:54:09.587705+00:00",
   "n_posts": 50,
   "method": "Spearman rank correlation vs log10(views) \u2014 korelasi, BUKAN kausal",
   "correlations": [
@@ -41,7 +41,7 @@
     {
       "param": "reply_rate",
       "label": "reply/views",
-      "rho": -0.2042
+      "rho": -0.223
     },
     {
       "param": "len",
@@ -85,10 +85,10 @@
     }
   ],
   "cat_avg_views": {
-    "gratis/limit": 10249,
-    "tutorial/cara": 4875.8,
-    "tool/model baru": 3058,
-    "perkenalan/promo": 538.3,
+    "gratis/limit": 10289.5,
+    "tutorial/cara": 4878.2,
+    "tool/model baru": 3064.8,
+    "perkenalan/promo": 539.7,
     "lainnya": 134.9
   }
 }
