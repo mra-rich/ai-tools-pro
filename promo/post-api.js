@@ -20,6 +20,9 @@ const path = require('path');
 const CFG_PATH = path.join(__dirname, 'threads-api.config.json');
 const THREADS_DIR = path.join(__dirname, 'threads');
 const GRAPH = 'https://graph.threads.net/v1.0';
+// Link promosi — TIDAK pernah di badan post, hanya di KOMENTAR PERTAMA
+// (keputusan bisnis user 2026-08-12: link di post = reach dibunuh).
+const SITE = 'https://tokengratis.web.id';
 
 // Config dari env THREADS_API_CONFIG (dipakai di GitHub Actions via secret)
 // ATAU dari file promo/threads-api.config.json (mode lokal).
@@ -212,6 +215,7 @@ async function main() {
   // Post PERTAMA pakai gambar kalau ada (media_type IMAGE), sisanya teks.
   const img = latestImage();
   let parentId = null;
+  let rootId = null;
   for (let i = 0; i < posts.length; i++) {
     let id;
     if (i === 0 && img && img.date === draft.file.replace(/\.md$/, '')) {
@@ -221,7 +225,19 @@ async function main() {
       id = await postText(userId, posts[i], parentId);
     }
     console.log('✅ Posted #' + (i + 1) + ' id=' + id);
+    if (i === 0) rootId = id;
     parentId = id;
+  }
+
+  // Link TIDAK di badan post (reach dibunuh) — taruh di KOMENTAR PERTAMA
+  // (reply ke post root). Keputusan bisnis user 2026-08-12.
+  if (rootId) {
+    try {
+      const commentId = await postText(userId, SITE, rootId);
+      console.log('💬 Komentar pertama (link): id=' + commentId);
+    } catch (e) {
+      console.log('⚠️  Komentar link gagal (thread tetap terbit): ' + e.message);
+    }
   }
   fs.renameSync(
     path.join(THREADS_DIR, draft.file),

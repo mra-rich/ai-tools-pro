@@ -192,7 +192,8 @@ TUGAS:
 - Bahasa Indonesia santai (pakai "kamu", campur istilah teknis Inggris kalau natural)
 - Hook di baris pertama yang bikin berhenti scroll
 - Isi: fakta spesifik dari angle (pakai angka) + cara gratisnya (langkah/tutorial singkat)
-- Akhiri dengan link ini tepat di baris sendiri: ${SITE}
+- JANGAN sertakan URL/link apa pun di dalam post (https://...) — link ditaruh di
+  KOMENTAR PERTAMA oleh sistem. Post harus bersih dari link.
 - Akhiri dengan 1 kalimat CTA komen yang spesifik (bukan "komen ya") — misalnya "Kamu tim yang mana?"
 ${prev ? '\nPosting kemarin (jangan repeat angle/gaya ini):\n' + prev + '\n' : ''}
 Balas HANYA teks posting siap terbit, tanpa pembuka/penjelasan/format apa pun sebelum/after teks.`;
@@ -237,16 +238,14 @@ async function generateWithGemini(d, dayOfYear, learnings) {
     const cut = text.lastIndexOf('\n', 495);
     if (cut > 150) text = text.slice(0, cut).trim();
   }
-  // Link situs kepotong? Selipkan ulang kalau muat
-  if (!text.includes(SITE) && text.length + SITE.length + 2 <= 500) {
-    text = text + '\n\n' + SITE;
-  }
+  // Bersihkan URL yang mungkin lolos dari prompt (link wajib di komentar, bukan post)
+  text = text.replace(/https?:\/\/\S+/g, '').replace(/\n{3,}/g, '\n\n').trim();
 
-  // Validasi: batas char, link wajib, dan minimal menyebut 1 nama provider asli
+  // Validasi: batas char, TIDAK BOLEH ada link, dan minimal menyebut 1 nama provider asli
   const names = (d.providers || []).map((p) => p.nama);
   if (!text) { console.log('⚠️  Gemini output kosong — fallback template.'); return null; }
   if (text.length > 500) { console.log('⚠️  Gemini kepanjangan (' + text.length + ' char) — fallback.'); return null; }
-  if (!text.includes(SITE)) { console.log('⚠️  Output tidak memuat link situs — fallback.'); return null; }
+  if (/https?:\/\//.test(text)) { console.log('⚠️  Output masih memuat link — fallback.'); return null; }
   if (!names.some((n) => text.includes(n))) { console.log('⚠️  Output tanpa nama provider asli — fallback.'); return null; }
 
   return text;
@@ -256,7 +255,8 @@ async function generateWithGemini(d, dayOfYear, learnings) {
 // 2026-08-04: TIDAK ada lagi satu kerangka template. Ada BEBERAPA "gaya"
 // natural yang dirotasi acak — cerita, perbandingan, tip-list, kontroversi,
 // pertanyaan — jadi feed tidak terlihat kloning template yang sama.
-// Selalu wajib: link tokengratis.web.id + CTA (aturan bisnis).
+// 2026-08-12: link tokengratis TIDAK lagi di badan post — dipindah ke
+// komentar pertama oleh post-api.js (link di post = reach dibunuh).
 function buildThread(d, dayOfYear, learnings) {
   const providers = d.providers || [];
 
@@ -279,9 +279,9 @@ function buildThread(d, dayOfYear, learnings) {
       const facts = (t.facts || []).slice(0, 4).join('\n');
       const freePaths = (t.freePath || []).slice(0, 4).join('\n');
       const styles = [
-        `${hook}\n\n${facts}\n\nCara dapat GRATIS-nya:\n${freePaths}\n\n${SITE}\n\n${t.ctaQ}`,
-        `${hook}\n\n${facts}\n\nNggak mau langganan mahal? Beberapa di daftar ini beneran bisa diakses tanpa kartu kredit — cek linknya:\n${SITE}\n\n${t.ctaQ}`,
-        `${hook}\n\nIntinya gini:\n${facts}\n\nBuat yang cuma mau coba-coba dulu, masih ada jalan gratisnya:\n${freePaths}\n\nLengkapnya di ${SITE} — tinggal scroll.\n\n${t.ctaQ}`,
+        `${hook}\n\n${facts}\n\nCara dapat GRATIS-nya:\n${freePaths}\n\n${t.ctaQ}`,
+        `${hook}\n\n${facts}\n\nNggak mau langganan mahal? Beberapa di daftar ini beneran bisa diakses tanpa kartu kredit — kumpulan lengkapnya ada di komentar pertama.\n\n${t.ctaQ}`,
+        `${hook}\n\nIntinya gini:\n${facts}\n\nBuat yang cuma mau coba-coba dulu, masih ada jalan gratisnya:\n${freePaths}\n\n${t.ctaQ}`,
       ];
       return pick(styles);
     }
@@ -295,10 +295,10 @@ function buildThread(d, dayOfYear, learnings) {
     .join('\n');
 
   const styles = [
-    `"Nggak usah langganan banyak-banyak..." — kata temanku, ternyata bener.\n\n4 AI gratis yang aku cek hari ini:\n\n${list}\n\nDaftar lengkap + tutorial ambil key sendiri:\n${SITE}\n\nYang mana baru pertama kamu denger? Komen 👇`,
-    `Aku sempet mikir, kenapa ada yang rela bayar $20/bulan kalau banyak yang gratis?\n\nBandingin sendiri yang ini:\n\n${list}\n\nSemua bisa diakses tanpa bayar — panduannya di ${SITE}.\n\nMau aku bahas yang mana lebih dalem?`,
-    `Sering ditanya, "AI gratis tuh beneran ada nggak sih?"\n\nBeneran. Contoh yang lagi jalan:\n\n${list}\n\nKumpulan lengkapnya, bebas kartu kredit:\n${SITE}\n\nShare ke teman yang masih mikir AI itu cuma buat yang bayar 🙌`,
-    `Kadang cukup butuh 1 tool yang pas, bukan 10 langganan.\n\nYang ini aku cek dan masih bisa dipakai gratis:\n\n${list}\n\nTutorial dan propotnya yang lain:\n${SITE}\n\nKamu biasanya pakai AI buat apa?`,
+    `"Nggak usah langganan banyak-banyak..." — kata temanku, ternyata bener.\n\n4 AI gratis yang aku cek hari ini:\n\n${list}\n\nYang mana baru pertama kamu denger? Komen 👇`,
+    `Aku sempet mikir, kenapa ada yang rela bayar $20/bulan kalau banyak yang gratis?\n\nBandingin sendiri yang ini:\n\n${list}\n\nSemua bisa diakses tanpa bayar — daftar lengkapnya kuletakkan di komentar pertama.\n\nMau aku bahas yang mana lebih dalem?`,
+    `Sering ditanya, "AI gratis tuh beneran ada nggak sih?"\n\nBeneran. Contoh yang lagi jalan:\n\n${list}\n\nShare ke teman yang masih mikir AI itu cuma buat yang bayar 🙌`,
+    `Kadang cukup butuh 1 tool yang pas, bukan 10 langganan.\n\nYang ini aku cek dan masih bisa dipakai gratis:\n\n${list}\n\nKamu biasanya pakai AI buat apa?`,
   ];
   // Loop belajar (fallback template): semua gaya evergreen sudah mengandung
   // angka + "gratis" + hook — insight tinggal memilih yang paling cocok.
