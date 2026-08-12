@@ -2,8 +2,14 @@
 // generate-image.js — Ilustrasi realistis untuk draft thread harian
 // Alur: baca promo/threads/YYYY-MM-DD.json (output generate.js) →
 //       bangun prompt visual → generate via Pollinations.ai (gratis,
-//       tanpa key) → upload ke tmpfiles.org (URL publik stabil) →
-//       tulis promo/threads/YYYY-MM-DD.image.json {url, prompt}.
+//       tanpa key) → simpan lokal → COMMIT KE REPO (raw GitHub =
+//       URL file langsung, bisa di-fetch Meta) → tulis
+//       promo/threads/YYYY-MM-DD.image.json {url, prompt}.
+//
+// Kenapa bukan tmpfiles.org lagi: URL tmpfiles.org/<id>/<file> itu
+// halaman VIEWER HTML, dan URL /dl/ cuma 302-redirect ke halaman itu.
+// Meta Graph API selalu tolak (code 36001 "Unknown Image Format").
+// raw.githubusercontent.com serve file asli (image/jpeg) → Meta terima.
 //
 // Kalau ada langkah yang gagal → tulis {url: null} → post-api.js
 // tetap posting teks saja (gambar bonus, bukan penghalang).
@@ -12,9 +18,11 @@
 // ═════════════════════════════════════════════════════════════════
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const THREADS_DIR = path.join(__dirname, 'threads');
 const IMG_DIR = path.join(THREADS_DIR, 'images');
+const RAW_BASE = 'https://raw.githubusercontent.com/mra-rich/ai-tools-pro/main/promo/threads/images';
 
 // ── Baca draft JSON hari ini (output generate.js) ────────────────
 function latestDraftJson() {
@@ -69,19 +77,39 @@ async function generateImage(prompt) {
   return buf;
 }
 
-// ── Upload ke tmpfiles.org (URL publik, tanpa key) ───────────────
-async function uploadTmpfiles(buf, filename) {
-  const fd = new FormData();
-  fd.append('file', new Blob([buf], { type: 'image/jpeg' }), filename);
-  const res = await fetch('https://tmpfiles.org/api/v1/upload', {
-    method: 'POST', body: fd, signal: AbortSignal.timeout(60000),
-  });
-  const txt = await res.text();
-  let j;
-  try { j = JSON.parse(txt); } catch (_) { throw new Error('tmpfiles respon bukan JSON: ' + txt.slice(0, 120)); }
-  if (!j.data || !j.data.url) throw new Error('tmpfiles gagal: ' + txt.slice(0, 120));
-  // URL langsung tanpa /dl (redirect menuju file asli)
-  return j.data.url.replace('https://tmpfiles.org/', 'https://tmpfiles.org/dl/');
+// ── Commit gambar ke repo → URL raw GitHub (file asli, Meta terima) ─
+// Di GitHub Actions, checkout@v5 sudah login pakai GITHUB_TOKEN
+// (permissions: contents write) → git push origin main langsung jalan,
+// tanpa perlu URL token eksplisit (mencegah token bocor di log).
+function commitToRepo(relativePath) {
+  execSync('git config user.name "github-actions[bot]"', { stdio: 'pipe' });
+  execSync('git config user.email "41898282+github-actions[bot]@users.noreply.github.com"', { stdio: 'pipe' });
+  execSync('git add ' + relativePath, { stdio: 'pipe' });
+  execSync('git commit -m "chore(images): add thread illustration" --no-verify', { stdio: 'pipe' });
+  // Rebase dulu kalau branch bergerak (workflow lain commit state sendiri)
+  try { execSync('git pull --rebase origin main', { stdio: 'pipe', timeout: 30000 }); }
+  catch (_) { /* pull gagal bukan fatal — push di bawah yang menentukan */ }
+  execSync('git push origin main', { stdio: 'pipe', timeout: 60000 });
+}
+
+// Tunggu raw URL siap (CDN GitHub bisa delay beberapa detik setelah push).
+// Meta akan fetch URL-nya; kalau 404 saat itu, postingan gagal. Jadi pastikan
+// 200 dulu sebelum mengembalikan URL (maks ~2 menit, lalu fallback teks).
+async function waitRawReady(rawUrl, maxSec = 120) {
+  const deadline = Date.now() + maxSec * 1000;
+  let lastStatus = 0;
+  while (Date.now() < deadline) {
+    try {
+      const res = await fetch(rawUrl, { method: 'HEAD', signal: AbortSignal.timeout(15000), redirect: 'follow' });
+      lastStatus = res.status;
+      if (res.ok) return true;
+    } catch (e) {
+      lastStatus = 'err:' + e.message.slice(0, 40);
+    }
+    await new Promise((r) => setTimeout(r, 10000));
+  }
+  console.log('⚠️  raw URL belum 200 dalam ' + maxSec + 's (status terakhir: ' + lastStatus + ')');
+  return false;
 }
 
 // ── Main ────────────────────────────────────────────────────────
@@ -105,8 +133,29 @@ async function main() {
     fs.writeFileSync(local, buf);
     console.log('🖼️  Gambar lokal:', local, '(' + buf.length + ' bytes)');
 
-    url = await uploadTmpfiles(buf, date + '.jpg');
-    console.log('🔗 URL publik:', url);
+    // commit ke repo → raw URL (file asli, Meta pasti bisa fetch)
+    const rel = path.relative(process.cwd(), local).replace(/\\/g, '/');
+    const rawUrl = RAW_BASE + '/' + date + '.jpg';
+    // Kalau file sudah pernah di-commit (run retry slot sama) → pakai URL lama,
+    // jangan commit ulang (git commit "nothing to commit" = error).
+    try {
+      const head = await fetch(rawUrl, { method: 'HEAD', signal: AbortSignal.timeout(15000), redirect: 'follow' });
+      if (head.ok) {
+        console.log('🔗 URL raw (sudah ada):', rawUrl);
+      } else {
+        commitToRepo(rel);
+        console.log('🔗 URL raw:', rawUrl);
+      }
+    } catch (_) {
+      commitToRepo(rel);
+      console.log('🔗 URL raw:', rawUrl);
+    }
+
+    if (await waitRawReady(rawUrl)) {
+      url = rawUrl;
+    } else {
+      console.log('⚠️  raw URL belum siap — gambar di-skip, posting teks saja.');
+    }
   } catch (e) {
     console.log('⚠️  Gambar gagal — posting teks saja. Detail:', e.message);
   }
