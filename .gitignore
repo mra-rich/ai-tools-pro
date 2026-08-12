@@ -15,5 +15,9 @@ promo/threads/*
 # …tapi marker *.posted KECUALIKAN — state "sudah diposting" di-commit
 # oleh GitHub Actions supaya tidak ada dobel post antar run CI.
 !promo/threads/*.posted
+# …gambar ilustrasi thread juga dikecualikan — raw GitHub dipakai sebagai
+# image host untuk Meta Threads API (tmpfiles.org ditolak Meta, code 36001).
+!promo/threads/images/
+!promo/threads/images/*.jpg
 promo/preview.png
 promo/post.log
