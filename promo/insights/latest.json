@@ -1,11 +1,31 @@
 {
-  "fetched_at": "2026-08-11T14:49:21.256Z",
+  "fetched_at": "2026-08-12T03:24:08.688Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
   "sum_likes": 5,
-  "sum_replies": 17,
-  "sum_views": 1873,
+  "sum_replies": 16,
+  "sum_views": 1825,
   "threads": [
+    {
+      "id": "18107491325156319",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Db6_TD-oCcs",
+      "timestamp": "2026-08-12T01:31:57+0000",
+      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesi",
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0,
+      "views": 25
+    },
+    {
+      "id": "18101911592188304",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Db69vCpIFUj",
+      "timestamp": "2026-08-12T01:17:51+0000",
+      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesi",
+      "likes": 1,
+      "replies": 0,
+      "quotes": 0,
+      "views": 61
+    },
     {
       "id": "18130261369631491",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db0SFKCm3Qt",
@@ -14,7 +34,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 129
+      "views": 131
     },
     {
       "id": "18139555486583815",
@@ -24,7 +44,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 180
+      "views": 182
     },
     {
       "id": "17899445616353379",
@@ -34,7 +54,7 @@
       "likes": 0,
       "replies": 0,
       "quotes": 0,
-      "views": 76
+      "views": 78
     },
     {
       "id": "18073516532433694",
@@ -44,7 +64,7 @@
       "likes": 2,
       "replies": 7,
       "quotes": 0,
-      "views": 1033
+      "views": 1034
     },
     {
       "id": "18082221728690566",
@@ -85,26 +105,6 @@
       "replies": 1,
       "quotes": 0,
       "views": 51
-    },
-    {
-      "id": "17964500403138810",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbmQhXTIOsc",
-      "timestamp": "2026-08-04T00:17:57+0000",
-      "preview": "Satu model, 4 tugas: bikin gambar, video, audio, sampi predi",
-      "likes": 1,
-      "replies": 1,
-      "quotes": 0,
-      "views": 76
-    },
-    {
-      "id": "17880597102619396",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbmQcpaFL_d",
-      "timestamp": "2026-08-04T00:17:18+0000",
-      "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu m",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 65
     }
   ]
 }
