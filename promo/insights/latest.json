@@ -1,11 +1,31 @@
 {
-  "fetched_at": "2026-08-13T07:08:03.716Z",
+  "fetched_at": "2026-08-13T14:49:53.826Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 7,
-  "sum_replies": 18,
-  "sum_views": 639,
+  "sum_likes": 336,
+  "sum_replies": 136,
+  "sum_views": 25690,
   "threads": [
+    {
+      "id": "18185308147399123",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Db-sQgGm8s0",
+      "timestamp": "2026-08-13T12:02:32+0000",
+      "preview": "Bukan OpenAI, bukan Anthropic. Yang bikin saham naik 9% hari",
+      "likes": 1,
+      "replies": 2,
+      "quotes": 0,
+      "views": 153
+    },
+    {
+      "id": "18082855955273957",
+      "permalink": "https://www.threads.com/@mrodliarif/post/Db-lYzUoOIv",
+      "timestamp": "2026-08-13T11:02:30+0000",
+      "preview": "GILAAAA, Alibaba baru rilis Qwen3.8-Max, 2.4 triliun paramet",
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0,
+      "views": 141
+    },
     {
       "id": "18094449047380420",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db-J6l9lpUn",
@@ -14,17 +34,17 @@
       "likes": 0,
       "replies": 2,
       "quotes": 0,
-      "views": 0
+      "views": 281
     },
     {
       "id": "18138617182604759",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db-JgGMCWKr",
       "timestamp": "2026-08-13T06:58:16+0000",
       "preview": "VPS GRATIS SEUMUR HIDUP dari GOOGLE !!! \nBisa deploy apa saj",
-      "likes": 6,
-      "replies": 7,
+      "likes": 334,
+      "replies": 122,
       "quotes": 0,
-      "views": 0
+      "views": 24398
     },
     {
       "id": "18011966288932042",
@@ -34,7 +54,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 64
+      "views": 221
     },
     {
       "id": "18550148323074781",
@@ -44,7 +64,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 37
+      "views": 118
     },
     {
       "id": "18112255631079664",
@@ -54,7 +74,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 40
+      "views": 80
     },
     {
       "id": "18107491325156319",
@@ -64,7 +84,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 38
+      "views": 68
     },
     {
       "id": "18101911592188304",
@@ -74,7 +94,7 @@
       "likes": 1,
       "replies": 0,
       "quotes": 0,
-      "views": 66
+      "views": 83
     },
     {
       "id": "18130261369631491",
@@ -84,27 +104,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 132
-    },
-    {
-      "id": "18139555486583815",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbuF8DzE1zT",
-      "timestamp": "2026-08-07T01:19:17+0000",
-      "preview": "Dulu Saya langganan VPS untuk jalanin n8n + repliz\n\nTernyata",
-      "likes": 0,
-      "replies": 0,
-      "quotes": 0,
-      "views": 183
-    },
-    {
-      "id": "17899445616353379",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Dbry3ZmmH7N",
-      "timestamp": "2026-08-06T03:54:16+0000",
-      "preview": "Claude Opus 5 rilis 8 hari lalu, skor ARC-AGI 30.2%. Tapi di",
-      "likes": 0,
-      "replies": 0,
-      "quotes": 0,
-      "views": 79
+      "views": 147
     }
   ]
 }
