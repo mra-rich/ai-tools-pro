@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-14T15:54:55.415Z",
+  "fetched_at": "2026-08-14T21:27:54.144Z",
   "threads": [
     {
       "id": "18120139681850765",
@@ -27,8 +27,14 @@
       "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gr",
       "permalink": "https://www.threads.com/@mrodliarif/post/DcBRBAznPBs",
       "timestamp": "2026-08-14T12:02:13+0000",
-      "replies_count": 2,
+      "replies_count": 3,
       "replies": [
+        {
+          "id": "17989690110044553",
+          "text": "daftar begini berguna bgt, cuma gratisan tanpa kartu biasanya ada ekornya: batas rate, antrean, atau model :free yang kadang ilang. buat coba ide sih aman, buat produksi jangan taruh semua telur di sa",
+          "username": "tengriince",
+          "timestamp": "2026-08-14T15:56:42+0000"
+        },
         {
           "id": "18106497944275163",
           "text": "https://tokengratis.web.id",
@@ -48,8 +54,14 @@
       "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gr",
       "permalink": "https://www.threads.com/@mrodliarif/post/DcBKDUYG5SA",
       "timestamp": "2026-08-14T11:01:21+0000",
-      "replies_count": 2,
+      "replies_count": 3,
       "replies": [
+        {
+          "id": "18473652034105651",
+          "text": "openrouter 200+ model sama groq tanpa kartu itu kombo hemat bgt, asal nggak kalap pindah-pindah alat. buat ngoding aku kadang ambil gpt-5.6 codex di yapayzekalab.org, 500 permintaan sehari akses 1 har",
+          "username": "tengriince",
+          "timestamp": "2026-08-14T15:56:28+0000"
+        },
         {
           "id": "18115761796732213",
           "text": "https://tokengratis.web.id",
@@ -161,6 +173,12 @@
       "timestamp": "2026-08-13T06:58:16+0000",
       "replies_count": 25,
       "replies": [
+        {
+          "id": "18330414127260179",
+          "text": "Info dong hu",
+          "username": "fendibm",
+          "timestamp": "2026-08-14T17:27:01+0000"
+        },
         {
           "id": "17903549646473463",
           "text": "Mauu kak tutor",
@@ -304,12 +322,6 @@
           "text": "2 CPU, 1 GB RAM, 30 SSD hermes buat task berat kurang sih. kecuali baru mau coba coba. ya wajar namanya gratis. sikat aja",
           "username": "alienspray",
           "timestamp": "2026-08-13T15:13:18+0000"
-        },
-        {
-          "id": "17911507398448488",
-          "text": "Link",
-          "username": "kawaki_666666",
-          "timestamp": "2026-08-13T14:54:47+0000"
         }
       ]
     },
