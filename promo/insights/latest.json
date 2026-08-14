@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-08-13T14:49:53.826Z",
+  "fetched_at": "2026-08-14T03:25:12.865Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 336,
-  "sum_replies": 136,
-  "sum_views": 25690,
+  "sum_likes": 625,
+  "sum_replies": 229,
+  "sum_views": 48050,
   "threads": [
     {
       "id": "18185308147399123",
@@ -14,7 +14,7 @@
       "likes": 1,
       "replies": 2,
       "quotes": 0,
-      "views": 153
+      "views": 265
     },
     {
       "id": "18082855955273957",
@@ -24,7 +24,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 141
+      "views": 225
     },
     {
       "id": "18094449047380420",
@@ -34,17 +34,17 @@
       "likes": 0,
       "replies": 2,
       "quotes": 0,
-      "views": 281
+      "views": 360
     },
     {
       "id": "18138617182604759",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db-JgGMCWKr",
       "timestamp": "2026-08-13T06:58:16+0000",
       "preview": "VPS GRATIS SEUMUR HIDUP dari GOOGLE !!! \nBisa deploy apa saj",
-      "likes": 334,
-      "replies": 122,
+      "likes": 623,
+      "replies": 215,
       "quotes": 0,
-      "views": 24398
+      "views": 46333
     },
     {
       "id": "18011966288932042",
@@ -54,7 +54,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 221
+      "views": 284
     },
     {
       "id": "18550148323074781",
@@ -64,7 +64,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 118
+      "views": 146
     },
     {
       "id": "18112255631079664",
@@ -74,7 +74,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 80
+      "views": 105
     },
     {
       "id": "18107491325156319",
@@ -84,7 +84,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 68
+      "views": 82
     },
     {
       "id": "18101911592188304",
@@ -94,7 +94,7 @@
       "likes": 1,
       "replies": 0,
       "quotes": 0,
-      "views": 83
+      "views": 96
     },
     {
       "id": "18130261369631491",
@@ -104,7 +104,7 @@
       "likes": 0,
       "replies": 5,
       "quotes": 0,
-      "views": 147
+      "views": 154
     }
   ]
 }
