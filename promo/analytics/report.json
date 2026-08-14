@@ -1,87 +1,63 @@
 {
-  "generated_at": "2026-08-13T15:52:39.099Z",
+  "generated_at": "2026-08-14T15:44:17.542Z",
   "total_posts": 50,
   "best_category": {
     "cat": "lainnya",
-    "n": 13,
-    "totalViews": 1586,
-    "totalLike": 6,
-    "totalReply": 56,
-    "totalScore": 244191.7781039649,
-    "avgScore": 18783.98
+    "n": 10,
+    "totalViews": 1393,
+    "totalLike": 4,
+    "totalReply": 37,
+    "totalScore": 100893.37271374295,
+    "avgScore": 10089.34
   },
   "category_performance": [
     {
       "cat": "lainnya",
-      "n": 13,
-      "totalViews": 1586,
-      "totalLike": 6,
-      "totalReply": 56,
-      "totalScore": 244191.7781039649,
-      "avgScore": 18783.98
+      "n": 10,
+      "totalViews": 1393,
+      "totalLike": 4,
+      "totalReply": 37,
+      "totalScore": 100893.37271374295,
+      "avgScore": 10089.34
     },
     {
       "cat": "tutorial/cara",
       "n": 14,
-      "totalViews": 63916,
+      "totalViews": 64088,
       "totalLike": 607,
-      "totalReply": 172,
-      "totalScore": 97499.38822187606,
-      "avgScore": 6964.24
+      "totalReply": 175,
+      "totalScore": 91759.40548591928,
+      "avgScore": 6554.24
+    },
+    {
+      "cat": "tool/model baru",
+      "n": 20,
+      "totalViews": 38934,
+      "totalLike": 219,
+      "totalReply": 156,
+      "totalScore": 99349.74170932166,
+      "avgScore": 4967.49
     },
     {
       "cat": "perkenalan/promo",
       "n": 3,
-      "totalViews": 1658,
+      "totalViews": 1666,
       "totalLike": 4,
       "totalReply": 23,
-      "totalScore": 13956.769968112123,
-      "avgScore": 4652.26
-    },
-    {
-      "cat": "tool/model baru",
-      "n": 17,
-      "totalViews": 38045,
-      "totalLike": 217,
-      "totalReply": 146,
-      "totalScore": 71159.13136589693,
-      "avgScore": 4185.83
+      "totalScore": 13892.468470641845,
+      "avgScore": 4630.82
     },
     {
       "cat": "gratis/limit",
       "n": 3,
-      "totalViews": 48510,
-      "totalLike": 503,
-      "totalReply": 187,
-      "totalScore": 4210.205998380774,
-      "avgScore": 1403.4
+      "totalViews": 86638,
+      "totalLike": 899,
+      "totalReply": 332,
+      "totalScore": 3897.842014004241,
+      "avgScore": 1299.28
     }
   ],
   "top_posts": [
-    {
-      "id": "18111225698478059",
-      "preview": "Gue baru sadar, aplikasi yang pernah gue buat ternyata lumayan banyak.\n\nLucunya, gak semuanya gue pakai setiap hari.\n\nBa",
-      "score": 79411.76,
-      "stats": {
-        "like": 0,
-        "reply": 9,
-        "quote": 0,
-        "views": 34
-      },
-      "cat": "lainnya"
-    },
-    {
-      "id": "18096210263274672",
-      "preview": "Hidup orang dewasa itu kebanyakan bukan soal motivasi.\n\nTapi soal menjaga semuanya tetap berjalan sebagaimana mestinya, ",
-      "score": 50000,
-      "stats": {
-        "like": 0,
-        "reply": 4,
-        "quote": 0,
-        "views": 24
-      },
-      "cat": "lainnya"
-    },
     {
       "id": "18405700729147856",
       "preview": "Dulu, saya mengira kecerdasan itu soal seberapa banyak kita tahu.\n\nSekarang, saya melihat kecerdasan seringkali muncul d",
@@ -117,6 +93,30 @@
         "views": 99
       },
       "cat": "lainnya"
+    },
+    {
+      "id": "18134699050717380",
+      "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kimi K3 $0.55/task. Malah, K3 sering lebih ",
+      "score": 18367.35,
+      "stats": {
+        "like": 0,
+        "reply": 3,
+        "quote": 0,
+        "views": 49
+      },
+      "cat": "tool/model baru"
+    },
+    {
+      "id": "18117766876723943",
+      "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gratis yang aku cek hari ini:\n\n• Groq (tan",
+      "score": 18269.23,
+      "stats": {
+        "like": 1,
+        "reply": 6,
+        "quote": 0,
+        "views": 104
+      },
+      "cat": "tool/model baru"
     }
   ],
   "weak_posts": [
@@ -156,31 +156,31 @@
   ],
   "all_posts": [
     {
-      "id": "17872522149549043",
-      "cat": "tutorial/cara",
-      "ts": "2026-07-18T23:22:32+0000",
-      "preview": "Gila....Claude Opus-4.8 sudah GRATIS, IRIT lagi !!!\n\nBegini caranya.....",
-      "views": 56996,
-      "likes": 533,
-      "replies": 113,
-      "quotes": 3
-    },
-    {
       "id": "18138617182604759",
       "cat": "gratis/limit",
       "ts": "2026-08-13T06:58:16+0000",
       "preview": "VPS GRATIS SEUMUR HIDUP dari GOOGLE !!! \nBisa deploy apa saja ? \nHermes\n9router\n",
-      "views": 27815,
-      "likes": 369,
-      "replies": 129,
+      "views": 65904,
+      "likes": 765,
+      "replies": 274,
       "quotes": 0
+    },
+    {
+      "id": "17872522149549043",
+      "cat": "tutorial/cara",
+      "ts": "2026-07-18T23:22:32+0000",
+      "preview": "Gila....Claude Opus-4.8 sudah GRATIS, IRIT lagi !!!\n\nBegini caranya.....",
+      "views": 57196,
+      "likes": 534,
+      "replies": 121,
+      "quotes": 3
     },
     {
       "id": "18125236081750022",
       "cat": "tool/model baru",
       "ts": "2026-07-28T01:41:44+0000",
       "preview": "Sonnet 4.5 kalah dari model FREE ini.. \n\nLo bisa gunakan sampai Milyaran token\n\n",
-      "views": 27751,
+      "views": 27843,
       "likes": 177,
       "replies": 74,
       "quotes": 3
@@ -190,7 +190,7 @@
       "cat": "gratis/limit",
       "ts": "2026-07-11T08:57:19+0000",
       "preview": "Akhirnya Free unlimited AI juga... \n\nterinspirasi dari pengguna threads ... \nSum",
-      "views": 20640,
+      "views": 20674,
       "likes": 134,
       "replies": 58,
       "quotes": 0
@@ -210,7 +210,7 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-01T04:06:29+0000",
       "preview": "Ada nggak di sini yang belajar membuat AI lokal tapi terbatas hardware... Ini sa",
-      "views": 2791,
+      "views": 2793,
       "likes": 20,
       "replies": 16,
       "quotes": 0
@@ -230,7 +230,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-29T08:31:59+0000",
       "preview": "FREE Model ini harganya lebih murah 13x lipat dari Sonnet 4.6\n\nTAPI kualitasnya ",
-      "views": 1946,
+      "views": 1949,
       "likes": 6,
       "replies": 6,
       "quotes": 0
@@ -240,7 +240,7 @@
       "cat": "perkenalan/promo",
       "ts": "2026-08-05T06:46:27+0000",
       "preview": "Gila... Si Jarvis ngisi BOS dari jalur belakang...",
-      "views": 1058,
+      "views": 1064,
       "likes": 2,
       "replies": 14,
       "quotes": 0
@@ -260,7 +260,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-31T11:05:43+0000",
       "preview": "This is REAL FREE AI Model !!! REAL Kimi k-3 no ABAL-ABAL !!!\n\nu can get $30/Mon",
-      "views": 735,
+      "views": 737,
       "likes": 6,
       "replies": 21,
       "quotes": 0
@@ -270,7 +270,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-18T07:21:03+0000",
       "preview": "Provider Zhipu memberikan bansos AI Model GLM Totalnya 50 Juta Token, 20 Juta da",
-      "views": 725,
+      "views": 728,
       "likes": 3,
       "replies": 7,
       "quotes": 0
@@ -280,8 +280,18 @@
       "cat": "tutorial/cara",
       "ts": "2026-07-20T04:08:15+0000",
       "preview": "FREE 20 juta Token KIMI-K3 !!!!\n\ncaranya ? di bawah...",
-      "views": 521,
+      "views": 529,
       "likes": 6,
+      "replies": 2,
+      "quotes": 0
+    },
+    {
+      "id": "18094449047380420",
+      "cat": "tool/model baru",
+      "ts": "2026-08-13T07:02:27+0000",
+      "preview": "Alibaba baru aja rilis model terbesarnya: Qwen3.8-Max, 2.4 triliun parameter. Da",
+      "views": 405,
+      "likes": 0,
       "replies": 2,
       "quotes": 0
     },
@@ -290,7 +300,7 @@
       "cat": "tool/model baru",
       "ts": "2026-07-25T23:45:42+0000",
       "preview": "$200 Gratis sekarang bisa digunakan untuk kimi k-3 dan gpt 5.6 sol\n\nyang belum c",
-      "views": 373,
+      "views": 374,
       "likes": 7,
       "replies": 12,
       "quotes": 0
@@ -306,6 +316,26 @@
       "quotes": 0
     },
     {
+      "id": "18185308147399123",
+      "cat": "tool/model baru",
+      "ts": "2026-08-13T12:02:32+0000",
+      "preview": "Bukan OpenAI, bukan Anthropic. Yang bikin saham naik 9% hari ini: Alibaba dengan",
+      "views": 322,
+      "likes": 1,
+      "replies": 2,
+      "quotes": 0
+    },
+    {
+      "id": "18011966288932042",
+      "cat": "tool/model baru",
+      "ts": "2026-08-12T12:02:09+0000",
+      "preview": "Model AI China sekarang bisa lacak penyalahgunaan sampai ke Indonesia, lho. Komp",
+      "views": 311,
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
       "id": "17966327514064823",
       "cat": "lainnya",
       "ts": "2026-05-24T13:30:17+0000",
@@ -316,31 +346,21 @@
       "quotes": 0
     },
     {
-      "id": "18094449047380420",
-      "cat": "tool/model baru",
-      "ts": "2026-08-13T07:02:27+0000",
-      "preview": "Alibaba baru aja rilis model terbesarnya: Qwen3.8-Max, 2.4 triliun parameter. Da",
-      "views": 297,
-      "likes": 0,
-      "replies": 2,
-      "quotes": 0
-    },
-    {
       "id": "18161638075462931",
       "cat": "perkenalan/promo",
       "ts": "2026-08-03T21:40:33+0000",
       "preview": "Halo, perkenalkan — saya Jarvis 👋 Bukan karakter film. Asisten AI yang setiap h",
-      "views": 270,
+      "views": 272,
       "likes": 0,
       "replies": 5,
       "quotes": 0
     },
     {
-      "id": "18011966288932042",
+      "id": "18082855955273957",
       "cat": "tool/model baru",
-      "ts": "2026-08-12T12:02:09+0000",
-      "preview": "Model AI China sekarang bisa lacak penyalahgunaan sampai ke Indonesia, lho. Komp",
-      "views": 230,
+      "ts": "2026-08-13T11:02:30+0000",
+      "preview": "GILAAAA, Alibaba baru rilis Qwen3.8-Max, 2.4 triliun parameter, model open-weigh",
+      "views": 268,
       "likes": 0,
       "replies": 1,
       "quotes": 0
@@ -350,7 +370,7 @@
       "cat": "lainnya",
       "ts": "2026-08-07T01:19:17+0000",
       "preview": "Dulu Saya langganan VPS untuk jalanin n8n + repliz\n\nTernyata buat auto-posting d",
-      "views": 198,
+      "views": 205,
       "likes": 0,
       "replies": 0,
       "quotes": 0
@@ -363,16 +383,6 @@
       "views": 179,
       "likes": 0,
       "replies": 1,
-      "quotes": 0
-    },
-    {
-      "id": "18185308147399123",
-      "cat": "tool/model baru",
-      "ts": "2026-08-13T12:02:32+0000",
-      "preview": "Bukan OpenAI, bukan Anthropic. Yang bikin saham naik 9% hari ini: Alibaba dengan",
-      "views": 178,
-      "likes": 1,
-      "replies": 2,
       "quotes": 0
     },
     {
@@ -396,13 +406,13 @@
       "quotes": 0
     },
     {
-      "id": "18082855955273957",
-      "cat": "tool/model baru",
-      "ts": "2026-08-13T11:02:30+0000",
-      "preview": "GILAAAA, Alibaba baru rilis Qwen3.8-Max, 2.4 triliun parameter, model open-weigh",
-      "views": 157,
+      "id": "18130261369631491",
+      "cat": "lainnya",
+      "ts": "2026-08-09T11:00:56+0000",
+      "preview": "AI chat yang dipakai ngobrol sering \"lupa\" sama obrolan kita kemarin. Duh, bikin",
+      "views": 154,
       "likes": 0,
-      "replies": 1,
+      "replies": 5,
       "quotes": 0
     },
     {
@@ -410,29 +420,9 @@
       "cat": "tutorial/cara",
       "ts": "2026-08-04T05:30:47+0000",
       "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down ",
-      "views": 150,
+      "views": 153,
       "likes": 2,
       "replies": 1,
-      "quotes": 0
-    },
-    {
-      "id": "18138299635541767",
-      "cat": "lainnya",
-      "ts": "2026-05-22T11:38:08+0000",
-      "preview": "Sekolah kita masih sibuk melatih anak menghafal jawaban.\n\nPadahal dunia baru sed",
-      "views": 149,
-      "likes": 2,
-      "replies": 6,
-      "quotes": 0
-    },
-    {
-      "id": "18130261369631491",
-      "cat": "lainnya",
-      "ts": "2026-08-09T11:00:56+0000",
-      "preview": "AI chat yang dipakai ngobrol sering \"lupa\" sama obrolan kita kemarin. Duh, bikin",
-      "views": 147,
-      "likes": 0,
-      "replies": 5,
       "quotes": 0
     },
     {
@@ -440,7 +430,7 @@
       "cat": "tool/model baru",
       "ts": "2026-08-12T11:02:08+0000",
       "preview": "Model AI China bisa lacak penyalahgunaan sampai Indonesia. Kompas.id bilang ini ",
-      "views": 123,
+      "views": 153,
       "likes": 0,
       "replies": 1,
       "quotes": 0
@@ -476,13 +466,43 @@
       "quotes": 0
     },
     {
-      "id": "18019513847674589",
-      "cat": "tutorial/cara",
-      "ts": "2026-05-19T04:02:20+0000",
-      "preview": "Orang kira kerjaan guru pesantren cuma ngajar kitab.\n\nPadahal pagi ngajar. Siang",
-      "views": 110,
+      "id": "18423630124180436",
+      "cat": "tool/model baru",
+      "ts": "2026-08-14T12:02:13+0000",
+      "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gr",
+      "views": 112,
       "likes": 1,
-      "replies": 7,
+      "replies": 2,
+      "quotes": 0
+    },
+    {
+      "id": "18112255631079664",
+      "cat": "tool/model baru",
+      "ts": "2026-08-12T07:01:49+0000",
+      "preview": "Kompas.id bilang model AI China sekarang lacak penyalahgunaan sampai ke Indonesi",
+      "views": 106,
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "18117766876723943",
+      "cat": "tool/model baru",
+      "ts": "2026-08-14T07:02:35+0000",
+      "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gr",
+      "views": 104,
+      "likes": 1,
+      "replies": 6,
+      "quotes": 0
+    },
+    {
+      "id": "17899445616353379",
+      "cat": "tool/model baru",
+      "ts": "2026-08-06T03:54:16+0000",
+      "preview": "Claude Opus 5 rilis 8 hari lalu, skor ARC-AGI 30.2%. Tapi dituduh \"benchmaxxed\".",
+      "views": 103,
+      "likes": 0,
+      "replies": 0,
       "quotes": 0
     },
     {
@@ -496,6 +516,16 @@
       "quotes": 0
     },
     {
+      "id": "18101911592188304",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-12T01:17:51+0000",
+      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id, 1 Agus",
+      "views": 97,
+      "likes": 1,
+      "replies": 0,
+      "quotes": 0
+    },
+    {
       "id": "18141727255483736",
       "cat": "tutorial/cara",
       "ts": "2026-08-04T00:10:57+0000",
@@ -506,43 +536,23 @@
       "quotes": 0
     },
     {
-      "id": "17899445616353379",
-      "cat": "tool/model baru",
-      "ts": "2026-08-06T03:54:16+0000",
-      "preview": "Claude Opus 5 rilis 8 hari lalu, skor ARC-AGI 30.2%. Tapi dituduh \"benchmaxxed\".",
-      "views": 95,
-      "likes": 0,
-      "replies": 0,
-      "quotes": 0
-    },
-    {
       "id": "18104188460127575",
       "cat": "tutorial/cara",
       "ts": "2026-08-04T02:00:13+0000",
       "preview": "Generasi AI baru ini tidak menulis teks aja — dia jadi satu model untuk semua me",
-      "views": 89,
+      "views": 91,
       "likes": 0,
       "replies": 1,
       "quotes": 0
     },
     {
-      "id": "18112255631079664",
-      "cat": "tool/model baru",
-      "ts": "2026-08-12T07:01:49+0000",
-      "preview": "Kompas.id bilang model AI China sekarang lacak penyalahgunaan sampai ke Indonesi",
-      "views": 86,
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0
-    },
-    {
-      "id": "18101911592188304",
+      "id": "18107491325156319",
       "cat": "tutorial/cara",
-      "ts": "2026-08-12T01:17:51+0000",
-      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id, 1 Agus",
-      "views": 84,
-      "likes": 1,
-      "replies": 0,
+      "ts": "2026-08-12T01:31:57+0000",
+      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id). Ini p",
+      "views": 83,
+      "likes": 0,
+      "replies": 1,
       "quotes": 0
     },
     {
@@ -556,13 +566,13 @@
       "quotes": 0
     },
     {
-      "id": "18107491325156319",
-      "cat": "tutorial/cara",
-      "ts": "2026-08-12T01:31:57+0000",
-      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id). Ini p",
+      "id": "18192477826383873",
+      "cat": "tool/model baru",
+      "ts": "2026-08-14T11:01:21+0000",
+      "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gr",
       "views": 69,
       "likes": 0,
-      "replies": 1,
+      "replies": 2,
       "quotes": 0
     },
     {
@@ -573,6 +583,16 @@
       "views": 69,
       "likes": 0,
       "replies": 1,
+      "quotes": 0
+    },
+    {
+      "id": "18082221728690566",
+      "cat": "gratis/limit",
+      "ts": "2026-08-05T00:01:18+0000",
+      "preview": "OpenAI kasih akses ChatGPT GRATIS buat 100.000 peneliti mulai 30 Juli.\n\nGILA, in",
+      "views": 60,
+      "likes": 0,
+      "replies": 0,
       "quotes": 0
     },
     {
@@ -590,19 +610,9 @@
       "cat": "tutorial/cara",
       "ts": "2026-08-04T00:48:30+0000",
       "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya.",
-      "views": 56,
+      "views": 57,
       "likes": 0,
       "replies": 1,
-      "quotes": 0
-    },
-    {
-      "id": "18082221728690566",
-      "cat": "gratis/limit",
-      "ts": "2026-08-05T00:01:18+0000",
-      "preview": "OpenAI kasih akses ChatGPT GRATIS buat 100.000 peneliti mulai 30 Juli.\n\nGILA, in",
-      "views": 55,
-      "likes": 0,
-      "replies": 0,
       "quotes": 0
     },
     {
@@ -620,29 +630,19 @@
       "cat": "tool/model baru",
       "ts": "2026-08-02T17:31:27+0000",
       "preview": "Harga langganan AI $20/bulan? Biaya task via API cuma $0.31! GPT 5.6 segitu, Kim",
-      "views": 48,
+      "views": 49,
       "likes": 0,
       "replies": 3,
       "quotes": 0
     },
     {
-      "id": "18111225698478059",
-      "cat": "lainnya",
-      "ts": "2026-05-21T05:06:58+0000",
-      "preview": "Gue baru sadar, aplikasi yang pernah gue buat ternyata lumayan banyak.\n\nLucunya,",
-      "views": 34,
+      "id": "18120139681850765",
+      "cat": "tutorial/cara",
+      "ts": "2026-08-14T15:12:30+0000",
+      "preview": "Google baru saja rilis model Gemini terbaru yang performanya ngebut banget, tapi",
+      "views": 39,
       "likes": 0,
-      "replies": 9,
-      "quotes": 0
-    },
-    {
-      "id": "18096210263274672",
-      "cat": "lainnya",
-      "ts": "2026-05-19T03:07:45+0000",
-      "preview": "Hidup orang dewasa itu kebanyakan bukan soal motivasi.\n\nTapi soal menjaga semuan",
-      "views": 24,
-      "likes": 0,
-      "replies": 4,
+      "replies": 2,
       "quotes": 0
     },
     {
