@@ -1,6 +1,33 @@
 {
-  "fetched_at": "2026-08-14T04:50:21.712Z",
+  "fetched_at": "2026-08-14T10:05:49.911Z",
   "threads": [
+    {
+      "id": "18117766876723943",
+      "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, ternyata bener.\n\n4 AI gr",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcAuuaYG79B",
+      "timestamp": "2026-08-14T07:02:35+0000",
+      "replies_count": 3,
+      "replies": [
+        {
+          "id": "18119880460852501",
+          "text": "buat eksperimen emang sekarang pilihan gratis makin banyak banget wkwk.\ncuma begitu workload mulai serius, yang biasanya jadi pertanyaan bukan “gratis apa nggak”, tapi quota cukup nggak, stabil nggak,",
+          "username": "jembatanaicom",
+          "timestamp": "2026-08-14T07:08:10+0000"
+        },
+        {
+          "id": "17914005321243903",
+          "text": "https://tokengratis.web.id",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-14T07:02:55+0000"
+        },
+        {
+          "id": "18069476420711072",
+          "text": "• Z.ai API (Zhipu GLM) (100% GRATIS): API resmi GLM — seri Flash benar-benar gratis di SEMUA kolom pricing …\n\nYang mana baru pertama kamu denger? Komen 👇",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-14T07:02:44+0000"
+        }
+      ]
+    },
     {
       "id": "18185308147399123",
       "preview": "Bukan OpenAI, bukan Anthropic. Yang bikin saham naik 9% hari ini: Alibaba dengan",
@@ -65,6 +92,30 @@
       "timestamp": "2026-08-13T06:58:16+0000",
       "replies_count": 25,
       "replies": [
+        {
+          "id": "17903549646473463",
+          "text": "Mauu kak tutor",
+          "username": "rian.fauzi_",
+          "timestamp": "2026-08-14T07:49:05+0000"
+        },
+        {
+          "id": "18083872922671766",
+          "text": "Tutor bang",
+          "username": "rian.fauzi_",
+          "timestamp": "2026-08-14T07:47:54+0000"
+        },
+        {
+          "id": "18209402056356783",
+          "text": "Ada yang lebih simple tanpa kartu ... Sangat simple sekali.. Tapi tetap GRATIS ya.. Ingat Gratis + Simpe+tanpa kartu= jangan berharap waw.. Tapi cukup untuk deploy hermes + 9router..diskusi saja di gr",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-14T05:45:41+0000"
+        },
+        {
+          "id": "17901091113551361",
+          "text": "jejak",
+          "username": "ty._.oo",
+          "timestamp": "2026-08-14T05:30:07+0000"
+        },
         {
           "id": "18390881692203567",
           "text": "dari waktu lalu beberapa orang gitu tapi tidak muncul muncul turtornya",
@@ -190,30 +241,6 @@
           "text": "Link",
           "username": "kawaki_666666",
           "timestamp": "2026-08-13T14:54:47+0000"
-        },
-        {
-          "id": "17892777801398278",
-          "text": "nitip gan",
-          "username": "ridhopujiono_",
-          "timestamp": "2026-08-13T14:49:16+0000"
-        },
-        {
-          "id": "18107708441106604",
-          "text": "wkwk Hermes + 9Router di VPS gratis memang combo menarik buat eksperimen.\n\ncuma kalau mulai dipakai serius biasanya bottleneck-nya pindah dari “bisa deploy gratis” ke reliability, quota, provider avai",
-          "username": "jembatanaicom",
-          "timestamp": "2026-08-13T14:30:57+0000"
-        },
-        {
-          "id": "17965454214137122",
-          "text": "terima kasih suhu 🙏🏻",
-          "username": "standy301",
-          "timestamp": "2026-08-13T14:19:24+0000"
-        },
-        {
-          "id": "18162019468483638",
-          "text": "Region mana? Kalo policy sekarang harus US kalo nggak salah",
-          "username": "blackhiden",
-          "timestamp": "2026-08-13T14:10:31+0000"
         }
       ]
     },
@@ -350,21 +377,6 @@
       "timestamp": "2026-08-05T00:01:18+0000",
       "replies_count": 0,
       "replies": []
-    },
-    {
-      "id": "18064609331495659",
-      "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down ",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Dbm0UsMEYBt",
-      "timestamp": "2026-08-04T05:30:47+0000",
-      "replies_count": 1,
-      "replies": [
-        {
-          "id": "18136187116609171",
-          "text": "• API resminya berbayar, tapi bisa dicoba lewat router gratis (GitHub Models / OpenRouter trial)\n\nDatabase 110+ provider gratis & tutorialnya:\nhttps://tokengratis.web.id\n\nKamu nunggu server resminya s",
-          "username": "mrodliarif",
-          "timestamp": "2026-08-04T05:30:56+0000"
-        }
-      ]
     }
   ]
 }
