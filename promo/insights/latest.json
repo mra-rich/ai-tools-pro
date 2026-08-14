@@ -1,11 +1,21 @@
 {
-  "fetched_at": "2026-08-14T03:25:12.865Z",
+  "fetched_at": "2026-08-14T07:04:01.316Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 625,
-  "sum_replies": 229,
-  "sum_views": 48050,
+  "sum_likes": 685,
+  "sum_replies": 245,
+  "sum_views": 53806,
   "threads": [
+    {
+      "id": "18117766876723943",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcAuuaYG79B",
+      "timestamp": "2026-08-14T07:02:35+0000",
+      "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, tern",
+      "likes": 0,
+      "replies": 2,
+      "quotes": 0,
+      "views": 0
+    },
     {
       "id": "18185308147399123",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db-sQgGm8s0",
@@ -14,7 +24,7 @@
       "likes": 1,
       "replies": 2,
       "quotes": 0,
-      "views": 265
+      "views": 295
     },
     {
       "id": "18082855955273957",
@@ -24,7 +34,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 225
+      "views": 247
     },
     {
       "id": "18094449047380420",
@@ -34,17 +44,17 @@
       "likes": 0,
       "replies": 2,
       "quotes": 0,
-      "views": 360
+      "views": 379
     },
     {
       "id": "18138617182604759",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db-JgGMCWKr",
       "timestamp": "2026-08-13T06:58:16+0000",
       "preview": "VPS GRATIS SEUMUR HIDUP dari GOOGLE !!! \nBisa deploy apa saj",
-      "likes": 623,
-      "replies": 215,
+      "likes": 683,
+      "replies": 234,
       "quotes": 0,
-      "views": 46333
+      "views": 52148
     },
     {
       "id": "18011966288932042",
@@ -54,7 +64,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 284
+      "views": 300
     },
     {
       "id": "18550148323074781",
@@ -64,7 +74,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 146
+      "views": 151
     },
     {
       "id": "18112255631079664",
@@ -74,7 +84,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 105
+      "views": 106
     },
     {
       "id": "18107491325156319",
@@ -84,7 +94,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 82
+      "views": 83
     },
     {
       "id": "18101911592188304",
@@ -94,17 +104,7 @@
       "likes": 1,
       "replies": 0,
       "quotes": 0,
-      "views": 96
-    },
-    {
-      "id": "18130261369631491",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db0SFKCm3Qt",
-      "timestamp": "2026-08-09T11:00:56+0000",
-      "preview": "AI chat yang dipakai ngobrol sering \"lupa\" sama obrolan kita",
-      "likes": 0,
-      "replies": 5,
-      "quotes": 0,
-      "views": 154
+      "views": 97
     }
   ]
 }
