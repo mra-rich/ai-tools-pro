@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-13T21:50:09.650Z",
+  "fetched_at": "2026-08-14T04:50:21.712Z",
   "threads": [
     {
       "id": "18185308147399123",
@@ -65,6 +65,54 @@
       "timestamp": "2026-08-13T06:58:16+0000",
       "replies_count": 25,
       "replies": [
+        {
+          "id": "18390881692203567",
+          "text": "dari waktu lalu beberapa orang gitu tapi tidak muncul muncul turtornya",
+          "username": "ardanaputra_01",
+          "timestamp": "2026-08-14T04:22:08+0000"
+        },
+        {
+          "id": "18099089113988540",
+          "text": "Gratis?? Caranya gmn?",
+          "username": "ahmadfairamdi",
+          "timestamp": "2026-08-14T04:21:07+0000"
+        },
+        {
+          "id": "18141613036559938",
+          "text": "Masukin billing aman kak ,takut nya nanti di tengah jalan ada tagihan, kaya qwen gara gara lupa gak nyalain Free quota only, kena tagihan $10",
+          "username": "onic_lovable",
+          "timestamp": "2026-08-14T02:35:55+0000"
+        },
+        {
+          "id": "18099693980621323",
+          "text": "menunggu tutor",
+          "username": "ajiprie",
+          "timestamp": "2026-08-14T02:02:01+0000"
+        },
+        {
+          "id": "18123396197508793",
+          "text": "Link dong suhu",
+          "username": "taufikprabowo6532",
+          "timestamp": "2026-08-14T01:17:06+0000"
+        },
+        {
+          "id": "18075176702353300",
+          "text": "Nyimak tutor masih ditunggu",
+          "username": "nrr24",
+          "timestamp": "2026-08-14T01:16:03+0000"
+        },
+        {
+          "id": "18123938281837931",
+          "text": "e2-micro nya emng free tier, tapi public IPv4 sekarang udah berbayar klo nyala terus 24/7, jadi meskipun VM nya gratis ttp bisa muncul tagihan dari IP nya. disk gratisnya jg cuma pd-standard maksimal ",
+          "username": "yzsmann",
+          "timestamp": "2026-08-14T00:15:14+0000"
+        },
+        {
+          "id": "18114315835948352",
+          "text": "Tutor",
+          "username": "pucifer__",
+          "timestamp": "2026-08-13T22:32:54+0000"
+        },
         {
           "id": "18489970096096152",
           "text": "Ini bener2 free atau ada biaya bulanan walaupun kecil bg? Misal biaya ip dll",
@@ -166,54 +214,6 @@
           "text": "Region mana? Kalo policy sekarang harus US kalo nggak salah",
           "username": "blackhiden",
           "timestamp": "2026-08-13T14:10:31+0000"
-        },
-        {
-          "id": "18378788101228825",
-          "text": "nyimak",
-          "username": "rizaal19_",
-          "timestamp": "2026-08-13T13:50:21+0000"
-        },
-        {
-          "id": "18024194318857238",
-          "text": "Hmm menarik",
-          "username": "fiqhrodedhen",
-          "timestamp": "2026-08-13T13:20:42+0000"
-        },
-        {
-          "id": "18130643200650782",
-          "text": "Keren",
-          "username": "hsn.mft_",
-          "timestamp": "2026-08-13T13:16:37+0000"
-        },
-        {
-          "id": "17891193285656365",
-          "text": "vps gratis bang tapi harus konfirmasi pembayaran 0rp?",
-          "username": "mamansyarif_",
-          "timestamp": "2026-08-13T13:06:10+0000"
-        },
-        {
-          "id": "18222099226330672",
-          "text": "Pake oracle always free tier kalau saya kak.. lumayan, dapet storage 200gb jg.",
-          "username": "sandy_cahya",
-          "timestamp": "2026-08-13T12:45:00+0000"
-        },
-        {
-          "id": "18022809191889554",
-          "text": "mirip mirip oracle free tier kah?",
-          "username": "funnyweirdv1",
-          "timestamp": "2026-08-13T12:11:38+0000"
-        },
-        {
-          "id": "17883013917616911",
-          "text": "Jejak",
-          "username": "deeto99",
-          "timestamp": "2026-08-13T11:54:46+0000"
-        },
-        {
-          "id": "18023993210890848",
-          "text": "nitip sendal",
-          "username": "akbarchives_",
-          "timestamp": "2026-08-13T11:42:08+0000"
         }
       ]
     },
