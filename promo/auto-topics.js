@@ -1,8 +1,30 @@
 // ═════════════════════════════════════════════════
-// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-14)
+// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-15)
 // JANGAN edit manual. Sumber divalidasi hidup di waktu riset.
 // ═════════════════════════════════════════════════
 module.exports = [
+  {
+    "id": "ai-matematikawan-ingatan",
+    "topic": "AI itu bukan cerdas karena 'mikir', tapi karena 'ingatan' supernya!",
+    "hook": [
+      "Ternyata, AI kalah sama matematikawan soal 'mikir' kritis.",
+      "Bukan kecerdasan, tapi 'memori' raksasa AI yang bikin dia jago matematika!",
+      "Kamu kira AI itu jenius? Faktanya, dia cuma 'penghafal' ulung."
+    ],
+    "facts": [
+      "AI cenderung 'menghafal' pola dan solusi matematika yang sudah ada, bukan 'memahami' konsep dasar seperti manusia.",
+      "Kemampuan AI dalam matematika lebih mirip 'mengingat' jawaban yang benar dari data training yang sangat besar, daripada 'menalar' seperti otak matematikawan."
+    ],
+    "freePath": [
+      "Coba deh bandingkan cara kamu belajar matematika sama cara AI. Pasti beda banget!",
+      "Pikirin, kalau AI cuma hafal, apa artinya kalau ada soal baru yang belum pernah dia lihat?"
+    ],
+    "ctaQ": "Menurut kamu, apakah 'ingatan' super ini cukup buat bilang AI itu 'pintar'?",
+    "category": "filosofi-ai",
+    "sources": [
+      "https://davidepiffer.com/p/ai-isnt-outthinking-mathematicians"
+    ]
+  },
   {
     "id": "gemini-3-7-flash-cepat",
     "topic": "Gemini 3.7 Flash: Model AI Baru Google yang Super Cepat dan Efisien!",
