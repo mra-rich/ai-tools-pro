@@ -1,6 +1,42 @@
 {
-  "fetched_at": "2026-08-15T03:41:33.920Z",
+  "fetched_at": "2026-08-15T09:28:59.367Z",
   "threads": [
+    {
+      "id": "18051743915571602",
+      "preview": "Leaderboard benchmark AI Januari 2026 didominasi China. Kimi, Qwen, GLM, DeepSee",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcDXL4wksMR",
+      "timestamp": "2026-08-15T07:34:09+0000",
+      "replies_count": 1,
+      "replies": [
+        {
+          "id": "18130950613714484",
+          "text": "Menurutmu ini keunggulan strategi open weights China, atau Google/OpenAI lagi nyiapin kejutan? Komen 👇",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T07:34:20+0000"
+        }
+      ]
+    },
+    {
+      "id": "17866003596649033",
+      "preview": "Google baru saja rilis model Gemini terbaru yang performanya ngebut banget, tapi",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcDTWcIFoV9",
+      "timestamp": "2026-08-15T07:01:05+0000",
+      "replies_count": 2,
+      "replies": [
+        {
+          "id": "18107660348121478",
+          "text": "https://tokengratis.web.id",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T07:01:30+0000"
+        },
+        {
+          "id": "18090864761399876",
+          "text": "Buat yang cuma mau coba-coba dulu, masih ada jalan gratisnya:\nKamu bisa langsung coba sendiri Gemini 3.7 Flash lewat Google AI Studio atau Vertex AI.\nManfaatkan model ini untuk bikin aplikasi AI yang ",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T07:01:16+0000"
+        }
+      ]
+    },
     {
       "id": "18120139681850765",
       "preview": "Google baru saja rilis model Gemini terbaru yang performanya ngebut banget, tapi",
@@ -390,29 +426,6 @@
       "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id, 1 Agus",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db69vCpIFUj",
       "timestamp": "2026-08-12T01:17:51+0000",
-      "replies_count": 0,
-      "replies": []
-    },
-    {
-      "id": "18130261369631491",
-      "preview": "AI chat yang dipakai ngobrol sering \"lupa\" sama obrolan kita kemarin. Duh, bikin",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db0SFKCm3Qt",
-      "timestamp": "2026-08-09T11:00:56+0000",
-      "replies_count": 1,
-      "replies": [
-        {
-          "id": "18100960714976329",
-          "text": "Nah, sekarang ada tool open-source yang dibuat khusus ngatasin ini. Namanya TencentDB Agent Memory — sudah 18.000+ bintang di GitHub.",
-          "username": "mrodliarif",
-          "timestamp": "2026-08-09T11:01:05+0000"
-        }
-      ]
-    },
-    {
-      "id": "18139555486583815",
-      "preview": "Dulu Saya langganan VPS untuk jalanin n8n + repliz\n\nTernyata buat auto-posting d",
-      "permalink": "https://www.threads.com/@mrodliarif/post/DbuF8DzE1zT",
-      "timestamp": "2026-08-07T01:19:17+0000",
       "replies_count": 0,
       "replies": []
     }
