@@ -1,20 +1,30 @@
 {
-  "fetched_at": "2026-08-14T14:43:29.217Z",
+  "fetched_at": "2026-08-15T02:14:06.476Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 764,
-  "sum_replies": 289,
-  "sum_views": 66703,
+  "sum_likes": 788,
+  "sum_replies": 308,
+  "sum_views": 72733,
   "threads": [
+    {
+      "id": "18120139681850765",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcBmyu4mzMx",
+      "timestamp": "2026-08-14T15:12:30+0000",
+      "preview": "Google baru saja rilis model Gemini terbaru yang performanya",
+      "likes": 0,
+      "replies": 2,
+      "quotes": 0,
+      "views": 226
+    },
     {
       "id": "18423630124180436",
       "permalink": "https://www.threads.com/@mrodliarif/post/DcBRBAznPBs",
       "timestamp": "2026-08-14T12:02:13+0000",
       "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, tern",
       "likes": 1,
-      "replies": 2,
+      "replies": 4,
       "quotes": 0,
-      "views": 109
+      "views": 121
     },
     {
       "id": "18192477826383873",
@@ -22,9 +32,9 @@
       "timestamp": "2026-08-14T11:01:21+0000",
       "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, tern",
       "likes": 0,
-      "replies": 2,
+      "replies": 4,
       "quotes": 0,
-      "views": 68
+      "views": 78
     },
     {
       "id": "18117766876723943",
@@ -32,9 +42,9 @@
       "timestamp": "2026-08-14T07:02:35+0000",
       "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, tern",
       "likes": 1,
-      "replies": 5,
+      "replies": 7,
       "quotes": 0,
-      "views": 102
+      "views": 109
     },
     {
       "id": "18185308147399123",
@@ -44,7 +54,7 @@
       "likes": 1,
       "replies": 2,
       "quotes": 0,
-      "views": 320
+      "views": 326
     },
     {
       "id": "18082855955273957",
@@ -54,7 +64,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 267
+      "views": 272
     },
     {
       "id": "18094449047380420",
@@ -64,17 +74,17 @@
       "likes": 0,
       "replies": 2,
       "quotes": 0,
-      "views": 404
+      "views": 410
     },
     {
       "id": "18138617182604759",
       "permalink": "https://www.threads.com/@mrodliarif/post/Db-JgGMCWKr",
       "timestamp": "2026-08-13T06:58:16+0000",
       "preview": "VPS GRATIS SEUMUR HIDUP dari GOOGLE !!! \nBisa deploy apa saj",
-      "likes": 761,
-      "replies": 272,
+      "likes": 785,
+      "replies": 284,
       "quotes": 0,
-      "views": 64863
+      "views": 70723
     },
     {
       "id": "18011966288932042",
@@ -84,7 +94,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 311
+      "views": 314
     },
     {
       "id": "18550148323074781",
@@ -94,17 +104,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 153
-    },
-    {
-      "id": "18112255631079664",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db7lDAJICai",
-      "timestamp": "2026-08-12T07:01:49+0000",
-      "preview": "Kompas.id bilang model AI China sekarang lacak penyalahgunaa",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 106
+      "views": 154
     }
   ]
 }
