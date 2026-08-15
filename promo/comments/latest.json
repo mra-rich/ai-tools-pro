@@ -1,6 +1,48 @@
 {
-  "fetched_at": "2026-08-15T09:28:59.367Z",
+  "fetched_at": "2026-08-15T15:23:50.080Z",
   "threads": [
+    {
+      "id": "17903514795473028",
+      "preview": "Google baru saja rilis model Gemini terbaru yang performanya ngebut banget, tapi",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcD1y7gFQrY",
+      "timestamp": "2026-08-15T12:02:05+0000",
+      "replies_count": 2,
+      "replies": [
+        {
+          "id": "18436051267133660",
+          "text": "https://tokengratis.web.id",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T12:02:27+0000"
+        },
+        {
+          "id": "18112681567766090",
+          "text": "Buat yang cuma mau coba-coba dulu, masih ada jalan gratisnya:\nKamu bisa langsung coba sendiri Gemini 3.7 Flash lewat Google AI Studio atau Vertex AI.\nManfaatkan model ini untuk bikin aplikasi AI yang ",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T12:02:15+0000"
+        }
+      ]
+    },
+    {
+      "id": "17940758907336345",
+      "preview": "Bayangin, model AI yang bisa jawab pertanyaan kamu lebih cepat dari kedipan mata",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcDu7UTHO1E",
+      "timestamp": "2026-08-15T11:02:04+0000",
+      "replies_count": 2,
+      "replies": [
+        {
+          "id": "17902008393515950",
+          "text": "https://tokengratis.web.id",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T11:02:26+0000"
+        },
+        {
+          "id": "18129564397659144",
+          "text": "Buat yang cuma mau coba-coba dulu, masih ada jalan gratisnya:\nKamu bisa langsung coba sendiri Gemini 3.7 Flash lewat Google AI Studio atau Vertex AI.\nManfaatkan model ini untuk bikin aplikasi AI yang ",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-15T11:02:14+0000"
+        }
+      ]
+    },
     {
       "id": "18051743915571602",
       "preview": "Leaderboard benchmark AI Januari 2026 didominasi China. Kimi, Qwen, GLM, DeepSee",
@@ -405,29 +447,6 @@
           "timestamp": "2026-08-12T07:01:59+0000"
         }
       ]
-    },
-    {
-      "id": "18107491325156319",
-      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id). Ini p",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db6_TD-oCcs",
-      "timestamp": "2026-08-12T01:31:57+0000",
-      "replies_count": 1,
-      "replies": [
-        {
-          "id": "18349769770172699",
-          "text": "https://tokengratis.web.id",
-          "username": "mrodliarif",
-          "timestamp": "2026-08-12T01:32:07+0000"
-        }
-      ]
-    },
-    {
-      "id": "18101911592188304",
-      "preview": "Model AI China mulai lacak penyalahgunaan sampai ke Indonesia (Kompas.id, 1 Agus",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db69vCpIFUj",
-      "timestamp": "2026-08-12T01:17:51+0000",
-      "replies_count": 0,
-      "replies": []
     }
   ]
 }
