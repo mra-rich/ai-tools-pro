@@ -1,11 +1,51 @@
 {
-  "fetched_at": "2026-08-15T06:17:55.554Z",
+  "fetched_at": "2026-08-15T14:11:41.969Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 799,
-  "sum_replies": 308,
-  "sum_views": 76627,
+  "sum_likes": 4,
+  "sum_replies": 27,
+  "sum_views": 1540,
   "threads": [
+    {
+      "id": "17903514795473028",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcD1y7gFQrY",
+      "timestamp": "2026-08-15T12:02:05+0000",
+      "preview": "Google baru saja rilis model Gemini terbaru yang performanya",
+      "likes": 0,
+      "replies": 2,
+      "quotes": 0,
+      "views": 96
+    },
+    {
+      "id": "17940758907336345",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcDu7UTHO1E",
+      "timestamp": "2026-08-15T11:02:04+0000",
+      "preview": "Bayangin, model AI yang bisa jawab pertanyaan kamu lebih cep",
+      "likes": 0,
+      "replies": 2,
+      "quotes": 0,
+      "views": 69
+    },
+    {
+      "id": "18051743915571602",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcDXL4wksMR",
+      "timestamp": "2026-08-15T07:34:09+0000",
+      "preview": "Leaderboard benchmark AI Januari 2026 didominasi China. Kimi",
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0,
+      "views": 61
+    },
+    {
+      "id": "17866003596649033",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcDTWcIFoV9",
+      "timestamp": "2026-08-15T07:01:05+0000",
+      "preview": "Google baru saja rilis model Gemini terbaru yang performanya",
+      "likes": 0,
+      "replies": 2,
+      "quotes": 0,
+      "views": 106
+    },
     {
       "id": "18120139681850765",
       "permalink": "https://www.threads.com/@mrodliarif/post/DcBmyu4mzMx",
@@ -14,17 +54,17 @@
       "likes": 0,
       "replies": 2,
       "quotes": 0,
-      "views": 239
+      "views": 257
     },
     {
       "id": "18423630124180436",
       "permalink": "https://www.threads.com/@mrodliarif/post/DcBRBAznPBs",
       "timestamp": "2026-08-14T12:02:13+0000",
       "preview": "\"Nggak usah langganan banyak-banyak...\" — kata temanku, tern",
-      "likes": 1,
+      "likes": 2,
       "replies": 4,
       "quotes": 0,
-      "views": 127
+      "views": 136
     },
     {
       "id": "18192477826383873",
@@ -34,7 +74,7 @@
       "likes": 0,
       "replies": 4,
       "quotes": 0,
-      "views": 84
+      "views": 88
     },
     {
       "id": "18117766876723943",
@@ -44,7 +84,7 @@
       "likes": 1,
       "replies": 7,
       "quotes": 0,
-      "views": 113
+      "views": 116
     },
     {
       "id": "18185308147399123",
@@ -54,7 +94,7 @@
       "likes": 1,
       "replies": 2,
       "quotes": 0,
-      "views": 330
+      "views": 332
     },
     {
       "id": "18082855955273957",
@@ -64,47 +104,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 276
-    },
-    {
-      "id": "18094449047380420",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db-J6l9lpUn",
-      "timestamp": "2026-08-13T07:02:27+0000",
-      "preview": "Alibaba baru aja rilis model terbesarnya: Qwen3.8-Max, 2.4 t",
-      "likes": 0,
-      "replies": 2,
-      "quotes": 0,
-      "views": 415
-    },
-    {
-      "id": "18138617182604759",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db-JgGMCWKr",
-      "timestamp": "2026-08-13T06:58:16+0000",
-      "preview": "VPS GRATIS SEUMUR HIDUP dari GOOGLE !!! \nBisa deploy apa saj",
-      "likes": 796,
-      "replies": 284,
-      "quotes": 0,
-      "views": 74570
-    },
-    {
-      "id": "18011966288932042",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db8Ha1GFvFa",
-      "timestamp": "2026-08-12T12:02:09+0000",
-      "preview": "Model AI China sekarang bisa lacak penyalahgunaan sampai ke ",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 318
-    },
-    {
-      "id": "18550148323074781",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db8AjLcla__",
-      "timestamp": "2026-08-12T11:02:08+0000",
-      "preview": "Model AI China bisa lacak penyalahgunaan sampai Indonesia. K",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 155
+      "views": 279
     }
   ]
 }
