@@ -17,7 +17,7 @@ const VIRAL_TOPICS = [
     id: 'kimi-k3-sold-out',
     topic: 'Kimi K3: open weights 2.8T, servernya sampai "sold out" karena demand membludak',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `Kimi K3 rilis weights 5 hari lalu → server Moonshot "sold out" 🥵\n\nTapi tahu nggak? Ada 2 cara pakai GRATIS-nya walau web resminya penuh.`,
       `Moonshot AI sampai pause langganan baru karena Kimi K3 too hot 🔥\n\nTapi weight-nya open source. Itu artinya…`,
@@ -42,7 +42,7 @@ const VIRAL_TOPICS = [
     id: 'claude-opus5-controversy',
     topic: 'Claude Opus 5: rilis 8 hari lalu, skor ARC-AGI 30.2% tapi dituduh "benchmaxxed"',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `Claude Opus 5 baru rilis langsung kena drama: skor benchmark dipoles?\n\nTapi demo codingnya bikin Pokémon 3D dalam 12 jam. Jadi… controversy atau fakta?`,
       `30.2% di ARC-AGI, tapi r/singularity ramai bilang "itu benchmaxxed" ⚡\n\nPadahal demo nyatanya jauh lebih gila dari angkanya.`,
@@ -67,7 +67,7 @@ const VIRAL_TOPICS = [
     id: 'qwen38-anticipation',
     topic: 'Qwen3.8: belum rilis, tapi teaser 3 kata dari Alibaba jadi meme terbesar AI minggu ini',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `"Prepare your (v)ram" — cuma 3 kata teaser dari Alibaba.\n\nTapi jadi meme AI terbesar minggu ini (5.000+ share). Komunitas beneran nunggu.`,
       `Qwen belum rilis model barunya.\n\nTapi X & Reddit sudah riuh. Kenapa seserius itu? Kalau kamu tahu sejarah Qwen, kamu ngerti.`,
@@ -92,7 +92,7 @@ const VIRAL_TOPICS = [
     id: 'google-out-of-top15',
     topic: 'Top-15 benchmark AI Januari 2026 didominasi model China (Kimi, Qwen, GLM, DeepSeek) — Google absen dari list',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `Top-15 AI benchmark bulan ini: Kimi, Qwen, GLM, DeepSeek, MiniMax…\n\nSemua China. Google? Hilang dari list sejak Gemini November lalu.`,
       `Google di AI sekarang kayak tim sepakbola yang absen rangking bukan karena turun — memang tidak ada update game-nya.`,
@@ -118,7 +118,7 @@ const VIRAL_TOPICS = [
     id: 'ai-cost-per-token-shock',
     topic: 'Biaya asli panggil API AI ternyata murah: K3 $0.55/task vs Opus $1.40/task vs GPT 5.6 $0.31/task — beda dengan harga langganan bulanan',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `Harga langganan AI: $20/bulan.\nBiaya asli task yang sama via API: $0.31.\n\nYang bikin kaget bukan angkanya — yang bikin kaget banyak yang belum tahu.`,
       `Rata-rata orang mikir "AI = mahal langganan".\nPadahal per-task via API: Opus 5 $1.40, Kimi K3 $0.55, GPT 5.6 $0.31.`,
@@ -144,7 +144,7 @@ const VIRAL_TOPICS = [
     id: 'coding-agent-local-fomo',
     topic: 'AI coding assistant (Claude Code, Cursor, ZCode dll.) yang lagi viral — dan alternatif gratisnya yang setara',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `Tool coding dengan AI paling dicari 2026: mahal.\n\nTapi 70% fiturnya bisa kamu ganti gratis lewat routing API lokal. Ini daftarnya.`,
       `Dengar-dengar "harus langganan buat AI coding"? Mitos.\n\nAda 3 alternatif gratis yang di komunitas developer sudah bukan rahasia.`,
@@ -170,7 +170,7 @@ const VIRAL_TOPICS = [
     id: 'flux3-omni-creative',
     topic: 'Flux 3 (Black Forest Labs): satu model untuk image + video + audio + action prediction — era "omnimodal" dimulai',
     added: '2026-07-20',
-    staleAfterDays: 14,
+    staleAfterDays: 3,
     hook: (cur) => pickHook([
       `Satu model, 4 tugas: bikin gambar, video, audio, sampi prediksi gerakan.\n\nNamanya Flux 3. Era pipeline 3-langkah tinggal kenangan.`,
       `Generasi AI baru ini tidak menulis teks aja — dia jadi satu model untuk semua media sekaligus. Dan yang keren: ada jalannya gratis.`,
