@@ -1,8 +1,32 @@
 // ═════════════════════════════════════════════════
-// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-15)
+// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-16)
 // JANGAN edit manual. Sumber divalidasi hidup di waktu riset.
 // ═════════════════════════════════════════════════
 module.exports = [
+  {
+    "id": "ai-makin-bodoh",
+    "topic": "Model AI sekarang kok makin bodoh ya? Ternyata ini alasannya!",
+    "hook": [
+      "Pernah ngerasa model AI kayak ChatGPT atau Claude makin 'lemot' atau hasilnya kurang akurat?",
+      "Jangan kaget, bukan cuma kamu yang ngerasain! Ada indikasi kuat kalau model AI ini memang sengaja 'dibikin' makin bodoh.",
+      "Ini bukan teori konspirasi, tapi tren yang diamati para developer dan peneliti AI."
+    ],
+    "facts": [
+      "Beberapa developer mengamati penurunan performa model AI (misalnya GPT-4) dari versi sebelumnya, terutama dalam tugas-tugas penalaran dan pemecahan masalah.",
+      "Salah satu hipotesis utama adalah adanya 'data poisoning' atau 'data contamination' dari data hasil AI itu sendiri (Model Collapse), yang menurunkan kualitas data pelatihan di masa depan.",
+      "Ada juga kemungkinan strategi 'pruning' atau pengurangan ukuran model untuk efisiensi biaya operasional, yang mengorbankan sedikit akurasi."
+    ],
+    "freePath": [
+      "Kalau AI makin bodoh, gimana cara kita tetap produktif? Coba fokus pada prompt engineering yang lebih spesifik dan kontekstual.",
+      "Manfaatkan AI untuk tugas-tugas yang repetitif dan kurang membutuhkan kreativitas tinggi, biarkan otakmu fokus ke hal-hal strategis.",
+      "Jangan terpaku pada satu model AI. Eksplorasi berbagai model dan platform (misal Gemini, Llama, dll.) untuk menemukan yang paling cocok dengan kebutuhanmu saat ini."
+    ],
+    "ctaQ": "Menurut kamu, apakah penurunan kualitas AI ini memang disengaja atau cuma efek samping dari pengembangan yang terlalu cepat? Yuk, diskusi di kolom komentar! 👇",
+    "category": "tren-ai",
+    "sources": [
+      "https://w4g1.dev/blog/models-are-getting-dumber-on-purpose"
+    ]
+  },
   {
     "id": "ai-matematikawan-ingatan",
     "topic": "AI itu bukan cerdas karena 'mikir', tapi karena 'ingatan' supernya!",
