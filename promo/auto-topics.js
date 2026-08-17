@@ -1,8 +1,34 @@
 // ═════════════════════════════════════════════════
-// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-16)
+// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-17)
 // JANGAN edit manual. Sumber divalidasi hidup di waktu riset.
 // ═════════════════════════════════════════════════
 module.exports = [
+  {
+    "id": "amazon-buang-buku-ai",
+    "topic": "Amazon buang buku langka demi latih AI? Ini dia skandal terbarunya!",
+    "hook": [
+      "Amazon, raksasa yang awalnya jualan buku, ternyata buang-buang buku langka buat latih AI!",
+      "Bayangkan, buku-buku bersejarah berakhir di tempat sampah demi robot cerdas. Miris banget!",
+      "Lagi-lagi Amazon bikin ulah! Kali ini, mereka dituduh buang buku langka buat data AI."
+    ],
+    "facts": [
+      "Sebuah AirTag yang disembunyikan dalam pengiriman buku langka mengungkap bahwa buku-buku tersebut berakhir di fasilitas pelatihan AI Amazon, bukan ke penerima yang dimaksud.",
+      "Buku-buku tersebut diduga dihancurkan untuk digunakan sebagai data pelatihan model AI Amazon.",
+      "Insiden ini terungkap setelah jurnalis dari 404 Media dan Ars Technica melakukan investigasi."
+    ],
+    "freePath": [
+      "Amazon harus lebih transparan tentang cara mereka mengelola data untuk pelatihan AI.",
+      "Perlu ada regulasi ketat untuk melindungi warisan budaya seperti buku langka dari penyalahgunaan teknologi.",
+      "Kita sebagai konsumen bisa lebih kritis terhadap praktik perusahaan teknologi besar."
+    ],
+    "ctaQ": "Menurut kamu, apa yang harus Amazon lakukan untuk mengatasi skandal ini?",
+    "category": "skandal-ai",
+    "sources": [
+      "https://arstechnica.com/tech-policy/2026/08/hidden-airtag-reveals-amazon-is-trashing-rare-books-to-train-ai/",
+      "https://www.404media.co/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-training-facility/",
+      "https://techcrunch.com/2026/08/17/amazon-once-an-online-bookseller-is-destroying-rare-books-to-train-ai-models/"
+    ]
+  },
   {
     "id": "ai-makin-bodoh",
     "topic": "Model AI sekarang kok makin bodoh ya? Ternyata ini alasannya!",
