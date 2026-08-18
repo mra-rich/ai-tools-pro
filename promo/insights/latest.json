@@ -1,11 +1,31 @@
 {
-  "fetched_at": "2026-08-17T14:16:46.336Z",
+  "fetched_at": "2026-08-18T02:16:30.677Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
-  "sum_likes": 4,
-  "sum_replies": 27,
-  "sum_views": 1621,
+  "sum_likes": 7,
+  "sum_replies": 30,
+  "sum_views": 1131,
   "threads": [
+    {
+      "id": "18112728736784776",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcKfcJ0kjnR",
+      "timestamp": "2026-08-18T02:00:58+0000",
+      "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu m",
+      "likes": 0,
+      "replies": 1,
+      "quotes": 0,
+      "views": 0
+    },
+    {
+      "id": "18092094566548565",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcKblW2E-Bb",
+      "timestamp": "2026-08-18T01:27:10+0000",
+      "preview": "DARI 1 VPS GRATISAN KAMU BISA BUAT RATUSAN TOPIK DALAM 1 GRU",
+      "likes": 4,
+      "replies": 5,
+      "quotes": 0,
+      "views": 122
+    },
     {
       "id": "17903514795473028",
       "permalink": "https://www.threads.com/@mrodliarif/post/DcD1y7gFQrY",
@@ -54,7 +74,7 @@
       "likes": 0,
       "replies": 2,
       "quotes": 0,
-      "views": 267
+      "views": 268
     },
     {
       "id": "18423630124180436",
@@ -85,26 +105,6 @@
       "replies": 7,
       "quotes": 0,
       "views": 119
-    },
-    {
-      "id": "18185308147399123",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db-sQgGm8s0",
-      "timestamp": "2026-08-13T12:02:32+0000",
-      "preview": "Bukan OpenAI, bukan Anthropic. Yang bikin saham naik 9% hari",
-      "likes": 1,
-      "replies": 2,
-      "quotes": 0,
-      "views": 333
-    },
-    {
-      "id": "18082855955273957",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db-lYzUoOIv",
-      "timestamp": "2026-08-13T11:02:30+0000",
-      "preview": "GILAAAA, Alibaba baru rilis Qwen3.8-Max, 2.4 triliun paramet",
-      "likes": 0,
-      "replies": 1,
-      "quotes": 0,
-      "views": 280
     }
   ]
 }
