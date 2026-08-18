@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-08-18T02:16:30.677Z",
+  "fetched_at": "2026-08-18T06:21:21.617Z",
   "user_id": "36012892761658350",
   "total_threads": 10,
   "sum_likes": 7,
-  "sum_replies": 30,
-  "sum_views": 1131,
+  "sum_replies": 32,
+  "sum_views": 1233,
   "threads": [
     {
       "id": "18112728736784776",
@@ -14,7 +14,7 @@
       "likes": 0,
       "replies": 1,
       "quotes": 0,
-      "views": 0
+      "views": 62
     },
     {
       "id": "18092094566548565",
@@ -22,9 +22,9 @@
       "timestamp": "2026-08-18T01:27:10+0000",
       "preview": "DARI 1 VPS GRATISAN KAMU BISA BUAT RATUSAN TOPIK DALAM 1 GRU",
       "likes": 4,
-      "replies": 5,
+      "replies": 7,
       "quotes": 0,
-      "views": 122
+      "views": 162
     },
     {
       "id": "17903514795473028",
