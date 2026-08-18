@@ -1,8 +1,30 @@
 // ═════════════════════════════════════════════════
-// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-17)
+// auto-topics.js — topik OTOMATIS (tulis research-topics.js, 2026-08-18)
 // JANGAN edit manual. Sumber divalidasi hidup di waktu riset.
 // ═════════════════════════════════════════════════
 module.exports = [
+  {
+    "id": "trend-using-the-railway-network-as-a-flatbed-s",
+    "topic": "Tren AI yang lagi ngangkat: Using the railway network as a flatbed scanner",
+    "hook": [
+      "Ada model/tool AI baru yang lagi heboh",
+      "Lagi ramai di kalangan developer AI"
+    ],
+    "facts": [
+      "Ini trending topik baru di Hacker News/Reddit AI hari ini.",
+      "Para pengguna AI lagi banyak ngebahas tool ini.",
+      "Nggak semua tahu cara akses gratisnya."
+    ],
+    "freePath": [
+      "Cek langsung link sumber di bawah untuk cara akses gratis.",
+      "Mampir tokengratis.web.id untuk lihat koleksi tool AI gratis."
+    ],
+    "ctaQ": "Kamu udah coba tool AI versi baru ini belum?",
+    "category": "trend",
+    "sources": [
+      "https://philo.gay/linecam/"
+    ]
+  },
   {
     "id": "amazon-buang-buku-ai",
     "topic": "Amazon buang buku langka demi latih AI? Ini dia skandal terbarunya!",
