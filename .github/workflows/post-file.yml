@@ -1,34 +1,9 @@
-# post-file.yml - Posting teks Threads custom saat file masuk promo/custom/.
-# Pemicu: push *.txt ke promo/custom/*.txt -> isi file langsung diposting.
-name: Post Custom File
-
+# DISABLED
+name: post-file.yml (DISABLED)
 on:
-  push:
-    paths:
-      - 'promo/custom/*.txt'
-
-permissions:
-  contents: write
-
+  workflow_dispatch:
 jobs:
-  post:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20'
-      - name: Post custom
-        env:
-          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
-        run: |
-          cat promo/custom/*.txt > /tmp/msg.txt
-          MSG_TEXT="$(cat /tmp/msg.txt)" node promo/post-custom.js
-      - name: Hapus file sumber (biar tidak re-trigger)
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          rm -f promo/custom/*.txt
-          git add -u
-          git commit -m "chore(promo): posting custom selesai [skip ci]" || echo tidak-ada-perubahan
-          git push
+      - run: exit 1
