@@ -1,27 +1,9 @@
-# probe-threads.yml — Probe sementara: cari endpoint Threads API yang jalan.
-name: Probe Threads API
+# DISABLED — workflow Threads dimatikan atas perintah user.
+name: probe-threads.yml (DISABLED)
 on:
   workflow_dispatch:
-permissions:
-  contents: write
 jobs:
-  probe:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20'
-      - name: Probe endpoints
-        env:
-          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
-        run: node promo/probe-threads.js
-      - name: Commit probe hasil
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p promo/analytics
-          cp /tmp/threads-probe.json promo/analytics/threads-probe.json
-          git add promo/analytics/threads-probe.json
-          git commit -m "chore(probe): threads api probe [skip ci]" || echo tidak-ada
-          git push
+      - run: exit 1
