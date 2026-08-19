@@ -1,55 +1,12 @@
-# ═══════════════════════════════════════════════════════════════════════
-# promo-threads.yml — Posting Threads harian dari cloud (tanpa PC nyala)
-# Jadwal: 02:00 UTC = 09:00 WIB. generate.js → post-api.js → commit state.
-#
-# Secrets yang WAJIB diset di Settings → Secrets and variables → Actions:
-#   AITP_ADMIN_TOKEN   : ADMIN_TOKEN dari scret.txt (untuk /content/read)
-#   THREADS_API_CONFIG : seluruh isi promo/threads-api.config.json
-#   GEMINI_API_KEY     : API key Gemini gratis (aistudio.google.com) — opsional
-#                        tapi direkomendasikan (konten ditulis AI segar tiap hari)
-# ═══════════════════════════════════════════════════════════════════════
-name: Promo Threads Harian
-
+# AUTO-POST THREADS MATI TOTAL - JANGAN POSTING APAPUN.
+name: Promo Threads (DISABLED)
 on:
-  # Jadwal dipindah ke Hermes cron lokal (on-time, bukan cron GitHub yang ngaret).
-  # Hermes cron memicu workflow_dispatch di 07:00 / 12:30 / 20:00 WIB.
-  workflow_dispatch:    # dipicu Hermes cron (07:00 / 12:30 / 20:00 WIB)
-
-permissions:
-  contents: write # untuk commit kembali marker *.posted
+  workflow_dispatch:
 
 jobs:
-  generate-and-post:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20' # fetch bawaan Node 18+
-
-      - name: Generate konten dari data live Worker
-        env:
-          AITP_ADMIN_TOKEN: ${{ secrets.AITP_ADMIN_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node promo/generate.js
-
-      - name: Generate ilustrasi realistis (Pollinations → tmpfiles)
-        run: node promo/generate-image.js
-
-      - name: Verifikasi konten sebelum posting (anti-hoax/anti-spam)
-        run: node promo/verify.js
-
-      - name: Post ke Threads via API resmi
-        env:
-          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
-        run: node promo/post-api.js
-
-      - name: Commit state .posted (anti dobel post)
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 'promo/threads/*.posted'
-          git commit -m "chore(promo): thread $(date +%F) diposting [skip ci]" \
-            || echo "tidak ada perubahan state"
-          git push
+      - run: |
+          echo 'AUTO-POST THREADS MATI TOTAL. Dilarang posting tanpa persetujuan user.'
+          exit 1
