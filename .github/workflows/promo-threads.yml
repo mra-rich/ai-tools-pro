@@ -1,12 +1,44 @@
-# AUTO-POST THREADS MATI TOTAL - JANGAN POSTING APAPUN.
-name: Promo Threads (DISABLED)
+# ═══════════════════════════════════════════════════════════════════════
+# promo-threads.yml — GENERATE DRAF SAJA (Approval Gate)
+# TIDAK ADA POSTING KE THREADS DI SINI.
+# Draf disimpan ke repo promo/threads/<date>-<slot>.md
+# Lalu user meninjau di Telegram Topic 112.
+# ═══════════════════════════════════════════════════════════════════════
+name: Promo Threads (Generate Draft Only)
+
 on:
-  workflow_dispatch:
+  workflow_dispatch:    # dipicu Hermes cron (07:00 / 12:30 / 20:00 WIB)
+
+permissions:
+  contents: write
 
 jobs:
-  disabled:
+  generate-draft-only:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo 'AUTO-POST THREADS MATI TOTAL. Dilarang posting tanpa persetujuan user.'
-          exit 1
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Generate konten dari data live Worker
+        env:
+          AITP_ADMIN_TOKEN: ${{ secrets.AITP_ADMIN_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node promo/generate.js
+
+      - name: Generate ilustrasi realistis (Pollinations → tmpfiles)
+        run: node promo/generate-image.js
+
+      - name: Verifikasi konten sebelum simpan draft (anti-hoax/anti-spam)
+        run: node promo/verify.js
+
+      - name: Commit draft ke repo (TANPA POSTING)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add promo/threads/*.md promo/threads/*.json promo/threads/images/* 2>/dev/null || true
+          git commit -m "chore(draft): new thread draft generated [skip ci]" \
+            || echo "tidak ada draf baru"
+          git push
