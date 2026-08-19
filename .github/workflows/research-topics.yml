@@ -1,36 +1,9 @@
-# ═══════════════════════════════════════════════════════════════════
-# research-topics.yml — Riset OTOMATIS topik viral (mingguan, dipicu
-# Hermes cron on-time, bukan cron GitHub yang ngaret).
-# research-topics.js: HN+RSS → Gemini tulis 1 topik + sumber → cek URL
-# hidup → update promo/auto-topics.js → commit.
-# ═══════════════════════════════════════════════════════════════════
-name: Research Topics Mingguan
-
+# DISABLED — workflow Threads dimatikan atas perintah user.
+name: research-topics.yml (DISABLED)
 on:
-  workflow_dispatch:    # dipicu Hermes cron (1x/minggu)
-
-permissions:
-  contents: write       # untuk commit auto-topics.js
-
+  workflow_dispatch:
 jobs:
-  research-topics:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20'
-
-      - name: Riset topik viral (HN + RSS + Gemini)
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node promo/research-topics.js
-
-      - name: Commit auto-topics.js
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add promo/auto-topics.js
-          git diff --cached --quiet || git commit -m "chore(promo): auto-topics update $(date +%F) [skip ci]"
-          git push
+      - run: exit 1
