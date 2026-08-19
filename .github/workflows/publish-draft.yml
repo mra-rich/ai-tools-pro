@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════
+# publish-draft.yml — POSTING DRAF HASIL APPROVAL USER
+# Dipicu MANUAL oleh agent / API HANYA setelah user mengirim "ACC #ID"
+# ═══════════════════════════════════════════════════════════════════════
+name: Publish Approved Draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft_file:
+        description: 'Nama file draf (mis. 2026-08-19-0700.md)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish-approved:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: Post ke Threads via API resmi
+        env:
+          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
+        run: node promo/post-api.js --draft "${{ inputs.draft_file }}"
+
+      - name: Commit state .posted
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 'promo/threads/*.posted'
+          git commit -m "chore(promo): approved draft ${{ inputs.draft_file }} diposting [skip ci]" \
+            || echo "tidak ada perubahan state"
+          git push
