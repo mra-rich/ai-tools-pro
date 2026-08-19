@@ -1,29 +1,9 @@
-# refresh-probe.yml — Refresh token Threads lalu probe ulang endpoint discovery.
-# Menguji hipotesis: izin threads_profile_discovery aktif tapi token lama belum
-# membawa scope-nya → setelah refresh, search bisa jalan.
-name: Refresh Token + Probe Discovery
+# DISABLED — workflow Threads dimatikan atas perintah user.
+name: refresh-probe.yml (DISABLED)
 on:
   workflow_dispatch:
-permissions:
-  contents: write
 jobs:
-  probe:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20'
-      - name: Refresh + probe
-        env:
-          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
-        run: node promo/refresh-and-probe.js
-      - name: Commit hasil
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mkdir -p promo/analytics
-          cp /tmp/refresh-probe-result.txt promo/analytics/refresh-probe-result.txt
-          git add promo/analytics/refresh-probe-result.txt
-          git commit -m "chore(probe): refresh+probe discovery [skip ci]" || echo tidak-ada
-          git push
+      - run: exit 1
