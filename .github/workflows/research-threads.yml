@@ -1,38 +1,9 @@
-# research-threads.yml — Riset MENGAPA konten AI viral di Threads
-# (AMATI-TIRU-MODIFIKASI). Memakai izin threads_profile_discovery via
-# /threads_discovery/search untuk menemukan postingan viral vs yang mirip
-# tapi tidak viral, lalu menuliscribed analisis ke promo/analytics/threads-research.json.
-name: Threads Research (Viral vs Non-Viral)
-
+# DISABLED — workflow Threads dimatikan atas perintah user.
+name: research-threads.yml (DISABLED)
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 1 * * 1'   # Senin 08:00 WIB = 01:00 UTC
-
-permissions:
-  contents: write
-
 jobs:
-  research:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20'
-      - name: Riset viral vs non-viral di Threads
-        env:
-          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
-        run: node promo/research-threads.js
-      - name: Upload hasil
-        uses: actions/upload-artifact@v4
-        with:
-          name: threads-research
-          path: promo/analytics/threads-research.json
-      - name: Commit hasil riset
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 'promo/analytics/threads-research.json'
-          git commit -m "chore(research): update viral vs non-viral $(date +%F) [skip ci]" || echo tidak-ada-perubahan
-          git push
+      - run: exit 1
