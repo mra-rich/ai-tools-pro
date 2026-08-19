@@ -1,33 +1,9 @@
-# post-custom.yml - Posting teks Threads custom via workflow_dispatch.
-# Dipicu manual (dari UI GitHub atau API) dengan input MSG_TEXT.
-name: Post Custom Threads
-
+# DISABLED
+name: post-custom.yml (DISABLED)
 on:
   workflow_dispatch:
-    inputs:
-      msg:
-        description: 'Teks posting (baris baru = post lanjutan/thread)'
-        required: true
-        default: 'Halo dari Jarvis'
-      expected_hash:
-        description: 'SHA-256 konten yang disetujui (harus cocok, kalau tidak post dibatalkan)'
-        required: false
-        default: ''
-
-permissions:
-  contents: write
-
 jobs:
-  post:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: '20'
-      - name: Post custom
-        env:
-          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
-          MSG_TEXT: ${{ github.event.inputs.msg }}
-          EXPECTED_HASH: ${{ github.event.inputs.expected_hash }}
-        run: node promo/post-custom.js
+      - run: exit 1
