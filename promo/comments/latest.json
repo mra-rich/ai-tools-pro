@@ -1,6 +1,21 @@
 {
-  "fetched_at": "2026-08-18T21:27:18.539Z",
+  "fetched_at": "2026-08-19T03:49:21.586Z",
   "threads": [
+    {
+      "id": "18130452331645117",
+      "preview": "Model AI paling viral minggu ini: Kimi K3, 2.8T open weights.\nKenapa bikin down ",
+      "permalink": "https://www.threads.com/@mrodliarif/post/DcNEJZPkhTP",
+      "timestamp": "2026-08-19T02:00:12+0000",
+      "replies_count": 1,
+      "replies": [
+        {
+          "id": "17874645483691955",
+          "text": "• API resminya berbayar, tapi bisa dicoba lewat router gratis (GitHub Models / OpenRouter trial)\n\nDatabase 110+ provider gratis & tutorialnya:\nhttps://tokengratis.web.id\n\nKamu nunggu server resminya s",
+          "username": "mrodliarif",
+          "timestamp": "2026-08-19T02:00:21+0000"
+        }
+      ]
+    },
     {
       "id": "18112728736784776",
       "preview": "Gambar, video, musik — biasanya 3 tool. Flux 3 ngasih satu model untuk semuanya.",
@@ -424,21 +439,6 @@
           "text": "2 CPU, 1 GB RAM, 30 SSD hermes buat task berat kurang sih. kecuali baru mau coba coba. ya wajar namanya gratis. sikat aja",
           "username": "alienspray",
           "timestamp": "2026-08-13T15:13:18+0000"
-        }
-      ]
-    },
-    {
-      "id": "18011966288932042",
-      "preview": "Model AI China sekarang bisa lacak penyalahgunaan sampai ke Indonesia, lho. Komp",
-      "permalink": "https://www.threads.com/@mrodliarif/post/Db8Ha1GFvFa",
-      "timestamp": "2026-08-12T12:02:09+0000",
-      "replies_count": 1,
-      "replies": [
-        {
-          "id": "17970430112938374",
-          "text": "https://tokengratis.web.id",
-          "username": "mrodliarif",
-          "timestamp": "2026-08-12T12:02:20+0000"
         }
       ]
     }
