@@ -1,9 +1,41 @@
-# DISABLED — workflow Threads dimatikan atas perintah user.
-name: verify-live.yml (DISABLED)
+name: Fetch All Threads Posts (Meta API)
 on:
   workflow_dispatch:
 jobs:
-  disabled:
+  fetch_all:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: Fetch complete posts history from Meta API
+        env:
+          THREADS_API_CONFIG: ${{ secrets.THREADS_API_CONFIG }}
+        run: |
+          node -e '
+            const BASE = "https://graph.threads.net/v1.0";
+            async function main() {
+              const cfg = JSON.parse(process.env.THREADS_API_CONFIG);
+              let url = `${BASE}/me/threads?fields=id,text,permalink,timestamp,media_type&limit=100&access_token=${cfg.access_token}`;
+              let all = [];
+              while(url) {
+                const res = await fetch(url).then(r => r.json());
+                if(res.error) { console.error("API Error:", res.error); break; }
+                if(res.data) all.push(...res.data);
+                url = res.paging && res.paging.next ? res.paging.next : null;
+              }
+              console.log("=== TOTAL_FETCHED: " + all.length + " ===");
+              for(let i=0; i<all.length; i++) {
+                const p = all[i];
+                const insUrl = `${BASE}/${p.id}/insights?metric=views,likes,replies,reposts,quotes&access_token=${cfg.access_token}`;
+                const ins = await fetch(insUrl).then(r => r.json()).catch(() => ({}));
+                const m = {};
+                if(ins.data) {
+                  ins.data.forEach(x => { m[x.name] = x.values[0].value; });
+                }
+                console.log(`[${i+1}] ID:${p.id} | Views:${m.views||0} | Likes:${m.likes||0} | Replies:${m.replies||0} | Text: ${(p.text||"").slice(0,60).replace(/\n/g," ")}`);
+              }
+            }
+            main();
+          '
