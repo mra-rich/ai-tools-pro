@@ -15,13 +15,13 @@ jobs:
         run: |
           cat << 'JS' > /tmp/fetch_all.js
           const BASE = "https://graph.threads.net/v1.0";
+          const fs = require("fs");
           async function main() {
             const rawEnv = process.env.THREADS_API_CONFIG || "";
             let cfg = {};
             if (rawEnv.startsWith("{")) cfg = JSON.parse(rawEnv);
             else cfg = { access_token: rawEnv.trim() };
             
-            console.log("Token present:", !!cfg.access_token);
             let url = `${BASE}/me/threads?fields=id,text,permalink,timestamp,media_type&limit=100&access_token=${cfg.access_token}`;
             let all = [];
             while(url) {
@@ -39,10 +39,17 @@ jobs:
               if(ins.data) {
                 ins.data.forEach(x => { m[x.name] = x.values[0].value; });
               }
-              const txt = (p.text || "").replace(/\n/g, " ").slice(0, 70);
-              console.log(`[${i+1}] ID:${p.id} | Views:${m.views||0} | Likes:${m.likes||0} | Replies:${m.replies||0} | Text: ${txt}`);
+              p.metrics = m;
             }
+            fs.writeFileSync("/tmp/all_posts_api.json", JSON.stringify(all, null, 2));
+            console.log("SAVED /tmp/all_posts_api.json");
           }
           main();
           JS
           node /tmp/fetch_all.js
+
+      - name: Upload result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-posts-data
+          path: /tmp/all_posts_api.json
